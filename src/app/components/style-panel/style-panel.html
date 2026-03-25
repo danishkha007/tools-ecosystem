@@ -1,0 +1,16 @@
+<div>
+
+  <label>Font</label>
+  <select #fontSelect (change)="updateStyle('fontFamily', fontSelect.value)">
+    <option>Arial</option>
+    <option>Times New Roman</option>
+    <option>Poppins</option>
+  </select>
+
+  <label>Font Size</label>
+  <input #sizeInput type="number" (input)="updateStyle('fontSize', sizeInput.value)" />
+
+  <label>Color</label>
+  <input #colorInput type="color" (input)="updateStyle('color', colorInput.value)" />
+
+</div>

@@ -1,0 +1,328 @@
+<div class="container">
+
+    <!-- Password Modal -->
+    <div *ngIf="showPasswordModal" class="modal-overlay" (click)="closePasswordModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15V17M6 10V8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V10H6ZM6 10H4C4 12.2091 5.79086 14 8 14H16C18.2091 14 20 12.2091 20 10V8C20 5.79086 18.2091 4 16 4H8C5.79086 4 4 5.79086 4 8V10H6ZM8 14V18C8 19.1046 8.89543 20 10 20H14C15.1046 20 16 19.1046 16 18V14" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3>Password Protected</h3>
+            <p class="modal-filename">{{ currentEncryptedFile }}</p>
+            <p class="modal-description">This PDF file is password protected. Please enter the password to unlock it.</p>
+            <div class="password-input-wrapper">
+                <input 
+                    type="password" 
+                    [(ngModel)]="currentPassword"
+                    placeholder="Enter password"
+                    (keyup.enter)="onUnlockWithPassword()"
+                    class="password-input"
+                    autocomplete="off"
+                />
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-ignore" (click)="onIgnoreFile()">Ignore this file</button>
+                <button class="btn-unlock" (click)="onUnlockWithPassword()" [disabled]="!currentPassword">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header-section">
+        <h1>PDF Merge Tool</h1>
+        <p class="subtitle">Combine multiple PDF files into one seamless document</p>
+        <div class="header-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Secure</span>
+            <span class="tag">No Registration</span>
+        </div>
+    </div>
+
+    <!-- Initial View - No Files -->
+    <div *ngIf="pdfFiles.length === 0" class="initial-view">
+        <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+            <div class="upload-content">
+                <div class="upload-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="#9CA3AF"/>
+                    </svg>
+                </div>
+                <p class="upload-text">Drag and drop PDF files here</p>
+                <span class="upload-or">or</span>
+                <label for="fileInput" class="browse-btn">Browse Files</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Management View - Files Added -->
+    <div *ngIf="pdfFiles.length > 0" class="file-view file-view-card">
+        <!-- View Mode Toggle -->
+        <div class="view-toggle">
+            <div class="toggle-container">
+                <span class="toggle-label" [class.active]="viewMode === 'pdf'" (click)="viewMode = 'pdf'">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    PDFs
+                </span>
+                <span class="toggle-label" [class.active]="viewMode === 'page'" (click)="viewMode = 'page'">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="13" y1="9" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="13" y1="17" x2="13" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Pages
+                </span>
+            </div>
+        </div>
+
+        <!-- PDF View Mode -->
+        <div class="file-grid" cdkDropList (cdkDropListDropped)="drop($event)" cdkDropListOrientation="mixed" *ngIf="viewMode === 'pdf'">
+            <ng-container *ngFor="let pdf of pdfFiles; let i = index">
+                <div class="file-card" cdkDrag [cdkDragData]="pdf">
+                    <!-- Drag Preview -->
+                    <div *cdkDragPreview class="drag-preview">
+                        <div class="preview-thumbnail" [ngStyle]="{ 'background-image': 'url(' + pdf.thumbnail + ')' }">
+                            <div class="preview-overlay"></div>
+                            <div class="preview-info">
+                                <div class="previewName">{{ pdf.name }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Drag Placeholder -->
+                    <div *cdkDragPlaceholder class="drag-placeholder"></div>
+                    
+                    <!-- PDF Preview -->
+                    <div class="bg-preview" [ngStyle]="{ 'background-image': 'url(' + pdf.thumbnail + ')' }">
+                        <div class="overlay"></div>
+                        <button class="remove-btn" (click)="removeFile(i); $event.stopPropagation()">✕</button>
+                        <div class="file-info">
+                            <div class="file-name">{{ pdf.name }}</div>
+                            <div class="file-pages">{{ pdf.pages.length }} / {{ pdf.totalPages }} pages selected</div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <label class="upload-box add-more-box" for="fileInput">
+                <div class="plus">+</div>
+                <span>Add PDF</span>
+            </label>
+        </div>
+
+        <!-- Page View Mode -->
+        <div class="page-view" *ngIf="viewMode === 'page'">
+            <div class="page-view-header">
+                <h4>All Pages ({{ getTotalSelectedPages() }} of {{ getTotalPages() }} selected)
+                    <span *ngIf="pdfFiles.length > 0 && !allPdfsHaveThumbnails()" class="generating-indicator">
+                        <span class="spinner"></span>
+                        Preparing thumbnails...
+                    </span>
+                </h4>
+                <div class="page-view-actions">
+                    <button class="action-btn select-all" (click)="selectAllPagesAllPdfs()">Select All Pages</button>
+                    <button class="action-btn deselect-all" (click)="deselectAllPagesAllPdfs()">Deselect All</button>
+                </div>
+            </div>
+            <div class="page-view-grid" cdkDropList (cdkDropListDropped)="dropPage($event)" cdkDropListOrientation="mixed">
+                <div *ngFor="let item of pageItems; let i = index" 
+                     class="page-card"
+                     [class.loading]="!item.pdf.pageThumbnails || !item.pdf.pageThumbnails[item.pageIndex]"
+                     cdkDrag
+                     [cdkDragData]="item"
+                     [class.selected]="item.pdf.pages.includes(item.pageIndex)"
+                     [class.deselected]="!item.pdf.pages.includes(item.pageIndex)"
+                     (click)="togglePage(item.pdf, item.pageIndex); $event.stopPropagation()"
+                     (mousedown)="$event.stopPropagation()">
+                    <!-- Drag Preview -->
+                    <div *cdkDragPreview class="drag-preview">
+                        <div class="preview-thumbnail" [ngStyle]="{ 'background-image': item.pdf.pageThumbnails && item.pdf.pageThumbnails[item.pageIndex] ? 'url(' + item.pdf.pageThumbnails[item.pageIndex] + ')' : '' }">
+                            <div class="preview-overlay"></div>
+                            <div class="preview-info">
+                                <div class="previewName">{{ item.pdf.name }} - Page {{ item.pageIndex + 1 }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Drag Placeholder -->
+                    <div *cdkDragPlaceholder class="drag-placeholder"></div>
+                    
+                    <div class="page-bg-preview" [ngStyle]="{ 'background-image': item.pdf.pageThumbnails && item.pdf.pageThumbnails[item.pageIndex] ? 'url(' + item.pdf.pageThumbnails[item.pageIndex] + ')' : '' }">
+                        <div class="page-overlay"></div>
+                        <!-- Loading placeholder while thumbnail is being generated -->
+                        <div *ngIf="!item.pdf.pageThumbnails || !item.pdf.pageThumbnails[item.pageIndex]" class="thumbnail-loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <div class="selection-indicator" [class.active]="item.pdf.pages.includes(item.pageIndex)">
+                            <svg *ngIf="item.pdf.pages.includes(item.pageIndex)" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="page-info">
+                        <div class="page-name">{{ item.pdf.name }} - Page {{ item.pageIndex + 1 }}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="pageItems.length === 0" class="page-loading">
+                <p>Loading pages...</p>
+            </div>
+        </div>
+
+        <div class="controls controls-grouped">
+            <button class="merge-btn" (click)="mergePDFs()" [disabled]="loading">
+                <span *ngIf="!loading">Merge PDFs</span>
+                <span *ngIf="loading" class="loading-text">Merging...</span>
+            </button>
+            <button *ngIf="mergedUrl && !loading" class="download-btn" (click)="downloadMerged()">Download Merged PDF</button>
+        </div>
+
+        <div *ngIf="loading" class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [class.complete]="progressComplete"></div>
+            </div>
+            <p class="progress-text">Processing your PDFs...</p>
+        </div>
+
+        <div *ngIf="mergeMessage && !loading" class="merge-msg">{{ mergeMessage }}</div>
+    </div>
+
+    <input id="fileInput" type="file" multiple accept="application/pdf" (change)="onFileSelect($event)" hidden />
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+        <div class="about-section">
+            <div class="about-header">
+                <h2>About PDF Merge Tool</h2>
+                <p>Our <strong>free PDF Merge Tool</strong> lets you combine multiple PDF files into a single document quickly, easily, and securely. Whether you're consolidating reports, merging chapters, or organizing documents, our tool provides a seamless drag-and-drop interface to streamline your workflow. Perfect for professionals, students, and anyone who needs to combine PDF documents without expensive software.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature-card">
+                    <div class="feature-bg-icon">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 6V12C4 16.5 7.3 20.7 12 22C16.7 20.7 20 16.5 20 12V6L12 2Z" stroke="currentColor" stroke-width="1" fill="none"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>All merging happens in your browser. Your files never leave your device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-bg-icon">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L4 14H12L11 22L20 10H12L13 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Process your PDFs in seconds. No uploads, no waiting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-bg-icon">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" stroke-width="1"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Free Forever</h3>
+                    <p>No registration required. Completely free to use.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2>Key Features</h2>
+            <ul class="features-grid">
+                <li class="feature-item">
+                    <div class="feature-bg-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 16L20 20M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12ZM12 8V12M12 16H12.01" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-icon-wrapper">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 16L20 20M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12ZM12 8V12M12 16H12.01" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Drag & Drop</h3>
+                        <p>Simply drag and drop your PDF files to get started</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-bg-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6H20M4 12H20M4 18H16" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-icon-wrapper">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6H20M4 12H20M4 18H16" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Reorder Pages</h3>
+                        <p>Arrange your files in any order before merging</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-bg-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M9 14H15M9 18H12" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-icon-wrapper">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M9 14H15M9 18H12" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Page Selection</h3>
+                        <p>Choose specific pages from each document</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-bg-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-icon-wrapper">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Fast Processing</h3>
+                        <p>Merge multiple PDFs in seconds</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-bg-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-icon-wrapper">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2f84ff" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="#2f84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Free to Use</h3>
+                        <p>No registration required, completely free</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <app-faq-section 
+            [title]="faqTitle" 
+            [faqs]="faqs" 
+            [accentColor]="faqAccentColor"
+            [expandedIndex]="expandedFaqIndex">
+        </app-faq-section>
+    </div>
+
+</div>

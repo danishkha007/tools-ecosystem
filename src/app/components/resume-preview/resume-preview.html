@@ -1,0 +1,19 @@
+<div class="resume" *ngIf="resume$ | async as resume"
+     [ngStyle]="{
+       'font-family': resume.style.fontFamily,
+       'color': resume.style.color,
+       'font-size.px': resume.style.fontSize
+     }">
+
+  <h1>{{ resume.personal.name }}</h1>
+  <p>{{ resume.personal.email }} | {{ resume.personal.phone }}</p>
+
+  <h3>Summary</h3>
+  <p>{{ resume.summary }}</p>
+
+  <h3>Skills</h3>
+  <ul>
+    <li *ngFor="let skill of resume.skills">{{ skill }}</li>
+  </ul>
+
+</div>

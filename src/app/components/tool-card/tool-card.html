@@ -1,0 +1,9 @@
+<div class="card" (click)="navigate()">
+  <div class="tool-name">
+    <h2>{{ tool.name }}</h2>
+  </div>
+  <p class="long">{{ tool.longDescription }}</p>
+  <button class="button" (click)="navigate(); $event.stopPropagation()">
+    {{ tool.buttonText }}
+  </button>
+</div>
