@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResumeService } from '../../core/services/resume';
+import { ResumeService } from '../../../core/services/resume';
 
 @Component({
   selector: 'app-resume-preview',

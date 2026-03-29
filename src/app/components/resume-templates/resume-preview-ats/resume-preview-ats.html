@@ -1,0 +1,110 @@
+<div class="resume-ats" *ngIf="resume$ | async as resume"
+     [ngStyle]="{
+       'font-family': 'Arial, Helvetica, sans-serif',
+       'font-size': '11pt',
+       'color': '#333333',
+       'line-height': '1.4'
+     }">
+
+  <!-- Header - Clean and Simple for ATS -->
+  <header class="ats-header">
+    <h1 class="name">{{ resume.personal.name }}</h1>
+    <p class="title" *ngIf="resume.personal.jobTitle">{{ resume.personal.jobTitle }}</p>
+    <div class="contact-line">
+      <span *ngIf="resume.personal.email">{{ resume.personal.email }}</span>
+      <span *ngIf="resume.personal.phone"> | {{ resume.personal.phone }}</span>
+      <span *ngIf="resume.personal.location"> | {{ resume.personal.location }}</span>
+      <span *ngIf="resume.personal.linkedin"> | {{ resume.personal.linkedin }}</span>
+      <span *ngIf="resume.personal.website"> | {{ resume.personal.website }}</span>
+    </div>
+  </header>
+
+  <!-- Summary - Keyword Rich -->
+  <section class="ats-section" *ngIf="resume.summary">
+    <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+    <p class="summary-text">{{ resume.summary }}</p>
+  </section>
+
+  <!-- Core Competencies - Skills Keywords -->
+  <section class="ats-section" *ngIf="resume.coreCompetencies">
+    <h2 class="section-title">CORE COMPETENCIES</h2>
+    <p class="competencies-block">{{ resume.coreCompetencies }}</p>
+  </section>
+
+  <!-- Technical Skills - Plain List for ATS -->
+  <section class="ats-section" *ngIf="resume.skills.length">
+    <h2 class="section-title">TECHNICAL SKILLS</h2>
+    <p class="skills-line">
+      @for (skill of resume.skills; track $index) {
+        {{ skill }}{{ $last ? '' : ' | ' }}
+      }
+    </p>
+  </section>
+
+  <!-- Experience - Achievement Focused -->
+  <section class="ats-section" *ngIf="resume.experience?.length">
+    <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+    @for (exp of resume.experience; track $index) {
+      <div class="job-entry">
+        <div class="job-header">
+          <span class="job-title"><strong>{{ exp.role }}</strong></span>
+          <span class="company"> at {{ exp.company }}</span>
+          <span class="dates">{{ exp.startDate }} - {{ exp.isCurrentJob ? 'Present' : exp.endDate }}</span>
+        </div>
+        <p class="job-desc" *ngIf="exp.description">{{ exp.description }}</p>
+        <ul class="achievements" *ngIf="exp.achievements?.length">
+          <li *ngFor="let ach of exp.achievements">{{ ach }}</li>
+        </ul>
+      </div>
+    }
+  </section>
+
+  <!-- Education - Simple Format -->
+  <section class="ats-section" *ngIf="resume.education.length">
+    <h2 class="section-title">EDUCATION</h2>
+    @for (edu of resume.education; track $index) {
+      <div class="edu-entry">
+        <strong>{{ edu.degree }}</strong> in {{ edu.field }} - {{ edu.institute }} ({{ edu.graduationDate }})
+        <span *ngIf="edu.gpa">, GPA: {{ edu.gpa }}</span>
+        <span *ngIf="edu.achievements">, {{ edu.achievements }}</span>
+      </div>
+    }
+  </section>
+
+  <!-- Certifications - Date Focused -->
+  <section class="ats-section" *ngIf="resume.certifications?.length">
+    <h2 class="section-title">CERTIFICATIONS</h2>
+    @for (cert of resume.certifications; track $index) {
+      <div class="cert-line">
+        {{ cert.name }} - {{ cert.issuer }} ({{ cert.date }})
+        <span *ngIf="cert.expiryDate"> - Expires: {{ cert.expiryDate }}</span>
+      </div>
+    }
+  </section>
+
+  <!-- Projects - Technology Keywords -->
+  <section class="ats-section" *ngIf="resume.projects?.length">
+    <h2 class="section-title">PROJECTS</h2>
+    @for (proj of resume.projects; track $index) {
+      <div class="project-entry">
+        <strong>{{ proj.name }}</strong>
+        <span *ngIf="proj.link"> - {{ proj.link }}</span>
+        <p *ngIf="proj.description">{{ proj.description }}</p>
+        <p class="tech-line" *ngIf="proj.technologies.length">
+          Technologies: {{ proj.technologies }}
+        </p>
+      </div>
+    }
+  </section>
+
+  <!-- Languages - Simple List -->
+  <section class="ats-section" *ngIf="resume.languages?.length">
+    <h2 class="section-title">LANGUAGES</h2>
+    <p class="lang-line">
+      @for (lang of resume.languages; track $index) {
+        {{ lang.language }} ({{ lang.proficiency }}){{ $last ? '' : '; ' }}
+      }
+    </p>
+  </section>
+
+</div>

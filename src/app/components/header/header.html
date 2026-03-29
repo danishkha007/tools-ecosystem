@@ -1,12 +1,18 @@
 <header class="header">
-  <div class="logo">
-    <a routerLink="/">
-      <img src="logo.png" alt="ToolTrove" />
-    </a>
-  </div>
+  <div class="header-content">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="logo.png" alt="ToolTrove" />
+      </a>
+    </div>
 
-  <nav>
-    <a routerLinkActive="true" routerLink="/">Home</a>
-    <a routerLinkActive="true" routerLink="/resume">Resume</a>
-  </nav>
+    <nav class="nav-links">
+      <a routerLink="/merge-pdf" routerLinkActive="active">Merge PDF</a>
+      <a routerLink="/resume-builder" routerLinkActive="active">Resume Builder</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+    </nav>
+
+    <div class="header-actions">
+    </div>
+  </div>
 </header>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, PDFPage } from 'pdf-lib';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,6 @@ export class PdfService {
       try {
         const bytes = await item.file.arrayBuffer();
         const password = passwords ? passwords[item.name] : undefined;
-        // Use type assertion for password option (pdf-lib may not expose it in types)
         const loadOptions = password ? { password } : {};
         const pdf = await PDFDocument.load(bytes, loadOptions as any);
         
@@ -40,7 +39,6 @@ export class PdfService {
         const pages = await mergedPdf.copyPages(pdf, pageIndices);
         pages.forEach((p: any) => mergedPdf.addPage(p));
       } catch (error: any) {
-        // Check if it's an encryption/password error
         if (error.message && error.message.includes('encrypted') || error.message?.includes('password')) {
           throw { 
             type: 'encrypted', 
@@ -50,6 +48,47 @@ export class PdfService {
         }
         console.error('Error merging PDF:', item.name, error);
         throw new Error(`Failed to merge ${item.name}: ${error}`);
+      }
+    }
+
+    return await mergedPdf.save();
+  }
+
+  async mergePagesInOrder(pageItems: any[], passwords?: { [key: string]: string }): Promise<Uint8Array> {
+    const mergedPdf = await PDFDocument.create();
+    
+    // Cache loaded PDFs to avoid reloading the same file multiple times
+    const pdfCache = new Map<string, PDFDocument>();
+    
+    for (const item of pageItems) {
+      try {
+        let sourcePdf = pdfCache.get(item.name);
+        
+        // If not in cache, load the PDF
+        if (!sourcePdf) {
+          const bytes = await item.file.arrayBuffer();
+          const password = passwords ? passwords[item.name] : undefined;
+          const loadOptions = password ? { password } : {};
+          sourcePdf = await PDFDocument.load(bytes, loadOptions as any);
+          pdfCache.set(item.name, sourcePdf);
+        }
+        
+        // Copy the specific page (0-indexed pageIndex)
+        const pageIndex = item.pageIndex;
+        if (pageIndex >= 0 && pageIndex < sourcePdf.getPageCount()) {
+          const [copiedPage] = await mergedPdf.copyPages(sourcePdf, [pageIndex]);
+          mergedPdf.addPage(copiedPage);
+        }
+      } catch (error: any) {
+        if (error.message && error.message.includes('encrypted') || error.message?.includes('password')) {
+          throw { 
+            type: 'encrypted', 
+            fileName: item.name, 
+            message: `${item.name} is password protected` 
+          };
+        }
+        console.error('Error merging page:', item.name, 'page', item.pageIndex, error);
+        throw new Error(`Failed to merge page from ${item.name}: ${error}`);
       }
     }
 

@@ -1,13 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-// import { SharedModule } from "./shared/shared-module";
-import { HeaderComponent } from "./components/header/header";
+import { Layout } from "./components/layout/layout";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  imports: [RouterOutlet, Layout],
+  template: '<app-layout><router-outlet></router-outlet></app-layout>',
+  styles: []
 })
 export class App {
   protected readonly title = signal('tools-ecosystem');
