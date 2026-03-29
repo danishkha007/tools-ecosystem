@@ -296,12 +296,22 @@ export class PdfMergeComponent {
   async mergePDFs() {
     // Check if we're in page view and have a custom order
     if (this.viewMode === 'page' && this.pageItems.length > 0) {
-      // Merge according to the pageItems order (user's custom order)
-      // Transform pageItems to the format expected by mergeSelectedPages
-      const filesWithPages = this.pageItems.map(item => ({
+      // Filter only selected pages from pageItems and maintain their order
+      const selectedPageItems = this.pageItems.filter(item => 
+        item.pdf.pages.includes(item.pageIndex)
+      );
+      
+      // Check if any pages are selected
+      if (selectedPageItems.length === 0) {
+        this.mergeMessage = 'No pages selected. Please select pages to merge.';
+        return;
+      }
+      
+      // Build array of page items with file reference for mergePagesInOrder
+      const pagesToMerge = selectedPageItems.map(item => ({
         file: item.pdf.file,
         name: item.pdf.name,
-        pages: [item.pageIndex]
+        pageIndex: item.pageIndex
       }));
       
       this.loading = true;
@@ -310,7 +320,8 @@ export class PdfMergeComponent {
       this.cdr.detectChanges();
       
       try {
-        const result = await this.pdfService.mergeSelectedPages(filesWithPages, this.passwords);
+        // Use mergePagesInOrder to maintain user's custom page order
+        const result = await this.pdfService.mergePagesInOrder(pagesToMerge, this.passwords);
         const blob = new Blob([new Uint8Array(result)], { type: 'application/pdf' });
         if (this.mergedUrl) {
           URL.revokeObjectURL(this.mergedUrl);
@@ -319,7 +330,7 @@ export class PdfMergeComponent {
         
         this.progressComplete = true;
         this.cdr.detectChanges();
-        this.mergeMessage = 'PDF merge is complete. Download is ready.';
+        this.mergeMessage = `PDF merge is complete! ${selectedPageItems.length} pages merged in your custom order. Download is ready.`;
         
         setTimeout(() => {
           this.loading = false;

@@ -6,8 +6,7 @@ import { Tool } from '../../core/models/tool';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolCardComponent } from '../../components/tool-card/tool-card';
 
-type SortOption = 'name-asc' | 'name-desc' | 'category';
-type GroupOption = 'by-category' | 'all';
+type SortOption = 'name-asc' | 'name-desc';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,19 +19,14 @@ export class DashboardComponent implements OnInit {
 
   categories: ToolCategory[] = [];
   allTools: Tool[] = [];
+  filteredTools: Tool[] = [];
   
   sortOption: SortOption = 'name-asc';
-  groupOption: GroupOption = 'by-category';
+  selectedCategory: string | null = null;
   
   sortOptions: { value: SortOption; label: string }[] = [
     { value: 'name-asc', label: 'Name (A-Z)' },
     { value: 'name-desc', label: 'Name (Z-A)' }
-    // { value: 'category', label: 'By Category' }
-  ];
-  
-  groupOptions: { value: GroupOption; label: string }[] = [
-    { value: 'by-category', label: 'By Category' },
-    { value: 'all', label: 'All Tools' }
   ];
 
   constructor(private toolService: ToolConfigService) {}
@@ -40,7 +34,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.toolService.getToolCategories();
     this.buildAllTools();
-    this.applySortAndGroup();
+    this.applySort();
   }
 
   private buildAllTools(): void {
@@ -51,48 +45,49 @@ export class DashboardComponent implements OnInit {
         this.allTools.push({ ...tool, category: category.name.toLowerCase() });
       }
     }
+    // Start with all tools
+    this.filteredTools = [...this.allTools];
   }
 
   get categoriesWithTools(): ToolCategory[] {
     return this.categories.filter(category => category.tools && category.tools.length > 0);
   }
 
-  applySortAndGroup(): void {
-    if (this.groupOption === 'all') {
-      this.sortAllTools();
-    } else {
-      this.sortCategories();
-    }
+  getCategoryToolCount(categoryName: string): number {
+    const category = this.categories.find(c => c.name === categoryName);
+    return category?.tools?.length || 0;
   }
 
-  private sortAllTools(): void {
-    if (this.sortOption === 'name-asc') {
-      this.allTools.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (this.sortOption === 'name-desc') {
-      this.allTools.sort((a, b) => b.name.localeCompare(a.name));
-    }
+  selectCategory(categoryName: string | null): void {
+    this.selectedCategory = categoryName;
+    this.applySort();
   }
 
-  private sortCategories(): void {
-    for (const category of this.categories) {
-      if (!category.tools) continue;
-      if (this.sortOption === 'name-asc') {
-        category.tools.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (this.sortOption === 'name-desc') {
-        category.tools.sort((a, b) => b.name.localeCompare(a.name));
+  isCategorySelected(categoryName: string): boolean {
+    return this.selectedCategory === categoryName;
+  }
+
+  applySort(): void {
+    if (this.selectedCategory) {
+      // Filter by category first
+      const category = this.categories.find(c => c.name === this.selectedCategory);
+      if (category?.tools) {
+        this.filteredTools = [...category.tools];
       }
+    } else {
+      // Show all tools
+      this.filteredTools = [...this.allTools];
+    }
+
+    // Apply sorting
+    if (this.sortOption === 'name-asc') {
+      this.filteredTools.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (this.sortOption === 'name-desc') {
+      this.filteredTools.sort((a, b) => b.name.localeCompare(a.name));
     }
   }
 
   onSortChange(): void {
-    this.applySortAndGroup();
-  }
-
-  onGroupChange(): void {
-    if (this.groupOption === 'all') {
-      this.sortAllTools();
-    } else {
-      this.sortCategories();
-    }
+    this.applySort();
   }
 }

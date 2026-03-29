@@ -4,6 +4,7 @@ export interface Tool {
   description: string;
   route: string;
   icon?: string;
+  iconAlt?: string;
   category: string;
   longDescription?: string;
   buttonText?: string;

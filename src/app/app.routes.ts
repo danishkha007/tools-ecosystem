@@ -7,12 +7,17 @@ export const routes: Routes = [
       import('./features/dashboard/dashboard').then(m => m.DashboardComponent)
   },
   {
-    path: 'resume',
+    path: 'about',
+    loadComponent: () =>
+      import('./features/about/about').then(m => m.AboutComponent)
+  },
+  {
+    path: 'resume-builder',
     loadComponent: () =>
       import('./features/resume-builder/resume-builder').then(m => m.ResumeBuilder)
   },
   {
-    path: 'pdf-merge',
+    path: 'merge-pdf',
     loadComponent: () =>
       import('./features/pdf-merge/pdf-merge').then(m => m.PdfMergeComponent)
   },

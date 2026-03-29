@@ -1,14 +1,142 @@
 <div class="builder">
-<h1>Resume Builder</h1>
+  <!-- Template Selection Modal -->
+  @if (showTemplateModal) {
+    <div class="template-modal-overlay">
+      <div class="template-modal">
+        <h2>Choose Your Resume Template</h2>
+        <p>Select a template to get started. You can switch anytime.</p>
+        
+        <div class="template-options">
+          <button 
+            class="template-option"
+            [class.selected]="selectedTemplate === 'modern'"
+            (click)="selectTemplate('modern')">
+            <div class="template-preview modern-preview">
+              <div class="preview-header"></div>
+              <div class="preview-content">
+                <div class="preview-line wide"></div>
+                <div class="preview-line"></div>
+                <div class="preview-line"></div>
+                <div class="preview-line narrow"></div>
+              </div>
+            </div>
+            <span class="template-name">Modern Template</span>
+            <span class="template-desc">Creative design with visual elements</span>
+          </button>
+          
+          <button 
+            class="template-option"
+            [class.selected]="selectedTemplate === 'ats'"
+            (click)="selectTemplate('ats')">
+            <div class="template-preview ats-preview">
+              <div class="preview-header"></div>
+              <div class="preview-content">
+                <div class="preview-line wide"></div>
+                <div class="preview-line"></div>
+                <div class="preview-line"></div>
+                <div class="preview-line narrow"></div>
+              </div>
+            </div>
+            <span class="template-name">ATS Optimized</span>
+            <span class="template-desc">Best for applicant tracking systems</span>
+          </button>
+        </div>
+        
+        <button class="continue-btn" (click)="closeTemplateModal()">
+          Continue with {{ selectedTemplate === 'modern' ? 'Modern' : 'ATS Optimized' }}
+        </button>
+      </div>
+    </div>
+  }
 
-  <div class="left">
-    <app-resume-form></app-resume-form>
-    <app-style-panel></app-style-panel>
-    <app-progress-bar></app-progress-bar>
+  <div class="header">
+    <h1>Resume Builder</h1>
+    <p class="subtitle">Create your professional resume in minutes</p>
   </div>
 
-  <div class="right">
-    <app-resume-preview></app-resume-preview>
-  </div>
+  <div class="container">
+    <div class="left-panel">
+      <!-- Step Navigation -->
+      <div class="step-navigation">
+        <button 
+          *ngFor="let step of formSteps; let i = index"
+          class="step-btn"
+          [class.active]="currentStep === i"
+          [class.completed]="currentStep > i"
+          (click)="goToStep(i)">
+          <span class="step-number">{{ i + 1 }}</span>
+          <span class="step-label">{{ step }}</span>
+        </button>
+      </div>
 
+      <div class="form-container">
+        <app-resume-form [currentStep]="currentStep"></app-resume-form>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="form-navigation">
+        <button 
+          class="nav-btn back-btn" 
+          *ngIf="currentStep > 0"
+          (click)="previousStep()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          Back
+        </button>
+        <button 
+          class="nav-btn next-btn" 
+          *ngIf="currentStep < formSteps.length - 1"
+          (click)="nextStep()">
+          Next
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <!-- Progress Bar - Full Width Row -->
+      <div class="progress-row">
+        <div class="progress-indicator">
+          <span class="progress-label">Resume Completeness</span>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="resumeProgress"></div>
+          </div>
+          <span class="progress-percent">{{ resumeProgress }}%</span>
+        </div>
+      </div>
+
+      <div class="preview-header">
+        <div class="template-selector">
+          <label for="template-select">Template:</label>
+          <select 
+            id="template-select"
+            [value]="selectedTemplate"
+            (change)="selectTemplate($any($event.target).value)">
+            <option value="modern">Modern Template</option>
+            <option value="ats">ATS Optimized</option>
+          </select>
+        </div>
+        <button class="btn-download" (click)="downloadPdf()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download PDF
+        </button>
+      </div>
+      <div class="preview-container">
+        <div class="preview-pages" #resumePreview>
+          @if (selectedTemplate === 'modern') {
+            <app-resume-preview></app-resume-preview>
+          } @else {
+            <app-resume-preview-ats></app-resume-preview-ats>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

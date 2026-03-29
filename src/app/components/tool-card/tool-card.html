@@ -1,4 +1,7 @@
 <div class="card" (click)="navigate()">
+  <div class="tool-icon" *ngIf="tool.icon">
+    <img [src]="tool.icon" [alt]="tool.iconAlt || tool.name" />
+  </div>
   <div class="tool-name">
     <h2>{{ tool.name }}</h2>
   </div>

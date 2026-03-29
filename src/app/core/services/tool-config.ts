@@ -19,16 +19,18 @@ export class ToolConfigService {
 
   // Flat list of all tools
   private readonly tools: Tool[] = [
-    // Career Tools
-    // {
-    //   id: 'resume',
-    //   name: 'Resume Builder',
-    //   description: 'Create professional resumes',
-    //   longDescription: 'Build ATS-friendly resumes with customizable layouts, live preview, and export options to stand out to recruiters.',
-    //   buttonText: 'Build Resume',
-    //   route: '/resume',
-    //   category: 'Career Tools'
-    // },
+    // // Career Tools
+    {
+      id: 'resume',
+      name: 'Resume Builder',
+      description: 'Create professional resumes',
+      longDescription: 'Build ATS-friendly resumes with customizable layouts, live preview, and export options to stand out to recruiters.',
+      buttonText: 'Build Resume',
+      route: '/resume-builder',
+      icon: 'resume-builder.png',
+      iconAlt: 'Resume Builder',
+      category: 'Career Tools'
+    },
     // {
     //   id: 'cover-letter',
     //   name: 'Cover Letter Generator',
@@ -93,7 +95,7 @@ export class ToolConfigService {
     //   category: 'Career Tools'
     // },
 
-    // PDF Tools
+    // // PDF Tools
     {
       id: 'pdf-merge',
       name: 'Merge PDF',
@@ -101,6 +103,8 @@ export class ToolConfigService {
       longDescription: 'Merge multiple PDF files into one document quickly and securely.',
       buttonText: 'Merge Now',
       route: '/pdf-merge',
+      icon: 'merge-pdf.png',
+      iconAlt: 'Merge PDF',
       category: 'PDF Tools'
     },
     // {
@@ -110,6 +114,8 @@ export class ToolConfigService {
     //   longDescription: 'Split large PDFs into smaller files or extract selected pages easily.',
     //   buttonText: 'Split PDF',
     //   route: '/pdf-split',
+    //   icon: 'split-pdf.png',
+    //   iconAlt: 'Split PDF',
     //   category: 'PDF Tools'
     // },
     // {
@@ -119,6 +125,8 @@ export class ToolConfigService {
     //   longDescription: 'Compress PDF files without losing quality for faster sharing.',
     //   buttonText: 'Compress Now',
     //   route: '/pdf-compress',
+    //   icon: 'compress-pdf.png',
+    //   iconAlt: 'Compress PDF',
     //   category: 'PDF Tools'
     // },
     // {
@@ -128,6 +136,8 @@ export class ToolConfigService {
     //   longDescription: 'Convert PDF documents into editable Word files with high accuracy.',
     //   buttonText: 'Convert Now',
     //   route: '/pdf-to-word',
+    //   icon: 'pdf-to-word.png',
+    //   iconAlt: 'PDF to Word',
     //   category: 'PDF Tools'
     // },
     // {
@@ -137,6 +147,8 @@ export class ToolConfigService {
     //   longDescription: 'Convert Word documents into high-quality PDF files instantly.',
     //   buttonText: 'Convert Now',
     //   route: '/word-to-pdf',
+    //   icon: 'word-to-pdf.png',
+    //   iconAlt: 'Word to PDF',
     //   category: 'PDF Tools'
     // },
     // {
@@ -155,6 +167,50 @@ export class ToolConfigService {
     //   longDescription: 'Combine multiple images into a single PDF document.',
     //   buttonText: 'Create PDF',
     //   route: '/image-to-pdf',
+    //   category: 'PDF Tools'
+    // },
+    // {
+    //   id: 'pdf-to-excel',
+    //   name: 'PDF to Excel',
+    //   description: 'Convert PDF to Excel',
+    //   longDescription: 'Convert PDF tables to editable Excel files with accuracy.',
+    //   buttonText: 'Convert Now',
+    //   route: '/pdf-to-excel',
+    //   icon: 'pdf-to-excel.png',
+    //   iconAlt: 'PDF to Excel',
+    //   category: 'PDF Tools'
+    // },
+    // {
+    //   id: 'excel-to-pdf',
+    //   name: 'Excel to PDF',
+    //   description: 'Convert Excel to PDF',
+    //   longDescription: 'Convert Excel spreadsheets to PDF format instantly.',
+    //   buttonText: 'Convert Now',
+    //   route: '/excel-to-pdf',
+    //   icon: 'excel-to-pdf.png',
+    //   iconAlt: 'Excel to PDF',
+    //   category: 'PDF Tools'
+    // },
+    // {
+    //   id: 'pdf-to-ppt',
+    //   name: 'PDF to PowerPoint',
+    //   description: 'Convert PDF to PPT',
+    //   longDescription: 'Convert PDF presentations to editable PowerPoint slides.',
+    //   buttonText: 'Convert Now',
+    //   route: '/pdf-to-ppt',
+    //   icon: 'pdf-to-ppt.png',
+    //   iconAlt: 'PDF to PowerPoint',
+    //   category: 'PDF Tools'
+    // },
+    // {
+    //   id: 'ppt-to-pdf',
+    //   name: 'PowerPoint to PDF',
+    //   description: 'Convert PPT to PDF',
+    //   longDescription: 'Convert PowerPoint presentations to PDF quickly.',
+    //   buttonText: 'Convert Now',
+    //   route: '/ppt-to-pdf',
+    //   icon: 'ppt-to-pdf.png',
+    //   iconAlt: 'PowerPoint to PDF',
     //   category: 'PDF Tools'
     // },
     // {
@@ -185,7 +241,7 @@ export class ToolConfigService {
     //   category: 'PDF Tools'
     // },
 
-    // Image Tools
+    // // Image Tools
     // {
     //   id: 'image-compress',
     //   name: 'Compress Image',
@@ -277,7 +333,7 @@ export class ToolConfigService {
     //   category: 'Image Tools'
     // },
 
-    // Calculator Tools
+    // // Calculator Tools
     // {
     //   id: 'percentage',
     //   name: 'Percentage Calculator',
@@ -351,7 +407,7 @@ export class ToolConfigService {
     //   category: 'Calculator Tools'
     // },
 
-    // Developer Tools
+    // // Developer Tools
     // {
     //   id: 'json-formatter',
     //   name: 'JSON Formatter',
@@ -407,7 +463,7 @@ export class ToolConfigService {
     //   category: 'Developer Tools'
     // },
 
-    // Utility Tools
+    // // Utility Tools
     // {
     //   id: 'qr-generator',
     //   name: 'QR Code Generator',

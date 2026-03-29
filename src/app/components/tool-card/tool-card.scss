@@ -16,6 +16,21 @@
     border-color: #3b82f6;
   }
 
+  .tool-icon {
+    width: 150px;
+    height: 48px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
   .tool-name {
     margin-bottom: 8px;
 

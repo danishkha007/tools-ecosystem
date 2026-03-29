@@ -1,0 +1,149 @@
+.resume-ats {
+  background: #ffffff;
+  padding: 0.75in 0.65in;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-size: 11pt;
+  color: #333333;
+  line-height: 1.4;
+  min-height: 11in;
+  max-width: 8.5in;
+  margin: 0 auto;
+
+  .ats-header {
+    text-align: center;
+    margin-bottom: 0.25in;
+    padding-bottom: 0.15in;
+    border-bottom: 2px solid #333333;
+
+    .name {
+      font-size: 18pt;
+      font-weight: bold;
+      margin: 0 0 0.05in;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #000000;
+    }
+
+    .title {
+      font-size: 12pt;
+      margin: 0 0 0.1in;
+      color: #444444;
+    }
+
+    .contact-line {
+      font-size: 9pt;
+      color: #555555;
+      
+      span {
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .ats-section {
+    margin-bottom: 0.2in;
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 0.1in;
+      padding-bottom: 0.05in;
+      border-bottom: 1px solid #333333;
+      color: #000000;
+    }
+
+    .summary-text {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .competencies-block {
+      margin: 0;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .skills-line {
+      margin: 0;
+      font-size: 10pt;
+    }
+
+    .job-entry {
+      margin-bottom: 0.15in;
+      page-break-inside: avoid;
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.05in;
+        
+        .job-title {
+          font-weight: bold;
+        }
+
+        .company {
+          font-style: italic;
+        }
+
+        .dates {
+          white-space: nowrap;
+          font-size: 10pt;
+          color: #555555;
+        }
+      }
+
+      .job-desc {
+        margin: 0 0 0.05in;
+        font-style: italic;
+        color: #555555;
+      }
+
+      .achievements {
+        margin: 0.05in 0 0;
+        padding-left: 0.25in;
+
+        li {
+          margin-bottom: 0.03in;
+        }
+      }
+    }
+
+    .edu-entry {
+      margin-bottom: 0.08in;
+      font-size: 10pt;
+    }
+
+    .cert-line {
+      margin-bottom: 0.05in;
+      font-size: 10pt;
+    }
+
+    .project-entry {
+      margin-bottom: 0.1in;
+
+      .tech-line {
+        margin: 0.03in 0 0;
+        font-size: 10pt;
+        color: #555555;
+      }
+    }
+
+    .lang-line {
+      margin: 0;
+      font-size: 10pt;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.02in;
+      }
+    }
+  }
+}
