@@ -5,6 +5,7 @@ import { ToolCategory } from '../../core/models/tool-category';
 import { Tool } from '../../core/models/tool';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolCardComponent } from '../../components/tool-card/tool-card';
+// import { AmazonAdComponent } from '../../components/amazon-ad/amazon-ad';
 
 type SortOption = 'name-asc' | 'name-desc';
 
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
   categories: ToolCategory[] = [];
   allTools: Tool[] = [];
   filteredTools: Tool[] = [];
+  // adPlacements: number[] = [];
   
   sortOption: SortOption = 'name-asc';
   selectedCategory: string | null = null;
@@ -34,8 +36,23 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.toolService.getToolCategories();
     this.buildAllTools();
+    // this.calculateAdPlacements();
     this.applySort();
   }
+
+  // private calculateAdPlacements(): void {
+  //   // Place ads after every 6 tools (positions 6, 12, 18, etc.)
+  //   this.adPlacements = [];
+  //   const totalTools = this.allTools.length;
+  //   for (let i = 6; i < totalTools; i += 6) {
+  //     this.adPlacements.push(i);
+  //   }
+  // }
+
+  // shouldShowAd(index: number): boolean {
+  //   // Show ad at specified positions
+  //   return this.adPlacements.includes(index);
+  // }
 
   private buildAllTools(): void {
     this.allTools = [];
@@ -61,11 +78,21 @@ export class DashboardComponent implements OnInit {
   selectCategory(categoryName: string | null): void {
     this.selectedCategory = categoryName;
     this.applySort();
+    // this.recalculateAdPlacements();
   }
 
   isCategorySelected(categoryName: string): boolean {
     return this.selectedCategory === categoryName;
   }
+
+  // private recalculateAdPlacements(): void {
+  //   // Recalculate ad placements based on filtered tools
+  //   this.adPlacements = [];
+  //   const totalTools = this.filteredTools.length;
+  //   for (let i = 6; i < totalTools; i += 6) {
+  //     this.adPlacements.push(i);
+  //   }
+  // }
 
   applySort(): void {
     if (this.selectedCategory) {
@@ -85,6 +112,9 @@ export class DashboardComponent implements OnInit {
     } else if (this.sortOption === 'name-desc') {
       this.filteredTools.sort((a, b) => b.name.localeCompare(a.name));
     }
+
+    // Recalculate ad placements
+    // this.recalculateAdPlacements();
   }
 
   onSortChange(): void {

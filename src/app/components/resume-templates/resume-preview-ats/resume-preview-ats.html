@@ -42,7 +42,7 @@
   </section>
 
   <!-- Experience - Achievement Focused -->
-  <section class="ats-section" *ngIf="resume.experience?.length">
+  <section class="ats-section" *ngIf="resume.experience.length">
     <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
     @for (exp of resume.experience; track $index) {
       <div class="job-entry">
@@ -52,7 +52,7 @@
           <span class="dates">{{ exp.startDate }} - {{ exp.isCurrentJob ? 'Present' : exp.endDate }}</span>
         </div>
         <p class="job-desc" *ngIf="exp.description">{{ exp.description }}</p>
-        <ul class="achievements" *ngIf="exp.achievements?.length">
+        <ul class="achievements" *ngIf="exp.achievements.length">
           <li *ngFor="let ach of exp.achievements">{{ ach }}</li>
         </ul>
       </div>

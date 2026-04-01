@@ -1,12 +1,17 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { PdfService } from '../../core/services/pdf';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
+import { UseCaseModalComponent, UseCase } from '../../components/use-case-modal/use-case-modal';
+import { ToolConfigService } from '../../core/services/tool-config';
+import { Tool, ToolSEO } from '../../core/models/tool';
 import * as pdfjsLib from 'pdfjs-dist';
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+type UseCaseData = UseCase;
 
 interface PdfFile {
   file: File;
@@ -29,9 +34,9 @@ interface PageItem {
   selector: 'app-pdf-merge',
   templateUrl: './pdf-merge.html',
   styleUrls: ['./pdf-merge.scss'],
-  imports: [DragDropModule, CommonModule, FaqSectionComponent, FormsModule]
+  imports: [DragDropModule, CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule]
 })
-export class PdfMergeComponent {
+export class PdfMergeComponent implements OnInit {
 
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
@@ -65,6 +70,12 @@ export class PdfMergeComponent {
     }
   }
   
+  // SEO data loaded from tool config
+  seoTitle = '';
+  seoMetaDescription = '';
+  seoH1 = '';
+  seoH2 = '';
+  
   // FAQ Configuration
   faqTitle = 'Frequently Asked Questions';
   faqAccentColor = '#2f84ff';
@@ -93,7 +104,95 @@ export class PdfMergeComponent {
     }
   ];
 
-  constructor(private pdfService: PdfService, private cdr: ChangeDetectorRef, private ngZone: NgZone) { }
+  // Use Case Modal State
+  showUseCaseModal = false;
+  currentUseCase: {
+    title: string;
+    description: string;
+    benefits: string[];
+    icon: string;
+    color: string;
+  } | null = null;
+
+  // Use Case Data
+  useCaseDetails: { [key: number]: any } = {
+    1: {
+      title: 'Combine Reports',
+      description: 'Easily merge multiple PDF reports into a single comprehensive document. Whether you\'re consolidating quarterly financial reports, project status updates, or research findings, our PDF merger handles it all seamlessly.',
+      benefits: [
+        'Combine multiple quarterly reports into one annual document',
+        'Merge research papers and supporting data files',
+        'Create comprehensive project documentation from individual reports',
+        'Preserve formatting and quality of all source documents'
+      ],
+      icon: 'report',
+      color: '#dbeafe'
+    },
+    2: {
+      title: 'Merge Chapters',
+      description: 'Combine book chapters, document sections, or course materials into a complete file. Perfect for eBook creation, academic papers, or any multi-part document that needs to be unified.',
+      benefits: [
+        'Create complete eBooks from individual chapters',
+        'Merge academic papers with appendices and references',
+        'Combine course materials and lecture notes',
+        'Unite multi-part manuals and guides'
+      ],
+      icon: 'book',
+      color: '#d1fae5'
+    },
+    3: {
+      title: 'Organize Documents',
+      description: 'Consolidate scattered PDFs from different sources into organized, single documents. Stop juggling multiple files and create a tidy, professional archive of your important papers.',
+      benefits: [
+        'Consolidate invoices and receipts by month or client',
+        'Merge scattered contracts and agreements',
+        'Create organized project folders from mixed documents',
+        'Combine personal documents like certificates and IDs'
+      ],
+      icon: 'folder',
+      color: '#fef3c7'
+    },
+    4: {
+      title: 'Merge Scans',
+      description: 'Combine multiple scanned documents into one continuous file. Transform separate scan pages into cohesive documents that are easy to share and archive.',
+      benefits: [
+        'Merge scanned pages of a single document',
+        'Combine receipts and invoices from scanning apps',
+        'Create complete contracts from multiple scans',
+        'Unite handwritten notes with printed materials'
+      ],
+      icon: 'scan',
+      color: '#fce7f3'
+    }
+  };
+
+  constructor(
+    private pdfService: PdfService, 
+    private cdr: ChangeDetectorRef, 
+    private ngZone: NgZone,
+    private toolConfigService: ToolConfigService
+  ) {
+    // Load SEO data from tool config
+    this.loadSeoData();
+  }
+
+  ngOnInit(): void {
+    // SEO data is loaded in constructor
+  }
+
+  loadSeoData() {
+    const tools = this.toolConfigService.getAllTools();
+    const pdfMergeTool = tools.find(t => t.id === 'pdf-merge');
+    
+    if (pdfMergeTool && pdfMergeTool.seo) {
+      const seo: ToolSEO = pdfMergeTool.seo;
+      this.seoTitle = seo.title;
+      this.seoMetaDescription = seo.metaDescription;
+      this.seoH1 = seo.h1;
+      this.seoH2 = seo.h2;
+      this.faqs = seo.faqs || [];
+    }
+  }
 
   async onFileSelect(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -213,8 +312,6 @@ export class PdfMergeComponent {
       file.pages.push(pageIndex);
     }
   }
-
-  // expandPdf method removed - no longer needed
 
   async generateAllPageThumbnails(pdf: PdfFile): Promise<{ [key: number]: string }> {
     const thumbnails: { [key: number]: string } = {};
@@ -468,5 +565,23 @@ export class PdfMergeComponent {
 
     const pdfFiles = Array.from(files).filter(file => file.type === 'application/pdf');
     await this.processFiles(pdfFiles);
+  }
+
+  // Use Case Modal Methods
+  openUseCaseModal(useCaseId: number): void {
+    this.currentUseCase = this.useCaseDetails[useCaseId];
+    this.showUseCaseModal = true;
+    this.cdr.detectChanges();
+  }
+
+  closeUseCaseModal(): void {
+    this.showUseCaseModal = false;
+    this.currentUseCase = null;
+    this.cdr.detectChanges();
+  }
+
+  // Scroll to top of page
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

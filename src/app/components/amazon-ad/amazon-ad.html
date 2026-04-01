@@ -1,0 +1,10 @@
+<!-- Amazon Associates Ad Banner -->
+<div class="amazon-ad" [class.ad-banner]="adType === 'banner'" [class.ad-link]="adType === 'link'">
+  <div class="ad-content">
+    <p class="ad-text">Advertisement</p>
+    <p class="ad-message">Support us by shopping on Amazon!</p>
+    <a [href]="amazonLink" target="_blank" rel="noopener noreferrer" class="ad-link-btn">
+      Shop on Amazon
+    </a>
+  </div>
+</div>
