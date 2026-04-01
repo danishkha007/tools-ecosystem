@@ -1,18 +1,57 @@
 <div class="faq-section" [style.--accent-color]="accentColor">
-    <h2>{{ title }}</h2>
-    <div class="faq-accordion">
-        @for (faq of faqs; track faq; let i = $index) {
-            <div class="faq-item" [class.expanded]="expandedIndex === i">
-                <button class="faq-question" (click)="toggleFaq(i)">
-                    <span>{{ faq.question }}</span>
-                    <svg class="faq-icon" [class.rotated]="expandedIndex === i" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="faq-answer" [class.show]="expandedIndex === i">
-                    <p>{{ faq.answer }}</p>
+    <div class="faq-container">
+        <div class="faq-header">
+            <span class="faq-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Common Questions
+            </span>
+            <h2>{{ title }}</h2>
+            <p class="faq-subtitle">Find answers to the most frequently asked questions about our resume builder.</p>
+        </div>
+        
+        <div class="faq-grid">
+            @for (faq of faqs; track faq; let i = $index) {
+                <div class="faq-card" [class.expanded]="expandedIndex === i">
+                    <button class="faq-question" (click)="toggleFaq(i)">
+                        <div class="question-left">
+                            <span class="question-number">{{ i + 1 }}</span>
+                            <span class="question-text">{{ faq.question }}</span>
+                        </div>
+                        <div class="question-right">
+                            <span class="expand-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </button>
+                    <div class="faq-answer" [class.show]="expandedIndex === i">
+                        <div class="answer-content">
+                            <p>{{ faq.answer }}</p>
+                        </div>
+                    </div>
                 </div>
+            }
+        </div>
+    </div>
+    
+    <div class="faq-cta">
+        <div class="cta-card">
+            <div class="cta-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
             </div>
-        }
+            <div class="cta-text">
+                <h4>Still have questions?</h4>
+                <p>Our support team is here to help you with any questions.</p>
+            </div>
+            <a href="#" class="cta-button">Contact Support</a>
+        </div>
     </div>
 </div>
