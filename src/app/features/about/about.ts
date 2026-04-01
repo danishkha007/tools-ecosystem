@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
 
 @Component({
@@ -8,7 +8,11 @@ import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-s
   templateUrl: './about.html',
   styleUrl: './about.scss'
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
+  // SEO data
+  seoTitle = 'About ToolTrove - Free Online Tools for Everyone';
+  seoMetaDescription = 'Learn about ToolTrove - your free destination for online PDF, image, calculator, and developer tools. No registration required, 100% free forever.';
+  
   faqs: FaqItem[] = [
     {
       question: 'Is ToolTrove really free?',
@@ -35,4 +39,15 @@ export class AboutComponent {
       answer: 'Our tools are incredibly fast because all processing happens locally. Most operations complete in just a few seconds.'
     }
   ];
+
+  ngOnInit() {
+    // Set document title and meta description
+    document.title = this.seoTitle;
+    
+    // Update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', this.seoMetaDescription);
+    }
+  }
 }

@@ -182,7 +182,7 @@ export class PdfMergeComponent implements OnInit {
 
   loadSeoData() {
     const tools = this.toolConfigService.getAllTools();
-    const pdfMergeTool = tools.find(t => t.id === 'pdf-merge');
+    const pdfMergeTool = tools.find(t => t.id === 'merge-pdf');
     
     if (pdfMergeTool && pdfMergeTool.seo) {
       const seo: ToolSEO = pdfMergeTool.seo;
@@ -191,6 +191,18 @@ export class PdfMergeComponent implements OnInit {
       this.seoH1 = seo.h1;
       this.seoH2 = seo.h2;
       this.faqs = seo.faqs || [];
+      
+      // Set document title and meta description
+      document.title = seo.title || 'ToolTrove';
+      
+      // Update meta description
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.setAttribute('content', seo.metaDescription || '');
     }
   }
 
