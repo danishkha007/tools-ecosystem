@@ -26,6 +26,10 @@ export class DashboardComponent implements OnInit {
   sortOption: SortOption = 'name-asc';
   selectedCategory: string | null = null;
   
+  // SEO data
+  seoTitle = 'ToolTrove - Free Online Tools | PDF, Image, Calculator & Developer Tools';
+  seoMetaDescription = 'ToolTrove - Your free all-in-one destination for online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.';
+  
   sortOptions: { value: SortOption; label: string }[] = [
     { value: 'name-asc', label: 'Name (A-Z)' },
     { value: 'name-desc', label: 'Name (Z-A)' }
@@ -34,6 +38,15 @@ export class DashboardComponent implements OnInit {
   constructor(private toolService: ToolConfigService) {}
 
   ngOnInit(): void {
+    // Set document title and meta description
+    document.title = this.seoTitle;
+    
+    // Update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', this.seoMetaDescription);
+    }
+    
     this.categories = this.toolService.getToolCategories();
     this.buildAllTools();
     // this.calculateAdPlacements();

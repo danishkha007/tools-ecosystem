@@ -127,6 +127,18 @@ export class ResumeBuilder implements OnInit {
       this.seoH1 = seo.h1;
       this.seoH2 = seo.h2;
       this.faqs = seo.faqs || [];
+      
+      // Set document title and meta description
+      document.title = seo.title || 'ToolTrove';
+      
+      // Update meta description
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.setAttribute('content', seo.metaDescription || '');
     }
   }
   
