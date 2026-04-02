@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://tooltrove.com/</loc>
+    <loc>https://mytooltrove.com/</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/about</loc>
+    <loc>https://mytooltrove.com/about</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/contact</loc>
+    <loc>https://mytooltrove.com/contact</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -22,49 +22,49 @@
 
   <!-- Career Tools -->
   <url>
-    <loc>https://tooltrove.com/resume-builder</loc>
+    <loc>https://mytooltrove.com/resume-builder</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- <url>
-    <loc>https://tooltrove.com/cover-letter</loc>
+    <loc>https://mytooltrove.com/cover-letter</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/ats-checker</loc>
+    <loc>https://mytooltrove.com/ats-checker</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/job-description</loc>
+    <loc>https://mytooltrove.com/job-description</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/portfolio-builder</loc>
+    <loc>https://mytooltrove.com/portfolio-builder</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/salary-calculator</loc>
+    <loc>https://mytooltrove.com/salary-calculator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/interview-questions</loc>
+    <loc>https://mytooltrove.com/interview-questions</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/skill-analyzer</loc>
+    <loc>https://mytooltrove.com/skill-analyzer</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -72,85 +72,85 @@
 
   <!-- PDF Tools -->
   <url>
-    <loc>https://tooltrove.com/merge-pdf</loc>
+    <loc>https://mytooltrove.com/merge-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- <url>
-    <loc>https://tooltrove.com/pdf-split</loc>
+    <loc>https://mytooltrove.com/pdf-split</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-compress</loc>
+    <loc>https://mytooltrove.com/pdf-compress</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-to-word</loc>
+    <loc>https://mytooltrove.com/pdf-to-word</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/word-to-pdf</loc>
+    <loc>https://mytooltrove.com/word-to-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-to-image</loc>
+    <loc>https://mytooltrove.com/pdf-to-image</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-to-pdf</loc>
+    <loc>https://mytooltrove.com/image-to-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-to-excel</loc>
+    <loc>https://mytooltrove.com/pdf-to-excel</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/excel-to-pdf</loc>
+    <loc>https://mytooltrove.com/excel-to-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-to-ppt</loc>
+    <loc>https://mytooltrove.com/pdf-to-ppt</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/ppt-to-pdf</loc>
+    <loc>https://mytooltrove.com/ppt-to-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-rotate</loc>
+    <loc>https://mytooltrove.com/pdf-rotate</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-delete-pages</loc>
+    <loc>https://mytooltrove.com/pdf-delete-pages</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/pdf-extract-pages</loc>
+    <loc>https://mytooltrove.com/pdf-extract-pages</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -158,61 +158,61 @@
 
   <!-- Image Tools -->
   <!-- <url>
-    <loc>https://tooltrove.com/image-compress</loc>
+    <loc>https://mytooltrove.com/image-compress</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-resize</loc>
+    <loc>https://mytooltrove.com/image-resize</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/jpg-to-png</loc>
+    <loc>https://mytooltrove.com/jpg-to-png</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/png-to-jpg</loc>
+    <loc>https://mytooltrove.com/png-to-jpg</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-crop</loc>
+    <loc>https://mytooltrove.com/image-crop</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-rotate</loc>
+    <loc>https://mytooltrove.com/image-rotate</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-flip</loc>
+    <loc>https://mytooltrove.com/image-flip</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/grayscale</loc>
+    <loc>https://mytooltrove.com/grayscale</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/image-base64</loc>
+    <loc>https://mytooltrove.com/image-base64</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/base64-image</loc>
+    <loc>https://mytooltrove.com/base64-image</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -220,49 +220,49 @@
 
   <!-- Calculator Tools -->
   <!-- <url>
-    <loc>https://tooltrove.com/percentage</loc>
+    <loc>https://mytooltrove.com/percentage</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/emi</loc>
+    <loc>https://mytooltrove.com/emi</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/age</loc>
+    <loc>https://mytooltrove.com/age</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/bmi</loc>
+    <loc>https://mytooltrove.com/bmi</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/discount</loc>
+    <loc>https://mytooltrove.com/discount</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/gst</loc>
+    <loc>https://mytooltrove.com/gst</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/time-diff</loc>
+    <loc>https://mytooltrove.com/time-diff</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/unit-converter</loc>
+    <loc>https://mytooltrove.com/unit-converter</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -270,37 +270,37 @@
 
   <!-- Developer Tools -->
   <!-- <url>
-    <loc>https://tooltrove.com/json-formatter</loc>
+    <loc>https://mytooltrove.com/json-formatter</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/json-validator</loc>
+    <loc>https://mytooltrove.com/json-validator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tooltrove.com/base64-encode</loc>
+    <loc>https://mytooltrove.com/base64-encode</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/base64-decode</loc>
+    <loc>https://mytooltrove.com/base64-decode</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/url-encode</loc>
+    <loc>https://mytooltrove.com/url-encode</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/url-decode</loc>
+    <loc>https://mytooltrove.com/url-decode</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -308,49 +308,49 @@
 
   <!-- Utility Tools -->
   <!-- <url>
-    <loc>https://tooltrove.com/qr-generator</loc>
+    <loc>https://mytooltrove.com/qr-generator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/qr-scanner</loc>
+    <loc>https://mytooltrove.com/qr-scanner</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/password-generator</loc>
+    <loc>https://mytooltrove.com/password-generator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/text-case</loc>
+    <loc>https://mytooltrove.com/text-case</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/word-counter</loc>
+    <loc>https://mytooltrove.com/word-counter</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/random-generator</loc>
+    <loc>https://mytooltrove.com/random-generator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/color-picker</loc>
+    <loc>https://mytooltrove.com/color-picker</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url> -->
   <!-- <url>
-    <loc>https://tooltrove.com/uuid-generator</loc>
+    <loc>https://mytooltrove.com/uuid-generator</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
