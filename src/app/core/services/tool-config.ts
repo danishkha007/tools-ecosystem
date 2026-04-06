@@ -230,28 +230,28 @@ export class ToolConfigService {
     //     ]
     //   }
     // },
-    // { 
-    //   id: 'pdf-compress',
-    //   name: 'Compress PDF',
-    //   description: 'Reduce PDF size',
-    //   longDescription: 'Compress PDF files without losing quality for faster sharing.',
-    //   buttonText: 'Compress Now',
-    //   route: '/pdf-compress',
-    //   icon: 'compress-pdf.png',
-    //   iconAlt: 'Compress PDF',
-    //   category: 'PDF Tools',
-    //   seo: {
-    //     title: 'Free PDF Compressor | Reduce PDF File Size | ToolTrove',
-    //     metaDescription: 'Compress PDF files to reduce file size without losing quality. Free online PDF compressor. No registration required.',
-    //     keywords: ['compress PDF', 'PDF compressor', 'reduce PDF size', 'smaller PDF', 'PDF compression', 'optimize PDF', 'shrink PDF'],
-    //     h1: 'Free Online PDF Compressor',
-    //     h2: 'Reduce PDF File Size Without Quality Loss',
-    //     faqs: [
-    //       { question: 'How to compress a PDF?', answer: 'Upload your PDF file, choose compression level, and download the compressed version.' },
-    //       { question: 'Does compression reduce quality?', answer: 'Our smart compression maintains the best possible quality while reducing file size.' }
-    //     ]
-    //   }
-    // },
+    { 
+      id: 'compress-pdf',
+      name: 'Compress PDF',
+      description: 'Reduce PDF size',
+      longDescription: 'Compress PDF files without losing quality for faster sharing.',
+      buttonText: 'Compress Now',
+      route: '/compress-pdf',
+      icon: 'compress-pdf.png',
+      iconAlt: 'Compress PDF',
+      category: 'PDF Tools',
+      seo: {
+        title: 'Free PDF Compressor | Reduce PDF File Size | ToolTrove',
+        metaDescription: 'Compress PDF files to reduce file size without losing quality. Free online PDF compressor. No registration required.',
+        keywords: ['compress PDF', 'PDF compressor', 'reduce PDF size', 'smaller PDF', 'PDF compression', 'optimize PDF', 'shrink PDF'],
+        h1: 'Free Online PDF Compressor',
+        h2: 'Reduce PDF File Size Without Quality Loss',
+        faqs: [
+          { question: 'How to compress a PDF?', answer: 'Upload your PDF file, choose compression level, and download the compressed version.' },
+          { question: 'Does compression reduce quality?', answer: 'Our smart compression maintains the best possible quality while reducing file size.' }
+        ]
+      }
+    },
     // { 
     //   id: 'pdf-to-word',
     //   name: 'PDF to Word',
@@ -264,13 +264,15 @@ export class ToolConfigService {
     //   category: 'PDF Tools',
     //   seo: {
     //     title: 'Free PDF to Word Converter | Convert PDF to DOCX | ToolTrove',
-    //     metaDescription: 'Convert PDF documents to editable Word files. Free online PDF to Word converter. No registration required.',
-    //     keywords: ['PDF to Word', 'convert PDF to Word', 'PDF to DOCX', 'extract PDF to Word', 'PDF to Microsoft Word', 'free PDF converter'],
+    //     metaDescription: 'Convert PDF documents to editable Word files with high accuracy using OCR. Free online PDF to Word converter with no registration required.',
+    //     keywords: ['PDF to Word', 'convert PDF to Word', 'PDF to DOCX', 'extract PDF to Word', 'PDF to Microsoft Word', 'free PDF converter', 'OCR PDF', 'scanned PDF to Word'],
     //     h1: 'Free PDF to Word Converter',
     //     h2: 'Convert PDF to Editable Word Document',
     //     faqs: [
-    //       { question: 'How to convert PDF to Word?', answer: 'Upload your PDF file and download the converted Word document instantly.' },
-    //       { question: 'Is the conversion accurate?', answer: 'Our converter maintains formatting and layout as accurately as possible.' }
+    //       { question: 'How to convert PDF to Word?', answer: 'Upload your PDF file, optionally enable OCR for scanned documents, and download the converted Word document instantly.' },
+    //       { question: 'Is the conversion accurate?', answer: 'Our converter uses advanced text extraction and OCR technology to maintain formatting and layout as accurately as possible.' },
+    //       { question: 'Does this tool support scanned PDFs?', answer: 'Yes! Our converter includes OCR (Optical Character Recognition) that can extract text from scanned documents and images within PDFs.' },
+    //       { question: 'Is my data secure?', answer: 'Yes, all conversion happens in your browser. Your files are never uploaded to our servers.' }
     //     ]
     //   }
     // },
@@ -278,7 +280,7 @@ export class ToolConfigService {
     //   id: 'word-to-pdf',
     //   name: 'Word to PDF',
     //   description: 'Convert Word to PDF',
-    //   longDescription: 'Convert Word documents into high-quality PDF files instantly.',
+    //   longDescription: 'Convert Word documents into high-quality PDF files instantly with formatting preserved.',
     //   buttonText: 'Convert Now',
     //   route: '/word-to-pdf',
     //   icon: 'word-to-pdf.png',
@@ -286,12 +288,15 @@ export class ToolConfigService {
     //   category: 'PDF Tools',
     //   seo: {
     //     title: 'Free Word to PDF Converter | Convert DOCX to PDF | ToolTrove',
-    //     metaDescription: 'Convert Word documents to PDF format instantly. Free online Word to PDF converter. No registration required.',
-    //     keywords: ['Word to PDF', 'convert Word to PDF', 'DOCX to PDF', 'Microsoft Word to PDF', 'Word document to PDF', 'free converter'],
+    //     metaDescription: 'Convert Word documents to PDF format instantly. Free online Word to PDF converter with formatting preservation. No registration required.',
+    //     keywords: ['Word to PDF', 'convert Word to PDF', 'DOCX to PDF', 'Microsoft Word to PDF', 'Word document to PDF', 'free converter', 'DOC to PDF'],
     //     h1: 'Free Word to PDF Converter',
     //     h2: 'Convert Word Documents to PDF',
     //     faqs: [
-    //       { question: 'How to convert Word to PDF?', answer: 'Upload your Word document and download it as a PDF file instantly.' }
+    //       { question: 'How to convert Word to PDF?', answer: 'Upload your Word document (.docx), and download it as a PDF file instantly. Your formatting will be preserved.' },
+    //       { question: 'Will my formatting be preserved?', answer: 'Yes! Word to PDF conversion typically preserves formatting very well, including text styles, fonts, paragraphs, and basic layouts.' },
+    //       { question: 'Is my data secure?', answer: 'Yes, all conversion happens in your browser. Your files are never uploaded to our servers.' },
+    //       { question: 'What formats are supported?', answer: 'Our converter supports .docx files (Word 2007 and later). Legacy .doc files are not supported.' }
     //     ]
     //   }
     // },

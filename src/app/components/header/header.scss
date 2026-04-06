@@ -64,16 +64,121 @@
       color: #1e3a8a;
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
 
-      &::after {
+      &::before {
         content: '';
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 24px;
-        height: 3px;
+        width: 30%;
+        height: 2px;
         background: linear-gradient(135deg, #3b82f6 0%, #2f84ff 100%);
-        border-radius: 3px 3px 0 0;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.3s ease;
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #64748b;
+      margin-left: 4px;
+    }
+
+    &:hover {
+      color: #1e3a8a;
+      background: rgba(59, 130, 246, 0.08);
+    }
+
+    &.active {
+      color: #1e3a8a;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
+    }
+  }
+
+  .dropdown-megamenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    width: 600px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    z-index: 100;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 14px;
+      height: 14px;
+      background: white;
+    }
+  }
+
+  &:hover .dropdown-megamenu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .megamenu-col {
+    h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 4px;
+
+      &:hover {
+        color: #3b82f6;
+        background: rgba(59, 130, 246, 0.08);
+      }
+
+      &.active {
+        color: #3b82f6;
+        background: rgba(59, 130, 246, 0.1);
       }
     }
   }
