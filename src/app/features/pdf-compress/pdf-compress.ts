@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
 import { UseCaseModalComponent } from '../../components/use-case-modal/use-case-modal';
+import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolSEO } from '../../core/models/tool';
 
@@ -21,7 +22,7 @@ interface CompressFile {
   selector: 'app-pdf-compress',
   templateUrl: './pdf-compress.html',
   styleUrls: ['./pdf-compress.scss'],
-  imports: [CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule]
+  imports: [CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule, ToolHeaderComponent]
 })
 export class PdfCompressComponent implements OnInit {
 

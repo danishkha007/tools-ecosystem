@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
+import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolSEO } from '../../core/models/tool';
 import { PdfService } from '../../core/services/pdf';
@@ -24,7 +25,7 @@ interface ConvertFile {
   selector: 'app-pdf-to-word',
   templateUrl: './pdf-to-word.html',
   styleUrls: ['./pdf-to-word.scss'],
-  imports: [CommonModule, FaqSectionComponent, FormsModule]
+  imports: [CommonModule, FaqSectionComponent, FormsModule, ToolHeaderComponent]
 })
 export class PdfToWordComponent implements OnInit {
 

@@ -9,6 +9,7 @@ import { UseCaseModalComponent, UseCase } from '../../components/use-case-modal/
 import { ToolConfigService } from '../../core/services/tool-config';
 import { Tool, ToolSEO } from '../../core/models/tool';
 import * as pdfjsLib from 'pdfjs-dist';
+import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
@@ -34,7 +35,7 @@ interface PageItem {
   selector: 'app-pdf-merge',
   templateUrl: './pdf-merge.html',
   styleUrls: ['./pdf-merge.scss'],
-  imports: [DragDropModule, CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule]
+  imports: [DragDropModule, CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule, ToolHeaderComponent]
 })
 export class PdfMergeComponent implements OnInit {
 

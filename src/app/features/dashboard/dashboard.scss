@@ -111,6 +111,9 @@
     align-items: center;
 
     @media (max-width: 1024px) {
+      .welcome-visual {
+        display: none;
+      }
       grid-template-columns: 1fr;
       text-align: center;
     }

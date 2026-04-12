@@ -1,0 +1,38 @@
+<div class="about-section">
+    <div class="about-hero">
+        <div class="hero-text">
+            <span class="hero-badge" *ngIf="badgeText">
+                <svg *ngIf="badgeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path [attr.d]="badgeIcon"/>
+                </svg>
+                {{ badgeText }}
+            </span>
+            <h2 *ngIf="title">{{ title }}</h2>
+            <p *ngIf="description">{{ description }}</p>
+            <div class="hero-cta" *ngIf="ctaPrimaryText">
+                <button class="cta-primary" (click)="scrollToTop()">{{ ctaPrimaryText }}</button>
+                <span class="cta-note" *ngIf="ctaNote">{{ ctaNote }}</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-card">
+                <div class="card-shine"></div>
+                <div class="card-content">
+                    <ng-content select="[visual-content]"></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-grid" *ngIf="features">
+        <div *ngFor="let feature of features; let i = index" class="grid-item" [class]="'item-' + (i + 1)">
+            <div class="item-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path [attr.d]="feature.icon"/>
+                </svg>
+            </div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+        </div>
+    </div>
+</div>

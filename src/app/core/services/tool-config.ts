@@ -9,16 +9,40 @@ export class ToolConfigService {
 
   // Separate categories list
   private readonly categories: ToolCategory[] = [
-    { name: 'Career Tools', order: 1 },
-    { name: 'PDF Tools', order: 2 },
-    { name: 'Image Tools', order: 3 },
-    { name: 'Calculator Tools', order: 4 },
-    { name: 'Developer Tools', order: 5 },
-    { name: 'Utility Tools', order: 6 }
+    { name: 'Trading Tools', order: 1 },
+    { name: 'Career Tools', order: 2 },
+    { name: 'PDF Tools', order: 3 },
+    { name: 'Image Tools', order: 4 },
+    { name: 'Calculator Tools', order: 5 },
+    { name: 'Developer Tools', order: 6 },
+    { name: 'Utility Tools', order: 7 },
+    { name: 'Other Tools', order: 8 },
   ];
 
   // Flat list of all tools
   private readonly tools: Tool[] = [
+
+
+    { 
+      id: 'gann-hexagonal-sr-calculator',
+      name: 'GANN Hexagonal Support & Resistance Calculator',
+      description: 'Calculate dynamic support and resistance levels using GANN\'s mathematical ratios.',
+      longDescription: 'Use GANN\'s mathematical ratios to identify potential support and resistance levels for your trading strategy.',
+      buttonText: 'Calculate Levels',
+      route: '/gann-hexagonal-support-resistance-calculator',
+      category: 'Trading Tools',
+      seo: {
+        title: 'Free GANN Hexagonal Support & Resistance Calculator | GANN Calculator | ToolTrove',
+        metaDescription: 'Calculate dynamic support and resistance levels using GANN\'s mathematical ratios.',
+        keywords: ['GANN calculator', 'support level', 'resistance level', 'trading tools', 'technical analysis', 'GANN hexagonal calculator', 'GANN support resistance', 'free GANN calculator', 'GANN levels calculator', 'GANN price levels'],
+        h1: 'GANN Hexagonal Support & Resistance Calculator',
+        h2: 'Calculate Dynamic Support and Resistance Levels',
+        faqs: [
+          { question: 'How to use the GANN Calculator?', answer: 'Enter the current market price and click "Calculate Levels" to see the dynamic support and resistance levels.' },
+          { question: 'What are GANN levels?', answer: 'GANN levels are dynamic support and resistance levels calculated using W.D. GANN\'s mathematical ratios.' }
+        ]
+      }
+    },
     // // Career Tools
     { 
       id: 'resume',
@@ -481,26 +505,26 @@ export class ToolConfigService {
     // },
 
     // // Image Tools
-    // { 
-    //   id: 'image-compress',
-    //   name: 'Compress Image',
-    //   description: 'Reduce image size',
-    //   longDescription: 'Compress images to reduce file size while maintaining quality.',
-    //   buttonText: 'Compress Now',
-    //   route: '/image-compress',
-    //   category: 'Image Tools',
-    //   seo: {
-    //     title: 'Free Image Compressor | Compress Images Online | ToolTrove',
-    //     metaDescription: 'Compress images to reduce file size while maintaining quality. Free online image compressor. Supports JPG, PNG, and more.',
-    //     keywords: ['compress image', 'image compressor', 'reduce image size', 'compress JPG', 'compress PNG', 'image optimization', 'shrink image'],
-    //     h1: 'Free Image Compressor',
-    //     h2: 'Reduce Image File Size Online',
-    //     faqs: [
-    //       { question: 'How to compress an image?', answer: 'Upload your image, choose compression level, and download the optimized image.' },
-    //       { question: 'Does compression lose quality?', answer: 'Our smart compression maintains the best balance between file size and image quality.' }
-    //     ]
-    //   }
-    // },
+    { 
+      id: 'image-compress',
+      name: 'Compress Image',
+      description: 'Reduce image size',
+      longDescription: 'Compress images to reduce file size while maintaining quality.',
+      buttonText: 'Compress Now',
+      route: '/image-compress',
+      category: 'Image Tools',
+      seo: {
+        title: 'Free Image Compressor | Compress Images Online | ToolTrove',
+        metaDescription: 'Compress images to reduce file size while maintaining quality. Free online image compressor. Supports JPG, PNG, and more.',
+        keywords: ['compress image', 'image compressor', 'reduce image size', 'compress JPG', 'compress PNG', 'image optimization', 'shrink image'],
+        h1: 'Free Image Compressor',
+        h2: 'Reduce Image File Size Online',
+        faqs: [
+          { question: 'How to compress an image?', answer: 'Upload your image, choose compression level, and download the optimized image.' },
+          { question: 'Does compression lose quality?', answer: 'Our smart compression maintains the best balance between file size and image quality.' }
+        ]
+      }
+    },
     // { 
     //   id: 'image-resize',
     //   name: 'Resize Image',

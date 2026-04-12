@@ -56,7 +56,7 @@
     </div>
   }
 
-  <div class="header">
+  <!-- <div class="header">
     <h1>{{ seoH1 || 'Free Online Resume Builder' }}</h1>
     <p class="subtitle">{{ seoH2 || 'Create ATS-Friendly Resumes That Get Noticed' }}</p>
     <div class="header-tags">
@@ -65,7 +65,13 @@
       <span class="tag">ATS-Friendly</span>
       <span class="tag">PDF Export</span>
     </div>
-  </div>
+  </div> -->
+
+  <app-tool-header
+        [title]="seoH1 || 'Free Online Resume Builder'"
+        [subtitle]="seoH2 || 'Create ATS-Friendly Resumes That Get Noticed'"
+        [tags]="['Free', 'ATS-Friendly', 'No Registration', 'Browser-Based']">
+    </app-tool-header>
 
   <div class="container">
     <div class="left-panel">

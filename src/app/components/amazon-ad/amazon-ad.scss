@@ -1,52 +1,235 @@
-.amazon-ad {
-  width: 100%;
-  padding: 16px;
-  margin: 16px 0;
-  border-radius: 8px;
-  text-align: center;
+.amazon-ad-container {
+  margin: 16px auto;
+  font-family: 'Amazon Ember', Arial, sans-serif;
+  overflow: hidden;
 
-  &.ad-banner {
-    background: linear-gradient(135deg, #ff9900 0%, #ffb84d 100%);
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  // 720x90 Leaderboard Size
+  &.amazon-ad-720-90 {
+    width: 720px;
+    height: 90px;
 
-  &.ad-link {
-    background: #f0f0f0;
-    padding: 12px;
-  }
-
-  .ad-content {
-    color: #1a1a1a;
-
-    .ad-text {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 0 0 8px 0;
-      opacity: 0.7;
-    }
-
-    .ad-message {
-      font-size: 14px;
-      margin: 0 0 12px 0;
-    }
-
-    .ad-link-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      background: #1a1a1a;
-      color: #ffffff;
-      text-decoration: none;
+    .amazon-ad-wrapper {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #232f3e 0%, #37475a 100%);
       border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      position: relative;
 
-      &:hover {
-        background: #333333;
+      .amazon-ad-disclosure {
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .amazon-ad-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .amazon-ad-content {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+
+          .amazon-ad-logo {
+            display: flex;
+            align-items: center;
+
+            .amazon-logo-image {
+              height: 40px;
+              width: auto;
+              object-fit: contain;
+            }
+          }
+
+          .amazon-ad-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .amazon-ad-title {
+              font-size: 18px;
+              font-weight: 600;
+              color: #ffffff;
+            }
+
+            .amazon-ad-subtitle {
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 350x350 Square Size
+  &.amazon-ad-350-350 {
+    width: 350px;
+    height: 350px;
+
+    .amazon-ad-wrapper {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #232f3e 0%, #37475a 100%);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+      position: relative;
+
+      .amazon-ad-disclosure {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .amazon-ad-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .amazon-ad-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          text-align: center;
+
+          .amazon-ad-logo {
+            display: flex;
+            align-items: center;
+
+            .amazon-logo-image {
+              height: 80px;
+              width: auto;
+              object-fit: contain;
+            }
+          }
+
+          .amazon-ad-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .amazon-ad-title {
+              font-size: 22px;
+              font-weight: 600;
+              color: #ffffff;
+            }
+
+            .amazon-ad-subtitle {
+              font-size: 14px;
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .amazon-ad-container {
+    &.amazon-ad-720-90 {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      min-height: 90px;
+
+      .amazon-ad-wrapper {
+        padding: 12px 16px;
+        height: auto;
+        min-height: 90px;
+
+        .amazon-ad-link {
+          .amazon-ad-content {
+            .amazon-ad-logo {
+              .amazon-logo-image {
+                height: 32px;
+              }
+            }
+
+            .amazon-ad-text {
+              .amazon-ad-title {
+                font-size: 14px;
+              }
+
+              .amazon-ad-subtitle {
+                font-size: 11px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.amazon-ad-350-350 {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      min-height: 280px;
+
+      .amazon-ad-wrapper {
+        padding: 20px;
+        height: auto;
+        min-height: 280px;
+
+        .amazon-ad-link {
+          .amazon-ad-content {
+            .amazon-ad-logo {
+              .amazon-logo-image {
+                height: 64px;
+              }
+            }
+
+            .amazon-ad-text {
+              .amazon-ad-title {
+                font-size: 18px;
+              }
+
+              .amazon-ad-subtitle {
+                font-size: 12px;
+              }
+            }
+          }
+        }
       }
     }
   }

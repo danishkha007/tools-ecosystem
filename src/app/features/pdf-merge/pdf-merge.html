@@ -36,7 +36,7 @@
     </div>
 
     <!-- Header Section -->
-    <div class="header-section">
+    <!-- <div class="header-section">
         <h1>{{ seoH1 || 'Free Online PDF Merger' }}</h1>
         <p class="subtitle">{{ seoH2 || 'Combine PDF Files Instantly & Securely' }}</p>
         <div class="header-tags">
@@ -45,7 +45,13 @@
             <span class="tag">No Registration</span>
             <span class="tag">Browser-Based</span>
         </div>
-    </div>
+    </div> -->
+
+    <app-tool-header
+        [title]="seoH1 || 'Free Online PDF Merger'"
+        [subtitle]="seoH2 || 'Combine PDF Files Instantly & Securely'"
+        [tags]="['Free', 'Secure', 'No Registration', 'Browser-Based']">
+    </app-tool-header>
 
     <!-- Initial View - No Files -->
     <div *ngIf="pdfFiles.length === 0" class="initial-view">
