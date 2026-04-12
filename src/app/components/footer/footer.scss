@@ -24,7 +24,7 @@
 
 .footer-main {
   display: grid;
-  grid-template-columns: 1.5fr 2fr;
+  grid-template-columns: 0.5fr 2fr;
   gap: 60px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -78,7 +78,7 @@
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 2fr 1fr;
   gap: 40px;
 
   @media (max-width: 640px) {

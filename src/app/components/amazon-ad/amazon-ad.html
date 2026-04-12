@@ -1,10 +1,17 @@
 <!-- Amazon Associates Ad Banner -->
-<div class="amazon-ad" [class.ad-banner]="adType === 'banner'" [class.ad-link]="adType === 'link'">
-  <div class="ad-content">
-    <p class="ad-text">Advertisement</p>
-    <p class="ad-message">Support us by shopping on Amazon!</p>
-    <a [href]="amazonLink" target="_blank" rel="noopener noreferrer" class="ad-link-btn">
-      Shop on Amazon
+<div class="amazon-ad-container" [class]="containerClass">
+  <div class="amazon-ad-wrapper">
+    <span class="amazon-ad-disclosure">Sponsored</span>
+    <a [href]="amazonLink" target="_blank" rel="noopener noreferrer" class="amazon-ad-link">
+      <div class="amazon-ad-content">
+        <div class="amazon-ad-logo">
+          <img src="/amazon-logo.png" alt="Amazon" class="amazon-logo-image" />
+        </div>
+        <div class="amazon-ad-text">
+          <span class="amazon-ad-title">Shop on Amazon</span>
+          <span class="amazon-ad-subtitle">Support us by shopping</span>
+        </div>
+      </div>
     </a>
   </div>
 </div>

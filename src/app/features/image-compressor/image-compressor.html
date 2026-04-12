@@ -1,1 +1,381 @@
-<p>image-compressor works!</p>
+<div class="container">
+
+    <!-- Use Case Modal -->
+    <app-use-case-modal
+        [isOpen]="showUseCaseModal"
+        [useCase]="currentUseCase"
+        (close)="closeUseCaseModal()">
+    </app-use-case-modal>
+
+    <!-- Header Section - Now using reusable tool-header component -->
+    <!--
+    <div class="header-section">
+        <h1>{{ seoH1 || 'Free Image Compressor' }}</h1>
+        <p class="subtitle">{{ seoH2 || 'Reduce Image File Size Without Losing Quality' }}</p>
+        <div class="header-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Secure</span>
+            <span class="tag">No Registration</span>
+            <span class="tag">Browser-Based</span>
+        </div>
+    </div>
+    -->
+    <app-tool-header
+        [title]="seoH1 || 'Free Image Compressor'"
+        [subtitle]="seoH2 || 'Reduce Image File Size Without Losing Quality'"
+        [tags]="['Free', 'Secure', 'No Registration', 'Browser-Based']">
+    </app-tool-header>
+
+    <!-- Initial View - No Files -->
+    <div *ngIf="selectedFiles.length === 0" class="initial-view">
+        <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+            <div class="upload-content">
+                <div class="upload-icon">
+                    <img src="/upload.png" alt="Upload" width="64" height="64" />
+                </div>
+                <p class="upload-text">Drag and drop images here</p>
+                <span class="upload-or">or</span>
+                <label for="fileInput" class="browse-btn">Browse Files</label>
+                <p class="upload-formats">Supports JPG, PNG, WebP, GIF</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Management View - Files Added -->
+    <div *ngIf="selectedFiles.length > 0" class="file-view">
+        
+        <!-- File Grid -->
+        <div class="file-grid">
+            <div *ngFor="let file of selectedFiles; let i = index" class="file-card">
+                <div class="bg-preview" [style.background-image]="'url(' + file.previewUrl + ')'">
+                    <div class="overlay"></div>
+                    <button class="remove-btn" (click)="removeFile(i)">✕</button>
+                    <div class="file-info">
+                        <div class="file-name">{{ file.name }}</div>
+                        <div class="file-size">{{ formatFileSize(file.originalSize) }}</div>
+                        <div *ngIf="file.compressedSize" class="compression-stats">
+                            <span class="saved">Saved {{ file.compressionRatio }}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <label class="upload-box" for="fileInput">
+                <div class="plus">+</div>
+                <span>Add More</span>
+            </label>
+        </div>
+
+        <!-- Compression Settings -->
+        <div class="settings-section">
+            <div class="settings-row single">
+                <!-- Compression Quality -->
+                <div class="setting-card">
+                    <h4>Compression Quality</h4>
+                    <div class="quality-slider-wrapper">
+                        <input 
+                            type="range" 
+                            min="10" 
+                            max="100" 
+                            [(ngModel)]="compressionQuality"
+                            (ngModelChange)="setCompressionQuality(compressionQuality)"
+                            class="quality-slider"
+                        />
+                        <span class="quality-value">{{ compressionQuality }}%</span>
+                    </div>
+                    <p class="quality-hint">Lower quality = smaller file size</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Size Summary -->
+        <div class="size-summary" *ngIf="selectedFiles.length > 0">
+            <div class="summary-item">
+                <span class="summary-label">Original Size</span>
+                <span class="summary-value">{{ formatFileSize(totalOriginalSize) }}</span>
+            </div>
+            <div class="summary-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                </svg>
+            </div>
+            <div class="summary-item" *ngIf="totalCompressedSize > 0">
+                <span class="summary-label">Compressed Size</span>
+                <span class="summary-value compressed">{{ formatFileSize(totalCompressedSize) }}</span>
+            </div>
+            <div class="summary-savings" *ngIf="totalCompressedSize > 0">
+                <span class="savings-badge">Saved {{ getSavingsPercentage() }}%</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="clear-btn" (click)="clearAll()">Clear All</button>
+            <button class="compress-btn" (click)="compressImages()" [disabled]="loading">
+                <svg *ngIf="!loading" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15"/>
+                    <path d="M7 10L12 15L17 10"/>
+                    <path d="M12 15V3"/>
+                </svg>
+                <span *ngIf="!loading">Compress Images</span>
+                <span *ngIf="loading" class="loading-text">Compressing...</span>
+            </button>
+            <button *ngIf="compressedUrl && !loading" class="download-btn" (click)="downloadCompressed()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15"/>
+                    <path d="M7 10L12 15L17 10"/>
+                    <path d="M12 15V3"/>
+                </svg>
+                Download
+            </button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div *ngIf="loading" class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [class.complete]="progressComplete"></div>
+            </div>
+            <p class="progress-text">Compressing your images...</p>
+        </div>
+
+        <div *ngIf="compressMessage && !loading" class="merge-msg">{{ compressMessage }}</div>
+    </div>
+
+    <input id="fileInput" type="file" multiple accept="image/*" (change)="onFileSelect($event)" hidden />
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+        <app-about-section
+            badgeText="#1 Free Image Compressor"
+            badgeIcon="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            title="Compress Images Instantly"
+            description="Reduce your image file size without losing quality. Our free online tool makes image compression simple with customizable quality options."
+            ctaPrimaryText="Start Compressing Now"
+            (click)="scrollToTop()"
+            ctaNote="No signup required • 100% free forever"
+            [features]="[
+                { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4', title: '100% Secure & Private', description: 'All compression happens in your browser. Your images never leave your device.' },
+                { icon: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', title: 'Lightning Fast', description: 'Compress your images in seconds. No uploads, no waiting.' },
+                { icon: 'M12 6V12L16 14M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z', title: 'Quality Options', description: 'Adjust quality to balance between size and visual fidelity.' },
+                { icon: 'M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10', title: 'Free Forever', description: 'No registration required. Completely free to use.' }
+            ]">
+            <div visual-content>
+                <div class="size-comparison-mini" style="background: #f8fafc; padding: 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-around;">
+                    <div class="size-item" style="text-align: center;">
+                        <div style="font-size: 24px;">🖼️</div>
+                        <div style="font-size: 12px; font-weight: 700; color: #64748b;">5 MB</div>
+                    </div>
+                    <div style="font-size: 20px; color: #3b82f6;">→</div>
+                    <div class="size-item" style="text-align: center;">
+                        <div style="font-size: 24px;">🖼️</div>
+                        <div style="font-size: 12px; font-weight: 700; color: #3b82f6;">500 KB</div>
+                    </div>
+                </div>
+            </div>
+        </app-about-section>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="features-header">
+                <span class="features-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    Image Compressor Features
+                </span>
+                <h2 class="section-title">Everything You Need to Compress Images</h2>
+                <p class="features-subtitle">Powerful features to reduce your image file size effortlessly.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <h3>Drag & Drop</h3>
+                        <p>Simply drag and drop your images to get started</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </div>
+                        <h3>Quality Control</h3>
+                        <p>Adjust compression quality to fit your needs</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <h3>Instant Download</h3>
+                        <p>Get your compressed images immediately</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>No Uploads</h3>
+                        <p>All processing happens locally in your browser</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <h3>Batch Processing</h3>
+                        <p>Compress multiple images at once</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <h3>Multiple Formats</h3>
+                        <p>Convert between JPG, PNG, and WebP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases Section -->
+        <div class="use-cases-section">
+            <div class="use-cases-header">
+                <span class="use-cases-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Perfect For Everyone
+                </span>
+                <h2>Common Uses for Image Compression</h2>
+                <p>Whether you're optimizing for web, email, or storage, we've got you covered.</p>
+            </div>
+
+            <div class="use-cases-grid">
+                <div class="use-case-card card-1">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Website Optimization</h3>
+                        <p>Compress images to improve website loading speeds and SEO.</p>
+                        <a href="#" class="card-link" (click)="openUseCaseModal(1); $event.preventDefault()">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-2">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Email Attachments</h3>
+                        <p>Compress images to send via email without limits.</p>
+                        <a href="#" class="card-link" (click)="openUseCaseModal(2); $event.preventDefault()">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-3">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Social Media</h3>
+                        <p>Prepare images for social media platforms.</p>
+                        <a href="#" class="card-link" (click)="openUseCaseModal(3); $event.preventDefault()">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-4">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="21 8 21 21 3 21 3 8"/>
+                                <rect x="1" y="3" width="22" height="5"/>
+                                <line x1="10" y1="12" x2="14" y2="12"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Storage Saving</h3>
+                        <p>Save storage space by compressing your image library.</p>
+                        <a href="#" class="card-link" (click)="openUseCaseModal(4); $event.preventDefault()">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        @if (faqs.length > 0) {
+            <app-faq-section 
+                [title]="faqTitle" 
+                [faqs]="faqs" 
+                [accentColor]="faqAccentColor"
+                [expandedIndex]="expandedFaqIndex">
+            </app-faq-section>
+        }
+    </div>
+
+</div>

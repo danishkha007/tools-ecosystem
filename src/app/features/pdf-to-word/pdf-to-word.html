@@ -1,16 +1,23 @@
 <div class="container">
 
-    <!-- Header Section -->
+    <!-- Header Section - Now using reusable tool-header component -->
+    <!--
     <div class="header-section">
-        <h1>{{ seoH1 || 'Free Online PDF to Word Converter' }}</h1>
-        <p class="subtitle">{{ seoH2 || 'Convert PDF Documents to Editable Word Files' }}</p>
+        <h1>{{ seoH1 || 'PDF to Word Converter' }}</h1>
+        <p class="subtitle">{{ seoH2 || 'Convert PDF Files to Editable Word Documents' }}</p>
         <div class="header-tags">
             <span class="tag">Free</span>
-            <span class="tag">Secure</span>
+            <span class="tag">Accurate</span>
             <span class="tag">No Registration</span>
-            <span class="tag">OCR Support</span>
+            <span class="tag">Browser-Based</span>
         </div>
     </div>
+    -->
+    <app-tool-header
+        [title]="seoH1 || 'PDF to Word Converter'"
+        [subtitle]="seoH2 || 'Convert PDF Files to Editable Word Documents'"
+        [tags]="['Free', 'Accurate', 'No Registration', 'Browser-Based']">
+    </app-tool-header>
 
     <!-- Initial View - No Files -->
     <div *ngIf="selectedFiles.length === 0" class="initial-view">

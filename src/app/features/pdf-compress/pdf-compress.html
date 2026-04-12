@@ -7,9 +7,10 @@
         (close)="closeUseCaseModal()">
     </app-use-case-modal>
 
-    <!-- Header Section -->
+    <!-- Header Section - Now using reusable tool-header component -->
+    <!--
     <div class="header-section">
-        <h1>{{ seoH1 || 'Free Online PDF Compressor' }}</h1>
+        <h1>{{ seoH1 || 'Free PDF Compressor' }}</h1>
         <p class="subtitle">{{ seoH2 || 'Reduce PDF File Size Without Losing Quality' }}</p>
         <div class="header-tags">
             <span class="tag">Free</span>
@@ -18,6 +19,12 @@
             <span class="tag">Browser-Based</span>
         </div>
     </div>
+    -->
+    <app-tool-header
+        [title]="seoH1 || 'Free PDF Compressor'"
+        [subtitle]="seoH2 || 'Reduce PDF File Size Without Losing Quality'"
+        [tags]="['Free', 'Secure', 'No Registration', 'Browser-Based']">
+    </app-tool-header>
 
     <!-- Initial View - No Files -->
     <div *ngIf="selectedFiles.length === 0" class="initial-view">

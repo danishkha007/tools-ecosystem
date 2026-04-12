@@ -35,5 +35,10 @@ export const routes: Routes = [
     path: 'compress-pdf',
     loadComponent: () =>
       import('./features/pdf-compress/pdf-compress').then(m => m.PdfCompressComponent)
+  },
+  {
+    path: 'gann-hexagonal-support-resistance-calculator',
+    loadComponent: () =>
+      import('./features/gann-calculator/gann-calculator').then(m => m.GannCalculator)
   }
 ];

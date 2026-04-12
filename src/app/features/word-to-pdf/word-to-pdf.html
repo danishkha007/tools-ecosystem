@@ -1,6 +1,6 @@
-<div class="container">
+<!-- <div class="container">
 
-    <!-- Header Section -->
+    Comment: Header Section
     <div class="header-section">
         <h1>{{ seoH1 || 'Free Online Word to PDF Converter' }}</h1>
         <p class="subtitle">{{ seoH2 || 'Convert Word Documents to PDF Format' }}</p>
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <!-- Initial View - No Files -->
+    Comment: Initial View - No Files
     <div *ngIf="selectedFiles.length === 0" class="initial-view">
         <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
             <div class="upload-content">
@@ -30,9 +30,9 @@
         </div>
     </div>
 
-    <!-- File Management View - Files Added -->
+    Comment: File Management View - Files Added
     <div *ngIf="selectedFiles.length > 0" class="file-view file-view-card">
-        <!-- File List -->
+        Comment: File List
         <div class="file-list">
             <div class="file-list-header">
                 <h4>{{ selectedFiles.length }} file(s) selected</h4>
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <!-- Overall Progress -->
+        Comment: Overall Progress
         <div *ngIf="loading && converting" class="overall-progress">
             <div class="progress-header">
                 <span class="progress-label">Converting to PDF</span>
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <!-- Controls -->
+        Comment: Controls
         <div class="controls controls-grouped">
             <label class="add-more-btn" for="fileInput" [class.disabled]="converting">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -129,9 +129,9 @@
 
     <input id="fileInput" type="file" multiple accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" (change)="onFileSelect($event)" hidden />
 
-    <!-- SEO Content -->
+    Comment: SEO Content
     <div class="seo-content">
-        <!-- About Section -->
+        Comment: About Section
         <div class="about-section">
             <div class="about-hero">
                 <div class="hero-text">
@@ -221,7 +221,7 @@
             </div>
         </div>
 
-        <!-- Features Section -->
+        Comment: Features Section
         <div class="features-section">
             <div class="features-header">
                 <span class="features-label">
@@ -324,7 +324,7 @@
             </div>
         </div>
 
-        <!-- FAQ Section -->
+        Comment: FAQ Section
         @if (faqs.length > 0) {
             <app-faq-section 
                 [title]="faqTitle" 
@@ -335,4 +335,4 @@
         }
     </div>
 
-</div>
+</div> -->

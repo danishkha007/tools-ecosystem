@@ -10,11 +10,12 @@ import { Resume } from '../../core/models/resume';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { Tool, ToolSEO } from '../../core/models/tool';
 import html2pdf from 'html2pdf.js';
+import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
 
 @Component({
   selector: 'app-resume-builder',
   standalone: true,
-  imports: [CommonModule, ResumePreviewComponent, ResumePreviewAtsComponent, ResumeFormComponent, FaqSectionComponent, UseCaseModalComponent],
+  imports: [CommonModule, ResumePreviewComponent, ResumePreviewAtsComponent, ResumeFormComponent, FaqSectionComponent, UseCaseModalComponent, ToolHeaderComponent],
   templateUrl: './resume-builder.html',
   styleUrl: './resume-builder.scss',
 })

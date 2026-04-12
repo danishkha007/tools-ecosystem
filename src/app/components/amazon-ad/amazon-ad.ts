@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+type AdSize = '720x90' | '350x350';
+
 @Component({
   selector: 'app-amazon-ad',
   standalone: true,
@@ -9,10 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./amazon-ad.scss']
 })
 export class AmazonAdComponent {
-  @Input() associateId: string = 'bookshub1-21';
-  @Input() adType: 'banner' | 'link' = 'banner';
+  @Input() associateId: string = 'mytooltrove-21';
+  @Input() size: AdSize = '720x90';
 
   get amazonLink(): string {
-    return `https://www.amazon.com?tag=${this.associateId}`;
+    return `https://www.amazon.in?tag=${this.associateId}`;
+  }
+
+  get containerClass(): string {
+    return `amazon-ad-${this.size.replace('x', '-')}`;
   }
 }

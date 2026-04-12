@@ -1,0 +1,351 @@
+<div class="container">
+
+    <!-- Reusable Tool Header Component -->
+    <app-tool-header [title]="seoH1" [subtitle]="seoH2" [tags]="tags"></app-tool-header>
+
+    <div class="calculator-card">
+        <div class="input-section">
+            <div class="input-group">
+                <label for="priceInput">Enter Market Price</label>
+                <input type="number" id="priceInput" [(ngModel)]="inputValue" placeholder="Enter market price..." (keyup.enter)="calculate()" />
+            </div>
+
+            <div class="button-group">
+                <button class="calculate-btn" (click)="calculate()" [disabled]="!inputValue">Calculate</button>
+                <button class="clear-btn" (click)="clear()" *ngIf="showResults">Clear</button>
+            </div>
+        </div>
+
+        <div class="results-section" *ngIf="showResults && levels.length > 0">
+            <div class="results-header">
+                <h3>Dynamic Support & Resistance Levels</h3>
+                <span class="base-price">Current Market Price: {{ inputValue | number:'1.2-2' }}</span>
+            </div>
+
+            <div class="levels-table-container">
+                <table class="levels-table">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Support Level</th>
+                            <th>Resistance Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of tableRows" [class.current-row]="row.degree === '0'">
+                            <td class="degree-cell">{{ row.degree }}°</td>
+                            <td class="support-cell" [class.no-value]="row.support === null">
+                                <span *ngIf="row.support !== null">{{ row.support | number:'1.2-2' }}</span>
+                                <span *ngIf="row.support === null">—</span>
+                            </td>
+                            <td class="resistance-cell" [class.no-value]="row.resistance === null">
+                                <span *ngIf="row.resistance !== null">{{ row.resistance | number:'1.2-2' }}</span>
+                                <span *ngIf="row.resistance === null">—</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Visual Hexagon Representation -->
+            <!-- <div class="hexagon-visual">
+                <h4>Dynamic GANN Hexagon</h4>
+                <div class="hex-display">
+                    <div class="hex-center-node">{{ inputValue | number:'1.0-0' }}</div>
+                    <div class="hex-rings-layout">
+                        <div *ngFor="let ring of hexagonRings; let i = index" class="hex-ring-dynamic" [style.z-index]="10 - i">
+                            <div *ngFor="let level of ring.levels" class="hex-cell-dynamic" [ngClass]="level.type">
+                                <span class="cell-label">{{ level.type === 'resistance' ? 'R' : 'S' }}{{ i + 1 }}</span>
+                                <span class="cell-value">{{ level.level | number:'1.0-0' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="seo-content">
+        <app-about-section
+            badgeText="GANN Theory Calculator"
+            badgeIcon="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            title="Master with GANN Hexagon Support & Resistance Calculator"
+            description="The GANN Hexagonal Chart is one of W.D. GANN's most powerful tools for identifying support and resistance levels. Our calculator applies GANN's mathematical ratios to help traders and analysts predict potential price movements with greater accuracy."
+            ctaPrimaryText="Start Calculating Now"
+            (click)="scrollToTop()"
+            ctaNote="No signup required • 100% free forever"
+            [features]="[
+                { icon: 'M12 20V10M18 20V4M6 20V16', title: 'Support Levels', description: 'Calculate multiple support levels below your base price' },
+                { icon: 'M12 4V20M18 10V20M6 10V20', title: 'Resistance Levels', description: 'Identify key resistance levels above the current price' },
+                { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', title: 'Works Everywhere', description: 'Access from any device - desktop, tablet, or mobile.' },
+                { icon: 'M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10', title: 'Free Forever', description: 'No registration required. Completely free to use.' }
+            ]">
+            <div visual-content>
+                <div class="hexagon-visual-mini" style="text-align: center;">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                        <circle cx="12" cy="12" r="3" fill="#3b82f6" fill-opacity="0.1"/>
+                    </svg>
+                </div>
+            </div>
+        </app-about-section>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="features-header">
+                <span class="features-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    Calculator Features
+                </span>
+                <h2 class="section-title">Everything You Need for GANN Analysis</h2>
+                <p class="features-subtitle">Powerful features to calculate support and resistance levels.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20V10M18 20V4M6 20V16"/>
+                            </svg>
+                        </div>
+                        <h3>Support Levels</h3>
+                        <p>Calculate multiple support levels below your base price</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 4V20M18 10V20M6 10V20"/>
+                            </svg>
+                        </div>
+                        <h3>Resistance Levels</h3>
+                        <p>Identify key resistance levels above the current price</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                        </div>
+                        <h3>Hexagonal Visualization</h3>
+                        <p>Visualize the GANN hexagon structure at a glance</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3>Real-Time Calculations</h3>
+                        <p>Get instant results as you change input values</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <h3>Any Number Scale</h3>
+                        <p>Works with any price or number - stocks, forex, commodities</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-large">
+                    <div class="card-bg-pattern"></div>
+                    <div class="card-content">
+                        <div class="icon-box-large">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <h3>Clean Interface</h3>
+                        <p>Simple, intuitive design for easy use</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How GANN Theory Works Section -->
+        <div class="gann-theory-section">
+            <div class="gann-theory-header">
+                <span class="gann-theory-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                    Trading Insights
+                </span>
+                <h2>Understanding GANN Hexagonal Support & Resistance</h2>
+                <p>Learn how GANN's mathematical approach can help identify key price levels.</p>
+            </div>
+
+            <div class="gann-cards-grid">
+                <div class="gann-card gann-card-1">
+                    <div class="gann-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                        </svg>
+                    </div>
+                    <h3>What is the GANN Hexagon?</h3>
+                    <p>The GANN Hexagon is a geometric chart that arranges numbers in a hexagonal pattern. W.D. GANN believed that prices move in natural geometric patterns and that certain angles and ratios create predictable support and resistance zones.</p>
+                </div>
+
+                <div class="gann-card gann-card-2">
+                    <div class="gann-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22V12M12 12L6 18M12 12L18 18"/>
+                            <circle cx="12" cy="6" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Support Levels</h3>
+                    <p>Support levels are price points where buying pressure overcomes selling pressure. Our calculator identifies multiple support levels below your input price, helping you set stop-loss orders and identify potential entry points.</p>
+                </div>
+
+                <div class="gann-card gann-card-3">
+                    <div class="gann-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2V12M12 12L6 6M12 12L18 6"/>
+                            <circle cx="12" cy="18" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Resistance Levels</h3>
+                    <p>Resistance levels are price points where selling pressure overcomes buying pressure. Our calculator identifies key resistance levels above your price, helping you take profits and identify potential breakout levels.</p>
+                </div>
+
+                <div class="gann-card gann-card-4">
+                    <div class="gann-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Vibration Theory</h3>
+                    <p>GANN believed that everything in the universe vibrates at specific frequencies. Applied to markets, this means prices move in predictable patterns based on mathematical ratios. The hexagon captures these natural vibrations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases Section -->
+        <div class="use-cases-section">
+            <div class="use-cases-header">
+                <span class="use-cases-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Perfect For Everyone
+                </span>
+                <h2>Who Can Use This Calculator?</h2>
+                <p>From day traders to long-term investors, GANN analysis helps everyone.</p>
+            </div>
+
+            <div class="use-cases-grid">
+                <div class="use-case-card card-1">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18"/>
+                                <path d="M18 17V9M13 17V5M8 17v-3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Day Traders</h3>
+                        <p>Identify intraday support and resistance levels for quick trading decisions.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-2">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Swing Traders</h3>
+                        <p>Find multi-day support and resistance levels for swing trading strategies.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-3">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Investors</h3>
+                        <p>Use GANN levels for long-term investment decisions and portfolio management.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card card-4">
+                    <div class="card-visual">
+                        <div class="visual-bg"></div>
+                        <div class="card-icon-wrapper">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Students & Educators</h3>
+                        <p>Learn about GANN theory and technical analysis in trading courses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section using component -->
+        @if (faqs.length > 0) {
+            <app-faq-section 
+                [title]="faqTitle" 
+                [faqs]="faqs" 
+                [accentColor]="faqAccentColor"
+                [expandedIndex]="expandedFaqIndex">
+            </app-faq-section>
+        }
+
+    </div>
+
+</div>
