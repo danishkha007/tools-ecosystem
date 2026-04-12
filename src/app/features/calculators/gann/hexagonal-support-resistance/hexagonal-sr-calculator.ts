@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { AboutSectionComponent } from '../../components/about-section/about-section';
+import { FaqSectionComponent, FaqItem } from '../../../../components/faq-section/faq-section';
+import { ToolHeaderComponent } from '../../../../components/tool-header/tool-header';
+import { AboutSectionComponent } from '../../../../components/about-section/about-section';
 
 interface GannLevel {
   level: number;
@@ -12,11 +12,11 @@ interface GannLevel {
 }
 
 @Component({
-  selector: 'app-gann-calculator',
+  selector: 'app-gann-hexagonal-sr-calculator',
   standalone: true,
   imports: [CommonModule, FormsModule, FaqSectionComponent, ToolHeaderComponent, AboutSectionComponent],
-  templateUrl: './gann-calculator.html',
-  styleUrl: './gann-calculator.scss',
+  templateUrl: './hexagonal-sr-calculator.html',
+  styleUrl: './hexagonal-sr-calculator.scss',
 })
 export class GannCalculator {
   inputValue: number | null = null;

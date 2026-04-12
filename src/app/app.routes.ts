@@ -39,6 +39,6 @@ export const routes: Routes = [
   {
     path: 'gann-hexagonal-support-resistance-calculator',
     loadComponent: () =>
-      import('./features/gann-calculator/gann-calculator').then(m => m.GannCalculator)
+      import('./features/calculators/gann/hexagonal-support-resistance/hexagonal-sr-calculator').then(m => m.GannCalculator)
   }
 ];
