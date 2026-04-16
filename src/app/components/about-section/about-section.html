@@ -1,17 +1,17 @@
 <div class="about-section">
     <div class="about-hero">
         <div class="hero-text">
-            <span class="hero-badge" *ngIf="badgeText">
-                <svg *ngIf="badgeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path [attr.d]="badgeIcon"/>
+            <span class="hero-badge" *ngIf="aboutSection.badgeText">
+                <svg *ngIf="aboutSection.badgeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path [attr.d]="aboutSection.badgeIcon"/>
                 </svg>
-                {{ badgeText }}
+                {{ aboutSection.badgeText }}
             </span>
-            <h2 *ngIf="title">{{ title }}</h2>
-            <p *ngIf="description">{{ description }}</p>
-            <div class="hero-cta" *ngIf="ctaPrimaryText">
-                <button class="cta-primary" (click)="scrollToTop()">{{ ctaPrimaryText }}</button>
-                <span class="cta-note" *ngIf="ctaNote">{{ ctaNote }}</span>
+            <h2 *ngIf="aboutSection.title">{{ aboutSection.title }}</h2>
+            <p *ngIf="aboutSection.description">{{ aboutSection.description }}</p>
+            <div class="hero-cta" *ngIf="aboutSection.ctaPrimaryText">
+                <button class="cta-primary" (click)="scrollToTop()">{{ aboutSection.ctaPrimaryText }}</button>
+                <span class="cta-note" *ngIf="aboutSection.ctaNote">{{ aboutSection.ctaNote }}</span>
             </div>
         </div>
         <div class="hero-visual">
@@ -24,8 +24,8 @@
         </div>
     </div>
 
-    <div class="about-grid" *ngIf="features">
-        <div *ngFor="let feature of features; let i = index" class="grid-item" [class]="'item-' + (i + 1)">
+    <div class="about-grid" *ngIf="aboutSection.features">
+        <div *ngFor="let feature of aboutSection.features; let i = index" class="grid-item" [class]="'item-' + (i + 1)">
             <div class="item-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path [attr.d]="feature.icon"/>

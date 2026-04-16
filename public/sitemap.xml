@@ -17,7 +17,7 @@
     <loc>https://mytooltrove.com/contact</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Career Tools -->
@@ -25,7 +25,7 @@
     <loc>https://mytooltrove.com/resume-builder</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
 
   <!-- PDF Tools -->
@@ -33,13 +33,13 @@
     <loc>https://mytooltrove.com/merge-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mytooltrove.com/compress-pdf</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
 
   <!-- Image Tools -->
@@ -47,6 +47,12 @@
     <loc>https://mytooltrove.com/image-compress</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://mytooltrove.com/gann-hexagonal-support-resistance-calculator</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
 </urlset>

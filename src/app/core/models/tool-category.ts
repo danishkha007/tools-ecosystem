@@ -1,7 +1,7 @@
-import { Tool } from './tool';
+import { ToolData } from './tool-data.model';
 
 export interface ToolCategory {
   name: string;
   order?: number;
-  tools?: Tool[];
+  tools?: ToolData[];
 }

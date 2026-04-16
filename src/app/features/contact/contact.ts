@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ContactComponent implements OnInit {
   // SEO data
-  seoTitle = 'Contact ToolTrove - Get in Touch';
-  seoMetaDescription = 'Contact ToolTrove for questions, feedback, or support. We\'re here to help with our free online tools.';
+  seoTitle = 'Contact MyToolTrove - Get in Touch';
+  seoMetaDescription = 'Contact MyToolTrove for questions, feedback, or support. We\'re here to help with our free online tools.';
   
   ngOnInit() {
     // Set document title and meta description

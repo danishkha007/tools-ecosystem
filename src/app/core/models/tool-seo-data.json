@@ -1,0 +1,1048 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tool-seo-data.json",
+  "title": "MyToolTrove SEO Data Model",
+  "description": "Comprehensive SEO and content data for all tools in MyToolTrove ecosystem",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "id": "gann-hexagonal-sr-calculator",
+      "name": "GANN Hexagonal Support & Resistance Calculator",
+      "route": "/gann-hexagonal-support-resistance-calculator",
+      "category": "Trading Tools",
+      "icon": "",
+      "shortDescription": "Calculate dynamic support and resistance levels using GANN's mathematical ratios.",
+      "longDescription": "Use GANN's mathematical ratios to identify potential support and resistance levels for your trading strategy.",
+      "buttonText": "Calculate Levels",
+      "tags": [
+        "Free",
+        "Accurate",
+        "No Registration",
+        "Based on GANN Theory",
+        "Browser-Based"
+      ],
+      "seo": {
+        "title": "Free GANN Hexagonal Support & Resistance Calculator | GANN Calculator | MyToolTrove",
+        "metaDescription": "Calculate dynamic support and resistance levels using GANN's mathematical ratios. Free online GANN hexagonal calculator for trading and technical analysis.",
+        "keywords": [
+          "GANN calculator",
+          "support level",
+          "resistance level",
+          "trading tools",
+          "technical analysis",
+          "GANN hexagonal calculator",
+          "GANN support resistance",
+          "free GANN calculator",
+          "GANN levels calculator",
+          "GANN price levels"
+        ],
+        "h1": "GANN Hexagonal Support & Resistance Calculator",
+        "h2": "Calculate Dynamic Support and Resistance Levels Using GANN Theory",
+        "canonicalUrl": "/gann-hexagonal-support-resistance-calculator"
+      },
+      "aboutSection": {
+        "badgeText": "GANN Theory Calculator",
+        "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+        "title": "Master with GANN Hexagon Support & Resistance Calculator",
+        "description": "The GANN Hexagonal Chart is one of W.D. GANN's most powerful tools for identifying support and resistance levels. Our calculator applies GANN's mathematical ratios to help traders and analysts predict potential price movements with greater accuracy.",
+        "ctaPrimaryText": "Start Calculating Now",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M12 20V10M18 20V4M6 20V16",
+            "title": "Support Levels",
+            "description": "Calculate multiple support levels below your base price"
+          },
+          {
+            "icon": "M12 4V20M18 10V20M6 10V20",
+            "title": "Resistance Levels",
+            "description": "Identify key resistance levels above the current price"
+          },
+          {
+            "icon": "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+            "title": "Works Everywhere",
+            "description": "Access from any device - desktop, tablet, or mobile."
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Free Forever",
+            "description": "No registration required. Completely free to use."
+          }
+        ],
+        "visualContent": {
+          "type": "svg-hexagon",
+          "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+        }
+      },
+      "featuresSection": {
+        "label": "Calculator Features",
+        "title": "Everything You Need for GANN Analysis",
+        "subtitle": "Powerful features to calculate support and resistance levels.",
+        "features": [
+          {
+            "iconPath": "M12 20V10M18 20V4M6 20V16",
+            "title": "Support Levels",
+            "description": "Calculate multiple support levels below your base price"
+          },
+          {
+            "iconPath": "M12 4V20M18 10V20M6 10V20",
+            "title": "Resistance Levels",
+            "description": "Identify key resistance levels above the current price"
+          },
+          {
+            "iconPath": "M12 2L22 8.5V15.5L12 22L2 15.5V8.5L12 2ZM12 22V15.5M22 8.5L12 15.5L2 8.5",
+            "title": "Hexagonal Visualization",
+            "description": "Visualize the GANN hexagon structure at a glance"
+          },
+          {
+            "iconPath": "M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 6V12L16 14",
+            "title": "Real-Time Calculations",
+            "description": "Get instant results as you change input values"
+          },
+          {
+            "iconPath": "M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15M7 10L12 15L17 10M12 15V3",
+            "title": "Any Number Scale",
+            "description": "Works with any price or number - stocks, forex, commodities"
+          },
+          {
+            "iconPath": "M3 3H21V21H3V3ZM3 9H21M9 21V9",
+            "title": "Clean Interface",
+            "description": "Simple, intuitive design for easy use"
+          }
+        ]
+      },
+      "theorySection": {
+        "label": "Trading Insights",
+        "labelIcon": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z",
+        "title": "Understanding GANN Hexagonal Support & Resistance",
+        "subtitle": "Learn how GANN's mathematical approach can help identify key price levels.",
+        "cards": [
+          {
+            "icon": "M12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2",
+            "title": "What is the GANN Hexagon?",
+            "description": "The GANN Hexagon is a geometric chart that arranges numbers in a hexagonal pattern. W.D. GANN believed that prices move in natural geometric patterns and that certain angles and ratios create predictable support and resistance zones."
+          },
+          {
+            "icon": "M12 22V12M12 12L6 18M12 12L18 18 M12 6 m-2 0 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0",
+            "title": "Support Levels",
+            "description": "Support levels are price points where buying pressure overcomes selling pressure. Our calculator identifies multiple support levels below your input price, helping you set stop-loss orders and identify potential entry points."
+          },
+          {
+            "icon": "M12 2V12M12 12L6 6M12 12L18 6 M12 18 m-2 0 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0",
+            "title": "Resistance Levels",
+            "description": "Resistance levels are price points where selling pressure overcomes buying pressure. Our calculator identifies key resistance levels above your price, helping you take profits and identify potential breakout levels."
+          },
+          {
+            "icon": "M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0 M12 6v6l4 2",
+            "title": "Vibration Theory",
+            "description": "GANN believed that everything in the universe vibrates at specific frequencies. Applied to markets, this means prices move in predictable patterns based on mathematical ratios. The hexagon captures these natural vibrations."
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Use This Calculator?",
+        "description": "From day traders to long-term investors, GANN analysis helps everyone.",
+        "label": "Perfect for Analysis",
+        "useCases": [
+          {
+            "icon": "M3 3v18h18M18 17V9M13 17V5M8 17v-3",
+            "title": "Day Traders",
+            "description": "Identify intraday support and resistance levels for quick trading decisions.",
+            "link": "/gann-hexagonal-support-resistance-calculator#day-traders",
+            "benefits": [
+              "Quick intraday level identification",
+              "Real-time trading decisions",
+              "Precise entry and exit points",
+              "Intraday risk management"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#3b82f6"
+          },
+          {
+            "icon": "M3 4h18v18H3zM16 2v4M8 2v4M3 10h18",
+            "title": "Swing Traders",
+            "description": "Find multi-day support and resistance levels for swing trading strategies.",
+            "link": "/gann-hexagonal-support-resistance-calculator#swing-traders",
+            "benefits": [
+              "Multi-day level projection",
+              "Swing trade planning",
+              "Position holding guidance",
+              "Trend reversal alerts"
+            ],
+            "color": "#d1fae5",
+            "iconColor": "#10b981"
+          },
+          {
+            "icon": "M22 12h-4l-3 9L9 3l-3 9H2",
+            "title": "Investors",
+            "description": "Use GANN levels for long-term investment decisions and portfolio management.",
+            "link": "/gann-hexagonal-support-resistance-calculator#investors",
+            "benefits": [
+              "Long-term price level analysis",
+              "Portfolio entry timing",
+              "Investment exit strategy",
+              "Risk assessment tool"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b"
+          },
+          {
+            "icon": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z",
+            "title": "Students & Educators",
+            "description": "Learn about GANN theory and technical analysis in trading courses.",
+            "link": "/gann-hexagonal-support-resistance-calculator#students-educators",
+            "benefits": [
+              "Educational tool for GANN theory",
+              "Practical trading examples",
+              "Technical analysis learning",
+              "Market geometry understanding"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "What is the GANN Hexagonal Calculator?",
+            "answer": "The GANN Hexagonal Calculator is a tool based on W.D. GANN's mathematical trading theory. It calculates support and resistance levels using hexagonal geometry and vibration ratios to help traders identify potential price turning points."
+          },
+          {
+            "question": "How do I use the GANN Calculator?",
+            "answer": "Simply enter any price or number in the input field and click \"Calculate\". The tool will display multiple resistance levels (above your input) and support levels (below your input) based on GANN's mathematical ratios."
+          },
+          {
+            "question": "What are support and resistance levels?",
+            "answer": "Support levels are price points where buying pressure tends to exceed selling pressure, potentially stopping a decline. Resistance levels are price points where selling pressure tends to exceed buying pressure, potentially stopping an advance."
+          },
+          {
+            "question": "Is this calculator free to use?",
+            "answer": "Yes, our GANN Calculator is completely free to use. No registration or account required. All calculations happen locally in your browser."
+          },
+          {
+            "question": "Can I use this for any type of trading?",
+            "answer": "This calculator works with any numerical scale - stocks, forex, commodities, cryptocurrencies, or any numerical analysis. It's particularly popular among technical analysts and swing traders."
+          }
+        ]
+      }
+    },
+    {
+      "id": "resume-builder",
+      "name": "Resume Builder",
+      "route": "/resume-builder",
+      "category": "Career Tools",
+      "icon": "resume-builder.png",
+      "iconAlt": "Resume Builder",
+      "shortDescription": "Create professional resumes",
+      "longDescription": "Build ATS-friendly resumes with customizable layouts, live preview, and export options to stand out to recruiters.",
+      "buttonText": "Build Resume",
+      "tags": [
+        "Free",
+        "ATS-Friendly",
+        "No Registration",
+        "Multiple Templates",
+        "PDF Export"
+      ],
+      "seo": {
+        "title": "Free Resume Builder Online | Create ATS-Friendly Resumes | MyToolTrove",
+        "metaDescription": "Create professional resumes online for free with our AI-powered resume builder. Choose from ATS-friendly templates, customize layouts, and download in PDF. Perfect for job seekers and career changers.",
+        "keywords": [
+          "resume builder",
+          "free resume maker",
+          "create resume online",
+          "ATS friendly resume",
+          "professional resume template",
+          "job resume builder",
+          "CV maker free",
+          "resume generator",
+          "online resume creator",
+          "career resume builder",
+          "job application resume",
+          "hire resume builder"
+        ],
+        "h1": "Free Online Resume Builder",
+        "h2": "Create ATS-Friendly Resumes That Get Noticed",
+        "canonicalUrl": "/resume-builder"
+      },
+      "aboutSection": {
+        "badgeText": "Career Tool",
+        "badgeIcon": "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
+        "title": "Build Your Professional Resume in Minutes",
+        "description": "Our free resume builder helps you create ATS-friendly resumes that pass automated screening systems and impress hiring managers. Choose from multiple professional templates and customize every section.",
+        "ctaPrimaryText": "Start Building Now",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8",
+            "title": "Multiple Templates",
+            "description": "Choose from modern and ATS-optimized resume templates"
+          },
+          {
+            "icon": "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+            "title": "ATS Compatible",
+            "description": "Templates designed to pass Applicant Tracking Systems"
+          },
+          {
+            "icon": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M17 8l-5-5-5 5 M12 3v12",
+            "title": "PDF Export",
+            "description": "Download your resume in high-quality PDF format"
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Free Forever",
+            "description": "No registration required. Completely free to use."
+          }
+        ],
+        "visualContent": {
+          "type": "image",
+          "src": "/resume-builder.png",
+          "alt": "Resume Builder Preview"
+        }
+      },
+      "featuresSection": {
+        "label": "Resume Builder Features",
+        "title": "Everything You Need to Create a Professional Resume",
+        "subtitle": "Powerful features to help you build a resume that stands out.",
+        "features": [
+          {
+            "iconPath": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8",
+            "title": "Professional Templates",
+            "description": "Choose from modern and ATS-friendly resume templates"
+          },
+          {
+            "iconPath": "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+            "title": "ATS Optimization",
+            "description": "Templates designed to pass Applicant Tracking Systems"
+          },
+          {
+            "iconPath": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M17 8l-5-5-5 5 M12 3v12",
+            "title": "Instant PDF Download",
+            "description": "Export your resume in high-quality PDF format instantly"
+          },
+          {
+            "iconPath": "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536l-6.55 6.55a2.5 2.5 0 01-1.415.732H5a2 2 0 01-2-2V8.414a2.5 2.5 0 01.732-1.415l6.55-6.55z",
+            "title": "Easy Editing",
+            "description": "Edit and customize every section of your resume"
+          },
+          {
+            "iconPath": "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+            "title": "Live Preview",
+            "description": "See your changes in real-time with instant preview"
+          },
+          {
+            "iconPath": "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z M12 2a2 2 0 012 2v2a2 2 0 01-2 2 2 2 0 01-2-2V4a2 2 0 012-2z",
+            "title": "Secure & Private",
+            "description": "Your data stays in your browser - nothing is stored on servers"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Use the Resume Builder?",
+        "description": "From students to executives, our resume builder helps everyone.",
+        "label": "Perfect for Career Growth",
+        "useCases": [
+          {
+            "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+            "title": "Students",
+            "description": "Create your first professional resume for internships and entry-level positions.",
+            "link": "/resume-builder#students",
+            "benefits": [
+              "Perfect for internship applications",
+              "No prior experience needed",
+              "Academic achievements highlighted",
+              "Extracurricular activities showcase"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#3b82f6"
+          },
+          {
+            "icon": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+            "title": "Professionals",
+            "description": "Update your resume for career advancement or new opportunities.",
+            "link": "/resume-builder#professionals",
+            "benefits": [
+              "Showcase career achievements",
+              "Highlight leadership experience",
+              "Quantify professional impact",
+              "Industry-specific formatting"
+            ],
+            "color": "#d1fae5",
+            "iconColor": "#10b981"
+          },
+          {
+            "icon": "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+            "title": "Career Changers",
+            "description": "Highlight transferable skills and create a resume for your new field.",
+            "link": "/resume-builder#career-changers",
+            "benefits": [
+              "Emphasize transferable skills",
+              "Reframe past experience",
+              "Bridge career gap effectively",
+              "Target new industry keywords"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b"
+          },
+          {
+            "icon": "M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9",
+            "title": "Job Seekers",
+            "description": "Quickly create tailored resumes for specific job applications.",
+            "link": "/resume-builder#job-seekers",
+            "benefits": [
+              "Quick customization for each job",
+              "ATS-optimized formatting",
+              "Keyword matching for job descriptions",
+              "Professional presentation"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "How to create a professional resume for free?",
+            "answer": "Simply fill in your personal information, work experience, education, and skills. Our resume builder automatically formats your resume professionally and generates an ATS-friendly PDF that you can download instantly."
+          },
+          {
+            "question": "Are the resumes ATS-friendly?",
+            "answer": "Yes! Our resume templates are specifically designed to pass Applicant Tracking Systems (ATS). We use standard formatting, proper heading structure, and clean layouts that ATS software can easily parse and read."
+          },
+          {
+            "question": "Can I download my resume in PDF format?",
+            "answer": "Absolutely! You can download your completed resume as a high-quality PDF file at any time. The PDF maintains all formatting and is ready to send to employers or upload to job portals."
+          },
+          {
+            "question": "Do I need registration to use the resume builder?",
+            "answer": "No registration is required. Our resume builder is completely free to use with no hidden charges. Your data stays private and is processed entirely in your browser."
+          },
+          {
+            "question": "What resume templates are available?",
+            "answer": "We offer multiple professional templates including Modern designs for creative industries and ATS-Optimized formats for traditional corporate applications. You can switch templates anytime."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pdf-compress",
+      "name": "PDF Compressor",
+      "route": "/pdf-compressor",
+      "category": "PDF Tools",
+      "icon": "compress-pdf.png",
+      "iconAlt": "PDF Compressor",
+      "shortDescription": "Compress PDF files online",
+      "longDescription": "Reduce PDF file size while maintaining quality. Compress large PDFs for easy sharing and storage.",
+      "buttonText": "Compress PDF",
+      "tags": [
+        "Free",
+        "Fast",
+        "No Registration",
+        "Secure",
+        "Browser-Based"
+      ],
+      "seo": {
+        "title": "Free PDF Compressor Online | Reduce PDF File Size | MyToolTrove",
+        "metaDescription": "Compress PDF files online for free. Reduce PDF file size while maintaining quality. Fast, secure, and no registration required. Perfect for email and web sharing.",
+        "keywords": [
+          "pdf compressor",
+          "reduce pdf size",
+          "compress pdf online",
+          "pdf size reducer",
+          "free pdf compressor",
+          "shrink pdf",
+          "pdf file size reducer",
+          "optimize pdf",
+          "pdf optimizer",
+          "small pdf"
+        ],
+        "h1": "Free Online PDF Compressor",
+        "h2": "Reduce PDF File Size Without Losing Quality",
+        "canonicalUrl": "/pdf-compressor"
+      },
+      "aboutSection": {
+        "badgeText": "PDF Tool",
+        "badgeIcon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+        "title": "Compress PDF Files in Seconds",
+        "description": "Our free PDF compressor reduces file sizes while maintaining document quality. Perfect for sending PDFs via email or uploading to websites with size limits.",
+        "ctaPrimaryText": "Compress Your PDF",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure & Private",
+            "description": "All compression happens in your browser. Your files never leave your device."
+          },
+          {
+            "icon": "M13 2L3 14H12L11 22L21 10H12L13 2Z",
+            "title": "Lightning Fast",
+            "description": "Compress your PDFs in seconds. No uploads, no waiting."
+          },
+          {
+            "icon": "M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 6V12L16 14",
+            "title": "Quality Options",
+            "description": "Choose between low, medium, or high compression based on your needs."
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Free Forever",
+            "description": "No registration required. Completely free to use."
+          }
+        ],
+        "visualContent": {
+          "type": "image",
+          "src": "/compress-pdf.png",
+          "alt": "PDF Compressor Preview"
+        }
+      },
+      "featuresSection": {
+        "label": "PDF Compressor Features",
+        "title": "Everything You Need to Compress PDFs",
+        "subtitle": "Powerful features to reduce your PDF file size efficiently.",
+        "features": [
+          {
+            "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Lightning Fast",
+            "description": "Compress PDFs in seconds with efficient algorithms"
+          },
+          {
+            "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure",
+            "description": "All processing happens locally - your files never leave your device"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Drag & Drop",
+            "description": "Simply drag and drop your PDF to start compression"
+          },
+          {
+            "iconPath": "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
+            "title": "Adjustable Quality",
+            "description": "Choose compression level based on your needs"
+          },
+          {
+            "iconPath": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+            "title": "Maintains Quality",
+            "description": "Smart compression preserves text and image clarity"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+            "title": "Instant Download",
+            "description": "Download compressed PDF immediately after processing"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Use the PDF Compressor?",
+        "description": "From students to professionals, everyone benefits from smaller PDFs.",
+        "label": "Perfect for Everyone",
+        "useCases": [
+          {
+            "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+            "title": "Students",
+            "description": "Compress assignments and documents for email submission.",
+            "link": "/pdf-compressor#students",
+            "benefits": [
+              "Meet email attachment size limits",
+              "Faster document uploads to portals",
+              "Easy sharing with classmates",
+              "Quick submission to learning platforms"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#3b82f6"
+          },
+          {
+            "icon": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+            "title": "Professionals",
+            "description": "Reduce report sizes for easy sharing with colleagues and clients.",
+            "link": "/pdf-compressor#professionals",
+            "benefits": [
+              "Professional document sharing",
+              "Faster email delivery",
+              "Reduced storage space",
+              "Client-friendly file sizes"
+            ],
+            "color": "#d1fae5",
+            "iconColor": "#10b981"
+          },
+          {
+            "icon": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+            "title": "Email Users",
+            "description": "Shrink PDFs to meet email attachment size limits.",
+            "link": "/pdf-compressor#email-users",
+            "benefits": [
+              "Bypass email size restrictions",
+              "Faster attachment uploads",
+              "Reliable delivery guaranteed",
+              "No bounced emails due to size"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b"
+          },
+          {
+            "icon": "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+            "title": "Website Owners",
+            "description": "Optimize PDFs for faster website loading and better UX.",
+            "link": "/pdf-compressor#website-owners",
+            "benefits": [
+              "Faster page load times",
+              "Better SEO rankings",
+              "Improved user experience",
+              "Reduced bandwidth costs"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "How does PDF compression work?",
+            "answer": "Our PDF compressor uses advanced algorithms to reduce the file size of your PDF documents. It removes unnecessary data, optimizes images, and compresses fonts while maintaining document quality."
+          },
+          {
+            "question": "Will the compression affect my document quality?",
+            "answer": "Our compression tool is designed to maintain the best possible quality while reducing file size. You can choose between low, medium, and high compression levels depending on your needs."
+          },
+          {
+            "question": "Is my data secure?",
+            "answer": "Yes, all PDF compression happens in your browser. Your files are not uploaded to our servers, ensuring complete privacy and security."
+          },
+          {
+            "question": "How much can I reduce my PDF file size?",
+            "answer": "The compression ratio depends on the content of your PDF. Files with many images can typically be reduced by 50-90%, while text-only PDFs may see smaller reductions."
+          },
+          {
+            "question": "Do I need to create an account to use this tool?",
+            "answer": "No, our PDF Compress Tool is completely free and doesn't require any registration or account creation."
+          },
+          {
+            "question": "How to compress a PDF file online?",
+            "answer": "Upload your PDF file, choose compression level, and download the compressed version."
+          },
+          {
+            "question": "Does compression reduce quality?",
+            "answer": "Our smart compression maintains the best possible quality while reducing file size."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pdf-merge",
+      "name": "PDF Merger",
+      "route": "/pdf-merger",
+      "category": "PDF Tools",
+      "icon": "merge-pdf.png",
+      "iconAlt": "PDF Merger",
+      "shortDescription": "Merge multiple PDF files",
+      "longDescription": "Combine multiple PDF files into one document. Merge PDFs in any order with this free online tool.",
+      "buttonText": "Merge PDFs",
+      "tags": [
+        "Free",
+        "Fast",
+        "No Registration",
+        "Secure",
+        "Unlimited"
+      ],
+      "seo": {
+        "title": "Free PDF Merger Online | Combine Multiple PDF Files | MyToolTrove",
+        "metaDescription": "Merge multiple PDF files into one document online for free. Combine PDFs in any order. Fast, secure, and no registration required.",
+        "keywords": [
+          "pdf merger",
+          "combine pdf",
+          "merge pdf files",
+          "join pdf",
+          "pdf combiner",
+          "merge pdf online",
+          "free pdf merger",
+          "pdf joiner",
+          "combine pdf files",
+          "pdf merge tool"
+        ],
+        "h1": "Free Online PDF Merger",
+        "h2": "Combine Multiple PDF Files into One",
+        "canonicalUrl": "/pdf-merger"
+      },
+      "aboutSection": {
+        "badgeText": "#1 Free PDF Merger",
+        "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+        "title": "Merge PDF Files Instantly",
+        "description": "Combine multiple PDF files into one document quickly and securely. Our free online tool makes PDF merging simple with drag-and-drop functionality.",
+        "ctaPrimaryText": "Start Merging Now",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure & Private",
+            "description": "All merging happens in your browser. Your files never leave your device."
+          },
+          {
+            "icon": "M4 6h16M4 12h16M4 18h16",
+            "title": "Reorder Pages",
+            "description": "Arrange PDFs in any order before merging"
+          },
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Lightning Fast",
+            "description": "Process your PDFs in seconds. No uploads, no waiting."
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Free Forever",
+            "description": "No registration required. Completely free to use."
+          }
+        ],
+        "visualContent": {
+          "type": "image",
+          "src": "/merge-pdf.png",
+          "alt": "PDF Merger Preview"
+        }
+      },
+      "featuresSection": {
+        "label": "PDF Merger Features",
+        "title": "Everything You Need to Merge PDFs",
+        "subtitle": "Powerful features to combine your PDF files easily.",
+        "features": [
+          {
+            "iconPath": "M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 01-2-2V5a2 2 0 012-2h2",
+            "title": "Unlimited Files",
+            "description": "Merge as many PDF files as you need in one go"
+          },
+          {
+            "iconPath": "M4 6h16M4 12h16M4 18h16",
+            "title": "Drag to Reorder",
+            "description": "Easily rearrange PDF order before merging"
+          },
+          {
+            "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Fast Processing",
+            "description": "Merge PDFs in seconds with efficient algorithms"
+          },
+          {
+            "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure",
+            "description": "All processing happens locally in your browser"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Simple Interface",
+            "description": "Intuitive drag-and-drop interface"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+            "title": "Instant Download",
+            "description": "Get your merged PDF immediately"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Use the PDF Merger?",
+        "description": "From students to businesses, PDF merging helps everyone.",
+        "label": "Perfect for Document Management",
+        "useCases": [
+          {
+            "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+            "title": "Students",
+            "description": "Combine multiple assignment files into one submission.",
+            "link": "/pdf-merger#students",
+            "benefits": [
+              "Submit complete assignments in one file",
+              "Combine research and supporting documents",
+              "Easy sharing with professors",
+              "Organized project submissions"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#3b82f6"
+          },
+          {
+            "icon": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+            "title": "Professionals",
+            "description": "Merge reports, contracts, and documents into single files.",
+            "link": "/pdf-merger#professionals",
+            "benefits": [
+              "Create comprehensive reports from sections",
+              "Combine contracts with appendices",
+              "Professional document consolidation",
+              "Streamlined client deliverables"
+            ],
+            "color": "#d1fae5",
+            "iconColor": "#10b981"
+          },
+          {
+            "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+            "title": "Businesses",
+            "description": "Combine invoices, receipts, and documents for record-keeping.",
+            "link": "/pdf-merger#businesses",
+            "benefits": [
+              "Organize monthly invoices together",
+              "Combine receipts for expense reports",
+              "Archive complete project documentation",
+              "Streamlined record management"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b"
+          },
+          {
+            "icon": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+            "title": "Researchers",
+            "description": "Combine research papers, articles, and references.",
+            "link": "/pdf-merger#researchers",
+            "benefits": [
+              "Unify research with supporting data",
+              "Combine papers with bibliographies",
+              "Create complete thesis documents",
+              "Merge studies and appendices"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "How to merge PDF files online for free?",
+            "answer": "Simply drag and drop your PDF files into our merge tool, arrange them in your desired order by dragging, and click merge. Your combined PDF will be ready to download in seconds."
+          },
+          {
+            "question": "Is it safe to merge PDFs online?",
+            "answer": "Yes! Our PDF merger processes everything in your browser. Your files never leave your device, ensuring complete privacy and security. No data is uploaded to any server."
+          },
+          {
+            "question": "How many PDF files can I merge at once?",
+            "answer": "You can merge unlimited PDF files in a single session. Simply add as many files as you need and arrange them in the order you want them combined."
+          },
+          {
+            "question": "Can I select specific pages to merge?",
+            "answer": "Yes! Our advanced page selection feature lets you choose exactly which pages from each PDF you want to include in your merged document."
+          },
+          {
+            "question": "Do I need to install any software?",
+            "answer": "No software installation required. Our PDF merger works entirely in your web browser. Just open the tool, add your files, and merge them online instantly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-compressor",
+      "name": "Image Compressor",
+      "route": "/image-compressor",
+      "category": "Image Tools",
+      "icon": "",
+      "iconAlt": "Image Compressor",
+      "shortDescription": "Compress images online",
+      "longDescription": "Reduce image file size while maintaining quality. Compress JPEG, PNG, and WebP images for web optimization.",
+      "buttonText": "Compress Image",
+      "tags": [
+        "Free",
+        "Fast",
+        "No Registration",
+        "Multiple Formats",
+        "Batch"
+      ],
+      "seo": {
+        "title": "Free Image Compressor Online | Reduce Image File Size | MyToolTrove",
+        "metaDescription": "Compress images online for free. Reduce JPEG, PNG, and WebP file sizes while maintaining quality. Perfect for web optimization and faster loading.",
+        "keywords": [
+          "image compressor",
+          "compress image",
+          "reduce image size",
+          "jpeg compressor",
+          "png compressor",
+          "image optimizer",
+          "photo compressor",
+          "picture compressor",
+          "free image compressor",
+          "web image optimizer"
+        ],
+        "h1": "Free Online Image Compressor",
+        "h2": "Reduce Image File Size Without Losing Quality",
+        "canonicalUrl": "/image-compressor"
+      },
+      "aboutSection": {
+        "badgeText": "#1 Free Image Compressor",
+        "badgeIcon": "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+        "title": "Compress Images in Seconds",
+        "description": "Our free image compressor reduces file sizes for JPEG, PNG, and WebP images while maintaining visual quality. Perfect for web optimization and faster page loading.",
+        "ctaPrimaryText": "Compress Your Images",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Lightning Fast",
+            "description": "Compress your images in seconds. No uploads, no waiting."
+          },
+          {
+            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "Secure Processing",
+            "description": "Images are processed locally in your browser - never uploaded"
+          },
+          {
+            "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Easy to Use",
+            "description": "Simple drag-and-drop interface for quick compression"
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Free Forever",
+            "description": "No registration required. Completely free to use."
+          }
+        ],
+        "visualContent": {
+          "type": "image",
+          "src": "/compress-image.png",
+          "alt": "Image Compressor Preview"
+        }
+      },
+      "featuresSection": {
+        "label": "Image Compressor Features",
+        "title": "Everything You Need to Compress Images",
+        "subtitle": "Powerful features to reduce your image file size efficiently.",
+        "features": [
+          {
+            "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Lightning Fast",
+            "description": "Compress images in seconds with efficient algorithms"
+          },
+          {
+            "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure",
+            "description": "All processing happens locally - your images never leave your device"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Drag & Drop",
+            "description": "Simply drag and drop your image to start compression"
+          },
+          {
+            "iconPath": "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
+            "title": "Quality Control",
+            "description": "Adjust compression level based on your needs"
+          },
+          {
+            "iconPath": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+            "title": "Multiple Formats",
+            "description": "Support for JPEG, PNG, and WebP formats"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+            "title": "Instant Download",
+            "description": "Download compressed image immediately after processing"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Use the Image Compressor?",
+        "description": "From bloggers to developers, everyone benefits from optimized images.",
+        "label": "Perfect for Web Optimization",
+        "useCases": [
+          {
+            "icon": "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z",
+            "title": "Bloggers",
+            "description": "Optimize images for faster blog loading and better SEO.",
+            "link": "/image-compressor#bloggers",
+            "benefits": [
+              "Faster page load times",
+              "Improved SEO rankings",
+              "Reduced bandwidth usage",
+              "Better reader experience"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#3b82f6"
+          },
+          {
+            "icon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4M7 4h10a1 1 0 011 1v14a1 1 0 01-1 1H7a1 1 0 01-1-1V5a1 1 0 011-1z",
+            "title": "Web Developers",
+            "description": "Reduce image sizes for faster website performance.",
+            "link": "/image-compressor#web-developers",
+            "benefits": [
+              "Improved Core Web Vitals",
+              "Faster site performance",
+              "Reduced server load",
+              "Better mobile experience"
+            ],
+            "color": "#d1fae5",
+            "iconColor": "#10b981"
+          },
+          {
+            "icon": "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+            "title": "Social Media",
+            "description": "Compress images for faster social media uploads.",
+            "link": "/image-compressor#social-media",
+            "benefits": [
+              "Faster upload times",
+              "Platform size compliance",
+              "Quick content sharing",
+              "Data savings"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b"
+          },
+          {
+            "icon": "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+            "title": "Photographers",
+            "description": "Reduce portfolio image sizes while maintaining quality.",
+            "link": "/image-compressor#photographers",
+            "benefits": [
+              "Faster portfolio loading",
+              "Client-friendly file sizes",
+              "Easy online galleries",
+              "Quality preservation"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "How does image compression work?",
+            "answer": "Our image compressor uses advanced algorithms to reduce file size while maintaining visual quality. It optimizes the image data, reduces colors where possible, and removes unnecessary metadata."
+          },
+          {
+            "question": "Will compression affect image quality?",
+            "answer": "Our compression is designed to maintain the best possible quality while reducing file size. You can adjust the quality slider to balance between file size and image quality."
+          },
+          {
+            "question": "What image formats are supported?",
+            "answer": "We support JPG, PNG, WebP, and GIF formats. You can choose to keep the original format or convert to a different format."
+          },
+          {
+            "question": "Is my data secure?",
+            "answer": "Yes, all image compression happens in your browser. Your images are never uploaded to our servers, ensuring complete privacy and security."
+          },
+          {
+            "question": "How much can I reduce the image size?",
+            "answer": "The compression ratio depends on the image content and selected quality level. Typically, you can reduce file size by 50-90% for JPG images."
+          },
+          {
+            "question": "How to compress an image?",
+            "answer": "Upload your image, choose compression level, and download the optimized image. It's that easy!"
+          },
+          {
+            "question": "Does compression lose quality?",
+            "answer": "Our smart compression maintains the best balance between file size and image quality."
+          }
+        ]
+      }
+    }
+  ]
+}

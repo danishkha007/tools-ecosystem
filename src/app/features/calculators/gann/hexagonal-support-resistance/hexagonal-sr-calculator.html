@@ -1,0 +1,79 @@
+<div class="container">
+    <!-- Reusable Tool Header Component -->
+    <app-tool-header [title]="toolData.seo.h1" [subtitle]="toolData.seo.h2"
+        [tags]="[...toolData.seo.keywords, ...toolData.tags]"></app-tool-header>
+
+    <div class="calculator-card">
+        <div class="input-section">
+            <div class="input-group">
+                <label for="priceInput">Enter Market Price</label>
+                <input type="number" id="priceInput" [(ngModel)]="inputValue" placeholder="Enter market price..."
+                    (keyup.enter)="calculate()" />
+            </div>
+
+            <div class="button-group">
+                <button class="calculate-btn" (click)="calculate()" [disabled]="!inputValue">Calculate</button>
+                <button class="clear-btn" (click)="clear()" *ngIf="showResults">Clear</button>
+            </div>
+        </div>
+
+        <div class="results-section" *ngIf="showResults && levels.length > 0">
+            <div class="results-header">
+                <h3>Dynamic Support & Resistance Levels</h3>
+                <span class="base-price">Current Market Price: {{ inputValue | number:'1.2-2' }}</span>
+            </div>
+
+            <div class="levels-table-container">
+                <table class="levels-table">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Support Level</th>
+                            <th>Resistance Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of tableRows" [class.current-row]="row.degree === '0'">
+                            <td class="degree-cell">{{ row.degree }}°</td>
+                            <td class="support-cell" [class.no-value]="row.support === null">
+                                <span *ngIf="row.support !== null">{{ row.support | number:'1.2-2' }}</span>
+                                <span *ngIf="row.support === null">—</span>
+                            </td>
+                            <td class="resistance-cell" [class.no-value]="row.resistance === null">
+                                <span *ngIf="row.resistance !== null">{{ row.resistance | number:'1.2-2' }}</span>
+                                <span *ngIf="row.resistance === null">—</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Visual Hexagon Representation -->
+            <!-- <div class="hexagon-visual">
+                <h4>Dynamic GANN Hexagon</h4>
+                <div class="hex-display">
+                    <div class="hex-center-node">{{ inputValue | number:'1.0-0' }}</div>
+                    <div class="hex-rings-layout">
+                        <div *ngFor="let ring of hexagonRings; let i = index" class="hex-ring-dynamic" [style.z-index]="10 - i">
+                            <div *ngFor="let level of ring.levels" class="hex-cell-dynamic" [ngClass]="level.type">
+                                <span class="cell-label">{{ level.type === 'resistance' ? 'R' : 'S' }}{{ i + 1 }}</span>
+                                <span class="cell-value">{{ level.level | number:'1.0-0' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <app-seo-content [toolId]="toolId" >
+        <div visual-content-input>
+            <div class="hexagon-visual-mini" style="text-align: center;">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1">
+                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+                    <circle cx="12" cy="12" r="3" fill="#3b82f6" fill-opacity="0.1" />
+                </svg>
+            </div>
+        </div>
+    </app-seo-content>
+</div>

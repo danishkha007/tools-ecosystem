@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FAQSection } from '../../core/models/tool-data.model';
 
 export interface FaqItem {
   question: string;
@@ -14,6 +15,7 @@ export interface FaqItem {
   styleUrl: './faq-section.scss',
 })
 export class FaqSectionComponent {
+  @Input() faqSection : FAQSection = {} as FAQSection
   @Input() title: string = 'Frequently Asked Questions';
   @Input() faqs: FaqItem[] = [];
   @Input() accentColor: string = '#2f84ff';

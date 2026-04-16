@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
-import { UseCaseModalComponent } from '../../components/use-case-modal/use-case-modal';
 import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { AboutSectionComponent } from '../../components/about-section/about-section';
-import { ToolConfigService } from '../../core/services/tool-config';
-import { ToolSEO } from '../../core/models/tool';
+import { ToolData } from '../../core/models/tool-data.model';
+import { SeoService } from '../../core/services/seo.service';
+import { ToolDataService } from '../../core/services/tool-data.service';
+import { SeoContentComponent } from "../../components/seo-content/seo-content";
 
 interface CompressImage {
   file: File;
@@ -21,11 +20,13 @@ interface CompressImage {
 @Component({
   selector: 'app-image-compressor',
   standalone: true,
-  imports: [CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule, ToolHeaderComponent, AboutSectionComponent],
+  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent],
   templateUrl: './image-compressor.html',
   styleUrl: './image-compressor.scss',
 })
 export class ImageCompressor implements OnInit {
+
+  toolId = 'image-compressor';
 
   selectedFiles: CompressImage[] = [];
   loading = false;
@@ -41,134 +42,21 @@ export class ImageCompressor implements OnInit {
   
   // Output format
   outputFormat: 'original' | 'jpeg' | 'png' | 'webp' = 'original';
-  
-  // SEO data loaded from tool config
-  seoTitle = '';
-  seoMetaDescription = '';
-  seoH1 = '';
-  seoH2 = '';
-  
-  // FAQ Configuration
-  faqTitle = 'Frequently Asked Questions';
-  faqAccentColor = '#2f84ff';
-  expandedFaqIndex: number | null = 0;
-  
-  // Use Case Modal State
-  showUseCaseModal = false;
-  currentUseCase: {
-    title: string;
-    description: string;
-    benefits: string[];
-    icon: string;
-    color: string;
-  } | null = null;
-
-  // Use Case Data
-  useCaseDetails: { [key: number]: any } = {
-    1: {
-      title: 'Website Optimization',
-      description: 'Compress images for your website to improve loading speeds and SEO rankings. Faster websites mean better user experience and higher search engine rankings.',
-      benefits: [
-        'Faster website loading times',
-        'Better SEO rankings',
-        'Reduced bandwidth usage',
-        'Improved user experience on mobile'
-      ],
-      icon: 'upload',
-      color: '#dbeafe'
-    },
-    2: {
-      title: 'Email Attachments',
-      description: 'Compress images before attaching to emails. Stay within attachment limits and send high-quality images without exceeding email provider limits.',
-      benefits: [
-        'Stay within email attachment limits',
-        'Send more images per email',
-        'Faster email sending',
-        'Save storage space'
-      ],
-      icon: 'email',
-      color: '#d1fae5'
-    },
-    3: {
-      title: 'Social Media',
-      description: 'Prepare images for social media platforms. Compress to optimal sizes for posting while maintaining visual quality.',
-      benefits: [
-        'Optimal file sizes for social platforms',
-        'Faster uploads to social media',
-        'Save mobile data when posting',
-        'Maintain image quality'
-      ],
-      icon: 'mobile',
-      color: '#fce7f3'
-    },
-    4: {
-      title: 'Storage Saving',
-      description: 'Free up storage space on your device by compressing existing images. Reduce file sizes without significant quality loss.',
-      benefits: [
-        'Save significant storage space',
-        'Batch compress multiple images',
-        'Maintain image quality options',
-        'Organize and optimize your library'
-      ],
-      icon: 'archive',
-      color: '#fef3c7'
-    }
-  };
-  
-  faqs: FaqItem[] = [
-    {
-      question: 'How does image compression work?',
-      answer: 'Our image compressor uses advanced algorithms to reduce file size while maintaining visual quality. It optimizes the image data, reduces colors where possible, and removes unnecessary metadata.'
-    },
-    {
-      question: 'Will compression affect image quality?',
-      answer: 'Our compression is designed to maintain the best possible quality while reducing file size. You can adjust the quality slider to balance between file size and image quality.'
-    },
-    {
-      question: 'What image formats are supported?',
-      answer: 'We support JPG, PNG, WebP, and GIF formats. You can choose to keep the original format or convert to a different format.'
-    },
-    {
-      question: 'Is my data secure?',
-      answer: 'Yes, all image compression happens in your browser. Your images are never uploaded to our servers, ensuring complete privacy and security.'
-    },
-    {
-      question: 'How much can I reduce the image size?',
-      answer: 'The compression ratio depends on the image content and selected quality level. Typically, you can reduce file size by 50-90% for JPG images.'
-    }
-  ];
+  toolData: ToolData = {} as ToolData;
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private toolConfigService: ToolConfigService
+    private seoService: SeoService,
+    private toolDataService: ToolDataService
   ) {
-    this.loadSeoData();
+    const tool = this.toolDataService.getToolById(this.toolId);
+    if (tool) {
+      this.toolData = tool;
+    }
   }
 
-  ngOnInit(): void {}
-
-  loadSeoData() {
-    const tools = this.toolConfigService.getAllTools();
-    const tool = tools.find(t => t.id === 'image-compress');
-    
-    if (tool && tool.seo) {
-      const seo: ToolSEO = tool.seo;
-      this.seoTitle = seo.title;
-      this.seoMetaDescription = seo.metaDescription;
-      this.seoH1 = seo.h1;
-      this.seoH2 = seo.h2;
-      this.faqs = [...this.faqs, ...(seo.faqs || [])];
-      
-      document.title = seo.title || 'ToolTrove';
-      
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', seo.metaDescription || '');
-    }
+  ngOnInit(): void {
+    this.seoService.setSeoData(this.toolData.seo);
   }
 
   async onFileSelect(event: Event) {
@@ -449,24 +337,5 @@ export class ImageCompressor implements OnInit {
 
     const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
     await this.processFiles(imageFiles);
-  }
-
-  scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  openUseCaseModal(useCaseId: number): void {
-    const useCase = this.useCaseDetails[useCaseId];
-    if (useCase) {
-      this.currentUseCase = useCase;
-      this.showUseCaseModal = true;
-      this.cdr.detectChanges();
-    }
-  }
-
-  closeUseCaseModal(): void {
-    this.showUseCaseModal = false;
-    this.currentUseCase = null;
-    this.cdr.detectChanges();
   }
 }

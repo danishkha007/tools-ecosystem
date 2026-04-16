@@ -1,0 +1,30 @@
+@if (toolData) {
+  <!-- SEO Content -->
+    <div class="seo-content" style="margin-top: 32px;">
+        @if (toolData.aboutSection) {
+        <app-about-section [aboutSection]="toolData.aboutSection">
+            <ng-content visual-content select="[visual-content-input]"></ng-content>
+        </app-about-section>
+        }
+
+        <!-- Features Section -->
+        @if (toolData.featuresSection) {
+        <app-features-section [featuresSection]="toolData.featuresSection"></app-features-section>
+        }
+
+        <!-- Use Cases Section -->
+        @if (toolData.useCasesSection) {
+        <app-use-case-section [useCasesSection]="toolData.useCasesSection"></app-use-case-section>
+        }
+
+        <!-- How GANN Theory Works Section -->
+         @if (toolData.theorySection) {
+        <app-theory-section [theorySection]="toolData.theorySection"></app-theory-section>
+        }
+        <!-- FAQ Section -->
+        @if (toolData.faqSection) {
+        <app-faq-section [faqSection]="toolData.faqSection"></app-faq-section>
+        }
+    </div>
+  
+}

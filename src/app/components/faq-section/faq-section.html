@@ -9,12 +9,12 @@
                 </svg>
                 Common Questions
             </span>
-            <h2>{{ title }}</h2>
-            <p class="faq-subtitle">Find answers to the most frequently asked questions about our resume builder.</p>
+            <h2>{{ faqSection.title }}</h2>
+            <p class="faq-subtitle">{{ faqSection.subtitle }}</p>
         </div>
         
         <div class="faq-grid">
-            @for (faq of faqs; track faq; let i = $index) {
+            @for (faq of faqSection.faqs; track faq; let i = $index) {
                 <div class="faq-card" [class.expanded]="expandedIndex === i">
                     <button class="faq-question" (click)="toggleFaq(i)">
                         <div class="question-left">
