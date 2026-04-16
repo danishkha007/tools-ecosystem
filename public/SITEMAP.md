@@ -1,7 +1,7 @@
-# ToolTrove Website Sitemap
+# MyToolTrove Website Sitemap
 
 ## 📋 Overview
-ToolTrove is a comprehensive suite of free online tools organized into 6 main categories.
+MyToolTrove is a comprehensive suite of free online tools organized into 6 main categories.
 
 **Total Pages: 7**
 - **Active Tools: 4**

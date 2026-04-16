@@ -1,0 +1,53 @@
+<div class="use-case-section">
+  <div class="use-case-header">
+    <span class="use-cases-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+      {{ useCasesSection.label }}
+    </span>
+    <h2>{{ useCasesSection.title }}</h2>
+    <p>{{ useCasesSection.description }}</p>
+  </div>
+</div>
+<div class="use-case-grid">
+  @for (useCase of useCasesSection.useCases; track useCase.title) {
+    <div class="use-case-card card-{{ $index }}" [style.--card-color]="useCase.color">
+      <div class="card-visual">
+        <div class="visual-bg" [style.background]="useCase.color"></div>
+        <div class="card-icon-wrapper">
+          @if (useCase.icon) {
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="true">
+            <path [attr.d]="useCase.icon"></path>
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6m8.66-15.66l-4.24 4.24m-4.24 4.24l-4.24 4.24m15.66-8.66l-6 0m-6 0l-6 0"></path>
+        </svg>
+      }
+    </div>
+  </div>
+  <div class="card-info">
+    <h3>{{ useCase.title }}</h3>
+    <p>{{ useCase.description }}</p>
+    @if (useCase.link) {
+      <a [href]="useCase.link" class="card-link" (click)="openUseCaseModal($index); $event.preventDefault()">
+        {{ useCase.linkText || 'Learn More' }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="true">
+        <path d="M5 12h14m-6-6l6 6-6 6"></path>
+      </svg>
+    </a>
+  }
+</div>
+</div>
+}
+</div>
+
+<app-use-case-modal [isOpen]="showUseCaseModal" [useCase]="currentUseCase" (close)="closeUseCaseModal()"></app-use-case-modal>

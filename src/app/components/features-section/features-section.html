@@ -1,0 +1,27 @@
+<div class="features-section">
+  <div class="features-header">
+    <span class="features-label" *ngIf="featuresSection.label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" *ngIf="true">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      {{ featuresSection.label }}
+    </span>
+    <h2 class="section-title">{{ featuresSection.title }}</h2>
+    <p class="features-subtitle" *ngIf="featuresSection.subtitle">{{ featuresSection.subtitle }}</p>
+  </div>
+
+</div>
+<div class="features-grid">
+  <div class="feature-card-large" *ngFor="let feature of featuresSection.features">
+    <div class="card-bg-pattern"></div>
+    <div class="card-content">
+      <div class="icon-box-large" *ngIf="feature.iconPath">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path [attr.d]="feature.iconPath" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+    </div>
+  </div>
+</div>

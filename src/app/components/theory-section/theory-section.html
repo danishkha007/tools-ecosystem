@@ -1,0 +1,26 @@
+<div class="theory-section">
+    <div class="theory-header">
+        <span class="theory-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path [attr.d]="theorySection.labelIcon" />
+            </svg>
+            {{ theorySection.label || 'Theory' }}
+        </span>
+        <h2>{{theorySection.title}}</h2>
+        <p>{{theorySection.subtitle}}</p>
+    </div>
+</div>
+<div class="theory-cards-grid">
+    @for (cards of theorySection.cards; track $index) {
+        <div class="theory-card theory-card-{{$index + 1}}">
+        <div class="theory-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path [attr.d]="cards.icon" />
+            </svg>
+        </div>
+        <h3>{{cards.title}}</h3>
+        <p>{{cards.description}}</p>
+    </div>
+
+    }
+</div>

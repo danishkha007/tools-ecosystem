@@ -4,30 +4,37 @@ import { ResumePreviewComponent } from "../../components/resume-templates/resume
 import { ResumePreviewAtsComponent } from "../../components/resume-templates/resume-preview-ats/resume-preview-ats";
 import { ResumeFormComponent } from "../../components/resume-form/resume-form";
 import { FaqSectionComponent, FaqItem } from "../../components/faq-section/faq-section";
-import { UseCaseModalComponent, UseCase } from "../../components/use-case-modal/use-case-modal";
+import { UseCaseModalComponent } from "../../components/use-case-modal/use-case-modal";
 import { ResumeService } from '../../core/services/resume';
 import { Resume } from '../../core/models/resume';
 import { ToolConfigService } from '../../core/services/tool-config';
-import { Tool, ToolSEO } from '../../core/models/tool';
 import html2pdf from 'html2pdf.js';
 import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
+import { ToolData, ToolSEO, UseCase } from '../../core/models/tool-data.model';
+import { SeoService } from '../../core/services/seo.service';
+import { ToolDataService } from '../../core/services/tool-data.service';
+import { AboutSectionComponent } from "../../components/about-section/about-section";
+import { FeaturesSectionComponent } from "../../components/features-section/features-section";
+import { UseCaseSectionComponent } from "../../components/use-case-section/use-case-section";
 
 @Component({
   selector: 'app-resume-builder',
   standalone: true,
-  imports: [CommonModule, ResumePreviewComponent, ResumePreviewAtsComponent, ResumeFormComponent, FaqSectionComponent, UseCaseModalComponent, ToolHeaderComponent],
+  imports: [CommonModule, ResumePreviewComponent, ResumePreviewAtsComponent, ResumeFormComponent, FaqSectionComponent, ToolHeaderComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent],
   templateUrl: './resume-builder.html',
   styleUrl: './resume-builder.scss',
 })
 export class ResumeBuilder implements OnInit {
   @ViewChild(ResumeFormComponent) resumeFormComponent!: ResumeFormComponent;
   @ViewChild('resumePreview') resumePreview!: ElementRef;
-  
+
+  toolData: ToolData = {} as ToolData;
+
   resumeProgress = 0;
   selectedTemplate: 'modern' | 'ats' = 'modern';
   showTemplateModal = true;
   currentStep = 0;
-  
+
   // SEO data
   seoTitle = '';
   seoMetaDescription = '';
@@ -37,7 +44,7 @@ export class ResumeBuilder implements OnInit {
   faqTitle = 'Frequently Asked Questions';
   faqAccentColor = '#2f84ff';
   expandedFaqIndex: number | null = 0;
-  
+
   formSteps = [
     'Personal Info',
     'Summary',
@@ -102,25 +109,33 @@ export class ResumeBuilder implements OnInit {
       color: '#fce7f3'
     }
   };
-  
+
   constructor(
     private resumeService: ResumeService,
-    private toolConfigService: ToolConfigService
-  ) {}
-  
-  ngOnInit() {
+    private toolConfigService: ToolConfigService,
+    private seoService: SeoService,
+    private toolDataService: ToolDataService
+  ) {
+    const tool = this.toolDataService.getToolById('resume-builder');
+    if (tool) {
+      this.toolData = tool;
+    }
+  }
+
+  ngOnInit(): void {
+    this.seoService.setSeoData(this.toolData.seo);
     this.resumeService.resume$.subscribe(resume => {
       this.calculateProgress(resume);
     });
-    
+
     // Load SEO data from tool config
     this.loadSeoData();
   }
-  
+
   loadSeoData() {
     const tools = this.toolConfigService.getAllTools();
     const resumeTool = tools.find(t => t.id === 'resume');
-    
+
     if (resumeTool && resumeTool.seo) {
       const seo: ToolSEO = resumeTool.seo;
       this.seoTitle = seo.title;
@@ -128,10 +143,10 @@ export class ResumeBuilder implements OnInit {
       this.seoH1 = seo.h1;
       this.seoH2 = seo.h2;
       this.faqs = seo.faqs || [];
-      
+
       // Set document title and meta description
-      document.title = seo.title || 'ToolTrove';
-      
+      document.title = seo.title || 'MyToolTrove';
+
       // Update meta description
       let metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) {
@@ -142,21 +157,21 @@ export class ResumeBuilder implements OnInit {
       metaDesc.setAttribute('content', seo.metaDescription || '');
     }
   }
-  
+
   closeTemplateModal() {
     this.showTemplateModal = false;
   }
-  
+
   selectTemplate(template: 'modern' | 'ats') {
     this.selectedTemplate = template;
   }
-  
+
   goToStep(step: number) {
     if (step >= 0 && step < this.formSteps.length && step <= this.currentStep) {
       this.currentStep = step;
     }
   }
-  
+
   nextStep() {
     if (this.resumeFormComponent) {
       const isComplete = this.resumeFormComponent.isStepComplete(this.currentStep);
@@ -165,30 +180,30 @@ export class ResumeBuilder implements OnInit {
         return;
       }
     }
-    
+
     if (this.currentStep < this.formSteps.length - 1) {
       this.currentStep++;
     }
   }
-  
+
   previousStep() {
     if (this.currentStep > 0) {
       this.currentStep--;
     }
   }
-  
+
   onStepChange(step: number) {
     this.currentStep = step;
   }
-  
+
   downloadPdf() {
     const resume = this.resumeService.getValue();
     const element = this.resumePreview.nativeElement;
-    
-    const filename = resume.personal?.name 
-      ? resume.personal.name.replace(/\s+/g, '_') + '.pdf' 
+
+    const filename = resume.personal?.name
+      ? resume.personal.name.replace(/\s+/g, '_') + '.pdf'
       : 'resume.pdf';
-    
+
     const opt: any = {
       margin: 10,
       filename: filename,
@@ -196,26 +211,26 @@ export class ResumeBuilder implements OnInit {
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
-    
+
     html2pdf().set(opt).from(element).save();
   }
-  
+
   calculateProgress(resume: Resume): void {
     let filledFields = 0;
     const totalFields = 10;
-    
+
     if (resume.personal?.name) filledFields++;
     if (resume.personal?.email) filledFields++;
     if (resume.personal?.phone) filledFields++;
     if (resume.personal?.jobTitle) filledFields++;
-    
+
     if (resume.summary) filledFields++;
     if (resume.skills?.length) filledFields++;
     if (resume.experience?.length) filledFields++;
     if (resume.education?.length) filledFields++;
     if (resume.certifications?.length) filledFields++;
     if (resume.projects?.length) filledFields++;
-    
+
     this.resumeProgress = Math.round((filledFields / totalFields) * 100);
   }
 

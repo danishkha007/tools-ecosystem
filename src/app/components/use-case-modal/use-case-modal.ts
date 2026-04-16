@@ -1,14 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-export interface UseCase {
-  id?: number;
-  title: string;
-  description: string;
-  benefits: string[];
-  icon: string;
-  color: string;
-}
+import { UseCase } from '../../core/models/tool-data.model';
+// import { UseCase } from '../use-case-section/use-case-section';
 
 @Component({
   selector: 'app-use-case-modal',

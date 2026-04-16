@@ -1,15 +1,15 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, inject, NgZone, OnInit } from '@angular/core';
 import { PdfService } from '../../core/services/pdf';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
-import { UseCaseModalComponent, UseCase } from '../../components/use-case-modal/use-case-modal';
-import { ToolConfigService } from '../../core/services/tool-config';
-import { Tool, ToolSEO } from '../../core/models/tool';
 import * as pdfjsLib from 'pdfjs-dist';
 import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
+import { ToolData, ToolSEO, UseCase } from '../../core/models/tool-data.model';
+import { SeoService } from '@core/services/seo.service';
+import { ToolDataService } from '@core/services/tool-data.service';
+import { SeoContentComponent } from "../../components/seo-content/seo-content";
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
@@ -35,10 +35,10 @@ interface PageItem {
   selector: 'app-pdf-merge',
   templateUrl: './pdf-merge.html',
   styleUrls: ['./pdf-merge.scss'],
-  imports: [DragDropModule, CommonModule, FaqSectionComponent, UseCaseModalComponent, FormsModule, ToolHeaderComponent]
+  imports: [DragDropModule, CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
 })
 export class PdfMergeComponent implements OnInit {
-
+  toolId= 'pdf-merge';
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
   loading = false;
@@ -70,141 +70,25 @@ export class PdfMergeComponent implements OnInit {
       this.generateAllPageThumbnailsForAll();
     }
   }
-  
-  // SEO data loaded from tool config
-  seoTitle = '';
-  seoMetaDescription = '';
-  seoH1 = '';
-  seoH2 = '';
-  
-  // FAQ Configuration
-  faqTitle = 'Frequently Asked Questions';
-  faqAccentColor = '#2f84ff';
-  expandedFaqIndex: number | null = 0;
-  
-  faqs: FaqItem[] = [
-    {
-      question: 'How do I merge PDF files?',
-      answer: 'Simply drag and drop your PDF files into the upload area, or click "Browse Files" to select them from your computer. Once uploaded, click "Merge PDFs" to combine them into a single document.'
-    },
-    {
-      question: 'Can I reorder the PDF files before merging?',
-      answer: 'Yes! You can drag and drop the uploaded PDF files to rearrange their order. The final merged PDF will follow the order you set.'
-    },
-    {
-      question: 'Is there a limit to how many PDFs I can merge?',
-      answer: 'Our tool supports merging multiple PDF files. While there\'s no strict limit, very large files may take longer to process.'
-    },
-    {
-      question: 'Do I need to create an account to use this tool?',
-      answer: 'No, our PDF Merge Tool is completely free and doesn\'t require any registration or account creation.'
-    },
-    {
-      question: 'Is my data secure?',
-      answer: 'Yes, all PDF processing happens in your browser. Your files are not uploaded to our servers, ensuring complete privacy and security.'
-    }
-  ];
 
-  // Use Case Modal State
-  showUseCaseModal = false;
-  currentUseCase: {
-    title: string;
-    description: string;
-    benefits: string[];
-    icon: string;
-    color: string;
-  } | null = null;
-
-  // Use Case Data
-  useCaseDetails: { [key: number]: any } = {
-    1: {
-      title: 'Combine Reports',
-      description: 'Easily merge multiple PDF reports into a single comprehensive document. Whether you\'re consolidating quarterly financial reports, project status updates, or research findings, our PDF merger handles it all seamlessly.',
-      benefits: [
-        'Combine multiple quarterly reports into one annual document',
-        'Merge research papers and supporting data files',
-        'Create comprehensive project documentation from individual reports',
-        'Preserve formatting and quality of all source documents'
-      ],
-      icon: 'report',
-      color: '#dbeafe'
-    },
-    2: {
-      title: 'Merge Chapters',
-      description: 'Combine book chapters, document sections, or course materials into a complete file. Perfect for eBook creation, academic papers, or any multi-part document that needs to be unified.',
-      benefits: [
-        'Create complete eBooks from individual chapters',
-        'Merge academic papers with appendices and references',
-        'Combine course materials and lecture notes',
-        'Unite multi-part manuals and guides'
-      ],
-      icon: 'book',
-      color: '#d1fae5'
-    },
-    3: {
-      title: 'Organize Documents',
-      description: 'Consolidate scattered PDFs from different sources into organized, single documents. Stop juggling multiple files and create a tidy, professional archive of your important papers.',
-      benefits: [
-        'Consolidate invoices and receipts by month or client',
-        'Merge scattered contracts and agreements',
-        'Create organized project folders from mixed documents',
-        'Combine personal documents like certificates and IDs'
-      ],
-      icon: 'folder',
-      color: '#fef3c7'
-    },
-    4: {
-      title: 'Merge Scans',
-      description: 'Combine multiple scanned documents into one continuous file. Transform separate scan pages into cohesive documents that are easy to share and archive.',
-      benefits: [
-        'Merge scanned pages of a single document',
-        'Combine receipts and invoices from scanning apps',
-        'Create complete contracts from multiple scans',
-        'Unite handwritten notes with printed materials'
-      ],
-      icon: 'scan',
-      color: '#fce7f3'
-    }
-  };
+  toolData: ToolData = {} as ToolData;
+  private toolDataService = inject(ToolDataService);
+  private seoService = inject(SeoService);
 
   constructor(
     private pdfService: PdfService, 
     private cdr: ChangeDetectorRef, 
-    private ngZone: NgZone,
-    private toolConfigService: ToolConfigService
+    private ngZone: NgZone
   ) {
-    // Load SEO data from tool config
-    this.loadSeoData();
+    const tool = this.toolDataService.getToolById('pdf-merge');
+    if (tool) {
+      this.toolData = tool;
+    }
   }
 
   ngOnInit(): void {
     // SEO data is loaded in constructor
-  }
-
-  loadSeoData() {
-    const tools = this.toolConfigService.getAllTools();
-    const pdfMergeTool = tools.find(t => t.id === 'merge-pdf');
-    
-    if (pdfMergeTool && pdfMergeTool.seo) {
-      const seo: ToolSEO = pdfMergeTool.seo;
-      this.seoTitle = seo.title;
-      this.seoMetaDescription = seo.metaDescription;
-      this.seoH1 = seo.h1;
-      this.seoH2 = seo.h2;
-      this.faqs = seo.faqs || [];
-      
-      // Set document title and meta description
-      document.title = seo.title || 'ToolTrove';
-      
-      // Update meta description
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', seo.metaDescription || '');
-    }
+    this.seoService.setSeoData(this.toolData.seo);
   }
 
   async onFileSelect(event: Event) {
@@ -578,23 +462,5 @@ export class PdfMergeComponent implements OnInit {
 
     const pdfFiles = Array.from(files).filter(file => file.type === 'application/pdf');
     await this.processFiles(pdfFiles);
-  }
-
-  // Use Case Modal Methods
-  openUseCaseModal(useCaseId: number): void {
-    this.currentUseCase = this.useCaseDetails[useCaseId];
-    this.showUseCaseModal = true;
-    this.cdr.detectChanges();
-  }
-
-  closeUseCaseModal(): void {
-    this.showUseCaseModal = false;
-    this.currentUseCase = null;
-    this.cdr.detectChanges();
-  }
-
-  // Scroll to top of page
-  scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

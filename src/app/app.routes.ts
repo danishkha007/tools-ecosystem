@@ -22,17 +22,17 @@ export const routes: Routes = [
       import('./features/resume-builder/resume-builder').then(m => m.ResumeBuilder)
   },
   {
-    path: 'merge-pdf',
+    path: 'pdf-merger',
     loadComponent: () =>
       import('./features/pdf-merge/pdf-merge').then(m => m.PdfMergeComponent)
   },
   {
-    path: 'image-compress',
+    path: 'image-compressor',
     loadComponent: () =>
       import('./features/image-compressor/image-compressor').then(m => m.ImageCompressor)
   },
   {
-    path: 'compress-pdf',
+    path: 'pdf-compressor',
     loadComponent: () =>
       import('./features/pdf-compress/pdf-compress').then(m => m.PdfCompressComponent)
   },
