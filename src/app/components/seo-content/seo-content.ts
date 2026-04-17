@@ -7,11 +7,12 @@ import { UseCaseSectionComponent } from "../use-case-section/use-case-section";
 import { FaqSectionComponent } from "../faq-section/faq-section";
 import { TheorySectionComponent } from '../theory-section/theory-section';
 import { ToolDataService } from '@core/services/tool-data.service';
+import { AmazonAdComponent } from "../amazon-ad/amazon-ad";
 
 @Component({
   selector: 'app-seo-content',
   standalone: true,
-  imports: [CommonModule, FaqSectionComponent, UseCaseSectionComponent, FeaturesSectionComponent, AboutSectionComponent, TheorySectionComponent],
+  imports: [CommonModule, FaqSectionComponent, UseCaseSectionComponent, FeaturesSectionComponent, AboutSectionComponent, TheorySectionComponent, AmazonAdComponent],
   templateUrl: './seo-content.html'
 })
 export class SeoContentComponent {

@@ -30,13 +30,13 @@
 
   <!-- PDF Tools -->
   <url>
-    <loc>https://mytooltrove.com/merge-pdf</loc>
+    <loc>https://mytooltrove.com/pdf-merger</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mytooltrove.com/compress-pdf</loc>
+    <loc>https://mytooltrove.com/pdf-compressor</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>

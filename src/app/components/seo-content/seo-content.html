@@ -1,6 +1,7 @@
 @if (toolData) {
   <!-- SEO Content -->
     <div class="seo-content" style="margin-top: 32px;">
+        <app-amazon-ad size="720x90"></app-amazon-ad>
         @if (toolData.aboutSection) {
         <app-about-section [aboutSection]="toolData.aboutSection">
             <ng-content visual-content select="[visual-content-input]"></ng-content>
@@ -11,7 +12,7 @@
         @if (toolData.featuresSection) {
         <app-features-section [featuresSection]="toolData.featuresSection"></app-features-section>
         }
-
+        <app-amazon-ad size="720x90"></app-amazon-ad>
         <!-- Use Cases Section -->
         @if (toolData.useCasesSection) {
         <app-use-case-section [useCasesSection]="toolData.useCasesSection"></app-use-case-section>
