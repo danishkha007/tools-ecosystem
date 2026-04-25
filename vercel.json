@@ -12,7 +12,8 @@
   ],
   "functions": {
     "api/server/**/*.mts": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "includeFiles":"dist/tools-ecosystem/server/**"
     }
   },
   "headers": [
