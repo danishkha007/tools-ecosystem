@@ -16,11 +16,6 @@
       "destination": "/api/server"
     }
   ],
-  "functions": {
-    "api/server/index.ts": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
