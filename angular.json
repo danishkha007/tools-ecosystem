@@ -71,6 +71,65 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "server": {
+          "builder": "@angular/build:application",
+          "options": {
+            "assets":[
+              "src/manifest.json"
+            ],
+            "server": "src/main.server.ts",
+            "prerender": false,
+            "ssr": {
+              "entry": "server.ts"
+            },
+            "outputPath": "dist/tools-ecosystem",
+            "tsConfig": "tsconfig.server.json",
+            "externalDependencies": [
+              "canvas",
+              "pdfjs-dist"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "buildTarget": "tools-ecosystem:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "tools-ecosystem:build:production"
+            },
+            "development": {
+              "buildTarget": "tools-ecosystem:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular/build:prerender",
+          "options": {
+            "browserTarget": "tools-ecosystem:build:production",
+            "serverTarget": "tools-ecosystem:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "development": {
+              "browserTarget": "tools-ecosystem:build:development",
+              "serverTarget": "tools-ecosystem:server:development"
+            }
+          }
         }
       }
     }
