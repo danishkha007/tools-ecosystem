@@ -11,9 +11,8 @@ let angularApp: AngularAppEngine;
 
 async function initializeServer() {
   // Get the dist folder path - handle both local and Vercel environments
-  const importMetaUrl = import.meta.url;
-  const currentDir = dirname(fileURLToPath(importMetaUrl));
-  const projectRoot = dirname(dirname(currentDir)); // Go up from api/server to project root
+  const currentDir = __dirname;
+  const projectRoot = resolve(currentDir, '..'); // Go up from api/server to project root
 
   let distFolder: string;
   let browserDistFolder: string;
