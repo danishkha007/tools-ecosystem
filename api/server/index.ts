@@ -2,7 +2,7 @@ import { AngularAppEngine } from '@angular/ssr';
 import express from 'express';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join, resolve, dirname } from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 // Get the dist folder path - handle both local and Vercel environments
 const importMetaUrl = import.meta.url;
@@ -33,7 +33,7 @@ console.log('Browser dist folder:', browserDistFolder);
 
 // Check if browser folder exists
 try {
-  if (require('fs').existsSync(browserDistFolder)) {
+  if (existsSync(browserDistFolder)) {
     console.log('Serving static files from:', browserDistFolder);
     app.use(
       express.static(browserDistFolder, {
