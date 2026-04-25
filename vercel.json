@@ -11,7 +11,7 @@
     }
   ],
   "functions": {
-    "api/server/index.mts": {
+    "api/server/index": {
       "maxDuration": 10,
       "memory": 2048,
       "includeFiles":"dist/tools-ecosystem/server/**"
