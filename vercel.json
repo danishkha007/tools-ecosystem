@@ -13,8 +13,7 @@
   "functions": {
     "api/server/index.ts": {
       "maxDuration": 10,
-      "memory": 2048,
-      "runtime": "nodejs@24.x"
+      "memory": 2048
     }
   },
   "headers": [
