@@ -11,7 +11,7 @@ const projectRoot = resolve(currentDir, '..');
 
 // Try to find the dist folder
 let distFolder: string;
-if (process.env.VERCEL) {
+if (process.env['VERCEL']) {
   // Vercel environment - use the output directory structure
   distFolder = resolve(projectRoot, 'dist/tools-ecosystem');
 } else {
@@ -59,7 +59,7 @@ app.all('*', async (req, res) => {
       }
     });
 
-    const isVercel = process.env.VERCEL === '1';
+    const isVercel = process.env['VERCEL'] === '1';
     const baseUrl = isVercel ? `https://${req.headers.host}` : `http://localhost`;
     const requestUrl = `${baseUrl}${req.url}`;
 
@@ -89,6 +89,7 @@ app.all('*', async (req, res) => {
   } catch (err) {
     console.error('SSR Error:', err);
     res.status(500).send('Internal Server Error');
+    return;
   }
 });
 
