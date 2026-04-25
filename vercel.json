@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm ci && npm run build:ssr",
+  "buildCommand": "npm run build:ssr",
   "devCommand": "ng serve",
   "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "dist/tools-ecosystem/browser",
