@@ -1,0 +1,135 @@
+<div class="container">
+    <app-tool-header
+        [title]="toolData.seo.h1"
+        [subtitle]="toolData.seo.h2"
+        [tags]="toolData.tags">
+    </app-tool-header>
+
+    <div class="json-formatter-card">
+        <div class="formatter-header">
+            <div class="format-options">
+                <label class="option-label">
+                    <input type="checkbox" [(ngModel)]="compactMode" (change)="formatJSON()" />
+                    Compact Mode
+                </label>
+                <label class="option-label">
+                    <input type="checkbox" [(ngModel)]="sortKeys" (change)="formatJSON()" />
+                    Sort Keys
+                </label>
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn" (click)="clearAll()" title="Clear">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                    </svg>
+                    Clear
+                </button>
+                <button class="action-btn" (click)="copyToClipboard()" title="Copy">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                    Copy
+                </button>
+                <button class="action-btn" (click)="downloadJSON()" title="Download">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                        <polyline points="7,10 12,15 17,10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Download
+                </button>
+            </div>
+        </div>
+
+        <div class="formatter-body">
+            <div class="input-section">
+                <label class="section-label">Input JSON</label>
+                <textarea 
+                    class="json-input" 
+                    [(ngModel)]="inputJSON" 
+                    (input)="onInputChange()"
+                    placeholder='Paste your JSON here or type directly...
+Example:
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York"
+}'></textarea>
+                <div class="input-footer">
+                    <span class="char-count">{{ charCount }} characters</span>
+                    <button class="paste-btn" (click)="pasteFromClipboard()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                        </svg>
+                        Paste
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <label class="section-label">
+                    Formatted Output
+                    @if (isValid) {
+                        <span class="status-badge valid">✓ Valid JSON</span>
+                    } @else if (inputJSON.trim()) {
+                        <span class="status-badge invalid">✗ Invalid JSON</span>
+                    }
+                </label>
+                <textarea 
+                    class="json-output" 
+                    [value]="outputJSON" 
+                    readonly
+                    [class.error]="!isValid && inputJSON.trim()"></textarea>
+                <div class="output-footer">
+                    <span class="char-count">{{ outputCharCount }} characters</span>
+                    @if (isValid && inputJSON.trim()) {
+                        <span class="stats">
+                            {{ objectCount }} objects, {{ arrayCount }} arrays
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="formatter-actions">
+            <button class="format-btn" (click)="formatJSON()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16,18 22,12 16,6"/>
+                    <polyline points="8,6 2,12 8,18"/>
+                </svg>
+                {{ buttonText }}
+            </button>
+        </div>
+
+        @if (errorMessage) {
+            <div class="error-message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                {{ errorMessage }}
+            </div>
+        }
+    </div>
+
+    <app-seo-content [toolId]="toolId">
+        <div visual-content-input class="hero-visual">
+            <div class="visual-card">
+                <div class="card-shine"></div>
+                <div class="card-content">
+                    <div class="json-preview">
+                        <div class="json-line"><span class="json-key">"name"</span>: <span class="json-string">"ToolTrove"</span>,</div>
+                        <div class="json-line"><span class="json-key">"tools"</span>: [</div>
+                        <div class="json-line json-indent"><span class="json-string">"JSON Formatter"</span>,</div>
+                        <div class="json-line json-indent"><span class="json-string">"PDF Tools"</span>,</div>
+                        <div class="json-line json-indent"><span class="json-string">"Image Tools"</span></div>
+                        <div class="json-line">]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-seo-content>
+</div>

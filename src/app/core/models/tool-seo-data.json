@@ -852,7 +852,7 @@
         "Fast",
         "No Registration",
         "Multiple Formats",
-        "Batch"
+        "Batch Processing"
       ],
       "seo": {
         "title": "Free Image Compressor Online | Reduce Image File Size | MyToolTrove",
@@ -1040,6 +1040,201 @@
           {
             "question": "Does compression lose quality?",
             "answer": "Our smart compression maintains the best balance between file size and image quality."
+          }
+        ]
+      }
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "route": "/json-formatter",
+      "category": "Developer Tools",
+      "icon": "",
+      "iconAlt": "JSON Formatter",
+      "shortDescription": "Format JSON data",
+      "longDescription": "Format and beautify JSON for better readability.",
+      "buttonText": "Format JSON",
+      "tags": [
+        "Free",
+        "Fast",
+        "No Registration",
+        "Secure",
+        "Developer Tool"
+      ],
+      "seo": {
+        "title": "Free JSON Formatter Online | Format & Beautify JSON | MyToolTrove",
+        "metaDescription": "Format and beautify JSON data online for free. Improve readability with proper indentation and syntax highlighting. Secure, client-side processing.",
+        "keywords": [
+          "json formatter",
+          "format json",
+          "beautify json",
+          "json prettify",
+          "json pretty print",
+          "json validator",
+          "json beautifier",
+          "online json formatter",
+          "free json tool",
+          "json syntax checker"
+        ],
+        "h1": "Free Online JSON Formatter",
+        "h2": "Format and Beautify Your JSON Data",
+        "canonicalUrl": "/json-formatter"
+      },
+      "aboutSection": {
+        "badgeText": "#1 Free JSON Formatter",
+        "badgeIcon": "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+        "title": "Format JSON in Seconds",
+        "description": "Our free JSON Formatter helps you beautify and validate your JSON data. With instant formatting, syntax highlighting, and error detection, it's the perfect tool for developers working with JSON.",
+        "ctaPrimaryText": "Format Your JSON",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Instant Formatting",
+            "description": "Format JSON instantly with proper indentation and spacing"
+          },
+          {
+            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "Secure Processing",
+            "description": "All processing happens in your browser - no data leaves your device"
+          },
+          {
+            "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Error Detection",
+            "description": "Automatically detect and highlight JSON syntax errors"
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Easy to Use",
+            "description": "Simple interface with copy, clear, and format options"
+          }
+        ],
+        "visualContent": {
+          "type": "svg-hexagon",
+          "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+        }
+      },
+      "featuresSection": {
+        "label": "Features",
+        "title": "Why Use Our JSON Formatter?",
+        "subtitle": "Powerful features for developers",
+        "accentColor": "#2f84ff",
+        "features": [
+          {
+            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Fast & Efficient",
+            "description": "Format large JSON files instantly with our optimized algorithm"
+          },
+          {
+            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+            "title": "100% Secure",
+            "description": "Client-side processing means your data never leaves your browser"
+          },
+          {
+            "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "title": "Syntax Highlighting",
+            "description": "Color-coded output for better readability and debugging"
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Error Detection",
+            "description": "Identify and fix JSON syntax errors before using your data"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Benefit?",
+        "description": "From developers to engineers, everyone benefits from our JSON formatter.",
+        "label": "Perfect for various use cases",
+        "accentColor": "#2f84ff",
+        "useCases": [
+          {
+            "title": "Web Developers",
+            "description": "Format API responses and configuration files for better readability during development and debugging.",
+            "link": "/json-formatter#developers",
+
+            "benefits": [
+              "Debug API responses quickly",
+              "Format configuration files",
+              "Improve code readability",
+              "Share formatted data with team"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#2f84ff",
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+          },
+          {
+            "title": "Backend Engineers",
+            "description": "Validate and format JSON data from databases, logs, and microservices for easier analysis.",
+            "link": "/json-formatter#engineers",
+            "benefits": [
+              "Analyze log data easily",
+              "Format database outputs",
+              "Debug microservice responses",
+              "Validate JSON structure"
+            ],
+            "color": "#dcfce7",
+            "iconColor": "#22c55e",
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+          },
+          {
+            "title": "QA Engineers",
+            "description": "Format test data and API responses for better test case documentation and bug reporting.",
+            "link": "/json-formatter#qa",
+            "benefits": [
+              "Create readable test data",
+              "Document API responses",
+              "Report bugs with clear examples",
+              "Validate test fixtures"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b",
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+          },
+          {
+            "title": "Data Analysts",
+            "description": "Format JSON data exports for easier inspection and sharing with team members.",
+            "link": "/json-formatter#analysts",
+            "benefits": [
+              "Inspect data structures",
+              "Share formatted reports",
+              "Validate data exports",
+              "Clean up raw data"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899",
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+          {
+            "question": "How to format JSON online?",
+            "answer": "Simply paste your JSON data into the input area and click 'Format JSON'. Your data will be instantly formatted with proper indentation and syntax highlighting."
+          },
+          {
+            "question": "Is this JSON formatter free?",
+            "answer": "Yes! Our JSON formatter is completely free to use with no limitations. You can format as many JSON files as you need without any signup."
+          },
+          {
+            "question": "Is my JSON data secure?",
+            "answer": "Absolutely! All formatting happens locally in your browser. Your JSON data is never uploaded to our servers, ensuring complete privacy and security."
+          },
+          {
+            "question": "Can this tool detect JSON errors?",
+            "answer": "Yes! Our formatter automatically detects syntax errors in your JSON and displays helpful error messages to help you fix them."
+          },
+          {
+            "question": "What is JSON formatting?",
+            "answer": "JSON formatting (also called beautifying or prettifying) adds proper indentation, spacing, and line breaks to make JSON data more readable for humans."
+          },
+          {
+            "question": "Can I minify JSON as well?",
+            "answer": "Yes! Our tool can also minify JSON by removing all unnecessary whitespace, which is useful for reducing file size in production."
           }
         ]
       }
