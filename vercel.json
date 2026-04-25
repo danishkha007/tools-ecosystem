@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 2.01,
   "buildCommand": "npm run build:ssr",
   "devCommand": "ng serve",
   "installCommand": "npm install --legacy-peer-deps",
