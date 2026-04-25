@@ -4,18 +4,17 @@
   "devCommand": "ng serve",
   "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "dist/tools-ecosystem/browser",
-  "builds": [
-    {
-      "src": "api/server/index.ts",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/api/server"
     }
   ],
+  "functions": {
+    "api/server/index.ts": {
+      "maxDuration": 10
+    }
+  },
   "headers": [
     {
       "source": "/assets/(.*)",
