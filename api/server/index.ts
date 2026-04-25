@@ -1,10 +1,25 @@
 import { AngularAppEngine } from '@angular/ssr';
 import express from 'express';
-import { fileURLToPath } from 'node:url';
-import { join, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { join, resolve, dirname } from 'node:path';
+import { readFileSync } from 'node:fs';
 
-// Get the dist folder path
-const distFolder = resolve(fileURLToPath(import.meta.url), '../../../dist/tools-ecosystem');
+// Get the dist folder path - handle both local and Vercel environments
+const importMetaUrl = import.meta.url;
+const currentDir = dirname(fileURLToPath(importMetaUrl));
+const projectRoot = resolve(currentDir, '..');
+
+// Try to find the dist folder
+let distFolder: string;
+if (process.env.VERCEL) {
+  // Vercel environment - use the output directory structure
+  distFolder = resolve(projectRoot, 'dist/tools-ecosystem');
+} else {
+  // Local environment
+  distFolder = resolve(projectRoot, 'dist/tools-ecosystem');
+}
+
+console.log('Dist folder path:', distFolder);
 
 // Create Express app
 const app = express();
@@ -14,12 +29,24 @@ const angularApp = new AngularAppEngine();
 
 // Serve static assets from /browser
 const browserDistFolder = join(distFolder, 'browser');
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-  }),
-);
+console.log('Browser dist folder:', browserDistFolder);
+
+// Check if browser folder exists
+try {
+  if (require('fs').existsSync(browserDistFolder)) {
+    console.log('Serving static files from:', browserDistFolder);
+    app.use(
+      express.static(browserDistFolder, {
+        maxAge: '1y',
+        index: false,
+      }),
+    );
+  } else {
+    console.warn('Browser dist folder does not exist:', browserDistFolder);
+  }
+} catch (e) {
+  console.warn('Could not serve static files:', e);
+}
 
 // Server-side rendering handler - adapted for Vercel
 app.all('*', async (req, res) => {
@@ -32,10 +59,16 @@ app.all('*', async (req, res) => {
       }
     });
 
-    const request = new Request(`http://localhost${req.url}`, {
+    const isVercel = process.env.VERCEL === '1';
+    const baseUrl = isVercel ? `https://${req.headers.host}` : `http://localhost`;
+    const requestUrl = `${baseUrl}${req.url}`;
+
+    const request = new Request(requestUrl, {
       headers: requestHeaders,
       method: req.method,
     });
+
+    console.log('Processing request:', request.url);
 
     const response = await angularApp.handle(request);
 
