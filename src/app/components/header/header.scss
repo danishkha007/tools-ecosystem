@@ -120,10 +120,10 @@
   .dropdown-megamenu {
     position: absolute;
     top: calc(100%);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 100%;
+    transform: translateX(-100%);
     display: none;
-    width: 600px;
+    width: 1200px;
     background: white;
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);

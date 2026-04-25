@@ -37,6 +37,11 @@ export const routes: Routes = [
       import('./features/pdf-compress/pdf-compress').then(m => m.PdfCompressComponent)
   },
   {
+    path: 'json-formatter',
+    loadComponent: () =>
+      import('./features/json-formatter/json-formatter').then(m => m.JsonFormatterComponent)
+  },
+  {
     path: 'gann-hexagonal-support-resistance-calculator',
     loadComponent: () =>
       import('./features/calculators/gann/hexagonal-support-resistance/hexagonal-sr-calculator').then(m => m.GannCalculator)
