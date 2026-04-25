@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "npm ci && npm run build:ssr",
   "devCommand": "ng serve",
-  "installCommand": "npm ci",
+  "installCommand": "npm i",
   "outputDirectory": "dist/tools-ecosystem/browser",
   "framework": null,
   "rewrites": [
