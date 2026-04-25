@@ -60,7 +60,11 @@ app.all('*', async (req, res) => {
     });
 
     const isVercel = process.env['VERCEL'] === '1';
-    const baseUrl = isVercel ? `https://${req.headers.host}` : `http://localhost`;
+    // Use VERCEL_URL environment variable for Vercel (more reliable than req.headers.host)
+    const vercelUrl = process.env['VERCEL_URL'];
+    const baseUrl = isVercel 
+      ? (vercelUrl ? `https://${vercelUrl}` : `https://${req.headers.host}`)
+      : `http://localhost`;
     const requestUrl = `${baseUrl}${req.url}`;
 
     const request = new Request(requestUrl, {
@@ -85,7 +89,7 @@ app.all('*', async (req, res) => {
     });
 
     const body = await response.text();
-    res.send(body);
+    return res.send(body);
   } catch (err) {
     console.error('SSR Error:', err);
     res.status(500).send('Internal Server Error');
