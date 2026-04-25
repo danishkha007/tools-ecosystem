@@ -13,7 +13,6 @@
   ],
   "functions": {
     "dist/tools-ecosystem/server/server.mjs": {
-      "name": "Server Function",
       "maxDuration": 10
     }
   },
