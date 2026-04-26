@@ -3,35 +3,33 @@
   "buildCommand": "npm run build:ssr",
   "devCommand": "ng serve",
   "installCommand": "npm install --legacy-peer-deps",
-  "outputDirectory": "dist/tools-ecosystem/browser",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/server"
-    }
-  ],
+  "outputDirectory": "dist/tools-ecosystem",
   "functions": {
     "api/server/index.ts": {
-      "maxDuration": 10,
-      "includeFiles":"dist/tools-ecosystem/server/**"
+      "maxDuration": 10
     }
   },
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/browser/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|mp4|webm|ogg|mp3|wav|csv|pdf|txt|xml|atom|rss|manifest\\.json|favicon\\.png|logo\\.png|amazon-logo\\.png))",
+      "dest": "/browser/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/server"
+    }
+  ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
         }
       ]
     }

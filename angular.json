@@ -76,7 +76,11 @@
           "builder": "@angular/build:application",
           "options": {
             "assets":[
-              "src/manifest.json"
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
             ],
             "server": "src/main.server.ts",
             "prerender": false,

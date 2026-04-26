@@ -1,10 +1,12 @@
 import { AngularAppEngine } from '@angular/ssr';
 import express from 'express';
-import { resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const serverDistFolder = resolve(fileURLToPath(import.meta.url), '..');
-const browserDistFolder = resolve(serverDistFolder, '../dist/tools-ecosystem/browser');
+const serverModulePath = fileURLToPath(import.meta.url);
+const currentDir = dirname(serverModulePath);
+// Navigate from out-tsc/server (where server.ts is compiled) to dist/tools-ecosystem/browser
+const browserDistFolder = resolve(currentDir, '..', '..', 'dist', 'tools-ecosystem', 'browser');
 
 const app = express();
 const port = process.env['PORT'] || 4000;
