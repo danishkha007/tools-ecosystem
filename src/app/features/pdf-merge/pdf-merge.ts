@@ -4,15 +4,11 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import * as pdfjsLib from 'pdfjs-dist';
 import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
 import { ToolData, ToolSEO, UseCase } from '../../core/models/tool-data.model';
 import { SeoService } from '@core/services/seo.service';
 import { ToolDataService } from '@core/services/tool-data.service';
 import { SeoContentComponent } from "../../components/seo-content/seo-content";
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-type UseCaseData = UseCase;
 
 interface PdfFile {
   file: File;
@@ -38,7 +34,24 @@ interface PageItem {
   imports: [DragDropModule, CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
 })
 export class PdfMergeComponent implements OnInit {
-  toolId= 'pdf-merge';
+
+  private pdfjsLib: any = null;
+
+private async loadPdfJs() {
+  if (typeof window === 'undefined') return null;
+
+  if (!this.pdfjsLib) {
+    const pdfjs = await import('pdfjs-dist/legacy/build/pdf');
+
+    (pdfjs as any).GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    this.pdfjsLib = pdfjs;
+  }
+
+  return this.pdfjsLib;
+}
+  toolId = 'pdf-merge';
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
   loading = false;
@@ -46,21 +59,21 @@ export class PdfMergeComponent implements OnInit {
   mergeMessage: string | null = null;
   progressComplete = false;
   isGeneratingPages = false;
-  
+
   // Password modal state
   showPasswordModal = false;
   currentEncryptedFile: string | null = null;
   currentPassword = '';
   passwords: { [key: string]: string } = {};
   filesToSkip: string[] = [];
-  
+
   // View mode toggle
   private _viewMode: 'pdf' | 'page' = 'pdf';
-  
+
   get viewMode(): 'pdf' | 'page' {
     return this._viewMode;
   }
-  
+
   set viewMode(value: 'pdf' | 'page') {
     this._viewMode = value;
     if (value === 'page') {
@@ -76,8 +89,8 @@ export class PdfMergeComponent implements OnInit {
   private seoService = inject(SeoService);
 
   constructor(
-    private pdfService: PdfService, 
-    private cdr: ChangeDetectorRef, 
+    private pdfService: PdfService,
+    private cdr: ChangeDetectorRef,
     private ngZone: NgZone
   ) {
     const tool = this.toolDataService.getToolById('pdf-merge');
@@ -114,7 +127,7 @@ export class PdfMergeComponent implements OnInit {
         };
         this.pdfFiles.push(newPdf);
         this.cdr.detectChanges();
-        
+
         // Start generating page thumbnails in the background without blocking
         this.ngZone.runOutsideAngular(() => {
           this.generatePageThumbnailsAsync(newPdf);
@@ -144,12 +157,14 @@ export class PdfMergeComponent implements OnInit {
   }
 
   async getPdfPageCount(file: File): Promise<number> {
+    const pdfjsLib = await this.loadPdfJs();
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     return pdf.numPages;
   }
 
   async generateThumbnail(file: File): Promise<string> {
+    const pdfjsLib = await this.loadPdfJs();
     const arrayBuffer = await file.arrayBuffer();
 
     const pdf = await pdfjsLib.getDocument({
@@ -213,23 +228,24 @@ export class PdfMergeComponent implements OnInit {
   async generateAllPageThumbnails(pdf: PdfFile): Promise<{ [key: number]: string }> {
     const thumbnails: { [key: number]: string } = {};
     try {
+      const pdfjsLib = await this.loadPdfJs();
       const arrayBuffer = await pdf.file.arrayBuffer();
       const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       for (let i = 1; i <= pdf.totalPages; i++) {
         const page = await pdfDoc.getPage(i);
         const viewport = page.getViewport({ scale: 0.5 });
-        
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d')!;
         canvas.width = viewport.width;
         canvas.height = viewport.height;
-        
+
         await page.render({
           canvasContext: context,
           viewport
         }).promise;
-        
+
         thumbnails[i - 1] = canvas.toDataURL();
       }
     } catch (err) {
@@ -291,28 +307,28 @@ export class PdfMergeComponent implements OnInit {
     // Check if we're in page view and have a custom order
     if (this.viewMode === 'page' && this.pageItems.length > 0) {
       // Filter only selected pages from pageItems and maintain their order
-      const selectedPageItems = this.pageItems.filter(item => 
+      const selectedPageItems = this.pageItems.filter(item =>
         item.pdf.pages.includes(item.pageIndex)
       );
-      
+
       // Check if any pages are selected
       if (selectedPageItems.length === 0) {
         this.mergeMessage = 'No pages selected. Please select pages to merge.';
         return;
       }
-      
+
       // Build array of page items with file reference for mergePagesInOrder
       const pagesToMerge = selectedPageItems.map(item => ({
         file: item.pdf.file,
         name: item.pdf.name,
         pageIndex: item.pageIndex
       }));
-      
+
       this.loading = true;
       this.progressComplete = false;
       this.mergeMessage = null;
       this.cdr.detectChanges();
-      
+
       try {
         // Use mergePagesInOrder to maintain user's custom page order
         const result = await this.pdfService.mergePagesInOrder(pagesToMerge, this.passwords);
@@ -321,17 +337,17 @@ export class PdfMergeComponent implements OnInit {
           URL.revokeObjectURL(this.mergedUrl);
         }
         this.mergedUrl = URL.createObjectURL(blob);
-        
+
         this.progressComplete = true;
         this.cdr.detectChanges();
         this.mergeMessage = `PDF merge is complete! ${selectedPageItems.length} pages merged in your custom order. Download is ready.`;
-        
+
         setTimeout(() => {
           this.loading = false;
           this.progressComplete = false;
           this.cdr.detectChanges();
         }, 1000);
-        
+
         return;
       } catch (error: any) {
         console.error('Error merging PDFs:', error);
@@ -341,20 +357,20 @@ export class PdfMergeComponent implements OnInit {
         return;
       }
     }
-    
+
     // Default behavior: use pdfFiles order
     const filesToMerge = this.pdfFiles.filter(f => !this.filesToSkip.includes(f.name));
-    
+
     if (filesToMerge.length < 1) {
       this.mergeMessage = 'No files to merge. All files were skipped.';
       return;
     }
-    
+
     this.loading = true;
     this.progressComplete = false;
     this.mergeMessage = null;
     this.cdr.detectChanges();
-    
+
     try {
       const result = await this.pdfService.mergeSelectedPages(filesToMerge, this.passwords);
       const blob = new Blob([new Uint8Array(result)], { type: 'application/pdf' });
@@ -362,28 +378,28 @@ export class PdfMergeComponent implements OnInit {
         URL.revokeObjectURL(this.mergedUrl);
       }
       this.mergedUrl = URL.createObjectURL(blob);
-      
+
       // Set progress to complete - this will trigger the CSS animation
       this.progressComplete = true;
       this.cdr.detectChanges();
-      
+
       // Build message about skipped files
       if (this.filesToSkip.length > 0) {
         this.mergeMessage = `PDF merge is complete! ${this.filesToSkip.length} file(s) were skipped. Download is ready.`;
       } else {
         this.mergeMessage = 'PDF merge is complete. Download is ready.';
       }
-      
+
       // Wait for animation to complete, then hide progress bar
       setTimeout(() => {
         this.loading = false;
         this.progressComplete = false;
         this.cdr.detectChanges();
       }, 1000);
-      
+
     } catch (error: any) {
       console.error('Error merging PDFs:', error);
-      
+
       // Check if it's an encrypted file error
       if (error && error.type === 'encrypted') {
         this.currentEncryptedFile = error.fileName;
@@ -392,7 +408,7 @@ export class PdfMergeComponent implements OnInit {
         this.cdr.detectChanges();
         return;
       }
-      
+
       this.mergeMessage = `Error: ${error instanceof Error ? error.message : 'Failed to merge PDFs. Please try again.'}`;
       this.loading = false;
       this.cdr.detectChanges();

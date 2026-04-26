@@ -3,6 +3,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "canvas": ["./src/empty-module.ts"]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

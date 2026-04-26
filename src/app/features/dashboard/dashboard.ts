@@ -5,6 +5,9 @@ import { ToolCategory } from '../../core/models/tool-category';
 import { ToolData } from '../../core/models/tool-data.model';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolCardComponent } from '../../components/tool-card/tool-card';
+import { SeoService } from '@core/services/seo.service';
+import { ToolDataService } from '@core/services/tool-data.service';
+import { AppDataService } from '@core/services/app-data.service';
 // import { AmazonAdComponent } from '../../components/amazon-ad/amazon-ad';
 
 type SortOption = 'name-asc' | 'name-desc';
@@ -22,31 +25,31 @@ export class DashboardComponent implements OnInit {
   allTools: ToolData[] = [];
   filteredTools: ToolData[] = [];
   // adPlacements: number[] = [];
-  
+
   sortOption: SortOption = 'name-asc';
   selectedCategory: string | null = null;
-  
+
+  appData: any;
   // SEO data
   seoTitle = 'MyToolTrove - Free Online Tools | PDF, Image, Calculator & Developer Tools';
   seoMetaDescription = 'MyToolTrove - Your free all-in-one destination for online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.';
-  
+
   sortOptions: { value: SortOption; label: string }[] = [
     { value: 'name-asc', label: 'Name (A-Z)' },
     { value: 'name-desc', label: 'Name (Z-A)' }
   ];
 
-  constructor(private toolService: ToolConfigService) {}
+  constructor(private toolService: ToolConfigService, private seoService: SeoService, private toolDataService: ToolDataService, private appDataService: AppDataService) {
+    const appdata = this.appDataService.getAppData();
+    if (appdata) {
+      this.appData = appdata;
+    }
+  }
 
   ngOnInit(): void {
     // Set document title and meta description
-    document.title = this.seoTitle;
-    
-    // Update meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', this.seoMetaDescription);
-    }
-    
+    this.seoService.setSeoData(this.appData);
+
     this.categories = this.toolService.getActiveCategories();
     this.buildAllTools();
     // this.calculateAdPlacements();
