@@ -4,7 +4,7 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import * as pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from '../../../../node_modules/pdfjs-dist';
 import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
 import { ToolData, ToolSEO, UseCase } from '../../core/models/tool-data.model';
 import { SeoService } from '@core/services/seo.service';
