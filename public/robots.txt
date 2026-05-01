@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+# Block sensitive/heavy dynamic routes if needed
+Disallow: /api/
+Disallow: /admin/
+# Optional: Slow down aggressive bots, though not always honored
+Crawl-delay: 10
+
+Sitemap: https://yourdomain.com
