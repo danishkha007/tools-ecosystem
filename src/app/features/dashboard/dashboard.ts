@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
   
   // SEO data
   seoData = {
-        "title": 'MyToolTrove - Free Online Tools | PDF, Image, Calculator & Developer Tools',
-        "metaDescription": 'MyToolTrove - Your free all-in-one destination for online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.',
+        "title": 'Free Online Tools for PDF, Image & Developers | MyToolTrove',
+        "metaDescription": 'MyToolTrove - Your all-in-one destination for free online tools. Merge PDFs, Compress Images, Convertors, Calculators, and more. No Registration, Free Forever.',
         "keywords": [
           "free online tools", "PDF tools", "image compression","developer tools",
           "calculator tools", "merge PDFs", "compress images","gann hexagonal support resistance calculator","mytooltrove","tool trove","online utilities","free tools online","pdf merger","image optimizer","percentage calculator"],
