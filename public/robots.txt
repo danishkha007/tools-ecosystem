@@ -4,6 +4,6 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 # Optional: Slow down aggressive bots, though not always honored
-Crawl-delay: 10
+Crawl-delay: 0
 
-Sitemap: https://yourdomain.com
+Sitemap: https://mytooltrove.com/sitemap.xml
