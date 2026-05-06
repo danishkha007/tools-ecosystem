@@ -5,6 +5,7 @@ import { ToolCategory } from '../../core/models/tool-category';
 import { ToolData } from '../../core/models/tool-data.model';
 import { ToolConfigService } from '../../core/services/tool-config';
 import { ToolCardComponent } from '../../components/tool-card/tool-card';
+import { SeoService } from '@core/services/seo.service';
 // import { AmazonAdComponent } from '../../components/amazon-ad/amazon-ad';
 
 type SortOption = 'name-asc' | 'name-desc';
@@ -27,25 +28,27 @@ export class DashboardComponent implements OnInit {
   selectedCategory: string | null = null;
   
   // SEO data
-  seoTitle = 'MyToolTrove - Free Online Tools | PDF, Image, Calculator & Developer Tools';
-  seoMetaDescription = 'MyToolTrove - Your free all-in-one destination for online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.';
-  
+  seoData = {
+        "title": 'MyToolTrove - Free Online Tools | PDF, Image, Calculator & Developer Tools',
+        "metaDescription": 'MyToolTrove - Your free all-in-one destination for online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.',
+        "keywords": [
+          "free online tools", "PDF tools", "image compression","developer tools",
+          "calculator tools", "merge PDFs", "compress images","gann hexagonal support resistance calculator","mytooltrove","tool trove","online utilities","free tools online","pdf merger","image optimizer","percentage calculator"],
+        "h1": "Free Online Tools | PDF, Image, Calculator & Developer Tools",
+        "h2": "Your all-in-one destination for free online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.",
+        "canonicalUrl": "https://www.mytooltrove.com"
+      }
+
   sortOptions: { value: SortOption; label: string }[] = [
     { value: 'name-asc', label: 'Name (A-Z)' },
     { value: 'name-desc', label: 'Name (Z-A)' }
   ];
 
-  constructor(private toolService: ToolConfigService) {}
+  constructor(private toolService: ToolConfigService, private seoService: SeoService) {}
 
   ngOnInit(): void {
     // Set document title and meta description
-    document.title = this.seoTitle;
-    
-    // Update meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', this.seoMetaDescription);
-    }
+    this.seoService.setSeoData(this.seoData);
     
     this.categories = this.toolService.getActiveCategories();
     this.buildAllTools();
