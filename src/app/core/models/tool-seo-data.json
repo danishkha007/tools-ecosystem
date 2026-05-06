@@ -38,7 +38,7 @@
         ],
         "h1": "GANN Hexagonal Support & Resistance Calculator",
         "h2": "Calculate Dynamic Support and Resistance Levels Using GANN Theory",
-        "canonicalUrl": "/gann-hexagonal-support-resistance-calculator"
+        "canonicalUrl": "https://mytooltrove.com/gann-hexagonal-support-resistance-calculator"
       },
       "aboutSection": {
         "badgeText": "GANN Theory Calculator",
@@ -266,7 +266,7 @@
         ],
         "h1": "Free Online Resume Builder",
         "h2": "Create ATS-Friendly Resumes That Get Noticed",
-        "canonicalUrl": "/resume-builder"
+        "canonicalUrl": "https://mytooltrove.com/resume-builder"
       },
       "aboutSection": {
         "badgeText": "Career Tool",
@@ -465,7 +465,7 @@
         ],
         "h1": "Free Online PDF Compressor",
         "h2": "Reduce PDF File Size Without Losing Quality",
-        "canonicalUrl": "/pdf-compressor"
+        "canonicalUrl": "https://mytooltrove.com/pdf-compressor"
       },
       "aboutSection": {
         "badgeText": "PDF Tool",
@@ -672,7 +672,7 @@
         ],
         "h1": "Free Online PDF Merger",
         "h2": "Combine Multiple PDF Files into One",
-        "canonicalUrl": "/pdf-merger"
+        "canonicalUrl": "https://mytooltrove.com/pdf-merger"
       },
       "aboutSection": {
         "badgeText": "#1 Free PDF Merger",
@@ -871,7 +871,7 @@
         ],
         "h1": "Free Online Image Compressor",
         "h2": "Reduce Image File Size Without Losing Quality",
-        "canonicalUrl": "/image-compressor"
+        "canonicalUrl": "https://mytooltrove.com/image-compressor"
       },
       "aboutSection": {
         "badgeText": "#1 Free Image Compressor",
@@ -1078,7 +1078,7 @@
         ],
         "h1": "Free Online JSON Formatter",
         "h2": "Format and Beautify Your JSON Data",
-        "canonicalUrl": "/json-formatter"
+        "canonicalUrl": "https://mytooltrove.com/json-formatter"
       },
       "aboutSection": {
         "badgeText": "#1 Free JSON Formatter",
@@ -1121,24 +1121,34 @@
         "accentColor": "#2f84ff",
         "features": [
           {
-            "icon": "M13 10V3L4 14h7v7l9-11h-7z",
-            "title": "Fast & Efficient",
-            "description": "Format large JSON files instantly with our optimized algorithm"
+            "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+            "title": "Instant Formatting",
+            "description": "Format JSON instantly with proper indentation and spacing"
           },
           {
-            "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-            "title": "100% Secure",
-            "description": "Client-side processing means your data never leaves your browser"
+            "iconPath": "M12 15a3 3 0 100-6 3 3 0 000 6zm-7.536 4.243a1 1 0 00-1.414 0L5.586 19H18.414l-1.414-1.414a1 1 0 00-1.414 0c-.65.65 1.622 2.5 2.707 3.586H4.243c1.085-1.085 2.937-3.358 2.243-3.586z",
+            "title": "Secure Processing",
+            "description": "All processing happens in your browser - no data leaves your device"
           },
           {
-            "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+            "iconPath": "M4 6h16M4 12h10M4 18h12M16 12v6M16 18v-6",
             "title": "Syntax Highlighting",
             "description": "Color-coded output for better readability and debugging"
           },
           {
-            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "iconPath": "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
             "title": "Error Detection",
-            "description": "Identify and fix JSON syntax errors before using your data"
+            "description": "Automatically detect and highlight JSON syntax errors"
+          },
+          {
+            "iconPath": "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.996 2.572 1.065 2.572 1.065z M12 15a3 3 0 100-6 3 3 0 000 6z",
+            "title": "Adjustable Formatting",
+            "description": "Customize indentation and formatting style to match your preferences"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12m4-4l4 4m-4-4v-6",
+            "title": "Minify & Prettify",
+            "description": "Toggle between minified and pretty-printed formats with one click"
           }
         ]
       },
@@ -1152,7 +1162,6 @@
             "title": "Web Developers",
             "description": "Format API responses and configuration files for better readability during development and debugging.",
             "link": "/json-formatter#developers",
-
             "benefits": [
               "Debug API responses quickly",
               "Format configuration files",
@@ -1161,7 +1170,7 @@
             ],
             "color": "#dbeafe",
             "iconColor": "#2f84ff",
-            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+            "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
           },
           {
             "title": "Backend Engineers",
@@ -1175,7 +1184,7 @@
             ],
             "color": "#dcfce7",
             "iconColor": "#22c55e",
-            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+            "icon": "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z M10 10h4m-2-4v8"
           },
           {
             "title": "QA Engineers",
@@ -1189,7 +1198,7 @@
             ],
             "color": "#fef3c7",
             "iconColor": "#f59e0b",
-            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+            "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 10l2 2 4-4"
           },
           {
             "title": "Data Analysts",
@@ -1203,7 +1212,7 @@
             ],
             "color": "#fce7f3",
             "iconColor": "#ec4899",
-            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10"
+            "icon": "M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M12 8v4m-3-2h6"
           }
         ]
       },
@@ -1235,6 +1244,206 @@
           {
             "question": "Can I minify JSON as well?",
             "answer": "Yes! Our tool can also minify JSON by removing all unnecessary whitespace, which is useful for reducing file size in production."
+          }
+        ]
+      }
+    },
+    {
+      "id": "qr-code-generator",
+      "name": "QR Code Generator",
+      "route": "/qr-code-generator",
+      "category": "Design Tools",
+      "icon": "",
+      "iconAlt": "QR Code Generator",
+      "shortDescription": "Create QR codes",
+      "longDescription": "Generate high-quality QR codes for various content types.",
+      "buttonText": "Generate QR Code",
+      "tags": [
+        "Free",
+        "Fast",
+        "No Registration",
+        "Secure",
+        "Design Tool"
+      ],
+      "seo": {
+        "title": "Free QR Code Generator Online | Generate QR Codes instantly | MyToolTrove",
+        "metaDescription": "Create high-quality QR codes for free online. Support text, URLs, and WiFi QR codes. Download as PNG or SVG. No signup required.",
+        "keywords": [
+          "qr code generator",
+          "generate qr code",
+          "free qr code",
+          "qr code creator",
+          "online qr code",
+          "qr code maker",
+          "qr code downloader",
+          "qr code generator free",
+          "text qr code",
+          "url qr code",
+          "wifi qr code"
+        ],
+        "h1": "Free Online QR Code Generator",
+        "h2": "Generate High-Quality QR Codes in Seconds",
+        "canonicalUrl": "https://mytooltrove.com/qr-code-generator"
+      },
+      "aboutSection": {
+        "badgeText": "#1 Free QR Code Generator",
+        "badgeIcon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+        "title": "Generate QR Codes Instantly",
+        "description": "Our free QR Code Generator helps you create high-quality QR codes for various content types. Whether you need to share URLs, text, or WiFi credentials, our tool makes it quick and easy with customizable options.",
+        "ctaPrimaryText": "Generate QR Code",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+          {
+            "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+            "title": "Multiple QR Code Types",
+            "description": "Support for text, URL, WiFi, and more QR code formats"
+          },
+          {
+            "icon": "M12 15a3 3 0 100-6 3 3 0 000 6zm-7.536 4.243a1 1 0 00-1.414 0L5.586 19H18.414l-1.414-1.414a1 1 0 00-1.414 0c-.65.65 1.622 2.5 2.707 3.586H4.243c1.085-1.085 2.937-3.358 2.243-3.586z",
+            "title": "Secure Processing",
+            "description": "All QR codes are generated in your browser - no data leaves your device"
+          },
+          {
+            "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12m4-4l4 4m-4-4v-6",
+            "title": "Download Options",
+            "description": "Download QR codes as PNG or SVG for any use case"
+          },
+          {
+            "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Easy to Use",
+            "description": "Simple interface with instant QR code generation"
+          }
+        ],
+        "visualContent": {
+          "type": "svg-hexagon",
+          "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+        }
+      },
+      "featuresSection": {
+        "label": "Features",
+        "title": "Why Use Our QR Code Generator?",
+        "subtitle": "Create QR codes for any purpose",
+        "accentColor": "#3b82f6",
+        "features": [
+          {
+            "iconPath": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+            "title": "Multiple QR Code Types",
+            "description": "Generate text, URL, WiFi, email, and SMS QR codes"
+          },
+          {
+            "iconPath": "M12 15a3 3 0 100-6 3 3 0 000 6zm-7.536 4.243a1 1 0 00-1.414 0L5.586 19H18.414l-1.414-1.414a1 1 0 00-1.414 0c-.65.65 1.622 2.5 2.707 3.586H4.243c1.085-1.085 2.937-3.358 2.243-3.586z",
+            "title": "Secure Generation",
+            "description": "All QR codes are generated locally in your browser"
+          },
+          {
+            "iconPath": "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.996 2.572 1.065 2.572 1.065z M12 15a3 3 0 100-6 3 3 0 000 6z",
+            "title": "Multiple Download Formats",
+            "description": "Choose between PNG and SVG formats for your QR code"
+          },
+          {
+            "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12m4-4l4 4m-4-4v-6",
+            "title": "High Quality Output",
+            "description": "Generate crisp, scannable QR codes at any size"
+          },
+          {
+            "iconPath": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
+            "title": "Easy to Use",
+            "description": "Simple interface with instant generation"
+          }
+        ]
+      },
+      "useCasesSection": {
+        "title": "Who Can Benefit?",
+        "description": "From businesses to individuals, everyone can use QR codes.",
+        "label": "Perfect for various use cases",
+        "accentColor": "#3b82f6",
+        "useCases": [
+          {
+            "title": "Businesses",
+            "description": "Create QR codes for marketing campaigns, menus, contact information, and product information.",
+            "link": "/qr-code-generator#businesses",
+            "benefits": [
+              "Create marketing campaign QR codes",
+              "Add menu QR codes for restaurants",
+              "Share contact information",
+              "Track campaign performance"
+            ],
+            "color": "#dbeafe",
+            "iconColor": "#2f84ff",
+            "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 10l2 2 4-4"
+          },
+          {
+            "title": "Individuals",
+            "description": "Generate QR codes for personal use like sharing social media profiles, Wi-Fi passwords, and contact information.",
+            "link": "/qr-code-generator#individuals",
+            "benefits": [
+              "Share social media profiles",
+              "Create Wi-Fi QR codes for guests",
+              "Share contact information",
+              "Generate event tickets"
+            ],
+            "color": "#dcfce7",
+            "iconColor": "#22c55e",
+            "icon": "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z M10 10h4m-2-4v8"
+          },
+          {
+            "title": "Marketers",
+            "description": "Create QR codes for digital marketing campaigns, product packaging, and promotional materials.",
+            "link": "/qr-code-generator#marketers",
+            "benefits": [
+              "Track campaign engagement",
+              "Create landing page QR codes",
+              "Share content on social media",
+              "Measure ROI with analytics"
+            ],
+            "color": "#fef3c7",
+            "iconColor": "#f59e0b",
+            "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 10l2 2 4-4"
+          },
+          {
+            "title": "Event Organizers",
+            "description": "Generate QR codes for event tickets, registration, and information sharing.",
+            "link": "/qr-code-generator#events",
+            "benefits": [
+              "Create digital tickets",
+              "Generate entry pass QR codes",
+              "Share event information",
+              "Track attendance"
+            ],
+            "color": "#fce7f3",
+            "iconColor": "#ec4899",
+            "icon": "M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M12 8v4m-3-2h6"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#3b82f6",
+        "faqs": [
+          {
+            "question": "How to generate a QR code?",
+            "answer": "Simply enter your content (text, URL, etc.) in the input field and click 'Generate QR Code'. The QR code will appear instantly and you can download it in PNG or SVG format."
+          },
+          {
+            "question": "Is this QR code generator free?",
+            "answer": "Yes! Our QR code generator is completely free to use with no limitations. You can generate as many QR codes as you need without any signup."
+          },
+          {
+            "question": "Are QR codes generated securely?",
+            "answer": "Absolutely! All QR codes are generated in your browser using client-side processing. No data is sent to any server, ensuring complete privacy and security."
+          },
+          {
+            "question": "What content can I encode in a QR code?",
+            "answer": "You can encode various content types including text, URLs, WiFi credentials (SSID and password), email addresses, SMS messages, and more."
+          },
+          {
+            "question": "What are the different QR code types?",
+            "answer": "We support text QR codes, URL QR codes for websites, WiFi QR codes for network access, and more specialized formats for different use cases."
+          },
+          {
+            "question": "Can I use QR codes for commercial purposes?",
+            "answer": "Yes! The QR codes you generate are completely yours to use for any purpose - personal, commercial, or promotional."
           }
         ]
       }

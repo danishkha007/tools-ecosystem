@@ -3,12 +3,12 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header';
 import { FooterComponent } from '../footer/footer';
-import { DecorativeBackgroundComponent } from '../decorative-background/decorative-background';
+// import { DecorativeBackgroundComponent } from '../decorative-background/decorative-background';
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, CommonModule, HeaderComponent, FooterComponent, DecorativeBackgroundComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })

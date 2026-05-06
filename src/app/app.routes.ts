@@ -45,5 +45,10 @@ export const routes: Routes = [
     path: 'gann-hexagonal-support-resistance-calculator',
     loadComponent: () =>
       import('./features/calculators/gann/hexagonal-support-resistance/hexagonal-sr-calculator').then(m => m.GannCalculator)
+  },
+  {
+    path: 'qr-code-generator',
+    loadComponent: () =>
+      import('./features/qr-code-generator/qr-code-generator').then(m => m.QrCodeGeneratorComponent)
   }
 ];

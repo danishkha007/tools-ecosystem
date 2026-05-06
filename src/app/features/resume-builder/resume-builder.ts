@@ -4,7 +4,6 @@ import { ResumePreviewComponent } from "../../components/resume-templates/resume
 import { ResumePreviewAtsComponent } from "../../components/resume-templates/resume-preview-ats/resume-preview-ats";
 import { ResumeFormComponent } from "../../components/resume-form/resume-form";
 import { FaqSectionComponent, FaqItem } from "../../components/faq-section/faq-section";
-import { UseCaseModalComponent } from "../../components/use-case-modal/use-case-modal";
 import { ResumeService } from '../../core/services/resume';
 import { Resume } from '../../core/models/resume';
 import { ToolConfigService } from '../../core/services/tool-config';

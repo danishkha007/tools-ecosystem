@@ -1,4 +1,4 @@
-<div class="card" (click)="navigate()">
+<!-- <div class="card" (click)="navigate()">
   <div class="tool-icon" *ngIf="tool.icon">
     <img [src]="tool.icon" [alt]="tool.iconAlt || tool.name" />
   </div>
@@ -9,4 +9,29 @@
   <button class="button" (click)="navigate(); $event.stopPropagation()">
     {{ tool.buttonText }}
   </button>
+</div> -->
+<div class="card" (click)="navigate()">
+  
+  <div class="card-header">
+    <div class="icon" *ngIf="tool.icon">
+      <img [src]="tool.icon" [alt]="tool.iconAlt || tool.name" />
+    </div>
+
+    <span class="badge">{{ tool.category }}</span>
+  </div>
+
+  <div class="tool-name">
+    <h2>{{ tool.name }}</h2>
+  </div>
+
+  <p class="description">
+    {{ tool.longDescription }}
+  </p>
+
+  <div class="card-footer">
+    <button class="button" (click)="navigate(); $event.stopPropagation()">
+      {{ tool.buttonText }} →
+    </button>
+  </div>
+
 </div>
