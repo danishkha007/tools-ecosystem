@@ -29,22 +29,15 @@ export class PdfService {
 
     for (const item of pdfFiles) {
       try {
-        const bytes = await item.file.arrayBuffer();
-        const password = passwords ? passwords[item.name] : undefined;
-        const loadOptions = password ? { password } : {};
-        const pdf = await PDFDocument.load(bytes, loadOptions as any);
+        const pdf = await this.loadPdfFile(item, passwords);
         
         // item.pages contains indices, convert to page references
         const pageIndices = item.pages.filter((idx: number) => idx >= 0 && idx < pdf.getPageCount());
         const pages = await mergedPdf.copyPages(pdf, pageIndices);
         pages.forEach((p: any) => mergedPdf.addPage(p));
       } catch (error: any) {
-        if (error.message && error.message.includes('encrypted') || error.message?.includes('password')) {
-          throw { 
-            type: 'encrypted', 
-            fileName: item.name, 
-            message: `${item.name} is password protected` 
-          };
+        if (this.isPasswordError(error)) {
+          throw this.createPasswordProtectedError(item.name);
         }
         console.error('Error merging PDF:', item.name, error);
         throw new Error(`Failed to merge ${item.name}: ${error}`);
@@ -66,10 +59,7 @@ export class PdfService {
         
         // If not in cache, load the PDF
         if (!sourcePdf) {
-          const bytes = await item.file.arrayBuffer();
-          const password = passwords ? passwords[item.name] : undefined;
-          const loadOptions = password ? { password } : {};
-          sourcePdf = await PDFDocument.load(bytes, loadOptions as any);
+          sourcePdf = await this.loadPdfFile(item, passwords);
           pdfCache.set(item.name, sourcePdf);
         }
         
@@ -80,12 +70,8 @@ export class PdfService {
           mergedPdf.addPage(copiedPage);
         }
       } catch (error: any) {
-        if (error.message && error.message.includes('encrypted') || error.message?.includes('password')) {
-          throw { 
-            type: 'encrypted', 
-            fileName: item.name, 
-            message: `${item.name} is password protected` 
-          };
+        if (this.isPasswordError(error)) {
+          throw this.createPasswordProtectedError(item.name);
         }
         console.error('Error merging page:', item.name, 'page', item.pageIndex, error);
         throw new Error(`Failed to merge page from ${item.name}: ${error}`);
@@ -170,5 +156,26 @@ export class PdfService {
     }
 
     return await compressedPdf.save({ useObjectStreams: true });
+  }
+
+  private async loadPdfFile(item: { file: File; name: string }, passwords?: { [key: string]: string }): Promise<PDFDocument> {
+    const bytes = await item.file.arrayBuffer();
+    const password = passwords?.[item.name];
+    const loadOptions = password ? { password } : {};
+
+    return PDFDocument.load(bytes, loadOptions as any);
+  }
+
+  private isPasswordError(error: unknown): boolean {
+    const message = error instanceof Error ? error.message : String(error);
+    return message.includes('encrypted') || message.includes('password');
+  }
+
+  private createPasswordProtectedError(fileName: string): { type: string; fileName: string; message: string } {
+    return {
+      type: 'encrypted',
+      fileName,
+      message: `${fileName} is password protected`
+    };
   }
 }

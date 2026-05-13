@@ -44,12 +44,6 @@
       </div>
     </div>
   }
-
-  
-  <app-tool-header [title]="toolData.seo.h1"
-    [subtitle]="toolData.seo.h2"
-    [tags]="toolData.tags">
-  </app-tool-header>
   <div class="container">
     <div class="left-panel">
       <!-- Step Navigation -->
@@ -121,45 +115,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- SEO Content Section -->
-  <div class="seo-content">
-    @if (toolData.aboutSection) {
-    <app-about-section [aboutSection]="toolData.aboutSection">
-      <div visual-content>
-        <div class="hero-visual">
-          <div class="visual-card">
-            <div class="card-shine"></div>
-            <div class="card-content">
-              <div class="preview-line main"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line"></div>
-              <div class="preview-blocks">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </app-about-section>
-    }
-
-    <!-- Features Section -->
-    @if (toolData.featuresSection) {
-    <app-features-section [featuresSection]="toolData.featuresSection"></app-features-section>
-    }
-
-    <!-- Use Cases Section -->
-    @if (toolData.useCasesSection) {
-    <app-use-case-section [useCasesSection]="toolData.useCasesSection"></app-use-case-section>
-    }
-
-    <!-- FAQ Section -->
-    @if (toolData.faqSection) {
-    <app-faq-section [faqSection]="toolData.faqSection"></app-faq-section>
-    }
   </div>
 </div>

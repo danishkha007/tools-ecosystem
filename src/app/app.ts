@@ -5,8 +5,8 @@ import { Layout } from "./components/layout/layout";
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Layout],
-  template: '<app-layout><router-outlet></router-outlet></app-layout>',
-  styles: []
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('tools-ecosystem');

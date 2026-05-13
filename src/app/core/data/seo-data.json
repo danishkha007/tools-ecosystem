@@ -1,0 +1,198 @@
+{
+    "name": "SEO Data",
+    "description": "SEO metadata for MyToolTrove.",
+    "app": [
+        {
+            "id": "home",
+            "title": "Free Online Tools for PDF, Image & Developers | MyToolTrove",
+            "metaDescription": "Free online tools for PDFs, images, calculators and developers.",
+            "h1": "Free Online Tools | PDF, Image, Calculator & Developer Tools",
+            "h2": "Your all-in-one destination for free online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.",
+            "canonicalUrl": "https://www.mytooltrove.com",
+            "keywords": [
+                "pdf tools",
+                "image tools",
+                "developer tools",
+                "free online tools"
+            ]
+        },
+        {
+            "id": "about",
+            "title": "About MyToolTrove | Free Online Tools for Everyone",
+            "metaDescription": "Learn about MyToolTrove - your free destination for online PDF, image, calculator, and developer tools. No registration required, 100% free forever.",
+            "h1": "About MyToolTrove",
+            "h2": "Your Go-To Destination for Free Online Tools",
+            "canonicalUrl": "https://www.mytooltrove.com/about",
+            "keywords": [
+                "about MyToolTrove",
+                "free online tools",
+                "pdf tools",
+                "image tools",
+                "developer tools"
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "id": "gann-hexagonal-sr-calculator",
+            "title": "GANN Hexagonal Support & Resistance Calculator | MyToolTrove",
+            "metaDescription": "Calculate dynamic support and resistance levels using GANN's mathematical ratios. Free online GANN hexagonal calculator for trading and technical analysis.",
+            "h1": "GANN Hexagonal Support & Resistance Calculator",
+            "h2": "Calculate Dynamic Support and Resistance Levels Using GANN Theory",
+            "canonicalUrl": "https://mytooltrove.com/tools/trading/gann-hexagonal-support-resistance-calculator",
+            "keywords": [
+                "GANN calculator",
+                "support level",
+                "resistance level",
+                "trading tools",
+                "technical analysis",
+                "GANN hexagonal calculator",
+                "GANN support resistance",
+                "free GANN calculator",
+                "GANN levels calculator",
+                "GANN price levels"
+            ]
+        },
+        {
+            "id": "resume-builder",
+            "title": "Free Resume Builder Online | Create ATS-Friendly Resumes | MyToolTrove",
+            "metaDescription": "Create professional resumes online for free with our AI-powered resume builder. Choose from ATS-friendly templates, customize layouts, and download in PDF. Perfect for job seekers and career changers.",
+            "h1": "Free Online Resume Builder",
+            "h2": "Create ATS-Friendly Resumes That Get Noticed",
+            "canonicalUrl": "https://mytooltrove.com/tools/career/resume-builder",
+            "keywords": [
+                "resume builder",
+                "free resume maker",
+                "create resume online",
+                "ATS friendly resume",
+                "professional resume template",
+                "job resume builder",
+                "CV maker free",
+                "resume generator",
+                "online resume creator",
+                "career resume builder",
+                "job application resume",
+                "hire resume builder"
+            ]
+        },
+        {
+            "id": "pdf-compressor",
+            "title": "Free PDF Compressor Online | Reduce PDF File Size | MyToolTrove",
+            "metaDescription": "Compress PDF files online for free. Reduce PDF file size while maintaining quality. Fast, secure, and no registration required. Perfect for email and web sharing.",
+            "h1": "Free Online PDF Compressor",
+            "h2": "Reduce PDF File Size Without Losing Quality",
+            "canonicalUrl": "https://mytooltrove.com/tools/pdf/pdf-compressor",
+            "keywords": [
+                "pdf compressor",
+                "reduce pdf size",
+                "compress pdf online",
+                "pdf size reducer",
+                "free pdf compressor",
+                "shrink pdf",
+                "pdf file size reducer",
+                "optimize pdf",
+                "pdf optimizer",
+                "small pdf"
+            ]
+        },
+        {
+            "id": "pdf-merger",
+            "title": "Free PDF Merger Online | Combine Multiple PDF Files | MyToolTrove",
+            "metaDescription": "Merge multiple PDF files into one document online for free. Combine PDFs in any order. Fast, secure, and no registration required.",
+            "h1": "Free Online PDF Merger",
+            "h2": "Combine Multiple PDF Files into One",
+            "canonicalUrl": "https://mytooltrove.com/tools/pdf/pdf-merger",
+            "keywords": [
+                "pdf merger",
+                "combine pdf",
+                "merge pdf files",
+                "join pdf",
+                "pdf combiner",
+                "merge pdf online",
+                "free pdf merger",
+                "pdf joiner",
+                "combine pdf files",
+                "pdf merge tool"
+            ]
+        },
+        {
+            "id": "image-compressor",
+            "title": "Free Image Compressor Online | Reduce Image File Size | MyToolTrove",
+            "metaDescription": "Compress images online for free. Reduce JPEG, PNG, and WebP file sizes while maintaining quality. Perfect for web optimization and faster loading.",
+            "h1": "Free Online Image Compressor",
+            "h2": "Reduce Image File Size Without Losing Quality",
+            "canonicalUrl": "https://mytooltrove.com/tools/image/image-compressor",
+            "keywords": [
+                "image compressor",
+                "compress image",
+                "reduce image size",
+                "jpeg compressor",
+                "png compressor",
+                "image optimizer",
+                "photo compressor",
+                "picture compressor",
+                "free image compressor",
+                "web image optimizer"
+            ]
+        },
+        {
+            "id": "json-formatter",
+            "title": "Free JSON Formatter Online | Format & Beautify JSON | MyToolTrove",
+            "metaDescription": "Format and beautify JSON data online for free. Improve readability with proper indentation and syntax highlighting. Secure, client-side processing.",
+            "h1": "Free Online JSON Formatter",
+            "h2": "Format and Beautify Your JSON Data",
+            "canonicalUrl": "https://mytooltrove.com/tools/developer/json-formatter",
+            "keywords": [
+                "json formatter",
+                "format json",
+                "beautify json",
+                "json prettify",
+                "json pretty print",
+                "json validator",
+                "json beautifier",
+                "online json formatter",
+                "free json tool",
+                "json syntax checker"
+            ]
+        },
+        {
+            "id": "qr-code-generator",
+            "title": "Free QR Code Generator Online | Generate QR Codes instantly | MyToolTrove",
+            "metaDescription": "Create high-quality QR codes for free online. Support text, URLs, and WiFi QR codes. Download as PNG or SVG. No signup required.",
+            "h1": "Free Online QR Code Generator",
+            "h2": "Generate High-Quality QR Codes in Seconds",
+            "canonicalUrl": "https://mytooltrove.com/tools/utility/qr-code-generator",
+            "keywords": [
+                "qr code generator",
+                "generate qr code",
+                "free qr code",
+                "qr code creator",
+                "online qr code",
+                "qr code maker",
+                "qr code downloader",
+                "qr code generator free",
+                "text qr code",
+                "url qr code",
+                "wifi qr code"
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "id": "trading-tools",
+            "title": "Trading Tools | MyToolTrove",
+            "metaDescription": "Powerful trading tools to enhance your strategy and analysis. Free online calculators, indicators, and charting tools for traders of all levels.",
+            "h1": "Trading Tools for Every Trader",
+            "h2": "Enhance Your Trading Strategy with Our Powerful Tools",
+            "canonicalUrl": "https://mytooltrove.com/tools/trading",
+            "keywords": [
+                "trading tools",
+                "trading calculators",
+                "trading indicators",
+                "trading charting tools",
+                "free trading tools",
+                "online trading tools"
+            ]
+        }
+    ]
+}

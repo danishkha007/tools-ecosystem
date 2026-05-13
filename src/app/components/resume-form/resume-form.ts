@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ResumeService } from '../../core/services/resume';
-import { Resume } from '../../core/models/resume';
+import { ResumeService } from '../../core/services/resume.service';
+import { ResumeData } from '../../core/models/resume-data.model';
 
 @Component({
   selector: 'app-resume-form',

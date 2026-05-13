@@ -1,23 +1,20 @@
 import { Component, OnInit, HostListener, ChangeDetectorRef, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { ToolConfigService } from '../../core/services/tool-config';
-import { ToolData } from '../../core/models/tool-data.model';
+import { Tool } from '../../core/models/tool-data.model';
 import { SeoService } from '../../core/services/seo.service';
-import { ToolDataService } from '../../core/services/tool-data.service';
-import { SeoContentComponent } from "../../components/seo-content/seo-content";
+import { DataService } from '@core/services/data.service';
 
 @Component({
   selector: 'qr-code-generator',
   templateUrl: './qr-code-generator.html',
   styleUrls: ['./qr-code-generator.scss'],
-  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
+  imports: [CommonModule, FormsModule]
 })
 export class QrCodeGeneratorComponent implements OnInit {
   toolId = 'qr-code-generator';
 
-  toolData: ToolData = {} as ToolData;
+  toolData: Tool | undefined;
 
   // QR Code Content
   qrContent = '';
@@ -47,20 +44,16 @@ export class QrCodeGeneratorComponent implements OnInit {
   isGenerating = false;
 
   constructor(
-    private toolConfigService: ToolConfigService,
+    private dataService: DataService,
     private seoService: SeoService,
-    private toolDataService: ToolDataService,
     private cdr: ChangeDetectorRef,
-    private zone: NgZone
+    private zone: NgZone,
   ) {
-    const tool = this.toolDataService.getToolById('qr-code-generator');
-    if (tool) {
-      this.toolData = tool;
-    }
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   @HostListener('window:resize')

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ResumeService } from '../../core/services/resume';
+import { ResumeService } from '../../core/services/resume.service';
 
 @Component({
   selector: 'app-progress-bar',

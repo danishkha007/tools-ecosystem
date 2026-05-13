@@ -1,15 +1,12 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { PdfService } from '../../core/services/pdf';
+import { PdfService } from '../../core/services/pdf.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { FaqItem } from '../../components/faq-section/faq-section';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { ToolConfigService } from '../../core/services/tool-config';
-import { ToolData } from '../../core/models/tool-data.model';
+import { ActivatedRoute } from '@angular/router';
+import { Tool } from '../../core/models/tool-data.model';
 import { SeoService } from '../../core/services/seo.service';
-import { ToolDataService } from '../../core/services/tool-data.service';
-import { SeoContentComponent } from "../../components/seo-content/seo-content";
+import { DataService } from '@core/services/data.service';
 
 interface CompressFile {
   file: File;
@@ -24,9 +21,9 @@ interface CompressFile {
   selector: 'app-pdf-compress',
   templateUrl: './pdf-compress.html',
   styleUrls: ['./pdf-compress.scss'],
-  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
+  imports: [CommonModule, FormsModule]
 })
-export class PdfCompressComponent implements OnInit {
+export class PdfCompressorComponent implements OnInit {
   toolId= 'pdf-compress';
 
   selectedFiles: CompressFile[] = [];
@@ -41,24 +38,21 @@ export class PdfCompressComponent implements OnInit {
   // Compression level
   compressionLevel: 'low' | 'medium' | 'high' = 'medium';
 
-  toolData: ToolData = {} as ToolData;
+  toolData: Tool | undefined;
 
   constructor(
     private pdfService: PdfService,
+    private dataService: DataService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone,
-    private toolConfigService: ToolConfigService,
     private seoService: SeoService,
-    private toolDataService: ToolDataService
+    private route: ActivatedRoute
   ) {
-    const tool = this.toolDataService.getToolById('pdf-compress');
-    if (tool) {
-      this.toolData = tool;
-    }
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   async onFileSelect(event: Event) {

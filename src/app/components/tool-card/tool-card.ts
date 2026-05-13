@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToolData } from '../../core/models/tool-data.model';
+import { Tool } from '../../core/models/tool-data.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ToolCardComponent {
 
-  @Input() tool!: ToolData;
+  @Input() tool!: Tool;
 
   constructor(private router: Router) {}
 

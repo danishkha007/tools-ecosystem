@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolCategory } from '../../core/models/tool-category';
-import { ToolData } from '../../core/models/tool-data.model';
-import { ToolConfigService } from '../../core/services/tool-config';
+import { Tool } from '../../core/models/tool-data.model';
 import { ToolCardComponent } from '../../components/tool-card/tool-card';
 import { SeoService } from '@core/services/seo.service';
+import { AppData } from '@core/models/app-data.model';
+import { DataService } from '@core/services/data.service';
+import { Category } from '@core/models/category-data.model';
 // import { AmazonAdComponent } from '../../components/amazon-ad/amazon-ad';
 
 type SortOption = 'name-asc' | 'name-desc';
@@ -19,56 +20,62 @@ type SortOption = 'name-asc' | 'name-desc';
 })
 export class DashboardComponent implements OnInit {
 
-  categories: ToolCategory[] = [];
-  allTools: ToolData[] = [];
-  filteredTools: ToolData[] = [];
+  appData: AppData;
+
+  categories: Category[] = [];
+  allTools: Tool[] = [];
+  filteredTools: Tool[] = [];
   // adPlacements: number[] = [];
-  
+
   sortOption: SortOption = 'name-asc';
   selectedCategory: string | null = null;
-  
+
   // SEO data
   seoData = {
-        "title": 'Free Online Tools for PDF, Image & Developers | MyToolTrove',
-        "metaDescription": 'MyToolTrove - Your all-in-one destination for free online tools. Merge PDFs, Compress Images, Convertors, Calculators, and more. No Registration, Free Forever.',
-        "keywords": [
-          "free online tools", "PDF tools", "image compression","developer tools",
-          "calculator tools", "merge PDFs", "compress images","gann hexagonal support resistance calculator","mytooltrove","tool trove","online utilities","free tools online","pdf merger","image optimizer","percentage calculator"],
-        "h1": "Free Online Tools | PDF, Image, Calculator & Developer Tools",
-        "h2": "Your all-in-one destination for free online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.",
-        "canonicalUrl": "https://www.mytooltrove.com"
-      }
+    "id": "home",
+    "title": 'Free Online Tools for PDF, Image & Developers | MyToolTrove',
+    "metaDescription": 'MyToolTrove - Your all-in-one destination for free online tools. Merge PDFs, Compress Images, Convertors, Calculators, and more. No Registration, Free Forever.',
+    "keywords": [
+      "free online tools", "PDF tools", "image compression", "developer tools",
+      "calculator tools", "merge PDFs", "compress images", "gann hexagonal support resistance calculator", "mytooltrove", "tool trove", "online utilities", "free tools online", "pdf merger", "image optimizer", "percentage calculator"],
+    "h1": "Free Online Tools | PDF, Image, Calculator & Developer Tools",
+    "h2": "Your all-in-one destination for free online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.",
+    "canonicalUrl": "https://www.mytooltrove.com"
+  }
 
   sortOptions: { value: SortOption; label: string }[] = [
     { value: 'name-asc', label: 'Name (A-Z)' },
     { value: 'name-desc', label: 'Name (Z-A)' }
   ];
 
-  constructor(private toolService: ToolConfigService, private seoService: SeoService) {}
+  constructor(
+    private seoService: SeoService,
+    private dataService: DataService) {
+    this.appData = this.dataService.getAppData();
+  }
+
 
   ngOnInit(): void {
     // Set document title and meta description
     this.seoService.setSeoData(this.seoData);
-    
-    this.categories = this.toolService.getActiveCategories();
+    this.categories = this.dataService.getCategoriesWithTools();
     this.buildAllTools();
-    // this.calculateAdPlacements();
     this.applySort();
   }
 
   private buildAllTools(): void {
-    this.allTools = this.toolService.getAllTools();
+    this.allTools = this.dataService.getAllTools();
     // Start with all tools
     this.filteredTools = [...this.allTools];
   }
 
-  get categoriesWithTools(): ToolCategory[] {
+  get categoriesWithTools(): Category[] {
     return this.categories;
   }
 
-  getCategoryToolCount(categoryName: string): number {
-    return this.toolService.getToolsByCategory(categoryName).length;
-  }
+  // getCategoryToolCount(categoryName: string): number {
+  //   return this.toolService.getToolsByCategory(categoryName).length;
+  // }
 
   selectCategory(categoryName: string | null): void {
     this.selectedCategory = categoryName;
@@ -82,8 +89,7 @@ export class DashboardComponent implements OnInit {
 
   applySort(): void {
     if (this.selectedCategory) {
-      // Filter by category first
-      this.filteredTools = this.toolService.getToolsByCategory(this.selectedCategory);
+      this.filteredTools = this.dataService.getToolsByCategory(this.selectedCategory);
     } else {
       // Show all tools
       this.filteredTools = [...this.allTools];
@@ -96,6 +102,8 @@ export class DashboardComponent implements OnInit {
       this.filteredTools.sort((a, b) => b.name.localeCompare(a.name));
     }
   }
+
+
 
   onSortChange(): void {
     this.applySort();

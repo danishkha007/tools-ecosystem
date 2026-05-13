@@ -31,9 +31,9 @@
         <div class="link-group">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact Us</a></li>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/about">About Us</a></li>
+            <li><a routerLink="/contact">Contact Us</a></li>
             <li><a href="/#available-tools">All Tools</a></li>
           </ul>
         </div>
@@ -41,17 +41,18 @@
         <div class="link-group">
           <h4>Popular Tools</h4>
           <ul>
-            <li><a href="/resume-builder">Resume Builder</a></li>
-            <li><a href="/merge-pdf">Merge PDF</a></li>
-            <li><a href="/compress-pdf">Compress PDF</a></li>
-            <li><a href="/image-compress">Image Compressor</a></li>
+            @for (tool of popularTools; track tool.id) {
+              <li><a [routerLink]="tool.route">{{ tool.name }}</a></li>
+            }
           </ul>
         </div>
 
         <div class="link-group">
           <h4>Trading Tools</h4>
           <ul>
-            <li><a href="/gann-hexagonal-support-resistance-calculator">GANN Hexagonal Support & Resistance Calculator</a></li>
+            @for (tool of tradingTools; track tool.id) {
+              <li><a [routerLink]="tool.route">{{ tool.name }}</a></li>
+            }
           </ul>
         </div>
 

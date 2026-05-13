@@ -1,10 +1,4 @@
 <div class="qr-tool-container">
-    <app-tool-header
-        [title]="toolData.seo.h1"
-        [subtitle]="toolData.seo.h2"
-        [tags]="toolData.tags">
-    </app-tool-header>
-
     <div class="qr-main-content">
         <!-- Left Column - Input Section -->
         <div class="qr-input-column">
@@ -326,31 +320,4 @@
         </div>
     </div>
 
-    <app-seo-content [toolId]="toolId">
-        <div visual-content-input class="hero-visual">
-            <div class="visual-card">
-                <div class="card-shine"></div>
-                <div class="card-content">
-                    <div class="qr-visual">
-                        <div class="qr-box">
-                            <div class="qr-pattern">
-                                <div class="qr-square top-left"></div>
-                                <div class="qr-square top-right"></div>
-                                <div class="qr-square bottom-left"></div>
-                            </div>
-                            <div class="qr-content">
-                                <div class="qr-icon">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M10 9h4M7 12h10M7 15h10M14 2v2M10 2v2M17 2v2M7 2v2M14 22v2M10 22v2M17 22v2M7 22v2" stroke-linecap="round"/>
-                                        <path d="M4 4h16v16H4V4z" stroke-dasharray="2,4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="qr-label">Scan to access</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </app-seo-content>
 </div>

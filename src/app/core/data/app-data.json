@@ -1,0 +1,47 @@
+{
+    "name": "MyToolTrove",
+    "shortName": "MTT",
+    "description": "MyToolTrove is your All-in-one destination for free online tools. We have tools for PDFs, Images, Developers, Trading, Finance and more. We have tools like PDF Merger, Image Compressor, GANN Hexagonal Support Resistance Calculator, JSON Formatter, Resume Builder and more. No registration required. 100% free forever.",
+    "domain": "mytooltrove.com",
+    "logo": "/logo.png",
+    "supportEmail": "support@mytooltrove.com",
+    "socialLinks": {
+        "twitter": "https://x.com/MyToolTrove",
+        "instagram": "https://instagram.com/MyToolTrove",
+        "facebook": "https://facebook.com/MyToolTrove"
+    },
+    "pages": [
+        {
+            "id": "home",
+            "name": "Home",
+            "route": "/",
+            "faqSection": {
+                "title": "Frequently Asked Questions",
+                "faqs": [
+                    {
+                        "question": "Are the tools really free to use?",
+                        "answer": "Yes, all tools on MyToolTrove are completely free to use. We do not charge any fees for accessing or using our tools."
+                    },
+                    {
+                        "question": "Do I need to create an account to use the tools?",
+                        "answer": "No, you can use all our tools without creating an account. Simply visit the tool you want to use and start using it right away."
+                    },
+                    {
+                        "question": "Is there a limit to how many times I can use a tool?",
+                        "answer": "No, there are no limits on how many times you can use any of our tools. Feel free to use them as often as you need."
+                    }
+                ]
+            }
+        },
+        {
+            "id": "about",
+            "name": "About",
+            "route": "/about"
+        },
+        {
+            "id": "contact",
+            "name": "Contact",
+            "route": "/contact"
+        }
+    ]
+}

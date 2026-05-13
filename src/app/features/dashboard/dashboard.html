@@ -15,15 +15,6 @@
           <path d="M0,100 C300,20 600,180 900,100 C1100,20 1200,180 1200,100 L1200,200 L0,200 Z" fill="rgba(6, 182, 212, 0.1)"></path>
         </svg>
       </div>
-      <!-- <div class="arc-circle arc-1"></div> -->
-      <!-- <div class="arc-circle arc-2"></div> -->
-      <!-- <div class="orbit-circle orbit-1"></div> -->
-      <!-- <div class="orbit-circle orbit-2"></div> -->
-      <!-- <div class="decorative-dot dot-1"></div> -->
-      <!-- <div class="decorative-dot dot-2"></div> -->
-      <!-- <div class="decorative-dot dot-3"></div> -->
-      <!-- <div class="decorative-dot dot-4"></div> -->
-      <!-- <div class="decorative-dot dot-5"></div> -->
       <div class="mesh-grid"></div>
     </div>
     
@@ -46,12 +37,6 @@
         
         <div class="cta-group">
           <a href="#available-tools" class="btn btn-primary">
-            <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="12" y1="18" x2="12" y2="12"/>
-              <line x1="9" y1="15" x2="15" y2="15"/>
-            </svg> -->
             Explore All Tools
           </a>
           <a href="#features" class="btn btn-secondary">
@@ -90,85 +75,9 @@
       
       <!-- Right Visual -->
       <div class="welcome-visual">
-        <!-- <div class="tool-cards-preview">
-          <div class="preview-card card-1">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-              </svg>
-            </div>
-            <div class="card-text">
-              <span class="card-title">PDF Tools</span>
-              <span class="card-desc">Merge, split, convert</span>
-            </div>
-          </div>
-          <div class="preview-card card-2">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-            </div>
-            <div class="card-text">
-              <span class="card-title">Image Tools</span>
-              <span class="card-desc">Compress, resize</span>
-            </div>
-          </div>
-          <div class="preview-card card-3">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div class="card-text">
-              <span class="card-title">Resume Builder</span>
-              <span class="card-desc">Create professional resumes</span>
-            </div>
-          </div>
-          <div class="preview-card card-4">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                <line x1="12" y1="22.08" x2="12" y2="12"/>
-              </svg>
-            </div>
-            <div class="card-text">
-              <span class="card-title">Calculators</span>
-              <span class="card-desc">BMI, EMI, salary</span>
-            </div>
-          </div>
-        </div> -->
         <div class="img-ctn"><img src="/welcome-section.png" alt=""></div>
       </div>
     </div>
-    
-    
-    <!-- Stats Bar -->
-    <!-- <div class="stats-bar">
-      <div class="stat-block">
-        <span class="stat-value">50+</span>
-        <span class="stat-label">Free Tools</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-block">
-        <span class="stat-value">100%</span>
-        <span class="stat-label">Browser-Based</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-block">
-        <span class="stat-value">0</span>
-        <span class="stat-label">Data Stored</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-block">
-        <span class="stat-value">∞</span>
-        <span class="stat-label">No Limits</span>
-      </div>
-    </div> -->
   </section>
 
   <!-- Features Section - Redesigned -->
@@ -350,8 +259,8 @@
         <button 
           *ngFor="let category of categoriesWithTools" 
           class="filter-btn"
-          [class.active]="isCategorySelected(category.name)"
-          (click)="selectCategory(category.name)">
+          [class.active]="isCategorySelected(category.id)"
+          (click)="selectCategory(category.id)">
           <span class="btn-text">{{ category.name }}</span>
           <span class="btn-count">{{ category.tools?.length || 0 }}</span>
         </button>

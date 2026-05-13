@@ -1,13 +1,13 @@
-import { ChangeDetectorRef, Component, Input, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolData } from '../../core/models/tool-data.model';
+import { Tool, ToolData } from '../../core/models/tool-data.model';
 import { AboutSectionComponent } from '../about-section/about-section';
 import { FeaturesSectionComponent } from "../features-section/features-section";
 import { UseCaseSectionComponent } from "../use-case-section/use-case-section";
 import { FaqSectionComponent } from "../faq-section/faq-section";
 import { TheorySectionComponent } from '../theory-section/theory-section';
-import { ToolDataService } from '@core/services/tool-data.service';
 import { AmazonAdComponent } from "../amazon-ad/amazon-ad";
+import { DataService } from '@core/services/data.service';
 
 @Component({
   selector: 'app-seo-content',
@@ -19,15 +19,14 @@ export class SeoContentComponent {
   @Input() toolId: string = '';
   activeFaqIndex: number | null = null;
   
-  private toolDataService = inject(ToolDataService);
-  toolData: ToolData = {} as ToolData;
+  private dataService = inject(DataService);
+  toolData: Tool | undefined;
 
   // constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if (this.toolId) {
-      this.toolData = this.toolDataService.getToolById(this.toolId);
-      // this.cdr.markForCheck();
+      this.toolData = this.dataService.getToolDataById(this.toolId);
     }
   }
 

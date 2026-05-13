@@ -4,9 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "prebuild": "npm run generate:sitemap",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "audit:seo": "node .github/skills/seo-optimization/scripts/audit-seo.js",
     "serve:ssr:tools-ecosystem": "node dist/tools-ecosystem/server/server.mjs"
   },
   "private": true,
