@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SeoService } from '@core/services/seo.service';
-import { ToolDataService } from '@core/services/tool-data.service';
-import { ToolData } from '@core/models/tool-data.model';
-import { SeoContentComponent } from '../../../../components/seo-content/seo-content';
-import { ToolHeaderComponent } from '../../../../components/tool-header/tool-header';
+// import { ToolDataService } from '@core/services/tool-data.service';
+import { Tool, ToolData } from '@core/models/tool-data.model';
+import { DataService } from '@core/services/data.service';
 interface GannLevel {
   level: number;
   type: 'resistance' | 'support';
@@ -25,7 +25,7 @@ interface HexagonRing {
 @Component({
   selector: 'app-gann-hexagonal-sr-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './hexagonal-sr-calculator.html',
   styleUrl: './hexagonal-sr-calculator.scss',
 })
@@ -34,24 +34,24 @@ export class GannCalculator implements OnInit {
   toolId = 'gann-hexagonal-sr-calculator';
 
   inputValue: number | null = null;
-  toolData: ToolData = {} as ToolData;  
+  toolData: Tool | undefined;
   levels: GannLevel[] = [];
   tableRows: TableRow[] = [];
   hexagonRings: HexagonRing[] = [];
   showResults = false;
   gannValues : number[] = [0.29166, 0.583333, 0.875, 1.1666, 1.458333, 1.75];
 
-  private toolDataService = inject(ToolDataService);
+  // private toolDataService = inject(ToolDataService);
   private seoService = inject(SeoService);
-  constructor() {
-    const tool = this.toolDataService.getToolById(this.toolId);
-    if (tool) {
-      this.toolData = tool;
-    }
+  private route = inject(ActivatedRoute);
+  constructor(
+    private dataService: DataService
+  ) {
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   calculate() {

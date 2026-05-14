@@ -1,15 +1,15 @@
 import { Component, inject, NgZone, OnInit } from '@angular/core';
-import { PdfService } from '../../core/services/pdf';
+import { PdfService } from '../../core/services/pdf.service';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as pdfjsLib from '../../../../node_modules/pdfjs-dist';
-import { ToolHeaderComponent } from "../../components/tool-header/tool-header";
-import { ToolData, ToolSEO, UseCase } from '../../core/models/tool-data.model';
+import { Tool, UseCase } from '../../core/models/tool-data.model';
 import { SeoService } from '@core/services/seo.service';
-import { ToolDataService } from '@core/services/tool-data.service';
-import { SeoContentComponent } from "../../components/seo-content/seo-content";
+// import { ToolDataService } from '@core/services/tool-data.service';
+import { DataService } from '@core/services/data.service';
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
@@ -35,7 +35,7 @@ interface PageItem {
   selector: 'app-pdf-merge',
   templateUrl: './pdf-merge.html',
   styleUrls: ['./pdf-merge.scss'],
-  imports: [DragDropModule, CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
+  imports: [DragDropModule, CommonModule, FormsModule]
 })
 export class PdfMergeComponent implements OnInit {
   toolId= 'pdf-merge';
@@ -71,24 +71,24 @@ export class PdfMergeComponent implements OnInit {
     }
   }
 
-  toolData: ToolData = {} as ToolData;
-  private toolDataService = inject(ToolDataService);
+  toolData: Tool | undefined;
+  // private toolDataService = inject(ToolDataService);
   private seoService = inject(SeoService);
 
   constructor(
+    private dataService: DataService,
     private pdfService: PdfService, 
     private cdr: ChangeDetectorRef, 
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private route: ActivatedRoute
   ) {
-    const tool = this.toolDataService.getToolById('pdf-merge');
-    if (tool) {
-      this.toolData = tool;
-    }
+    this.toolId = this.route.snapshot.data['toolId'] ?? this.toolId;
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
     // SEO data is loaded in constructor
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   async onFileSelect(event: Event) {

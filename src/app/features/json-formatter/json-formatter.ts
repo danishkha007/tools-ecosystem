@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { ToolConfigService } from '../../core/services/tool-config';
-import { ToolData } from '../../core/models/tool-data.model';
+import { ActivatedRoute } from '@angular/router';
+import { Tool } from '../../core/models/tool-data.model';
 import { SeoService } from '../../core/services/seo.service';
-import { ToolDataService } from '../../core/services/tool-data.service';
-import { SeoContentComponent } from "../../components/seo-content/seo-content";
+import { DataService } from '@core/services/data.service';
 
 @Component({
   selector: 'app-json-formatter',
   templateUrl: './json-formatter.html',
   styleUrls: ['./json-formatter.scss'],
-  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent]
+  imports: [CommonModule, FormsModule]
 })
 export class JsonFormatterComponent implements OnInit {
   toolId = 'json-formatter';
@@ -26,7 +24,7 @@ export class JsonFormatterComponent implements OnInit {
   objectCount = 0;
   arrayCount = 0;
 
-  toolData: ToolData = {} as ToolData;
+  toolData: Tool | undefined;
 
   get buttonText(): string {
     return this.toolData?.buttonText || 'Format JSON';
@@ -41,18 +39,15 @@ export class JsonFormatterComponent implements OnInit {
   }
 
   constructor(
-    private toolConfigService: ToolConfigService,
+    private dataService: DataService,
     private seoService: SeoService,
-    private toolDataService: ToolDataService
+    private route: ActivatedRoute
   ) {
-    const tool = this.toolDataService.getToolById('json-formatter');
-    if (tool) {
-      this.toolData = tool;
-    }
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   onInputChange(): void {

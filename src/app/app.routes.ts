@@ -1,54 +1,23 @@
 import { Routes } from '@angular/router';
+import { buildCategoryRoutes, buildToolRoutes } from './core/services/registry.service';
+import { TOOL_DATA } from './core/services/data.service';
 
 export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/dashboard/dashboard').then(m => m.DashboardComponent)
+      import('./pages/home/home').then(m => m.HomeComponent)
   },
   {
     path: 'about',
     loadComponent: () =>
-      import('./features/about/about').then(m => m.AboutComponent)
+      import('./pages/about/about').then(m => m.AboutComponent)
   },
   {
     path: 'contact',
     loadComponent: () =>
-      import('./features/contact/contact').then(m => m.ContactComponent)
+      import('./pages/contact/contact').then(m => m.ContactComponent)
   },
-  {
-    path: 'resume-builder',
-    loadComponent: () =>
-      import('./features/resume-builder/resume-builder').then(m => m.ResumeBuilder)
-  },
-  {
-    path: 'pdf-merger',
-    loadComponent: () =>
-      import('./features/pdf-merge/pdf-merge').then(m => m.PdfMergeComponent)
-  },
-  {
-    path: 'image-compressor',
-    loadComponent: () =>
-      import('./features/image-compressor/image-compressor').then(m => m.ImageCompressor)
-  },
-  {
-    path: 'pdf-compressor',
-    loadComponent: () =>
-      import('./features/pdf-compress/pdf-compress').then(m => m.PdfCompressComponent)
-  },
-  {
-    path: 'json-formatter',
-    loadComponent: () =>
-      import('./features/json-formatter/json-formatter').then(m => m.JsonFormatterComponent)
-  },
-  {
-    path: 'gann-hexagonal-support-resistance-calculator',
-    loadComponent: () =>
-      import('./features/calculators/gann/hexagonal-support-resistance/hexagonal-sr-calculator').then(m => m.GannCalculator)
-  },
-  {
-    path: 'qr-code-generator',
-    loadComponent: () =>
-      import('./features/qr-code-generator/qr-code-generator').then(m => m.QrCodeGeneratorComponent)
-  }
+  ...buildCategoryRoutes(TOOL_DATA.tools),
+  ...buildToolRoutes(TOOL_DATA.tools)
 ];

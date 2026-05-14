@@ -1,16 +1,29 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AmazonAdComponent } from "../amazon-ad/amazon-ad";
+import { CommonModule, Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { Tool } from '@core/models/tool-data.model';
+import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs";
 
 @Component({
   selector: 'app-tool-header',
   standalone: true,
-  imports: [CommonModule, AmazonAdComponent],
+  imports: [CommonModule, BreadcrumbsComponent],
   templateUrl: './tool-header.html',
   styleUrls: ['./tool-header.scss']
 })
 export class ToolHeaderComponent {
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
-  @Input() tags: string[] = ['Free', 'Accurate', 'No Registration', 'Browser-Based'];
+  @Input() tool: Tool | undefined;
+
+  constructor(
+    private location: Location,
+    private router: Router,
+  ) { }
+
+  goBack(): void {
+    if (window.history.length > 1) {
+      this.location.back();
+      return;
+    }
+    this.router.navigate(['/']);
+  }
 }

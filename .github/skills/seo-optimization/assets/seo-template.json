@@ -1,0 +1,32 @@
+{
+  "tool-id": {
+    "name": "Tool Display Name",
+    "category": "Tool Category",
+    "seo": {
+      "h1": "Main Title - Max 60 Characters With Keyword",
+      "metaDescription": "150-160 character description that includes 2-3 keywords and accurately describes the tool's functionality. Engaging and action-oriented.",
+      "keywords": ["primary-keyword", "secondary-keyword", "tertiary-keyword", "long-tail-keyword", "use-case-keyword"],
+      "tags": ["2-word keyword phrase", "3-word keyword phrase", "4-word keyword phrase or longer"]
+    }
+  },
+  "pdf-merge": {
+    "name": "PDF Merger",
+    "category": "PDF Tools",
+    "seo": {
+      "h1": "Merge PDFs Online - Free, Fast & Secure",
+      "metaDescription": "Merge multiple PDF files into one online for free. No signup required. Fast, secure, and works on all devices. Start merging PDFs now!",
+      "keywords": ["merge pdf", "combine pdfs", "join pdf files", "pdf merger", "merge multiple pdfs"],
+      "tags": ["batch processing", "file combination", "free pdf merger", "document assembly", "online converter"]
+    }
+  },
+  "image-compressor": {
+    "name": "Image Compressor",
+    "category": "Image Tools",
+    "seo": {
+      "h1": "Compress Images Online - Reduce Size Without Quality Loss",
+      "metaDescription": "Compress JPG, PNG, WebP and more online without losing quality. Reduce file size up to 90%. Batch compress supported. Free image compressor.",
+      "keywords": ["compress image", "reduce image size", "image optimizer", "image compression", "batch compress"],
+      "tags": ["file compression", "format conversion", "free image compressor", "image quality control", "online batch tool"]
+    }
+  }
+}

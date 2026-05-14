@@ -1,10 +1,4 @@
-<div class="container">
-    <app-tool-header
-        [title]="toolData.seo.h1"
-        [subtitle]="toolData.seo.h2"
-        [tags]="toolData.tags">
-    </app-tool-header>
-
+<div>
     <!-- Initial View - No Files -->
     <div *ngIf="selectedFiles.length === 0" class="initial-view">
         <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
@@ -122,19 +116,4 @@
 
     <input id="fileInput" type="file" multiple accept="image/*" (change)="onFileSelect($event)" hidden />
 
-    <app-seo-content [toolId]="toolId" >
-        <div visual-content-input>
-            <div class="size-comparison-mini" style="background: #f8fafc; padding: 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-around;">
-                        <div class="size-item" style="text-align: center;">
-                            <div style="font-size: 24px;">🖼️</div>
-                            <div style="font-size: 12px; font-weight: 700; color: #64748b;">5 MB</div>
-                        </div>
-                        <div style="font-size: 20px; color: #3b82f6;">→</div>
-                        <div class="size-item" style="text-align: center;">
-                            <div style="font-size: 24px;">🖼️</div>
-                            <div style="font-size: 12px; font-weight: 700; color: #3b82f6;">500 KB</div>
-                        </div>
-                    </div>
-                </div>
-    </app-seo-content>
 </div>

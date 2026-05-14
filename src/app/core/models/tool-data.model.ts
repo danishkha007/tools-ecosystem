@@ -1,27 +1,39 @@
-/**
- * Comprehensive data models for MyToolTrove tool information
- * Includes SEO, about, features, use cases, FAQ, and other sections
- */
+import { Seo } from "./seo-data.model";
 
-// FAQ Section Models
-export interface FAQ {
-  question: string;
-  answer: string;
+export interface ToolData {
+  name: string;
+  description: string;
+  tools: Tool[];
 }
 
-export interface FAQSection {
-  title: string;
-  subtitle: string;
-  accentColor: string;
-  faqs: FAQ[];
+export interface Tool {
+  id: string;
+  name: string;
+  route: string;
+  category: string;
+  icon: string;
+  iconAlt?: string;
+  shortDescription: string;
+  longDescription: string;
+  buttonText: string;
+  tags: string[];
+  seoData?: Seo;
+  aboutSection?: AboutSection;
+  featuresSection?: FeaturesSection;
+  useCasesSection?: UseCasesSection;
+  faqSection?: FAQSection;
+  theorySection?: TheorySection;
 }
 
-// Feature Models
-export interface Feature {
-  icon?: string;
-  iconPath?: string;
+export interface AboutSection {
+  badgeText: string;
+  badgeIcon: string;
   title: string;
   description: string;
+  ctaPrimaryText: string;
+  ctaNote: string;
+  features: Feature[];
+  visualContent: VisualContent;
 }
 
 export interface FeaturesSection {
@@ -31,7 +43,42 @@ export interface FeaturesSection {
   features: Feature[];
 }
 
-// Use Case Models
+export interface UseCasesSection {
+  title: string;
+  description: string;
+  label: string;
+  useCases: UseCase[];
+  modalData?: UseCaseModalData; // Optional modal data for additional info
+}
+export interface FAQSection {
+  title: string;
+  subtitle: string;
+  accentColor: string;
+  faqs: FAQ[];
+}
+
+export interface TheorySection {
+  label: string;
+  labelIcon: string;
+  title: string;
+  subtitle: string;
+  cards: TheoryCard[];
+}
+
+export interface Feature {
+  icon?: string;
+  iconPath?: string;
+  title: string;
+  description: string;
+}
+
+export interface VisualContent {
+  type: string;
+  svg?: string;
+  src?: string;
+  alt?: string;
+}
+
 export interface UseCase {
   icon: string;
   iconColor?: string; // Color for the icon
@@ -49,83 +96,13 @@ export interface UseCaseModalData {
   benefits?: string[];
 }
 
-export interface UseCasesSection {
-  title: string;
-  description: string;
-  label: string;
-  useCases: UseCase[];
-  modalData?: UseCaseModalData; // Optional modal data for additional info
+export interface FAQ {
+  question: string;
+  answer: string;
 }
 
-// About Section Models
-export interface VisualContent {
-  type: string;
-  svg?: string;
-  src?: string;
-  alt?: string;
-}
-
-export interface AboutSection {
-  badgeText: string;
-  badgeIcon: string;
-  title: string;
-  description: string;
-  ctaPrimaryText: string;
-  ctaNote: string;
-  features: Feature[];
-  visualContent: VisualContent;
-}
-
-// Theory Section Models (for Trading/Calculator tools)
 export interface TheoryCard {
   icon: string;
   title: string;
   description: string;
-}
-
-export interface TheorySection {
-  label: string;
-  labelIcon: string;
-  title: string;
-  subtitle: string;
-  cards: TheoryCard[];
-}
-
-// SEO Models
-export interface SEOData {
-  title: string;
-  metaDescription: string;
-  keywords: string[];
-  h1: string;
-  h2: string;
-  canonicalUrl: string;
-}
-
-// Complete Tool Data Model
-export interface ToolData {
-  id: string;
-  name: string;
-  route: string;
-  category: string;
-  icon: string;
-  iconAlt?: string;
-  shortDescription: string;
-  longDescription: string;
-  buttonText: string;
-  tags: string[];
-  seo: SEOData;
-  aboutSection: AboutSection;
-  featuresSection: FeaturesSection;
-  useCasesSection: UseCasesSection;
-  faqSection: FAQSection;
-  theorySection?: TheorySection; // Optional, only for certain tools like GANN
-}
-export interface ToolSEO {
-  title: string;
-  metaDescription: string;
-  keywords: string[];
-  h1: string;
-  h2: string;
-  canonicalUrl?: string;
-  faqs?: FAQ[];
 }

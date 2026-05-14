@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ResumeService } from '../../../core/services/resume';
+import { ResumeService } from '../../../core/services/resume.service';
 import { AsyncPipe, CommonModule, NgIf, NgStyle } from '@angular/common';
 
 @Component({

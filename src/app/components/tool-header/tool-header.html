@@ -1,10 +1,32 @@
-<div class="header-section">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">{{ subtitle }}</p>
-    <div class="header-tags">
-        @for (tag of tags; track tag) {
+
+<header class="tool-header">
+  <div class="tool-header__inner">
+    <div class="tool-header__nav">
+      <div class="tool-header__path">
+        <button type="button" class="back-button" (click)="goBack()" aria-label="Go back">
+          <svg class="back-button__icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18L9 12L15 6" />
+          </svg>
+        </button>
+
+        <app-breadcrumbs [tool]="tool"></app-breadcrumbs>
+
+        
+      </div>
+
+      @if (tool?.tags?.length) {
+        <div class="header-tags" aria-label="Tool tags">
+          @for (tag of tool?.tags; track tag) {
             <span class="tag">{{ tag }}</span>
-        }
+          }
+        </div>
+      }
     </div>
-    <app-amazon-ad size="720x90"></app-amazon-ad>
-</div>
+
+    <div class="tool-header__content">
+      <p class="eyebrow">Free Online Tool</p>
+      <h1>{{ tool?.seoData?.h1 }}</h1>
+      <p class="subtitle">{{ tool?.shortDescription }}</p>
+    </div>
+  </div>
+</header>

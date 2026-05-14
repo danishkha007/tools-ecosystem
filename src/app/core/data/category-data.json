@@ -1,0 +1,78 @@
+{
+    "name": "Category Data",
+    "description": "Data for all types of categories on MyToolTrove.",
+    "categories": {
+        "tools": [
+            {
+                "id": "trading-tools",
+                "name": "Trading Tools",
+                "route": "tools/trading",
+                "order": 1,
+                "description": "Powerful tools to enhance your trading strategy and analysis."
+            },
+            {
+                "id": "career-tools",
+                "name": "Career Tools",
+                "route": "tools/career",
+                "order": 2,
+                "description": "Essential tools to help you advance your career and job search."
+            },
+            {
+                "id": "pdf-tools",
+                "name": "PDF Tools",
+                "route": "tools/pdf",
+                "order": 3,
+                "description": "Easy-to-use tools for managing and optimizing your PDF documents."
+            },
+            {
+                "id": "image-tools",
+                "name": "Image Tools",
+                "route": "tools/image",
+                "order": 4,
+                "description": "Simple tools to edit, optimize, and convert your images online."
+            },
+            {
+                "id": "developer-tools",
+                "name": "Developer Tools",
+                "route": "tools/developer",
+                "order": 5,
+                "description": "Handy tools for developers to format, analyze, and optimize code."
+            },
+            {
+                "id": "design-tools",
+                "name": "Design Tools",
+                "route": "tools/design",
+                "order": 6,
+                "description": "Creative tools for designers to create visually stunning designs."
+            },
+            {
+                "id": "calculator-tools",
+                "name": "Calculator Tools",
+                "route": "tools/calculator",
+                "order": 7,
+                "description": "Useful tools for quick and accurate calculations."
+            },
+            {
+                "id": "utility-tools",
+                "name": "Utility Tools",
+                "route": "tools/utility",
+                "order": 8,
+                "description": "Essential tools for daily tasks and productivity."
+            },
+            {
+                "id": "finance-tools",
+                "name": "Finance Tools",
+                "route": "tools/finance",
+                "order": 9,
+                "description": "Useful tools for financial calculations, analysis, and planning."
+            },
+            {
+                "id": "other-tools",
+                "name": "Other Tools",
+                "route": "tools/other",
+                "order": 10,
+                "description": "Additional tools for various purposes."
+            }
+        ]
+    }
+}

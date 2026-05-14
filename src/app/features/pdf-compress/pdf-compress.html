@@ -1,10 +1,4 @@
-<div class="container">
-    <app-tool-header
-        [title]="toolData.seo.h1"
-        [subtitle]="toolData.seo.h2"
-        [tags]="toolData.tags">
-    </app-tool-header>
-
+<div>
     <!-- Initial View - No Files -->
     <div *ngIf="selectedFiles.length === 0" class="initial-view">
         <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
@@ -160,28 +154,5 @@
     </div>
 
     <input id="fileInput" type="file" multiple accept="application/pdf" (change)="onFileSelect($event)" hidden />
-
-    <app-seo-content [toolId]="toolId" >
-        <div visual-content-input class="hero-visual">
-            <div class="visual-card">
-                        <div class="card-shine"></div>
-                        <div class="card-content">
-                            <div class="size-comparison">
-                                <div class="size-item original">
-                                    <div class="size-icon">📄</div>
-                                    <div class="size-bar"></div>
-                                    <span>10 MB</span>
-                                </div>
-                                <div class="size-arrow">→</div>
-                                <div class="size-item compressed">
-                                    <div class="size-icon">📄</div>
-                                    <div class="size-bar"></div>
-                                    <span>2 MB</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </app-seo-content>
 
 </div>

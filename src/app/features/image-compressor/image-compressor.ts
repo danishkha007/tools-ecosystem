@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-import { ToolData } from '../../core/models/tool-data.model';
+import { ActivatedRoute } from '@angular/router';
+import { Tool, ToolData } from '../../core/models/tool-data.model';
 import { SeoService } from '../../core/services/seo.service';
-import { ToolDataService } from '../../core/services/tool-data.service';
-import { SeoContentComponent } from "../../components/seo-content/seo-content";
+// import { ToolDataService } from '../../core/services/tool-data.service';
+import { DataService } from '@core/services/data.service';
 
 interface CompressImage {
   file: File;
@@ -20,7 +20,7 @@ interface CompressImage {
 @Component({
   selector: 'app-image-compressor',
   standalone: true,
-  imports: [CommonModule, FormsModule, ToolHeaderComponent, SeoContentComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './image-compressor.html',
   styleUrl: './image-compressor.scss',
 })
@@ -42,21 +42,20 @@ export class ImageCompressor implements OnInit {
   
   // Output format
   outputFormat: 'original' | 'jpeg' | 'png' | 'webp' = 'original';
-  toolData: ToolData = {} as ToolData;
+  toolData: Tool | undefined;
 
   constructor(
     private cdr: ChangeDetectorRef,
+    private dataService: DataService,
     private seoService: SeoService,
-    private toolDataService: ToolDataService
+    // private toolDataService: ToolDataService,
+    private route: ActivatedRoute
   ) {
-    const tool = this.toolDataService.getToolById(this.toolId);
-    if (tool) {
-      this.toolData = tool;
-    }
+    this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.toolData.seo);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   async onFileSelect(event: Event) {

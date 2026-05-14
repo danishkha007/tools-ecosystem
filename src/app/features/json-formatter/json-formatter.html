@@ -1,10 +1,4 @@
-<div class="container">
-    <app-tool-header
-        [title]="toolData.seo.h1"
-        [subtitle]="toolData.seo.h2"
-        [tags]="toolData.tags">
-    </app-tool-header>
-
+<div>
     <div class="json-formatter-card">
         <div class="formatter-header">
             <div class="format-options">
@@ -115,21 +109,4 @@ Example:
         }
     </div>
 
-    <app-seo-content [toolId]="toolId">
-        <div visual-content-input class="hero-visual">
-            <div class="visual-card">
-                <div class="card-shine"></div>
-                <div class="card-content">
-                    <div class="json-preview">
-                        <div class="json-line"><span class="json-key">"name"</span>: <span class="json-string">"ToolTrove"</span>,</div>
-                        <div class="json-line"><span class="json-key">"tools"</span>: [</div>
-                        <div class="json-line json-indent"><span class="json-string">"JSON Formatter"</span>,</div>
-                        <div class="json-line json-indent"><span class="json-string">"PDF Tools"</span>,</div>
-                        <div class="json-line json-indent"><span class="json-string">"Image Tools"</span></div>
-                        <div class="json-line">]</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </app-seo-content>
 </div>
