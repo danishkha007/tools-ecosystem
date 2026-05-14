@@ -53,6 +53,12 @@ export class DataService {
         return this.toolData.tools.find(tool => tool.id === id);
     }
 
+    getCompleteToolDataById(id: string) {
+        const toolData = this.toolData.tools.find(tool => tool.id === id) as Tool;
+        toolData.seoData = this.getSeoDataById(id);
+        return toolData;
+    }
+
     getAppData(): AppData {
         return this.appData;
     }

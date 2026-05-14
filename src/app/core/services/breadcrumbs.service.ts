@@ -40,7 +40,7 @@ export class BreadcrumbsService {
     }
 
     generateFromUrl(url: string): void {
-        const urlObj = new URL(url, window.location.origin);
+        const urlObj = new URL(url, "https://mytooltrove.com");
         const segments = urlObj.pathname
             .split('/')
             .filter(Boolean)

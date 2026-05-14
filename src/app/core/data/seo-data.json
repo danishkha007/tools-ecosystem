@@ -18,8 +18,23 @@
         },
         {
             "id": "about",
-            "title": "About MyToolTrove | Free Online Tools for Everyone",
+            "title": "About Us",
             "metaDescription": "Learn about MyToolTrove - your free destination for online PDF, image, calculator, and developer tools. No registration required, 100% free forever.",
+            "h1": "About MyToolTrove",
+            "h2": "Your Go-To Destination for Free Online Tools",
+            "canonicalUrl": "https://www.mytooltrove.com/about",
+            "keywords": [
+                "about MyToolTrove",
+                "free online tools",
+                "pdf tools",
+                "image tools",
+                "developer tools"
+            ]
+        },
+        {
+            "id": "contact",
+            "title": "Contact Us",
+            "metaDescription": "Contact MyToolTrove for questions, feedback, or support. We\\'re here to help with our free online tools.",
             "h1": "About MyToolTrove",
             "h2": "Your Go-To Destination for Free Online Tools",
             "canonicalUrl": "https://www.mytooltrove.com/about",

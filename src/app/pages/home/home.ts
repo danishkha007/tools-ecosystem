@@ -12,13 +12,13 @@ import { Category } from '@core/models/category-data.model';
 type SortOption = 'name-asc' | 'name-desc';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.scss'],
+  selector: 'app-home',
+  templateUrl: './home.html',
+  styleUrls: ['./home.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, ToolCardComponent]
 })
-export class DashboardComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   appData: AppData;
 

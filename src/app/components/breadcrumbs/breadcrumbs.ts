@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Router, NavigationEnd, RouterLink } from '@angular/router';
+import { Router, NavigationEnd, RouterLink, NavigationStart } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { Tool, ToolData } from '../../core/models/tool-data.model';
@@ -29,12 +29,12 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             this.breadcrumbs = crumbs;
         };
         this.breadcrumbService.subscribe(this.subscription);
-
-        this.router.events
-            .pipe(filter(event => event instanceof NavigationEnd))
-            .subscribe((event: NavigationEnd) => {
-                this.breadcrumbService.generateFromUrl(event.url);
-            });
+        // this.router.events.subscribe((event) => {
+        //     if (event instanceof NavigationEnd) {
+        //         this.breadcrumbService.generateFromUrl(event.url);
+        //     }
+        // });
+        this.breadcrumbService.generateFromUrl(this.router.url);
     }
 
     ngOnDestroy() {
@@ -44,17 +44,18 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     }
 
     private setCustomBreadcrumbs() {
-        const breadcrumbs: Breadcrumb[] = [
-            { label: 'Home', url: '/' },
-            { label: 'Tools', url: '/tools' },
-        ];
+        this.breadcrumbService.generateFromUrl(this.router.url);
+        // const breadcrumbs: Breadcrumb[] = [
+        //     { label: 'Home', url: '/' },
+        //     { label: 'Tools', url: '/tools' },
+        // ];
 
-        if (this.tool?.category) {
-            breadcrumbs.push({ label: this.tool.category, url: '/tools' });
-        }
+        // if (this.tool?.category) {
+        //     breadcrumbs.push({ label: this.tool.category, url: '/tools' });
+        // }
 
-        breadcrumbs.push({ label: this.tool?.seoData?.h1, url: this.router.url });
+        // breadcrumbs.push({ label: this.tool?.seoData?.h1, url: this.router.url });
 
-        this.breadcrumbService.set(breadcrumbs);
+        // this.breadcrumbService.set(breadcrumbs);
     }
 }

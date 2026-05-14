@@ -16,6 +16,9 @@ export class SeoService {
   }
 
   setSeoDataById(id: string): void {
+    if (!this.isBrowser || !id) {
+      return;
+    }
     const seoData = this.dataService.getSeoDataById(id);
     this.setSeoData(seoData);
     const toolData = this.dataService.getToolDataById(id);
@@ -99,8 +102,8 @@ export class SeoService {
     scriptTag.textContent = JSON.stringify(jsonLd);
   }
 
-  private setFaqJsonLd(faqs : FAQ[]): void {
-    let doc = window.document as Document;
+  private setFaqJsonLd(faqs: FAQ[]): void {
+    let doc = document as Document;
     let scriptTag = doc.querySelector('script[type="application/ld+json"][data-faq]') as HTMLScriptElement;
     if (!scriptTag) {
       scriptTag = doc.createElement('script');

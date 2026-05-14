@@ -37,19 +37,12 @@ export class PdfCompressorComponent implements OnInit {
 
   // Compression level
   compressionLevel: 'low' | 'medium' | 'high' = 'medium';
-
-  toolData: Tool | undefined;
-
   constructor(
     private pdfService: PdfService,
     private dataService: DataService,
     private cdr: ChangeDetectorRef,
-    private ngZone: NgZone,
     private seoService: SeoService,
-    private route: ActivatedRoute
-  ) {
-    this.toolData = this.dataService.getToolDataById(this.toolId);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));

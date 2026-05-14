@@ -52,13 +52,5 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.seoService.setSeoDataById('about');
-    // Set document title and meta description
-    // document.title = this.seoTitle;
-
-    // Update meta description
-    // let metaDesc = document.querySelector('meta[name="description"]');
-    // if (metaDesc) {
-    //   metaDesc.setAttribute('content', this.seoMetaDescription);
-    // }
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataService } from '@core/services/data.service';
+import { SeoService } from '@core/services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,18 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./contact.scss']
 })
 export class ContactComponent implements OnInit {
+
+  constructor(private seoService: SeoService, private dataService: DataService) {}
   // SEO data
   seoTitle = 'Contact MyToolTrove - Get in Touch';
   seoMetaDescription = 'Contact MyToolTrove for questions, feedback, or support. We\'re here to help with our free online tools.';
   
   ngOnInit() {
-    // Set document title and meta description
-    document.title = this.seoTitle;
-    
-    // Update meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', this.seoMetaDescription);
-    }
+    this.seoService.setSeoDataById('contact');
   }
 }

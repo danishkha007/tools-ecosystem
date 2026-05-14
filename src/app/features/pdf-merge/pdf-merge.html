@@ -1,6 +1,4 @@
-<div class="container">
-
-    <!-- Password Modal -->
+<div>    <!-- Password Modal -->
     <div *ngIf="showPasswordModal" class="modal-overlay" (click)="closePasswordModal()">
         <div class="modal-content" (click)="$event.stopPropagation()">
             <div class="modal-icon">
@@ -185,5 +183,6 @@
     </div>
 
     <input id="fileInput" type="file" multiple accept="application/pdf" (change)="onFileSelect($event)" hidden />
+
 
 </div>
