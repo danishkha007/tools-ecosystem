@@ -1,4 +1,6 @@
-<div>    <!-- Password Modal -->
+<app-tool-header [tool]="toolData" [category]="categoryData" [headerOnly]="showHeader()"></app-tool-header>
+<div class="container"> <!-- Password Modal -->
+
     <div *ngIf="showPasswordModal" class="modal-overlay" (click)="closePasswordModal()">
         <div class="modal-content" (click)="$event.stopPropagation()">
             <div class="modal-icon">
@@ -28,13 +30,27 @@
     <div *ngIf="pdfFiles.length === 0" class="initial-view">
         <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
             (drop)="onDrop($event)">
-            <div class="upload-content">
-                <div class="upload-icon">
-                    <img src="/upload.png" alt="Upload" height="64" />
+            <div class="tool-info">
+                <div class="tool-logo">
+                    <img src="{{toolData?.icon}}" alt="">
                 </div>
-                <p class="upload-text">Drag and drop PDF files here</p>
-                <span class="upload-or">or</span>
-                <label for="fileInput" class="browse-btn">Browse Files</label>
+                <h2 class="category-name">{{categoryData?.name}}</h2>
+                <h1 class="tool-name">{{toolData?.name}}</h1>
+                <p class="tool-description">{{toolData?.longDescription}}</p>
+                <div class="file-upload-options">
+                    <label for="fileInput" class="browse-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path
+                                d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                        </svg>
+                        Upload PDF Files</label>
+                    <span class="upload-or">or</span>
+                    <p class="upload-text">Drag and drop<br>PDF files here</p>
+                </div>
+            </div>
+            <div class="image">
+                <img src="merge-pdf-decorative.png" alt="">
             </div>
         </div>
     </div>

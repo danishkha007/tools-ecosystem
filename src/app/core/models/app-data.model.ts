@@ -14,6 +14,7 @@ export interface AppData {
     description: string;
     domain: string;
     logo: string;
+    url: string;
     supportEmail?: string;
     socialLinks: SocialLinks;
     seo?: SeoData;

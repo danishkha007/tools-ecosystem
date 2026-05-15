@@ -18,7 +18,6 @@ export interface Breadcrumb {
     styleUrl: './breadcrumbs.scss',
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
-    @Input() tool!: Tool | undefined;
     breadcrumbs: Breadcrumb[] = [];
     private subscription: any;
 
@@ -29,11 +28,6 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             this.breadcrumbs = crumbs;
         };
         this.breadcrumbService.subscribe(this.subscription);
-        // this.router.events.subscribe((event) => {
-        //     if (event instanceof NavigationEnd) {
-        //         this.breadcrumbService.generateFromUrl(event.url);
-        //     }
-        // });
         this.breadcrumbService.generateFromUrl(this.router.url);
     }
 
@@ -41,21 +35,5 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         if (this.subscription) {
             this.breadcrumbService.unsubscribe(this.subscription);
         }
-    }
-
-    private setCustomBreadcrumbs() {
-        this.breadcrumbService.generateFromUrl(this.router.url);
-        // const breadcrumbs: Breadcrumb[] = [
-        //     { label: 'Home', url: '/' },
-        //     { label: 'Tools', url: '/tools' },
-        // ];
-
-        // if (this.tool?.category) {
-        //     breadcrumbs.push({ label: this.tool.category, url: '/tools' });
-        // }
-
-        // breadcrumbs.push({ label: this.tool?.seoData?.h1, url: this.router.url });
-
-        // this.breadcrumbService.set(breadcrumbs);
     }
 }

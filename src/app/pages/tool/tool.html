@@ -1,12 +1,7 @@
 @if (toolData) {
 <div class="tool-page-template">
-  <app-tool-header [tool]="toolData"></app-tool-header>
-
   @if (toolComponent) {
-    <div class="tool-container">
-      <ng-container *ngComponentOutlet="toolComponent"></ng-container>
-
-    </div>
+  <ng-container *ngComponentOutlet="toolComponent"></ng-container>
   }
 
   <!-- SEO Content -->

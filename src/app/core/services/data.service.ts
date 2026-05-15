@@ -96,14 +96,27 @@ export class DataService {
             }));
     }
 
-    searchTools(query: string): Tool[] {
-        const lowerQuery = query.toLowerCase();
-        return this.toolData.tools.filter(tool =>
-            tool.name.toLowerCase().includes(lowerQuery) ||
-            tool.shortDescription.toLowerCase().includes(lowerQuery) ||
-            tool.longDescription.toLowerCase().includes(lowerQuery) ||
-            tool.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
-            tool.seoData?.keywords.some(keyword => keyword.toLowerCase().includes(lowerQuery))
-        );
+    // searchTools(query: string): Tool[] {
+    //     const lowerQuery = query.toLowerCase();
+    //     return this.toolData.tools.filter(tool =>
+    //         tool.name.toLowerCase().includes(lowerQuery) ||
+    //         tool.shortDescription.toLowerCase().includes(lowerQuery) ||
+    //         tool.longDescription.toLowerCase().includes(lowerQuery) ||
+    //         tool.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
+    //         tool.seoData?.keywords.some(keyword => keyword.toLowerCase().includes(lowerQuery))
+    //     );
+    // }
+
+    getNameById(id: string) {
+        const tool = this.toolData.tools.find(tool => tool.id === id);
+        if (tool) {
+            return tool.name;
+        }
+        const category = this.categoryData.categories.tools.find(category => category.id === id);
+        if (category) {
+            return category.name;
+        }
+        return '';
+        // return this.toolData.tools.find(tool => tool.id === id)?.name;
     }
 }

@@ -1,8 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, Type, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, NgComponentOutlet } from '@angular/common';
-import { ToolHeaderComponent } from '../../components/tool-header/tool-header';
-// import { SeoContentComponent } from '../../components/seo-content/seo-content';
 import { SeoService } from '../../core/services/seo.service';
 import { Tool } from '../../core/models/tool-data.model';
 import { loadToolComponentById } from '../../core/services/registry.service';
@@ -13,16 +11,18 @@ import { FeaturesSectionComponent } from "@components/features-section/features-
 import { UseCaseSectionComponent } from "@components/use-case-section/use-case-section";
 import { TheorySectionComponent } from "@components/theory-section/theory-section";
 import { FaqSectionComponent } from "@components/faq-section/faq-section";
+import { Category } from '@core/models/category-data.model';
 
 @Component({
   selector: 'app-tool-page-template',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet, ToolHeaderComponent, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent],
+  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent],
   templateUrl: './tool.html',
   styleUrl: './tool.scss',
 })
 export class ToolPageComponent implements OnInit {
   toolData?: Tool;
+  categoryData?: Category;
   toolComponent?: Type<unknown>;
   activeFaqIndex: number | null = null;
 
@@ -40,6 +40,7 @@ export class ToolPageComponent implements OnInit {
     this.cdr.detectChanges();
 
     this.toolData = this.dataService.getCompleteToolDataById(toolId);
+    this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
     this.cdr.detectChanges();
     this.seoService.setSeoDataById(toolId);
     this.cdr.detectChanges();

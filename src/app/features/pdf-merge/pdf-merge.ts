@@ -10,6 +10,8 @@ import { Tool, UseCase } from '../../core/models/tool-data.model';
 import { SeoService } from '@core/services/seo.service';
 // import { ToolDataService } from '@core/services/tool-data.service';
 import { DataService } from '@core/services/data.service';
+import { ToolHeaderComponent } from "@components/tool-header/tool-header";
+import { Category } from '@core/models/category-data.model';
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
@@ -35,10 +37,14 @@ interface PageItem {
   selector: 'app-pdf-merge',
   templateUrl: './pdf-merge.html',
   styleUrls: ['./pdf-merge.scss'],
-  imports: [DragDropModule, CommonModule, FormsModule]
+  imports: [DragDropModule, CommonModule, FormsModule, ToolHeaderComponent]
 })
 export class PdfMergeComponent implements OnInit {
-  toolId= 'pdf-merge';
+  toolId= 'pdf-merger';
+
+    toolData?: Tool;
+    categoryData?: Category;
+
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
   loading = false;
@@ -70,9 +76,6 @@ export class PdfMergeComponent implements OnInit {
       this.generateAllPageThumbnailsForAll();
     }
   }
-
-  toolData: Tool | undefined;
-  // private toolDataService = inject(ToolDataService);
   private seoService = inject(SeoService);
 
   constructor(
@@ -82,13 +85,20 @@ export class PdfMergeComponent implements OnInit {
     private ngZone: NgZone,
     private route: ActivatedRoute
   ) {
-    this.toolId = this.route.snapshot.data['toolId'] ?? this.toolId;
-    this.toolData = this.dataService.getToolDataById(this.toolId);
+    this.toolData = this.dataService.getCompleteToolDataById(this.toolId);
+    this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
   }
 
   ngOnInit(): void {
     // SEO data is loaded in constructor
     this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
+  }
+
+  showHeader(){
+    if(this.pdfFiles.length === 0){
+      return false;
+    }
+    return true;
   }
 
   async onFileSelect(event: Event) {
