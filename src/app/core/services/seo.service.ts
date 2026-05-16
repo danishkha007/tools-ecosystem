@@ -59,6 +59,11 @@ export class SeoService {
 
     this.setWebPageJsonLdSchema(seoData);
 
+    if (window.location.pathname === '/') {
+      this.setOrganizationJsonLdSchema();
+      this.setWebsiteJsonLdSchema();
+    }
+
     // Set meta keywords
     if (seoData.keywords && seoData.keywords.length > 0) {
       this.setMetaTag('keywords', seoData.keywords.join(', '));
@@ -141,6 +146,40 @@ export class SeoService {
       "genre": "Tools"
     };
     scriptTag.textContent = JSON.stringify(webAppJsonLd);
+  }
+
+  private setOrganizationJsonLdSchema(): void {
+    let scriptTag = document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-organization', 'true');
+    document.head.appendChild(scriptTag);
+    const organizationJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://mytooltrove.com/#organization",
+      "name": "MyToolTrove",
+      "url": "https://mytooltrove.com",
+      "logo": "https://mytooltrove.com/favicon.svg"
+    };
+    scriptTag.textContent = JSON.stringify(organizationJsonLd);
+  }
+
+  private setWebsiteJsonLdSchema(): void {
+    let scriptTag = document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-website', 'true');
+    document.head.appendChild(scriptTag);
+    const websiteJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://mytooltrove.com/#website",
+      "url": "https://mytooltrove.com",
+      "name": "MyToolTrove",
+      "publisher": {
+        "@id": "https://mytooltrove.com/#organization"
+      }
+    };
+    scriptTag.textContent = JSON.stringify(websiteJsonLd);
   }
 
   /**

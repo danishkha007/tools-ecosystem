@@ -5,8 +5,9 @@
   }
 
   <!-- SEO Content -->
-  <div class="seo-content" style="max-width: 1280px;margin: 32px auto;">
-    <app-amazon-ad size="720x90"></app-amazon-ad>
+  <div class="seo-content" style="max-width: 1280px;margin: 32px auto;padding:12px">
+    <app-instructional-layer [data]="toolData.instructionalSection"></app-instructional-layer>
+    <!-- <app-amazon-ad size="720x90"></app-amazon-ad> -->
     @if (toolData.aboutSection) {
     <app-about-section [aboutSection]="toolData.aboutSection">
       <ng-content visual-content select="[visual-content-input]"></ng-content>

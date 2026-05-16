@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, Type, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, NgComponentOutlet } from '@angular/common';
-import { SeoService } from '../../core/services/seo.service';
-import { Tool } from '../../core/models/tool-data.model';
-import { loadToolComponentById } from '../../core/services/registry.service';
+import { SeoService } from '../../../core/services/seo.service';
+import { Tool } from '../../../core/models/tool-data.model';
+import { loadToolComponentById } from '../../../core/services/registry.service';
 import { DataService } from '@core/services/data.service';
 import { AmazonAdComponent } from "@components/amazon-ad/amazon-ad";
 import { AboutSectionComponent } from "@components/about-section/about-section";
@@ -12,11 +12,12 @@ import { UseCaseSectionComponent } from "@components/use-case-section/use-case-s
 import { TheorySectionComponent } from "@components/theory-section/theory-section";
 import { FaqSectionComponent } from "@components/faq-section/faq-section";
 import { Category } from '@core/models/category-data.model';
+import { InstructionalLayerComponent } from "@components/instructional-layer/instructional-layer";
 
 @Component({
   selector: 'app-tool-page-template',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent],
+  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent],
   templateUrl: './tool.html',
   styleUrl: './tool.scss',
 })

@@ -23,6 +23,18 @@ export interface Tool {
   useCasesSection?: UseCasesSection;
   faqSection?: FAQSection;
   theorySection?: TheorySection;
+  instructionalSection?: InstructionalSection;
+}
+
+export interface InstructionalSection {
+  title: string;
+  description: string;
+  steps: Step[];
+}
+
+export interface Step {
+  title: string;
+  description: string;
 }
 
 export interface AboutSection {

@@ -1,38 +1,25 @@
 <div class="about-section">
-    <div class="about-hero">
-        <div class="hero-text">
+    <div class="about-left">
             <span class="hero-badge" *ngIf="aboutSection.badgeText">
-                <svg *ngIf="aboutSection.badgeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path [attr.d]="aboutSection.badgeIcon"/>
+                <!-- <svg *ngIf="aboutSection.badgeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> -->
+                <svg  xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 1024 1024" class="icon"
+                    version="1.1">
+                    <path d="M789.333333 853.333333H234.666667l-128 128V256c0-70.4 57.6-128 128-128h554.666666c70.4 0 128 57.6 128 128v469.333333c0 70.4-57.6 128-128 128z" fill="#1b5ae3" />
+                    <path d="M469.333333 426.666667h85.333334v234.666666h-85.333334z" fill="#FFFFFF" />
+                    <path                        d="M512 320m-42.666667 0a42.666667 42.666667 0 1 0 85.333334 0 42.666667 42.666667 0 1 0-85.333334 0Z" fill="#FFFFFF" />
                 </svg>
                 {{ aboutSection.badgeText }}
             </span>
             <h2 *ngIf="aboutSection.title">{{ aboutSection.title }}</h2>
             <p *ngIf="aboutSection.description">{{ aboutSection.description }}</p>
-            <div class="hero-cta" *ngIf="aboutSection.ctaPrimaryText">
-                <button class="cta-primary" (click)="scrollToTop()">{{ aboutSection.ctaPrimaryText }}</button>
-                <span class="cta-note" *ngIf="aboutSection.ctaNote">{{ aboutSection.ctaNote }}</span>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="visual-card">
-                <div class="card-shine"></div>
-                <div class="card-content">
-                    <ng-content select="[visual-content]"></ng-content>
+            <div class="about-features" *ngIf="aboutSection.features">
+                <div *ngFor="let feature of aboutSection.features; let i = index" class="grid-item" [class]="'item-' + (i + 1)">
+                    <img src="verified.png" alt="Verified Icon">
+                    <h3>{{ feature.title }}</h3>
                 </div>
             </div>
-        </div>
     </div>
-
-    <div class="about-grid" *ngIf="aboutSection.features">
-        <div *ngFor="let feature of aboutSection.features; let i = index" class="grid-item" [class]="'item-' + (i + 1)">
-            <div class="item-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path [attr.d]="feature.icon"/>
-                </svg>
-            </div>
-            <h3>{{ feature.title }}</h3>
-            <p>{{ feature.description }}</p>
-        </div>
+    <div class="about-right">
+        <img src="{{aboutSection.visualContent.src}}" alt="aboutSection.visualContent.alt">
     </div>
 </div>

@@ -1,0 +1,15 @@
+<section class="instructional-layer" *ngIf="data">
+  <div class="container">
+    <h2 class="section-title">{{ data.title }}</h2>
+    <p class="section-description">{{ data.description }}</p>
+    <ol class="steps-list">
+      <li *ngFor="let step of data.steps; let i = index" class="step-item">
+        <div class="step-number">{{ i + 1 }}</div>
+        <div class="step-content">
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>

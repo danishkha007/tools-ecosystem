@@ -18,6 +18,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/contact/contact').then(m => m.ContactComponent)
   },
+  {
+    path: 'tools',
+    loadComponent: () =>
+      import('./pages/tools/tools').then(m => m.ToolsPageComponent)
+  },
   ...buildCategoryRoutes(TOOL_DATA.tools),
   ...buildToolRoutes(TOOL_DATA.tools)
 ];

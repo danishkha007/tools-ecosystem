@@ -34,8 +34,8 @@
                 <div class="tool-logo">
                     <img src="{{toolData?.icon}}" alt="">
                 </div>
-                <h2 class="category-name">{{categoryData?.name}}</h2>
-                <h1 class="tool-name">{{toolData?.name}}</h1>
+                <a class="category-name" href="{{categoryData?.route}}">{{categoryData?.name}}</a>
+                <h1 class="tool-name">{{toolData?.seoData?.h1}}</h1>
                 <p class="tool-description">{{toolData?.longDescription}}</p>
                 <div class="file-upload-options">
                     <label for="fileInput" class="browse-btn">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="image">
-                <img src="merge-pdf-decorative.png" alt="">
+                <img src="tools/pdf-merger/pdf-merger-hero-decorative.png" alt="">
             </div>
         </div>
     </div>
