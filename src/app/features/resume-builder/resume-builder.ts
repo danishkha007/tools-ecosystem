@@ -7,7 +7,6 @@ import { ResumeService } from '../../core/services/resume.service';
 import { ResumeData } from '../../core/models/resume-data.model';
 import html2pdf from 'html2pdf.js';
 import { Tool } from '../../core/models/tool-data.model';
-import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '@core/services/data.service';
 
 @Component({
@@ -39,14 +38,12 @@ export class ResumeBuilder implements OnInit {
 
   constructor(
     private resumeService: ResumeService,
-    private dataService: DataService,
-    private seoService: SeoService
+    private dataService: DataService
   ) {
     this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
     this.resumeService.resume$.subscribe(resume => {
       this.calculateProgress(resume);
     });

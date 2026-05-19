@@ -1,21 +1,19 @@
-import { Component, inject, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { PdfService } from '../../core/services/pdf.service';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as pdfjsLib from '../../../../node_modules/pdfjs-dist';
 import { Tool, UseCase } from '../../core/models/tool-data.model';
-import { SeoService } from '@core/services/seo.service';
 // import { ToolDataService } from '@core/services/tool-data.service';
 import { DataService } from '@core/services/data.service';
 import { ToolHeaderComponent } from "@components/tool-header/tool-header";
 import { Category } from '@core/models/category-data.model';
 import { DomSanitizer } from '@angular/platform-browser';
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
+type PdfJsLib = typeof import('pdfjs-dist');
 
 interface PdfFile {
   file: File;
@@ -45,6 +43,7 @@ export class PdfMergeComponent implements OnInit {
 
     toolData?: Tool;
     categoryData?: Category;
+    private pdfJsLib?: PdfJsLib;
 
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
@@ -77,7 +76,6 @@ export class PdfMergeComponent implements OnInit {
       this.generateAllPageThumbnailsForAll();
     }
   }
-  private seoService = inject(SeoService);
 
   constructor(
     private dataService: DataService,
@@ -89,11 +87,19 @@ export class PdfMergeComponent implements OnInit {
   ) {
     this.toolData = this.dataService.getCompleteToolDataById(this.toolId);
     this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   ngOnInit(): void {
     // SEO data is loaded in constructor
+  }
+
+  private async getPdfJs(): Promise<PdfJsLib> {
+    if (!this.pdfJsLib) {
+      this.pdfJsLib = await import('pdfjs-dist');
+      (this.pdfJsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    return this.pdfJsLib;
   }
 
   getSaniizedSafeHTML(html: string | undefined) {
@@ -160,12 +166,14 @@ export class PdfMergeComponent implements OnInit {
   }
 
   async getPdfPageCount(file: File): Promise<number> {
+    const pdfjsLib = await this.getPdfJs();
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     return pdf.numPages;
   }
 
   async generateThumbnail(file: File): Promise<string> {
+    const pdfjsLib = await this.getPdfJs();
     const arrayBuffer = await file.arrayBuffer();
 
     const pdf = await pdfjsLib.getDocument({
@@ -229,6 +237,7 @@ export class PdfMergeComponent implements OnInit {
   async generateAllPageThumbnails(pdf: PdfFile): Promise<{ [key: number]: string }> {
     const thumbnails: { [key: number]: string } = {};
     try {
+      const pdfjsLib = await this.getPdfJs();
       const arrayBuffer = await pdf.file.arrayBuffer();
       const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       

@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { SeoService } from '@core/services/seo.service';
 // import { ToolDataService } from '@core/services/tool-data.service';
 import { Tool, ToolData } from '@core/models/tool-data.model';
 import { DataService } from '@core/services/data.service';
@@ -42,7 +41,6 @@ export class GannCalculator implements OnInit {
   gannValues : number[] = [0.29166, 0.583333, 0.875, 1.1666, 1.458333, 1.75];
 
   // private toolDataService = inject(ToolDataService);
-  private seoService = inject(SeoService);
   private route = inject(ActivatedRoute);
   constructor(
     private dataService: DataService
@@ -51,7 +49,6 @@ export class GannCalculator implements OnInit {
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   calculate() {

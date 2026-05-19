@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener, ChangeDetectorRef, NgZone } from '@ang
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tool } from '../../core/models/tool-data.model';
-import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '@core/services/data.service';
 import { Category } from '@core/models/category-data.model';
 
@@ -47,7 +46,6 @@ export class QrCodeGeneratorComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private seoService: SeoService,
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
   ) {
@@ -56,7 +54,6 @@ export class QrCodeGeneratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
    showHeader(){

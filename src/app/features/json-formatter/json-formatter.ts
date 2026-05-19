@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tool } from '../../core/models/tool-data.model';
-import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '@core/services/data.service';
 
 @Component({
@@ -40,14 +39,12 @@ export class JsonFormatterComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private seoService: SeoService,
     private route: ActivatedRoute
   ) {
     this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   onInputChange(): void {
