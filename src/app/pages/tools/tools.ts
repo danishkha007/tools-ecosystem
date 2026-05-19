@@ -37,7 +37,7 @@ export class ToolsPageComponent {
           "calculator tools", "merge PDFs", "compress images", "gann hexagonal support resistance calculator", "mytooltrove", "tool trove", "online utilities", "free tools online", "pdf merger", "image optimizer", "percentage calculator"],
         "h1": "Free Online Tools | PDF, Image, Calculator & Developer Tools",
         "h2": "Your all-in-one destination for free online tools. Merge PDFs, compress images, calculate percentages, and more. No registration required, 100% free forever.",
-        "canonicalUrl": "https://www.mytooltrove.com"
+        "canonicalUrl": "https://mytooltrove.com"
       }
     
       sortOptions: { value: SortOption; label: string }[] = [
