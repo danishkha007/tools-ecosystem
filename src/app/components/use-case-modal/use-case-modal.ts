@@ -16,6 +16,7 @@ export class UseCaseModalComponent {
   @Output() close = new EventEmitter<void>();
 
   onClose(): void {
+    this.scrollToTop();
     this.close.emit();
   }
 
@@ -23,5 +24,9 @@ export class UseCaseModalComponent {
     if ((event.target as HTMLElement).classList.contains('use-case-modal-overlay')) {
       this.onClose();
     }
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

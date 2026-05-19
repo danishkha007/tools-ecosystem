@@ -34,7 +34,7 @@
       <h3 class="card-title">{{ useCase.title }}</h3>
       <p class="card-text">{{ useCase.description }}</p>
       @if (useCase.link) {
-        <a [href]="useCase.link" class="card-link" (click)="openUseCaseModal($index); $event.preventDefault()">
+        <a class="card-link" (click)="openUseCaseModal($index); $event.preventDefault()">
           {{ useCase.linkText || 'Learn More' }}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="true">
