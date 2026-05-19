@@ -1,0 +1,36 @@
+<section class="comparison-layer" *ngIf="data">
+  <div class="container">
+    <div class="header">
+      <h2 class="section-title">{{ data.title }}</h2>
+      <p class="section-description">{{ data.subtitle }}</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="feature-header">Feature</th>
+            <th *ngFor="let col of data.columns; let i = index" class="col-header" [class.featured-col]="i === 0">
+              {{ col }}
+              <span *ngIf="i === 0" class="recommended-badge">Recommended</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data.rows">
+            <td class="feature-name">
+              <strong class="feature-title">{{ row.feature }}</strong>
+              <p *ngIf="row.description" class="feature-desc">{{ row.description }}</p>
+            </td>
+            <td *ngFor="let val of row.values; let i = index" class="feature-value" [class.featured-col]="i === 0">
+              <div class="value-container">
+                <span [class]="getValueClass(val[0])">{{ val[1] }}</span>
+                <!-- <span class="value-desc" *ngIf="Array.isArray(val)">{{ val[1] }}</span> -->
+              </div >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

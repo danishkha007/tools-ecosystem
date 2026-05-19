@@ -65,6 +65,11 @@ export class ToolsPageComponent {
         // Start with all tools
         this.filteredTools = [...this.allTools];
       }
+
+      getCategoryName(tool: Tool): string {
+        const category = this.dataService.getCategoryNameById(tool.category);
+        return category;
+      }
     
       get categoriesWithTools(): Category[] {
         return this.categories;

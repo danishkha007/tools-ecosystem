@@ -1,22 +1,36 @@
 @if (toolData) {
 <div class="tool-page-template">
+  @if (toolData.id !== 'pdf-merger') {
+  <app-tool-header [tool]="toolData" [category]="categoryData" [headerOnly]="showHeader()"></app-tool-header>
+  }
   @if (toolComponent) {
-  <ng-container *ngComponentOutlet="toolComponent"></ng-container>
+  <div class="tool-component-container">
+
+    <ng-container *ngComponentOutlet="toolComponent"></ng-container>
+  </div>
   }
 
   <!-- SEO Content -->
-  <div class="seo-content" style="max-width: 1280px;margin: 32px auto;padding:12px">
-    <app-instructional-layer [data]="toolData.instructionalSection"></app-instructional-layer>
+  <div class="seo-content">
+    <app-instructional-layer [data]="toolData.instructionsSection"></app-instructional-layer>
     <!-- <app-amazon-ad size="720x90"></app-amazon-ad> -->
     @if (toolData.aboutSection) {
-    <app-about-section [aboutSection]="toolData.aboutSection">
-      <ng-content visual-content select="[visual-content-input]"></ng-content>
-    </app-about-section>
+    <app-about-section [aboutSection]="toolData.aboutSection"></app-about-section>
     }
+
 
     <!-- Features Section -->
     @if (toolData.featuresSection) {
     <app-features-section [featuresSection]="toolData.featuresSection"></app-features-section>
+    }
+    @if (toolData.comparisonSection) {
+    <!-- Comparison Table -->
+    <app-comparison-layer [data]="toolData.comparisonSection"></app-comparison-layer>
+    }
+    @if (toolData.technicalNoteSection) {
+
+    <!-- Technical Expert Note -->
+    <app-technical-note-layer [data]="toolData.technicalNoteSection"></app-technical-note-layer>
     }
     <app-amazon-ad size="720x90"></app-amazon-ad>
     <!-- Use Cases Section -->
@@ -32,6 +46,9 @@
     @if (toolData.faqSection) {
     <app-faq-section [faqSection]="toolData.faqSection"></app-faq-section>
     }
+
+    <app-related-tools [currentTool]="toolData"></app-related-tools>
+    <!-- <app-same-category-tools [currentTool]="toolData" [category]="categoryData"></app-same-category-tools> -->
   </div>
 </div>
 }

@@ -32,11 +32,11 @@
             (drop)="onDrop($event)">
             <div class="tool-info">
                 <div class="tool-logo">
-                    <img src="{{toolData?.icon}}" alt="">
+                    <img src="{{toolData?.icon}}" alt="{{toolData?.seoData?.h1}}">
                 </div>
                 <a class="category-name" href="{{categoryData?.route}}">{{categoryData?.name}}</a>
                 <h1 class="tool-name">{{toolData?.seoData?.h1}}</h1>
-                <p class="tool-description">{{toolData?.longDescription}}</p>
+                <p class="tool-description" [innerHTML]="getSaniizedSafeHTML(toolData?.longDescription)"></p>
                 <div class="file-upload-options">
                     <label for="fileInput" class="browse-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="image">
-                <img src="tools/pdf-merger/pdf-merger-hero-decorative.png" alt="">
+                <img src="tools/pdf-merger/pdf-merger-hero-decorative.png" alt="{{toolData?.seoData?.h2}}">
             </div>
         </div>
     </div>

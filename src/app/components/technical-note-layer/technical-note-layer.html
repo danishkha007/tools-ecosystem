@@ -1,0 +1,19 @@
+<section class="technical-note" *ngIf="data">
+  <div class="container">
+    <div class="note-card">
+      <div class="note-content">
+        <div class="note-header">
+          <span class="tech-badge">Technical Insight</span>
+          <h3 class="note-title">{{ data.title }}</h3>
+        </div>
+        <p class="note-description">{{ data.description }}</p>
+        <div class="tech-stack">
+          <span class="stack-label">Powered by:</span>
+          <div class="stack-chips">
+            <span class="chip" *ngFor="let tech of data.techStack">{{ tech }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

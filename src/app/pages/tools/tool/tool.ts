@@ -13,11 +13,15 @@ import { TheorySectionComponent } from "@components/theory-section/theory-sectio
 import { FaqSectionComponent } from "@components/faq-section/faq-section";
 import { Category } from '@core/models/category-data.model';
 import { InstructionalLayerComponent } from "@components/instructional-layer/instructional-layer";
+import { ToolHeaderComponent } from "@components/tool-header/tool-header";
+import { RelatedToolsComponent } from "@components/related-tools/related-tools";
+import { ComparisonLayerComponent } from "@components/comparison-layer/comparison-layer";
+import { TechnicalNoteLayerComponent } from "@components/technical-note-layer/technical-note-layer";
 
 @Component({
   selector: 'app-tool-page-template',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent],
+  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent, ToolHeaderComponent, RelatedToolsComponent, ComparisonLayerComponent, TechnicalNoteLayerComponent],
   templateUrl: './tool.html',
   styleUrl: './tool.scss',
 })
@@ -48,6 +52,7 @@ export class ToolPageComponent implements OnInit {
 
     this.toolComponent = await loadToolComponentById(toolId);
     this.cdr.detectChanges();
+    this.seoService.setBreadcrumbsJsonLdSchema();
   }
   toggleFaq(index: number): void {
     if (this.activeFaqIndex === index) {
@@ -55,6 +60,12 @@ export class ToolPageComponent implements OnInit {
     } else {
       this.activeFaqIndex = index;
     }
+  }
+  showHeader(){
+    if(this.toolData?.id === 'pdf-merger') {
+      return false;
+    }
+    return true;
   }
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -18,6 +18,7 @@ export class HeaderComponent {
   featuredTools: Tool[];
   categories: Category[];
   allToolsCount: number;
+  isMenuOpen = false;
 
   private readonly featuredToolIds = ['pdf-merger', 'pdf-compressor', 'image-compressor', 'resume-builder'];
 
@@ -31,6 +32,7 @@ export class HeaderComponent {
     if (isPlatformBrowser(platformId)) {
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
+          this.closeMenu();
           if (!!!event.url.endsWith('#available-tools')) {
             window.scrollTo(0, 0);
           } else {
@@ -39,5 +41,13 @@ export class HeaderComponent {
         }
       });
     }
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
 }

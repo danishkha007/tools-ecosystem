@@ -277,7 +277,8 @@
     <div class="tools-all-grid">
       <app-tool-card
         *ngFor="let tool of filteredTools; let i = index"
-        [tool]="tool">
+        [tool]="tool"
+        [categoryName]="getCategoryName(tool)">
       </app-tool-card>
     </div>
   </section>

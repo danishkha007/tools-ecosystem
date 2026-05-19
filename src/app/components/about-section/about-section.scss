@@ -4,29 +4,34 @@
 
 /* About Section - Matching merge-pdf style */
 .about-section {
-  margin: 62px 0 32px 0;
   display: flex;
   z-index: 1;
   justify-content: space-between;
   align-items: center;
+
   .about-left {
     width: 60%;
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #d9e4fd;
+      background: #fff;
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
-      border: 1px solid #c8d6f7;
-      color: #1b5ae3;
-      font-size: 0.8rem;
-      font-weight: 700;
+      border: 1px solid #ccc;
+      color: #3c8cff;
+      font-size: 1rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 8px 20px;
-      border-radius: 50px;
+      line-height: 1.2;
+      border-radius: 32px;
       margin-bottom: 20px;
+      box-shadow: 4px 4px 0 0 #3c8cff;
     }
+
     h2 {
       font-size: 3.5rem;
       font-weight: 800;
@@ -35,11 +40,13 @@
       margin: 0 0 16px 0;
       letter-spacing: -0.02em;
       line-height: 1.2;
+
       @media (max-width: 768px) {
         font-size: 2rem;
         width: 100%;
       }
     }
+
     p {
       font-size: 1.1rem;
       color: #5a5a5a;
@@ -47,32 +54,46 @@
       line-height: 1.7;
       margin: 0 0 24px 0;
     }
+
     .about-features {
       display: flex;
       flex-direction: column;
       gap: 16px;
       margin-top: 32px;
+
       .grid-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        img {
-          width: 24px;
-          height: 24px;
+        .item-header {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+
+          h3 {
+            margin: 0;
+            color: #1b80dd;
+          }
         }
-        h3 {
-          margin: 0;
-          color: #1b80dd;
+
+        p {
+          font-size: 14px;
+          color: #5a5a5a;
+          margin: 0 0 0 34px;
         }
       }
 
     }
   }
+
   .about-right {
     width: 50%;
     display: flex;
     justify-content: end;
+
     img {
       width: 85%;
     }
@@ -84,7 +105,8 @@
     left: -100%;
   }
 
-  50%, 100% {
+  50%,
+  100% {
     left: 100%;
   }
 }

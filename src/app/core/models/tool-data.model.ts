@@ -23,11 +23,14 @@ export interface Tool {
   useCasesSection?: UseCasesSection;
   faqSection?: FAQSection;
   theorySection?: TheorySection;
-  instructionalSection?: InstructionalSection;
+  instructionsSection?: InstructionalSection;
+  comparisonSection?: ComparisonSection;
+  technicalNoteSection?: TechnicalNoteSection;
 }
 
 export interface InstructionalSection {
   title: string;
+  badgeText: string;
   description: string;
   steps: Step[];
 }
@@ -35,6 +38,25 @@ export interface InstructionalSection {
 export interface Step {
   title: string;
   description: string;
+}
+
+export interface ComparisonSection {
+  title: string;
+  subtitle: string;
+  columns: string[];
+  rows: ComparisonRow[];
+}
+
+export interface ComparisonRow {
+  feature: string;
+  description?: string; // Optional description for the feature
+  values: Array<string | string[]>;
+}
+
+export interface TechnicalNoteSection {
+  title: string;
+  description: string;
+  techStack: string[];
 }
 
 export interface AboutSection {

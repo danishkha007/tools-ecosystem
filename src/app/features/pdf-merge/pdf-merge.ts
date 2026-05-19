@@ -12,6 +12,7 @@ import { SeoService } from '@core/services/seo.service';
 import { DataService } from '@core/services/data.service';
 import { ToolHeaderComponent } from "@components/tool-header/tool-header";
 import { Category } from '@core/models/category-data.model';
+import { DomSanitizer } from '@angular/platform-browser';
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
@@ -83,15 +84,20 @@ export class PdfMergeComponent implements OnInit {
     private pdfService: PdfService, 
     private cdr: ChangeDetectorRef, 
     private ngZone: NgZone,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {
     this.toolData = this.dataService.getCompleteToolDataById(this.toolId);
     this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
+    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   ngOnInit(): void {
     // SEO data is loaded in constructor
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
+  }
+
+  getSaniizedSafeHTML(html: string | undefined) {
+    return this.sanitizer.bypassSecurityTrustHtml(html as string);
   }
 
   showHeader(){

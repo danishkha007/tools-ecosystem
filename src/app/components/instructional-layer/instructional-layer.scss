@@ -1,21 +1,60 @@
 .instructional-layer {
-  padding: 60px 0;
-  background-color: #fcfcfc;
+  //   padding: 60px 0;
+  //   background-color: #fcfcfc;
   font-family: 'Roboto', sans-serif;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 24px;
+  //   max-width: 1000px;
+  //   margin: 0 auto;
+  //   padding: 0 24px;
 }
 
 .section-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #000000;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 48px;
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 auto;
+  white-space: break-spaces;
+  padding-bottom: 20px;
+}
+
+.ctn-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid #ccc;
+  color: #3c8cff;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 8px 20px;
+  line-height: 1.2;
+  border-radius: 32px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 0 0 #3c8cff;
 }
 
 .steps-list {
@@ -36,14 +75,13 @@
   padding: 32px 24px;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 1px #ccc, 4px 4px 0px 1px rgb(47 132 255 / 94%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #e5e7eb;
 }
 
 .step-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translate(-4px, -4px);
+  box-shadow: 0px 0px 0px 1px #ccc, 8px 8px 0px 1px rgb(47 132 255 / 94%);
 }
 
 .step-number {

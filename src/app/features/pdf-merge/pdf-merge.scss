@@ -1,7 +1,7 @@
 .container {
   max-width: 1290px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 0 24px;
 }
 
 /* Password Modal */
@@ -288,7 +288,7 @@
   .tool-description {
     font-size: 18px;
     color: #4b5563;
-    width: 400px;
+    white-space: break-spaces;
     line-height: 1.6;
     margin: 0 0 30px 0;
   }

@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <!-- Initial View - No Files -->
     <div *ngIf="selectedFiles.length === 0" class="initial-view">
         <div class="upload-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">

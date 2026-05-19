@@ -1,0 +1,20 @@
+@if (tools.length) {
+  <section class="tool-discovery-section" [attr.aria-labelledby]="currentTool?.category + '-tools-heading'">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ categoryName }}</p>
+        <h2 [id]="currentTool?.category + '-tools-heading'">More tools in this category</h2>
+      </div>
+
+      @if (category?.route) {
+        <a class="view-all-link" [routerLink]="categoryRoute">View all</a>
+      }
+    </div>
+
+    <div class="tools-grid">
+      @for (tool of tools; track tool.id) {
+        <app-tool-card [tool]="tool" [categoryName]="categoryName"></app-tool-card>
+      }
+    </div>
+  </section>
+}
