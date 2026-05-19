@@ -72,6 +72,10 @@ export class HomeComponent implements OnInit {
   get categoriesWithTools(): Category[] {
     return this.categories;
   }
+      getCategoryName(tool: Tool): string {
+        const category = this.dataService.getCategoryNameById(tool.category);
+        return category;
+      }
 
   // getCategoryToolCount(categoryName: string): number {
   //   return this.toolService.getToolsByCategory(categoryName).length;

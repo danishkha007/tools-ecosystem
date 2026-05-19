@@ -1,14 +1,27 @@
-<header class="header">
+<header class="header" [class.menu-open]="isMenuOpen">
   <div class="header-content">
     <div class="logo">
-      <a routerLink="/">
+      <a routerLink="/" title="Home" (click)="closeMenu()">
         <img src="/logo.png" alt="MyToolTrove" />
       </a>
     </div>
 
-    <nav class="nav-links">
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="primary-navigation"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
       @for (tool of featuredTools; track tool.id) {
-        <a [routerLink]="tool.route" routerLinkActive="active">{{ tool.name }}</a>
+        <a [routerLink]="tool.route" routerLinkActive="active" (click)="closeMenu()">{{ tool.name }}</a>
       }
       <div class="dropdown">
         <button class="dropdown-toggle" type="button" aria-haspopup="true">
@@ -29,14 +42,14 @@
               <section class="megamenu-category">
                 <div class="category-heading">
                   <h4>
-                    <a [routerLink]="category.route">{{ category.name }}</a>
+                    <a [routerLink]="category.route" title="{{category.name}}">{{ category.name }}</a>
                   </h4>
                   <span>{{ category.tools?.length || 0 }}</span>
                 </div>
                 <ul class="tool-list">
                   @for (tool of category.tools; track tool.id) {
                     <li>
-                      <a [routerLink]="tool.route" routerLinkActive="active" role="menuitem">
+                      <a [routerLink]="tool.route" routerLinkActive="active" role="menuitem" title="{{tool.name}}" (click)="closeMenu()">
                         <span>{{ tool.name }}</span>
                       </a>
                     </li>

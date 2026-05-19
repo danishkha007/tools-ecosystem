@@ -3,6 +3,263 @@
     "description": "Data for tools on MyToolTrove.",
     "tools": [
         {
+            "id": "pdf-merger",
+            "name": "PDF Merger",
+            "route": "tools/pdf/pdf-merger",
+            "category": "pdf-tools",
+            "icon": "merge-pdf.png",
+            "iconAlt": "PDF Merger",
+            "shortDescription": "Merge multiple PDF files",
+            "longDescription": "Combine multiple PDF documents into one professional file in seconds.\nUnlike other tools, MyToolTrove processes your files locally in your browser,\nmeaning <strong style=\"color: #000;\">your sensitive data never touches a remote server.</strong>",
+            "buttonText": "Merge PDFs",
+            "tags": [
+                "Always Free",
+                "Browser-Based",
+                "Data Secured"
+            ],
+            "aboutSection": {
+                "badgeText": "About PDF Merger",
+                "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+                "title": "Merge PDF Files\nOnline, Fast & Secure",
+                "description": "Combine multiple PDF files into one professional document instantly. By utilizing WebAssembly (WASM), our tool processes your files entirely within your browser, ensuring your sensitive data never touches a remote server.",
+                "ctaPrimaryText": "Start Merging Now",
+                "ctaNote": "No signup required \u2022 100% free forever",
+                "features": [
+                    {
+                        "title": "100% Local Processing",
+                        "description": "Your files never touch a remote server. All merging happens directly in your browser RAM."
+                    },
+                    {
+                        "title": "Instant Merging",
+                        "description": "Experience lightning-fast combining without the wait for server uploads or downloads."
+                    },
+                    {
+                        "title": "No Daily Limits",
+                        "description": "Combine 2 files or 200\u2014there are no daily quotas or hidden paywalls."
+                    },
+                    {
+                        "title": "Cross-Platform Compatibility",
+                        "description": "Works perfectly on Windows, macOS, Linux, iOS, and Android."
+                    }
+                ],
+                "visualContent": {
+                    "type": "image",
+                    "src": "/tools/pdf-merger/pdf-merger-about-section.png",
+                    "alt": "PDF Merger About Section Preview"
+                }
+            },
+            "featuresSection": {
+                "label": "PDF Merger Features",
+                "title": "Everything You Need to Merge PDFs",
+                "subtitle": "Powerful features to help you merge your PDF files easily and efficiently.\nBuilt for everyone, completely free to use.",
+                "features": [
+                    {
+                        "iconPath": "M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 01-2-2V5a2 2 0 012-2h2",
+                        "title": "Unlimited Files",
+                        "description": "Merge as many PDF files as you need in one go"
+                    },
+                    {
+                        "iconPath": "M4 6h16M4 12h16M4 18h16",
+                        "title": "Drag to Reorder",
+                        "description": "Easily rearrange PDF order before merging"
+                    },
+                    {
+                        "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+                        "title": "Fast Processing",
+                        "description": "Merge PDFs in seconds with efficient algorithms"
+                    },
+                    {
+                        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+                        "title": "100% Secure",
+                        "description": "All processing happens locally in your browser"
+                    },
+                    {
+                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+                        "title": "Simple Interface",
+                        "description": "Intuitive drag-and-drop interface"
+                    },
+                    {
+                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+                        "title": "Instant Download",
+                        "description": "Get your merged PDF immediately"
+                    }
+                ]
+            },
+            "useCasesSection": {
+                "title": "Who Can Use the PDF Merger?",
+                "description": "From students to businesses, PDF merging helps everyone.",
+                "label": "Perfect for Document Management",
+                "useCases": [
+                    {
+                        "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+                        "title": "Students",
+                        "description": "Combine multiple assignment files into one submission.",
+                        "link": "/pdf-merger#students",
+                        "benefits": [
+                            "Submit complete assignments in one file",
+                            "Combine research and supporting documents",
+                            "Easy sharing with professors",
+                            "Organized project submissions"
+                        ],
+                        "color": "#dbeafe",
+                        "iconColor": "#3b82f6"
+                    },
+                    {
+                        "icon": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+                        "title": "Professionals",
+                        "description": "Merge reports, contracts, and documents into single files.",
+                        "link": "/pdf-merger#professionals",
+                        "benefits": [
+                            "Create comprehensive reports from sections",
+                            "Combine contracts with appendices",
+                            "Professional document consolidation",
+                            "Streamlined client deliverables"
+                        ],
+                        "color": "#d1fae5",
+                        "iconColor": "#10b981"
+                    },
+                    {
+                        "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                        "title": "Businesses",
+                        "description": "Combine invoices, receipts, and documents for record-keeping.",
+                        "link": "/pdf-merger#businesses",
+                        "benefits": [
+                            "Organize monthly invoices together",
+                            "Combine receipts for expense reports",
+                            "Archive complete project documentation",
+                            "Streamlined record management"
+                        ],
+                        "color": "#fef3c7",
+                        "iconColor": "#f59e0b"
+                    },
+                    {
+                        "icon": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+                        "title": "Researchers",
+                        "description": "Combine research papers, articles, and references.",
+                        "link": "/pdf-merger#researchers",
+                        "benefits": [
+                            "Unify research with supporting data",
+                            "Combine papers with bibliographies",
+                            "Create complete thesis documents",
+                            "Merge studies and appendices"
+                        ],
+                        "color": "#fce7f3",
+                        "iconColor": "#ec4899"
+                    }
+                ]
+            },
+            "faqSection": {
+                "title": "Frequently Asked Questions",
+                "subtitle": "Got questions? We've got answers.",
+                "accentColor": "#2f84ff",
+                "faqs": [
+                    {
+                        "question": "How to merge PDF files online for free?",
+                        "answer": "Simply drag and drop your PDF files into our merge tool, arrange them in your desired order by dragging, and click merge. Your combined PDF will be ready to download in seconds."
+                    },
+                    {
+                        "question": "Is it safe to merge PDFs online?",
+                        "answer": "Yes! Our PDF merger processes everything in your browser. Your files never leave your device, ensuring complete privacy and security. No data is uploaded to any server."
+                    },
+                    {
+                        "question": "How many PDF files can I merge at once?",
+                        "answer": "You can merge unlimited PDF files in a single session. Simply add as many files as you need and arrange them in the order you want them combined."
+                    },
+                    {
+                        "question": "Can I select specific pages to merge?",
+                        "answer": "Yes! Our advanced page selection feature lets you choose exactly which pages from each PDF you want to include in your merged document."
+                    },
+                    {
+                        "question": "Do I need to install any software?",
+                        "answer": "No software installation required. Our PDF merger works entirely in your web browser. Just open the tool, add your files, and merge them online instantly."
+                    }
+                ]
+            },
+            "instructionsSection": {
+                "title": "How to Merge PDF Files Online for Free",
+                "badgeText": "Easy 4-Step Process",
+                "description": "Combining your documents is simple and takes only a few clicks:",
+                "steps": [
+                    {
+                        "title": "Upload Your PDFs",
+                        "description": "Drag and drop the PDF files you want to combine into the tool area, or click the upload button to select them from your device."
+                    },
+                    {
+                        "title": "Arrange Your Order",
+                        "description": "Once uploaded, you can easily drag the files to rearrange them. Ensure the documents are in the exact sequence you want them to appear in the final merged file."
+                    },
+                    {
+                        "title": "Merge Documents",
+                        "description": "Click the \"Merge PDF\" button. Our engine will process your files in seconds, combining them into a single PDF document while maintaining the original quality."
+                    },
+                    {
+                        "title": "Download Your Result",
+                        "description": "Your final, combined PDF is ready for download immediately. Since there is no server upload, there is no waiting for \"processing\" or \"uploading\" bars."
+                    }
+                ]
+            },
+            "comparisonSection": {
+                "title": "Local Processing vs. Cloud Uploads",
+                "subtitle": "Why local processing is the safer and faster choice for your documents.",
+                "columns": [
+                    "MyToolTrove (Local)",
+                    "Typical Online Tools (Cloud)"
+                ],
+                "rows": [
+                    {
+                        "feature": "Data Privacy",
+                        "description": "Ensures your sensitive files remain on your local machine throughout the process.",
+                        "values": [
+                            ["Yes", "Your files are processed entirely in the browser, never uploaded to any servers."],
+                            ["No", "Files are uploaded to remote servers for processing."]
+                        ]
+                    },
+                    {
+                        "feature": "Processing Speed",
+                        "description": "The time it takes to combine your PDFs into a single final document.",
+                        "values": [
+                            ["Yes", "Instant processing with no upload or download wait times."],
+                            ["No", "Slower processing dependent on internet upload and download speeds."]
+                        ]
+                    },
+                    {
+                        "feature": "Daily Limits",
+                        "description": "The number of documents or merging tasks you can perform each day.",
+                        "values": [
+                            ["Yes", "Completely unlimited; merge as many files as you need, whenever you want."],
+                            ["No", "Restrictive daily quotas (e.g., only 2-5 tasks per day) or hidden paywalls."]
+                        ]
+                    },
+                    {
+                        "feature": "Security Risk",
+                        "description": "The potential for data breaches or unauthorized access to your documents.",
+                        "values": [
+                            ["Yes", "Zero server-side breach risk since data never leaves your device."],
+                            ["No", "Persistent risk of server-side data leaks and unauthorized access."]
+                        ]
+                    },
+                    {
+                        "feature": "Registration",
+                        "description": "Whether an account or email registration is required to access the tool.",
+                        "values": [
+                            ["Yes", "Never required; start merging immediately without any signup."],
+                            ["No", "Often requires registration or payment for 'Pro' features."]
+                        ]
+                    }
+                ]
+            },
+            "technicalNoteSection": {
+                "title": "The Science of Local Processing",
+                "description": "Most PDF tools use a 'Server-Side' architecture: your file is uploaded to a cloud server, processed, and then sent back. MyToolTrove utilizes WebAssembly (WASM) and client-side JavaScript to move the entire processing engine into your browser. This means the merging logic executes on your local CPU, ensuring that not a single byte of your personal data ever leaves your machine. It's not just faster—it's fundamentally more secure.",
+                "techStack": [
+                    "WebAssembly (WASM)",
+                    "Client-Side PDF-Lib",
+                    "Browser-Based RAM Processing",
+                    "Zero-Server Architecture"
+                ]
+            }
+        },
+        {
             "id": "gann-hexagonal-sr-calculator",
             "name": "GANN Hexagonal Support & Resistance Calculator",
             "route": "tools/trading/gann-hexagonal-support-resistance-calculator",
@@ -22,34 +279,31 @@
                 "badgeText": "GANN Theory Calculator",
                 "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
                 "title": "Master with GANN Hexagon Support & Resistance Calculator",
-                "description": "The GANN Hexagonal Chart is one of W.D. GANN's most powerful tools for identifying support and resistance levels. Our calculator applies GANN's mathematical ratios to help traders and analysts predict potential price movements with greater accuracy.",
+                "description": "Calculate precise support and resistance levels using GANN's hexagonal geometry. Designed for quantitative traders, all calculations are performed locally to protect your proprietary trading strategies.",
                 "ctaPrimaryText": "Start Calculating Now",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M12 20V10M18 20V4M6 20V16",
-                        "title": "Support Levels",
-                        "description": "Calculate multiple support levels below your base price"
+                        "title": "Strategy Confidentiality",
+                        "description": "Your seed prices and trading parameters never leave your device. Your strategy remains yours."
                     },
                     {
-                        "icon": "M12 4V20M18 10V20M6 10V20",
-                        "title": "Resistance Levels",
-                        "description": "Identify key resistance levels above the current price"
+                        "title": "Geometric Precision",
+                        "description": "High-accuracy calculations based on GANN's original hexagonal geometry and ratios."
                     },
                     {
-                        "icon": "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-                        "title": "Works Everywhere",
-                        "description": "Access from any device - desktop, tablet, or mobile."
+                        "title": "Zero-Latency Mapping",
+                        "description": "Get instant levels without the lag of remote API calls."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Free Forever",
-                        "description": "No registration required. Completely free to use."
+                        "title": "Quantitative Grade",
+                        "description": "Built for day traders and swing traders who require quantitative precision."
                     }
                 ],
                 "visualContent": {
-                    "type": "svg-hexagon",
-                    "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+                    "type": "image",
+                    "src": "tools/gann-sr-calculator/gann-sr-calculator-about-section.png",
+                    "alt": "GANN Hexagonal Support and Resistace Calculator Preview"
                 }
             },
             "featuresSection": {
@@ -229,34 +483,30 @@
                 "badgeText": "Career Tool",
                 "badgeIcon": "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
                 "title": "Build Your Professional Resume in Minutes",
-                "description": "Our free resume builder helps you create ATS-friendly resumes that pass automated screening systems and impress hiring managers. Choose from multiple professional templates and customize every section.",
+                "description": "Create an ATS-optimized professional resume in minutes. Your personal identification information (PII) is stored only in your browser's local cache, ensuring your career data la remains private.",
                 "ctaPrimaryText": "Start Building Now",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8",
-                        "title": "Multiple Templates",
-                        "description": "Choose from modern and ATS-optimized resume templates"
+                        "title": "PII Data Protection",
+                        "description": "Personal info stays on your device. We use local storage, not a remote database."
                     },
                     {
-                        "icon": "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-                        "title": "ATS Compatible",
-                        "description": "Templates designed to pass Applicant Tracking Systems"
+                        "title": "ATS-Friendly Framework",
+                        "description": "Designed to pass through Applicant Tracking Systems without formatting errors."
                     },
                     {
-                        "icon": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M17 8l-5-5-5 5 M12 3v12",
-                        "title": "PDF Export",
-                        "description": "Download your resume in high-quality PDF format"
+                        "title": "Local Live Preview",
+                        "description": "Instant updates rendered locally for a seamless editing experience."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Free Forever",
-                        "description": "No registration required. Completely free to use."
+                        "title": "Zero-Cost Professionalism",
+                        "description": "Get a professional-grade resume without the monthly 'premium' paywalls."
                     }
                 ],
                 "visualContent": {
                     "type": "image",
-                    "src": "/resume-builder.png",
+                    "src": "tools/resume-builder/resume-builder-about-section.png",
                     "alt": "Resume Builder Preview"
                 }
             },
@@ -408,36 +658,32 @@
             "aboutSection": {
                 "badgeText": "PDF Tool",
                 "badgeIcon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-                "title": "Compress PDF Files in Seconds",
-                "description": "Our free PDF compressor reduces file sizes while maintaining document quality. Perfect for sending PDFs via email or uploading to websites with size limits.",
+                "title": "Compress PDF Files\nFast, Secure & \nWithout Losing Quality",
+                "description": "Reduce the size of your PDF documents while preserving high fidelity. Our client-side compression engine ensures no server-side artifacts are introduced and your private documents remain on your device.",
                 "ctaPrimaryText": "Compress Your PDF",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-                        "title": "100% Secure & Private",
-                        "description": "All compression happens in your browser. Your files never leave your device."
+                        "title": "Zero Server Uploads",
+                        "description": "Avoid the risk of data breaches. Your documents are processed entirely on your own machine."
                     },
                     {
-                        "icon": "M13 2L3 14H12L11 22L21 10H12L13 2Z",
-                        "title": "Lightning Fast",
-                        "description": "Compress your PDFs in seconds. No uploads, no waiting."
+                        "title": "Local Compression Engine",
+                        "description": "Direct browser processing eliminates the risk of data leaks during upload."
                     },
                     {
-                        "icon": "M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 6V12L16 14",
-                        "title": "Quality Options",
-                        "description": "Choose between low, medium, or high compression based on your needs."
+                        "title": "High-Fidelity Output",
+                        "description": "Local processing ensures no quality loss from server-side re-compression."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Free Forever",
-                        "description": "No registration required. Completely free to use."
+                        "title": "Universal Access",
+                        "description": "Access a powerful PDF compressor from any device via your web browser."
                     }
                 ],
                 "visualContent": {
                     "type": "image",
-                    "src": "/compress-pdf.png",
-                    "alt": "PDF Compressor Preview"
+                    "src": "/tools/pdf-compressor/pdf-compressor-about-section.png",
+                    "alt": "PDF Compressor About Section Preview"
                 }
             },
             "featuresSection": {
@@ -577,186 +823,6 @@
             }
         },
         {
-            "id": "pdf-merger",
-            "name": "PDF Merger",
-            "route": "tools/pdf/pdf-merger",
-            "category": "pdf-tools",
-            "icon": "merge-pdf.png",
-            "iconAlt": "PDF Merger",
-            "shortDescription": "Merge multiple PDF files",
-            "longDescription": "Combine multiple PDF files into one document. Merge PDFs in any order with this free online tool.",
-            "buttonText": "Merge PDFs",
-            "tags": [
-                "Free",
-                "Fast",
-                "No Registration",
-                "Secure",
-                "Unlimited"
-            ],
-            "aboutSection": {
-                "badgeText": "#1 Free PDF Merger",
-                "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
-                "title": "Merge PDF Files Instantly",
-                "description": "Combine multiple PDF files into one document quickly and securely. Our free online tool makes PDF merging simple with drag-and-drop functionality.",
-                "ctaPrimaryText": "Start Merging Now",
-                "ctaNote": "No signup required • 100% free forever",
-                "features": [
-                    {
-                        "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-                        "title": "100% Secure & Private",
-                        "description": "All merging happens in your browser. Your files never leave your device."
-                    },
-                    {
-                        "icon": "M4 6h16M4 12h16M4 18h16",
-                        "title": "Reorder Pages",
-                        "description": "Arrange PDFs in any order before merging"
-                    },
-                    {
-                        "icon": "M13 10V3L4 14h7v7l9-11h-7z",
-                        "title": "Lightning Fast",
-                        "description": "Process your PDFs in seconds. No uploads, no waiting."
-                    },
-                    {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Free Forever",
-                        "description": "No registration required. Completely free to use."
-                    }
-                ],
-                "visualContent": {
-                    "type": "image",
-                    "src": "/merge-pdf.png",
-                    "alt": "PDF Merger Preview"
-                }
-            },
-            "featuresSection": {
-                "label": "PDF Merger Features",
-                "title": "Everything You Need to Merge PDFs",
-                "subtitle": "Powerful features to combine your PDF files easily.",
-                "features": [
-                    {
-                        "iconPath": "M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 01-2-2V5a2 2 0 012-2h2",
-                        "title": "Unlimited Files",
-                        "description": "Merge as many PDF files as you need in one go"
-                    },
-                    {
-                        "iconPath": "M4 6h16M4 12h16M4 18h16",
-                        "title": "Drag to Reorder",
-                        "description": "Easily rearrange PDF order before merging"
-                    },
-                    {
-                        "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
-                        "title": "Fast Processing",
-                        "description": "Merge PDFs in seconds with efficient algorithms"
-                    },
-                    {
-                        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-                        "title": "100% Secure",
-                        "description": "All processing happens locally in your browser"
-                    },
-                    {
-                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
-                        "title": "Simple Interface",
-                        "description": "Intuitive drag-and-drop interface"
-                    },
-                    {
-                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
-                        "title": "Instant Download",
-                        "description": "Get your merged PDF immediately"
-                    }
-                ]
-            },
-            "useCasesSection": {
-                "title": "Who Can Use the PDF Merger?",
-                "description": "From students to businesses, PDF merging helps everyone.",
-                "label": "Perfect for Document Management",
-                "useCases": [
-                    {
-                        "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
-                        "title": "Students",
-                        "description": "Combine multiple assignment files into one submission.",
-                        "link": "/pdf-merger#students",
-                        "benefits": [
-                            "Submit complete assignments in one file",
-                            "Combine research and supporting documents",
-                            "Easy sharing with professors",
-                            "Organized project submissions"
-                        ],
-                        "color": "#dbeafe",
-                        "iconColor": "#3b82f6"
-                    },
-                    {
-                        "icon": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-                        "title": "Professionals",
-                        "description": "Merge reports, contracts, and documents into single files.",
-                        "link": "/pdf-merger#professionals",
-                        "benefits": [
-                            "Create comprehensive reports from sections",
-                            "Combine contracts with appendices",
-                            "Professional document consolidation",
-                            "Streamlined client deliverables"
-                        ],
-                        "color": "#d1fae5",
-                        "iconColor": "#10b981"
-                    },
-                    {
-                        "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-                        "title": "Businesses",
-                        "description": "Combine invoices, receipts, and documents for record-keeping.",
-                        "link": "/pdf-merger#businesses",
-                        "benefits": [
-                            "Organize monthly invoices together",
-                            "Combine receipts for expense reports",
-                            "Archive complete project documentation",
-                            "Streamlined record management"
-                        ],
-                        "color": "#fef3c7",
-                        "iconColor": "#f59e0b"
-                    },
-                    {
-                        "icon": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-                        "title": "Researchers",
-                        "description": "Combine research papers, articles, and references.",
-                        "link": "/pdf-merger#researchers",
-                        "benefits": [
-                            "Unify research with supporting data",
-                            "Combine papers with bibliographies",
-                            "Create complete thesis documents",
-                            "Merge studies and appendices"
-                        ],
-                        "color": "#fce7f3",
-                        "iconColor": "#ec4899"
-                    }
-                ]
-            },
-            "faqSection": {
-                "title": "Frequently Asked Questions",
-                "subtitle": "Got questions? We've got answers.",
-                "accentColor": "#2f84ff",
-                "faqs": [
-                    {
-                        "question": "How to merge PDF files online for free?",
-                        "answer": "Simply drag and drop your PDF files into our merge tool, arrange them in your desired order by dragging, and click merge. Your combined PDF will be ready to download in seconds."
-                    },
-                    {
-                        "question": "Is it safe to merge PDFs online?",
-                        "answer": "Yes! Our PDF merger processes everything in your browser. Your files never leave your device, ensuring complete privacy and security. No data is uploaded to any server."
-                    },
-                    {
-                        "question": "How many PDF files can I merge at once?",
-                        "answer": "You can merge unlimited PDF files in a single session. Simply add as many files as you need and arrange them in the order you want them combined."
-                    },
-                    {
-                        "question": "Can I select specific pages to merge?",
-                        "answer": "Yes! Our advanced page selection feature lets you choose exactly which pages from each PDF you want to include in your merged document."
-                    },
-                    {
-                        "question": "Do I need to install any software?",
-                        "answer": "No software installation required. Our PDF merger works entirely in your web browser. Just open the tool, add your files, and merge them online instantly."
-                    }
-                ]
-            }
-        },
-        {
             "id": "image-compressor",
             "name": "Image Compressor",
             "route": "tools/image/image-compressor",
@@ -777,34 +843,30 @@
                 "badgeText": "#1 Free Image Compressor",
                 "badgeIcon": "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
                 "title": "Compress Images in Seconds",
-                "description": "Our free image compressor reduces file sizes for JPEG, PNG, and WebP images while maintaining visual quality. Perfect for web optimization and faster page loading.",
+                "description": "Optimize your images for the web without sacrificing quality. We use browser-based processing to shrink image sizes immediately, meaning your metadata and images are never stored on a remote server.",
                 "ctaPrimaryText": "Compress Your Images",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M13 10V3L4 14h7v7l9-11h-7z",
-                        "title": "Lightning Fast",
-                        "description": "Compress your images in seconds. No uploads, no waiting."
+                        "title": "Local Metadata Safety",
+                        "description": "Your images are processed on your device. No server-side logs or image storage."
                     },
                     {
-                        "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-                        "title": "Secure Processing",
-                        "description": "Images are processed locally in your browser - never uploaded"
+                        "title": "Zero-Bottleneck Speed",
+                        "description": "Instant optimization without the bottleneck of uploading large files to a cloud."
                     },
                     {
-                        "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
-                        "title": "Easy to Use",
-                        "description": "Simple drag-and-drop interface for quick compression"
+                        "title": "Unlimited Batching",
+                        "description": "No daily limits on the number of images you can optimize."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Free Forever",
-                        "description": "No registration required. Completely free to use."
+                        "title": "Multi-Format Support",
+                        "description": "Effortlessly compress JPG, PNG, and WebP files from any platform."
                     }
                 ],
                 "visualContent": {
                     "type": "image",
-                    "src": "/compress-image.png",
+                    "src": "tools/image-compressor/image-compressor-about-section.png",
                     "alt": "Image Compressor Preview"
                 }
             },
@@ -965,34 +1027,31 @@
                 "badgeText": "#1 Free JSON Formatter",
                 "badgeIcon": "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
                 "title": "Format JSON in Seconds",
-                "description": "Our free JSON Formatter helps you beautify and validate your JSON data. With instant formatting, syntax highlighting, and error detection, it's the perfect tool for developers working with JSON.",
+                "description": "Clean and validate messy JSON code instantly. Built for developers, our formatter processes everything locally, guaranteeing that your API keys, production tokens, and sensitive data are never transmitted.",
                 "ctaPrimaryText": "Format Your JSON",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M13 10V3L4 14h7v7l9-11h-7z",
-                        "title": "Instant Formatting",
-                        "description": "Format JSON instantly with proper indentation and spacing"
+                        "title": "Zero Leak Guarantee",
+                        "description": "Your API keys and production tokens are never transmitted to any server. Period."
                     },
                     {
-                        "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-                        "title": "Secure Processing",
-                        "description": "All processing happens in your browser - no data leaves your device"
+                        "title": "Client-Side Beautification",
+                        "description": "Real-time formatting using local JS, ensuring zero latency and maximum security."
                     },
                     {
-                        "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
-                        "title": "Error Detection",
-                        "description": "Automatically detect and highlight JSON syntax errors"
+                        "title": "Local Validation",
+                        "description": "Detect syntax errors instantly without sending a single byte of data externally."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Easy to Use",
-                        "description": "Simple interface with copy, clear, and format options"
+                        "title": "Ad-Free Developer UX",
+                        "description": "Clean interface without distracting ads or forced registrations."
                     }
                 ],
                 "visualContent": {
-                    "type": "svg-hexagon",
-                    "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+                    "type": "image",
+                    "src": "tools/json-formatter/json-formatter-about-section.png",
+                    "alt": "JSON Formatter Preview"
                 }
             },
             "featuresSection": {
@@ -1150,34 +1209,31 @@
                 "badgeText": "#1 Free QR Code Generator",
                 "badgeIcon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
                 "title": "Generate QR Codes Instantly",
-                "description": "Our free QR Code Generator helps you create high-quality QR codes for various content types. Whether you need to share URLs, text, or WiFi credentials, our tool makes it quick and easy with customizable options.",
+                "description": "Create high-resolution QR codes for URLs and text instantly. Our generator uses local processing to ensure your links are generated without tracking or server-side logs.",
                 "ctaPrimaryText": "Generate QR Code",
-                "ctaNote": "No signup required • 100% free forever",
+                "ctaNote": "No signup required \u2022 100% free forever",
                 "features": [
                     {
-                        "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
-                        "title": "Multiple QR Code Types",
-                        "description": "Support for text, URL, WiFi, and more QR code formats"
+                        "title": "Zero-Pixel Tracking",
+                        "description": "We don't track who generates the code or who scans it. Your data stays local."
                     },
                     {
-                        "icon": "M12 15a3 3 0 100-6 3 3 0 000 6zm-7.536 4.243a1 1 0 00-1.414 0L5.586 19H18.414l-1.414-1.414a1 1 0 00-1.414 0c-.65.65 1.622 2.5 2.707 3.586H4.243c1.085-1.085 2.937-3.358 2.243-3.586z",
-                        "title": "Secure Processing",
-                        "description": "All QR codes are generated in your browser - no data leaves your device"
+                        "title": "Instant Local Generation",
+                        "description": "Generate codes instantly without waiting for a remote server to respond."
                     },
                     {
-                        "icon": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12m4-4l4 4m-4-4v-6",
-                        "title": "Download Options",
-                        "description": "Download QR codes as PNG or SVG for any use case"
+                        "title": "High-Res Export",
+                        "description": "Generate crisp, scan-ready codes perfect for print or digital use."
                     },
                     {
-                        "icon": "M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22ZM9 12L11 14L15 10",
-                        "title": "Easy to Use",
-                        "description": "Simple interface with instant QR code generation"
+                        "title": "Account-Free Access",
+                        "description": "No sign-up or email required. Just enter your data and download your code."
                     }
                 ],
                 "visualContent": {
-                    "type": "svg-hexagon",
-                    "svg": "<svg width=\"120\" height=\"120\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"1\"><polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" fill-opacity=\"0.1\"/></svg>"
+                    "type": "image",
+                    "src": "tools/qr-code-generator/qr-code-generator-about-section.png",
+                    "alt": "QR Code Generator Preview"
                 }
             },
             "featuresSection": {

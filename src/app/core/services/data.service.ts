@@ -79,6 +79,78 @@ export class DataService {
         return this.toolData.tools.filter(tool => tool.category === category);
     }
 
+    getOtherToolsInCategory(currentTool: Tool, limit = 4): Tool[] {
+        return this.getToolsByCategory(currentTool.category)
+            .filter(tool => tool.id !== currentTool.id)
+            .slice(0, limit);
+    }
+
+    getRelatedTools(currentTool: Tool, limit = 4): Tool[] {
+        const currentTags = new Set(currentTool.tags.map(tag => tag.toLowerCase()));
+
+        const scoredTools = this.toolData.tools
+            .filter(tool => tool.id !== currentTool.id)
+            .map(tool => ({
+                tool,
+                score: this.getToolRelatedScore(currentTool, tool, currentTags)
+            }))
+            .filter(item => item.score > 0)
+            .sort((a, b) => b.score - a.score || a.tool.name.localeCompare(b.tool.name));
+
+        const crossCategoryTools = scoredTools
+            .filter(item => item.tool.category !== currentTool.category)
+            .map(item => item.tool);
+
+        const relatedTools = crossCategoryTools.length > 0
+            ? crossCategoryTools
+            : scoredTools.map(item => item.tool);
+
+        return relatedTools.slice(0, limit);
+    }
+
+    private getToolRelatedScore(currentTool: Tool, candidateTool: Tool, currentTags: Set<string>): number {
+        const sharedTagScore = candidateTool.tags
+            .filter(tag => currentTags.has(tag.toLowerCase()))
+            .length * 3;
+        const categoryScore = candidateTool.category === currentTool.category ? 2 : 0;
+        const textScore = this.getSharedSearchTermScore(currentTool, candidateTool);
+
+        return sharedTagScore + categoryScore + textScore;
+    }
+
+    private getSharedSearchTermScore(currentTool: Tool, candidateTool: Tool): number {
+        const currentTerms = this.getSearchTerms(currentTool);
+        const candidateTerms = this.getSearchTerms(candidateTool);
+
+        return [...currentTerms].filter(term => candidateTerms.has(term)).length;
+    }
+
+    private getSearchTerms(tool: Tool): Set<string> {
+        const ignoredTerms = new Set([
+            'tool',
+            'tools',
+            'free',
+            'online',
+            'browser',
+            'based',
+            'secured',
+            'data',
+            'with',
+            'your',
+            'from',
+            'into',
+            'file',
+            'files'
+        ]);
+        const searchableText = `${tool.name} ${tool.shortDescription} ${tool.tags.join(' ')}`;
+        const terms = searchableText
+            .toLowerCase()
+            .split(/[^a-z0-9]+/)
+            .filter(term => term.length > 2 && !ignoredTerms.has(term));
+
+        return new Set(terms);
+    }
+
     getActiveToolCategories(): Category[] {
         const activeCategories = new Set(this.toolData.tools.map(tool => tool.category));
         return Array.from(activeCategories).map(category => this.getCategoryDataById(category));
@@ -96,14 +168,32 @@ export class DataService {
             }));
     }
 
-    searchTools(query: string): Tool[] {
-        const lowerQuery = query.toLowerCase();
-        return this.toolData.tools.filter(tool =>
-            tool.name.toLowerCase().includes(lowerQuery) ||
-            tool.shortDescription.toLowerCase().includes(lowerQuery) ||
-            tool.longDescription.toLowerCase().includes(lowerQuery) ||
-            tool.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
-            tool.seoData?.keywords.some(keyword => keyword.toLowerCase().includes(lowerQuery))
-        );
+    getCategoryNameById(id: string): string {
+        const category = this.categoryData.categories.tools.find(category => category.id === id);
+        return category ? category.name : '';
+    }
+
+    // searchTools(query: string): Tool[] {
+    //     const lowerQuery = query.toLowerCase();
+    //     return this.toolData.tools.filter(tool =>
+    //         tool.name.toLowerCase().includes(lowerQuery) ||
+    //         tool.shortDescription.toLowerCase().includes(lowerQuery) ||
+    //         tool.longDescription.toLowerCase().includes(lowerQuery) ||
+    //         tool.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
+    //         tool.seoData?.keywords.some(keyword => keyword.toLowerCase().includes(lowerQuery))
+    //     );
+    // }
+
+    getNameById(id: string) {
+        const tool = this.toolData.tools.find(tool => tool.id === id);
+        if (tool) {
+            return tool.name;
+        }
+        const category = this.categoryData.categories.tools.find(category => category.id === id);
+        if (category) {
+            return category.name;
+        }
+        return '';
+        // return this.toolData.tools.find(tool => tool.id === id)?.name;
     }
 }

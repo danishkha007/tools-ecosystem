@@ -14,6 +14,10 @@ export class FooterComponent {
   popularTools: Tool[];
   tradingTools: Tool[];
 
+  getsocialMediaLinks(socialMedia:string){
+    return `https://www.${socialMedia}.com/mytooltrove`;
+  }
+
   private readonly popularToolIds = ['resume-builder', 'pdf-merger', 'pdf-compressor', 'image-compressor'];
 
   constructor(private dataService: DataService) {

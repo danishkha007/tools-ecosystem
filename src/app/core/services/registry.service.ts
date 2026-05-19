@@ -34,7 +34,7 @@ export function buildCategoryRoutes(tools: Tool[]): Routes {
 }
 
 const toolPageTemplateLoader: ToolComponentLoader = () =>
-    import('../../pages/tool/tool').then(m => m.ToolPageComponent);
+    import('../../pages/tools/tool/tool').then(m => m.ToolPageComponent);
 
 export function loadToolComponentById(toolId: string): Promise<Type<unknown>> {
     const loadComponent = toolComponentLoaders[toolId];

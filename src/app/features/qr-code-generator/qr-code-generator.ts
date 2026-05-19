@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Tool } from '../../core/models/tool-data.model';
 import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '@core/services/data.service';
+import { Category } from '@core/models/category-data.model';
 
 @Component({
   selector: 'qr-code-generator',
@@ -15,6 +16,7 @@ export class QrCodeGeneratorComponent implements OnInit {
   toolId = 'qr-code-generator';
 
   toolData: Tool | undefined;
+  categoryData: Category | undefined;
 
   // QR Code Content
   qrContent = '';
@@ -49,11 +51,16 @@ export class QrCodeGeneratorComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
   ) {
-    this.toolData = this.dataService.getToolDataById(this.toolId);
+    this.toolData = this.dataService.getCompleteToolDataById(this.toolId);
+    this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
   }
 
   ngOnInit(): void {
     this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
+  }
+
+   showHeader(){
+    return true;
   }
 
   @HostListener('window:resize')

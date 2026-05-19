@@ -2,27 +2,34 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Seo } from '@core/models/seo-data.model';
 import { DataService } from './data.service';
-import { FAQ } from '@core/models/tool-data.model';
+import { FAQ, Tool } from '@core/models/tool-data.model';
+import { AppData } from '@core/models/app-data.model';
+import { BreadcrumbsService } from './breadcrumbs.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
   private isBrowser: boolean;
-  private defaultImage = 'https://mytooltrove.com/mytooltrove-free-online-tools.png';
+  private document: Document;
+  private defaultImage = 'https://mytooltrove.com/mytooltrove%20free%20online%20tools.jpg';
 
-  constructor(@Inject(PLATFORM_ID) platformId: object, private dataService: DataService) {
+  constructor(@Inject(PLATFORM_ID) platformId: object, private dataService: DataService, private breadcrumbsService: BreadcrumbsService) {
     this.isBrowser = isPlatformBrowser(platformId);
+    this.document = this.isBrowser ? window.document : ({} as Document);
   }
 
   setSeoDataById(id: string): void {
     if (!this.isBrowser || !id) {
       return;
     }
+    this.clearSeoData();
     const seoData = this.dataService.getSeoDataById(id);
     this.setSeoData(seoData);
     const toolData = this.dataService.getToolDataById(id);
-    this.setFaqJsonLd(toolData?.faqSection?.faqs || []);
+    this.setFaqJsonLdSchema(toolData?.faqSection?.faqs || []);
+    this.setWebApplicationJsonLdSchema(toolData);
+    // this.setBreadcrumbsJsonLdSchema();
   }
 
   setSeoData(seoData: Seo | undefined): void {
@@ -30,7 +37,7 @@ export class SeoService {
       return;
     }
 
-    document.title = seoData.title;
+    this.document.title = seoData.title;
     this.setMetaTag('description', seoData.metaDescription);
     this.setMetaTag('robots', "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large");
     this.setCanonicalUrl(seoData.canonicalUrl);
@@ -54,7 +61,12 @@ export class SeoService {
     this.setMetaTag('twitter:image', this.defaultImage);
     this.setMetaTag('twitter:site', '@MyToolTrove');
 
-    this.setldJsonLd(seoData);
+    this.setWebPageJsonLdSchema(seoData);
+
+    if (window.location.pathname === '/') {
+      this.setOrganizationJsonLdSchema();
+      this.setWebsiteJsonLdSchema();
+    }
 
     // Set meta keywords
     if (seoData.keywords && seoData.keywords.length > 0) {
@@ -64,32 +76,29 @@ export class SeoService {
 
   private setMetaTag(name: string, content: string): void {
     if (!content) return;
-    let metaTag = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
+    let metaTag = this.document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
     if (!metaTag) {
-      metaTag = document.createElement('meta');
+      metaTag = this.document.createElement('meta');
       metaTag.setAttribute('name', name);
-      document.head.appendChild(metaTag);
+      this.document.head.appendChild(metaTag);
     }
     metaTag.setAttribute('content', content);
   }
 
   private setCanonicalUrl(url: string): void {
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    let canonicalLink = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
+      canonicalLink = this.document.createElement('link');
       canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
+      this.document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute('href', url);
   }
 
-  private setldJsonLd(seoData: Seo): void {
-    let scriptTag = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
-    if (!scriptTag) {
-      scriptTag = document.createElement('script');
-      scriptTag.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(scriptTag);
-    }
+  private setWebPageJsonLdSchema(seoData: Seo): void {
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    this.document.head.appendChild(scriptTag);
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -102,15 +111,12 @@ export class SeoService {
     scriptTag.textContent = JSON.stringify(jsonLd);
   }
 
-  private setFaqJsonLd(faqs: FAQ[]): void {
-    let doc = document as Document;
-    let scriptTag = doc.querySelector('script[type="application/ld+json"][data-faq]') as HTMLScriptElement;
-    if (!scriptTag) {
-      scriptTag = doc.createElement('script');
-      scriptTag.setAttribute('type', 'application/ld+json');
-      scriptTag.setAttribute('data-faq', 'true');
-      document.head.appendChild(scriptTag);
-    }
+  private setFaqJsonLdSchema(faqs: FAQ[]): void {
+
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-faq', 'true');
+    this.document.head.appendChild(scriptTag);
     const faqJsonLd = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -126,24 +132,94 @@ export class SeoService {
     scriptTag.textContent = JSON.stringify(faqJsonLd);
   }
 
-  // /**
-  //  * Remove SEO data (reset to defaults)
-  //  */
-  // clearSeoData(defaultTitle = 'MyToolTrove'): void {
-  //   if (!this.isBrowser) {
-  //     return;
-  //   }
+  private setWebApplicationJsonLdSchema(toolData: Tool | undefined): void {
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-webapp', 'true');
+    this.document.head.appendChild(scriptTag);
+    const webAppJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": toolData?.name,
+      "description": toolData?.longDescription,
+      "url": new URL(window.location.href).origin + toolData?.route,
+      "applicationCategory": "Utilities",
+      "operatingSystem": "All",
+      "screenshot": this.defaultImage,
+      "genre": "Tools"
+    };
+    scriptTag.textContent = JSON.stringify(webAppJsonLd);
+  }
 
-  //   document.title = defaultTitle;
+  private setOrganizationJsonLdSchema(): void {
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-organization', 'true');
+    this.document.head.appendChild(scriptTag);
+    const organizationJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://mytooltrove.com/#organization",
+      "name": "MyToolTrove",
+      "url": "https://mytooltrove.com",
+      "logo": "https://mytooltrove.com/favicon.svg"
+    };
+    scriptTag.textContent = JSON.stringify(organizationJsonLd);
+  }
 
-  //   // Clear meta tags
-  //   const metaTags = document.querySelectorAll('meta[name="description"], meta[name="keywords"], meta[name^="og:"], meta[name^="twitter:"]');
-  //   metaTags.forEach(tag => tag.remove());
+  private setWebsiteJsonLdSchema(): void {
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-website', 'true');
+    this.document.head.appendChild(scriptTag);
+    const websiteJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://mytooltrove.com/#website",
+      "url": "https://mytooltrove.com",
+      "name": "MyToolTrove",
+      "publisher": {
+        "@id": "https://mytooltrove.com/#organization"
+      }
+    };
+    scriptTag.textContent = JSON.stringify(websiteJsonLd);
+  }
+  setBreadcrumbsJsonLdSchema(): void {
+    const breadcrumbs = this.breadcrumbsService.get();
+    if (breadcrumbs.length === 0) {
+      return;
+    }
+    let scriptTag = this.document.createElement('script');
+    scriptTag.setAttribute('type', 'application/ld+json');
+    scriptTag.setAttribute('data-website', 'true');
+    this.document.head.appendChild(scriptTag);
+    const websiteJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "name": crumb.label,
+          "@id": new URL(crumb.url, "https://mytooltrove.com").href
+        }
+      }))
+    };
+    scriptTag.textContent = JSON.stringify(websiteJsonLd);
+  }
 
-  //   // Remove canonical link
-  //   const canonicalLink = document.querySelector('link[rel="canonical"]');
-  //   if (canonicalLink) {
-  //     canonicalLink.remove();
-  //   }
-  // }
+  /**
+ * Remove SEO data (reset to defaults)
+ */
+  clearSeoData(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+    do {
+      let scriptTag = this.document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+      if (scriptTag) {
+        scriptTag.remove();
+      }
+    } while (this.document.querySelector('script[type="application/ld+json"]') !== null);
+  }
 }

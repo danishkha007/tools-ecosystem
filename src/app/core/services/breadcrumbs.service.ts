@@ -1,11 +1,13 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Breadcrumb } from "@components/breadcrumbs/breadcrumbs";
+import { DataService } from "./data.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class BreadcrumbsService {
     private crumbs: Breadcrumb[] = [];
+    private dataService = inject(DataService);
     private listeners = new Set<(breadcrumbs: Breadcrumb[]) => void>();
 
     constructor() { }

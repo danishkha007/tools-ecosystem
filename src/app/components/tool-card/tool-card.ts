@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class ToolCardComponent {
 
   @Input() tool!: Tool;
+  @Input() categoryName!: string;
 
   constructor(private router: Router) {}
 

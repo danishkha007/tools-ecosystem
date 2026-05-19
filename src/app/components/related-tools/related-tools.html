@@ -1,0 +1,14 @@
+@if (tools.length) {
+  <section class="tool-discovery-section" [attr.aria-labelledby]="currentTool?.id + '-related-tools-heading'">
+    <div class="section-heading">
+      <p class="eyebrow">Related tools</p>
+      <h2 [id]="currentTool?.id + '-related-tools-heading'">You may also need</h2>
+    </div>
+
+    <div class="tools-grid">
+      @for (tool of tools; track tool.id) {
+        <app-tool-card [tool]="tool" [categoryName]="getCategoryName(tool)"></app-tool-card>
+      }
+    </div>
+  </section>
+}
