@@ -1,43 +1,48 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Seo } from '@core/models/seo-data.model';
 import { DataService } from './data.service';
 import { FAQ, Tool } from '@core/models/tool-data.model';
-import { AppData } from '@core/models/app-data.model';
 import { BreadcrumbsService } from './breadcrumbs.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
-  private isBrowser: boolean;
-  private document: Document;
   private defaultImage = 'https://mytooltrove.com/mytooltrove%20free%20online%20tools.jpg';
+  private siteOrigin = 'https://mytooltrove.com';
 
-  constructor(@Inject(PLATFORM_ID) platformId: object, private dataService: DataService, private breadcrumbsService: BreadcrumbsService) {
-    this.isBrowser = isPlatformBrowser(platformId);
-    this.document = this.isBrowser ? window.document : ({} as Document);
-  }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private dataService: DataService,
+    private breadcrumbsService: BreadcrumbsService,
+    private meta: Meta,
+    private title: Title
+  ) {}
 
   setSeoDataById(id: string): void {
-    if (!this.isBrowser || !id) {
+    if (!id) {
       return;
     }
     this.clearSeoData();
     const seoData = this.dataService.getSeoDataById(id);
     this.setSeoData(seoData);
     const toolData = this.dataService.getToolDataById(id);
-    this.setFaqJsonLdSchema(toolData?.faqSection?.faqs || []);
-    this.setWebApplicationJsonLdSchema(toolData);
+    if (toolData) {
+      this.setFaqJsonLdSchema(toolData.faqSection?.faqs || []);
+      this.setWebApplicationJsonLdSchema(toolData);
+    }
     // this.setBreadcrumbsJsonLdSchema();
   }
 
   setSeoData(seoData: Seo | undefined): void {
-    if (!this.isBrowser || !seoData) {
+    if (!seoData) {
       return;
     }
 
-    this.document.title = seoData.title;
+    this.clearSeoData();
+    this.title.setTitle(seoData.title);
     this.setMetaTag('description', seoData.metaDescription);
     this.setMetaTag('robots', "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large");
     this.setCanonicalUrl(seoData.canonicalUrl);
@@ -63,7 +68,7 @@ export class SeoService {
 
     this.setWebPageJsonLdSchema(seoData);
 
-    if (window.location.pathname === '/') {
+    if (seoData.id === 'home' || this.normalizeUrl(seoData.canonicalUrl) === this.siteOrigin) {
       this.setOrganizationJsonLdSchema();
       this.setWebsiteJsonLdSchema();
     }
@@ -76,13 +81,13 @@ export class SeoService {
 
   private setMetaTag(name: string, content: string): void {
     if (!content) return;
-    let metaTag = this.document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
-    if (!metaTag) {
-      metaTag = this.document.createElement('meta');
-      metaTag.setAttribute('name', name);
-      this.document.head.appendChild(metaTag);
+
+    if (name.startsWith('og:')) {
+      this.meta.updateTag({ property: name, content }, `property="${name}"`);
+      return;
     }
-    metaTag.setAttribute('content', content);
+
+    this.meta.updateTag({ name, content }, `name="${name}"`);
   }
 
   private setCanonicalUrl(url: string): void {
@@ -112,6 +117,9 @@ export class SeoService {
   }
 
   private setFaqJsonLdSchema(faqs: FAQ[]): void {
+    if (faqs.length === 0) {
+      return;
+    }
 
     let scriptTag = this.document.createElement('script');
     scriptTag.setAttribute('type', 'application/ld+json');
@@ -133,6 +141,9 @@ export class SeoService {
   }
 
   private setWebApplicationJsonLdSchema(toolData: Tool | undefined): void {
+    if (!toolData) {
+      return;
+    }
     let scriptTag = this.document.createElement('script');
     scriptTag.setAttribute('type', 'application/ld+json');
     scriptTag.setAttribute('data-webapp', 'true');
@@ -142,7 +153,7 @@ export class SeoService {
       "@type": "WebApplication",
       "name": toolData?.name,
       "description": toolData?.longDescription,
-      "url": new URL(window.location.href).origin + toolData?.route,
+      "url": new URL(toolData.route, this.siteOrigin).href,
       "applicationCategory": "Utilities",
       "operatingSystem": "All",
       "screenshot": this.defaultImage,
@@ -212,14 +223,12 @@ export class SeoService {
  * Remove SEO data (reset to defaults)
  */
   clearSeoData(): void {
-    if (!this.isBrowser) {
-      return;
-    }
-    do {
-      let scriptTag = this.document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
-      if (scriptTag) {
-        scriptTag.remove();
-      }
-    } while (this.document.querySelector('script[type="application/ld+json"]') !== null);
+    this.document
+      .querySelectorAll('script[type="application/ld+json"]')
+      .forEach(scriptTag => scriptTag.remove());
+  }
+
+  private normalizeUrl(url: string): string {
+    return url.replace(/\/$/, '').replace('https://www.', 'https://');
   }
 }

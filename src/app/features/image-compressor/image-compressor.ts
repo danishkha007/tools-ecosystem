@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tool, ToolData } from '../../core/models/tool-data.model';
-import { SeoService } from '../../core/services/seo.service';
 // import { ToolDataService } from '../../core/services/tool-data.service';
 import { DataService } from '@core/services/data.service';
 
@@ -47,7 +46,6 @@ export class ImageCompressor implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private dataService: DataService,
-    private seoService: SeoService,
     // private toolDataService: ToolDataService,
     private route: ActivatedRoute
   ) {
@@ -55,7 +53,6 @@ export class ImageCompressor implements OnInit {
   }
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   async onFileSelect(event: Event) {

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tool } from '../../core/models/tool-data.model';
-import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '@core/services/data.service';
 
 interface CompressFile {
@@ -41,11 +40,9 @@ export class PdfCompressorComponent implements OnInit {
     private pdfService: PdfService,
     private dataService: DataService,
     private cdr: ChangeDetectorRef,
-    private seoService: SeoService,
   ) {}
 
   ngOnInit(): void {
-    this.seoService.setSeoData(this.dataService.getSeoDataById(this.toolId));
   }
 
   async onFileSelect(event: Event) {
