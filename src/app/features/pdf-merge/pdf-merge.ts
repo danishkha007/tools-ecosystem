@@ -11,9 +11,10 @@ import { DataService } from '@core/services/data.service';
 import { ToolHeaderComponent } from "@components/tool-header/tool-header";
 import { Category } from '@core/models/category-data.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as pdfjsLib from '../../../../node_modules/pdfjs-dist';
+(pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 type UseCaseData = UseCase;
-type PdfJsLib = typeof import('pdfjs-dist');
 
 interface PdfFile {
   file: File;
@@ -43,7 +44,7 @@ export class PdfMergeComponent implements OnInit {
 
     toolData?: Tool;
     categoryData?: Category;
-    private pdfJsLib?: PdfJsLib;
+    // private pdfJsLib?: PdfJsLib;
 
   pdfFiles: PdfFile[] = [];
   pageItems: PageItem[] = [];
@@ -93,14 +94,14 @@ export class PdfMergeComponent implements OnInit {
     // SEO data is loaded in constructor
   }
 
-  private async getPdfJs(): Promise<PdfJsLib> {
-    if (!this.pdfJsLib) {
-      this.pdfJsLib = await import('pdfjs-dist');
-      (this.pdfJsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    }
+  // private async getPdfJs(): Promise<PdfJsLib> {
+  //   if (!this.pdfJsLib) {
+  //     this.pdfJsLib = await import('pdfjs-dist');
+  //     (this.pdfJsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  //   }
 
-    return this.pdfJsLib;
-  }
+  //   return this.pdfJsLib;
+  // }
 
   getSaniizedSafeHTML(html: string | undefined) {
     return this.sanitizer.bypassSecurityTrustHtml(html as string);
@@ -119,6 +120,7 @@ export class PdfMergeComponent implements OnInit {
     const files = Array.from(input.files);
     await this.processFiles(files);
     input.value = '';
+    this.cdr.detectChanges();
   }
 
   private async processFiles(files: File[]) {
@@ -166,14 +168,13 @@ export class PdfMergeComponent implements OnInit {
   }
 
   async getPdfPageCount(file: File): Promise<number> {
-    const pdfjsLib = await this.getPdfJs();
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     return pdf.numPages;
   }
 
   async generateThumbnail(file: File): Promise<string> {
-    const pdfjsLib = await this.getPdfJs();
+    // const pdfjsLib = await this.getPdfJs();
     const arrayBuffer = await file.arrayBuffer();
 
     const pdf = await pdfjsLib.getDocument({
@@ -237,7 +238,7 @@ export class PdfMergeComponent implements OnInit {
   async generateAllPageThumbnails(pdf: PdfFile): Promise<{ [key: number]: string }> {
     const thumbnails: { [key: number]: string } = {};
     try {
-      const pdfjsLib = await this.getPdfJs();
+      // const pdfjsLib = await this.getPdfJs();
       const arrayBuffer = await pdf.file.arrayBuffer();
       const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       
