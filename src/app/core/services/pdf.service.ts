@@ -1,10 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { PDFDocument, PDFPage } from 'pdf-lib';
+import * as pdfjsLib from '../../../../node_modules/pdfjs-dist';
+(pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PdfService {
+
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+
 
   async mergePDFs(files: File[]): Promise<Uint8Array> {
     const mergedPdf = await PDFDocument.create();
@@ -87,11 +93,11 @@ export class PdfService {
     
     const qualitySettings = {
       // Low: Minimal compression - maintain highest quality possible
-      low: { scale: 1, jpegQuality: 1 },
+      low: { scale: 1, jpegQuality: 0.99 },
       // Medium: Moderate compression with good quality
-      medium: { scale: 1, jpegQuality: 0.99 },
-      // High: Maximum compression while keeping quality acceptable  
-      high: { scale: 1, jpegQuality: 0.98 }
+      medium: { scale: 1, jpegQuality: 0.98 },
+      // High: Maximum compression while keeping quality acceptable
+      high: { scale: 1, jpegQuality: 0.97 }
     };
     
     const settings = qualitySettings[level];
@@ -108,10 +114,7 @@ export class PdfService {
           pages.forEach(page => compressedPdf.addPage(page));
           continue;
         }
-        
-        const pdfjsLib = await import('pdfjs-dist');
-        (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        
+
         const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
         const numPages = pdf.numPages;
 
