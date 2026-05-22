@@ -20,7 +20,7 @@
             "aboutSection": {
                 "badgeText": "About PDF Merger",
                 "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
-                "title": "Merge PDF Files\nOnline, <strong style=\"color: #3c8cff;\">Fast & Secure</strong>",
+                "title": "Merge PDF Files\nOnline, <strong style=\"color: #3c8cff;\">Fast & </strong><strong style=\"color: #166534;\">Secure</strong>",
                 "description": "Combine multiple PDF files into one professional document instantly. By utilizing WebAssembly (WASM), our tool processes your files entirely within your browser, ensuring your sensitive data never touches a remote server.",
                 "ctaPrimaryText": "Start Merging Now",
                 "ctaNote": "No signup required \u2022 100% free forever",
