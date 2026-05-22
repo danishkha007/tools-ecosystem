@@ -1,10 +1,4 @@
-<div class="resume-ats" *ngIf="resume$ | async as resume"
-     [ngStyle]="{
-       'font-family': 'Arial, Helvetica, sans-serif',
-       'font-size': '11pt',
-       'color': '#333333',
-       'line-height': '1.4'
-     }">
+<div class="resume-ats" *ngIf="resume$ | async as resume">
 
   <!-- Header - Clean and Simple for ATS -->
   <header class="ats-header">
@@ -53,7 +47,7 @@
         </div>
         <p class="job-desc" *ngIf="exp.description">{{ exp.description }}</p>
         <ul class="achievements" *ngIf="exp.achievements.length">
-          <li *ngFor="let ach of exp.achievements">{{ ach }}</li>
+          <li *ngFor="let ach of getAchievements(exp.achievements)">{{ ach }}</li>
         </ul>
       </div>
     }
@@ -64,7 +58,11 @@
     <h2 class="section-title">EDUCATION</h2>
     @for (edu of resume.education; track $index) {
       <div class="edu-entry">
-        <strong>{{ edu.degree }}</strong> in {{ edu.field }} - {{ edu.institute }} ({{ edu.graduationDate }})
+        <strong>{{ edu.degree }}</strong> @if(edu.field){ in {{ edu.field }}}
+        <span>
+          {{ edu.institute }} ({{ edu.startDate }}) - @if(edu.pursuing){ 'Pursuing' } @else { {{edu.endDate}} }
+        </span>
+
         <span *ngIf="edu.gpa">, GPA: {{ edu.gpa }}</span>
         <span *ngIf="edu.achievements">, {{ edu.achievements }}</span>
       </div>

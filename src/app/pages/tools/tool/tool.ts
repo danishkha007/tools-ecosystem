@@ -17,11 +17,12 @@ import { ToolHeaderComponent } from "@components/tool-header/tool-header";
 import { RelatedToolsComponent } from "@components/related-tools/related-tools";
 import { ComparisonLayerComponent } from "@components/comparison-layer/comparison-layer";
 import { TechnicalNoteLayerComponent } from "@components/technical-note-layer/technical-note-layer";
+import { SecureBannerComponent } from "@components/secure-banner/secure-banner";
 
 @Component({
   selector: 'app-tool-page-template',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent, ToolHeaderComponent, RelatedToolsComponent, ComparisonLayerComponent, TechnicalNoteLayerComponent],
+  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent, ToolHeaderComponent, RelatedToolsComponent, ComparisonLayerComponent, TechnicalNoteLayerComponent, SecureBannerComponent],
   templateUrl: './tool.html',
   styleUrl: './tool.scss',
 })

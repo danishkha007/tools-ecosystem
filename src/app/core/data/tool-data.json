@@ -20,7 +20,7 @@
             "aboutSection": {
                 "badgeText": "About PDF Merger",
                 "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
-                "title": "Merge PDF Files\nOnline, Fast & Secure",
+                "title": "Merge PDF Files\nOnline, <strong style=\"color: #3c8cff;\">Fast & Secure</strong>",
                 "description": "Combine multiple PDF files into one professional document instantly. By utilizing WebAssembly (WASM), our tool processes your files entirely within your browser, ensuring your sensitive data never touches a remote server.",
                 "ctaPrimaryText": "Start Merging Now",
                 "ctaNote": "No signup required \u2022 100% free forever",
@@ -181,18 +181,26 @@
                 "description": "Combining your documents is simple and takes only a few clicks:",
                 "steps": [
                     {
+                        "image": "tools/pdf-merger/step-1.png",
+                        "imageAlt": "Upload PDF files",
                         "title": "Upload Your PDFs",
                         "description": "Drag and drop the PDF files you want to combine into the tool area, or click the upload button to select them from your device."
                     },
                     {
+                        "image": "tools/pdf-merger/step-2.png",
+                        "imageAlt": "Arrange PDF order",
                         "title": "Arrange Your Order",
                         "description": "Once uploaded, you can easily drag the files to rearrange them. Ensure the documents are in the exact sequence you want them to appear in the final merged file."
                     },
                     {
+                        "image": "tools/pdf-merger/step-3.png",
+                        "imageAlt": "Merge PDFs",
                         "title": "Merge Documents",
                         "description": "Click the \"Merge PDF\" button. Our engine will process your files in seconds, combining them into a single PDF document while maintaining the original quality."
                     },
                     {
+                        "image": "tools/pdf-merger/step-4.png",
+                        "imageAlt": "Download merged PDF",
                         "title": "Download Your Result",
                         "description": "Your final, combined PDF is ready for download immediately. Since there is no server upload, there is no waiting for \"processing\" or \"uploading\" bars."
                     }

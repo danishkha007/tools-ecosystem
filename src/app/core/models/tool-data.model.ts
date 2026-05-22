@@ -36,6 +36,8 @@ export interface InstructionalSection {
 }
 
 export interface Step {
+  image: string;
+  imageAlt: string;
   title: string;
   description: string;
 }

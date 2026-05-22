@@ -28,14 +28,16 @@ export interface Experience {
   endDate: string;
   isCurrentJob: boolean;
   description: string;
-  achievements: string[];
+  achievements: string;
 }
 
 export interface Education {
   institute: string;
   degree: string;
   field: string;
-  graduationDate: string;
+  startDate: string;
+  endDate: string;
+  pursuing: boolean;
   gpa?: string;
   achievements?: string;
 }
@@ -45,12 +47,16 @@ export interface Certification {
   issuer: string;
   date: string;
   expiryDate?: string;
+  link?: string;
 }
 
 export interface Project {
   name: string;
   description: string;
   technologies: string[];
+  startDate: string;
+  endDate: string;
+  isWorkInProgress: boolean;
   link?: string;
 }
 export interface Language {
@@ -59,7 +65,5 @@ export interface Language {
 }
 
 export interface Style {
-  fontFamily: string;
-  fontSize: number;
   color: string;
 }

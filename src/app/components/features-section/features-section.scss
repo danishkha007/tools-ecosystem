@@ -57,43 +57,30 @@
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  position: relative;
-  z-index: 1;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .feature-card-large {
-  background: white;
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 4px 4px 0px #3c8cff;
-  border: 1px solid #ccc;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  
+    /* border: 1px solid #3c8cff; */
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0px 0px 0px 0px #3c8cff;
+    border: 1px solid #ccc;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    width: 185px;
+    flex-grow: 1;
+    max-width: 100%;
+    text-align: center;
+}
 
-  &:hover {
-    // transform: translateY(-8px);
-    box-shadow: 8px 8px 0px #3c8cff;
-    transform: translate(-4px, -4px);
-
-    .card-bg-pattern {
-      opacity: 0.08;
-    }
-
-    h3 {
-      color: #2f84ff;
-    }
-  }
+  
 
   .card-bg-pattern {
     position: absolute;
@@ -109,7 +96,10 @@
 
   .card-content {
     position: relative;
+    display: flex;
     z-index: 1;
+    flex-direction: column;
+    align-items: center;
 
     .icon-box-large {
       width: 56px;
@@ -144,40 +134,27 @@
       margin: 0;
     }
   }
-}
 
-.feature-card-1 .icon-box-large {
-  svg {
-    stroke: #2563EB;
-  }
-}
+.feature-card-large:hover {
+    // transform: translateY(-8px);
+    // box-shadow: 8px 8px 0px #3c8cff;
+    // transform: translate(-4px, -4px);
+    box-shadow: 0px 6px 0px 0px #3c8cff;
+    transform: translate(0px, -6px);
 
-.feature-card-2 .icon-box-large {
-  svg {
-    stroke: #F59E0B;
-  }
-}
+    .card-bg-pattern {
+      opacity: 0.08;
+    }
 
-.feature-card-3 .icon-box-large {
-  svg {
-    stroke: #22C55E;
-  }
-}
+    h3 {
+      color: #2f84ff;
+    }
+    .icon-box-large {
+      box-shadow: 0px 0px 1px 6px #3c8cff80
 
-.feature-card-4 .icon-box-large {
-  svg {
-    stroke: #EC4899;
+      svg {
+        stroke: #fff;
+        transition: stroke 0.4s ease;
+      }
+    }
   }
-}
-
-.feature-card-5 .icon-box-large {
-  svg {
-    stroke: #8B5CF6;
-  }
-}
-
-.feature-card-6 .icon-box-large {
-  svg {
-    stroke: #14B8A6;
-  }
-}

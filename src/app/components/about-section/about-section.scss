@@ -14,22 +14,29 @@
 
     .hero-badge {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #fff;
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      border: 1px solid #ccc;
-      color: #3c8cff;
-      font-size: 1rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 8px 20px;
-      line-height: 1.2;
-      border-radius: 32px;
-      margin-bottom: 20px;
-      box-shadow: 4px 4px 0 0 #3c8cff;
+    align-items: center;
+    gap: 8px;
+    background: #3c8cff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid #3c8cff;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 1px 20px 1px 1px;
+    /* line-height: 1.2; */
+    border-radius: 32px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 0 3px rgba(60, 140, 255, 0.37);
+
+    svg{
+      padding: 4px;
+    border-radius: 25px;
+    background: white;
+    color: #3c8cff;
+    }
     }
 
     h2 {
