@@ -92,6 +92,13 @@
     position: relative;
     white-space: nowrap;
 
+    img {
+      padding-right: 10px;
+      // width: 30px;
+      height: 30px;;
+
+    }
+
     &:hover,
     &.active {
       color: #1d4ed8;

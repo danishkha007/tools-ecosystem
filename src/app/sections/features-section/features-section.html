@@ -1,0 +1,48 @@
+<div class="features-section">
+  <div class="features-header">
+    <span class="features-label" *ngIf="featuresSection.label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" *ngIf="true">
+        <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+      {{ featuresSection.label }}
+    </span>
+    <h2 class="section-title">{{ featuresSection.title }}</h2>
+    <p class="features-subtitle" *ngIf="featuresSection.subtitle">{{ featuresSection.subtitle }}</p>
+  </div>
+  <div
+    class="features-carousel"
+    *ngIf="carouselFeatures.length"
+    aria-label="Feature carousel"
+  >
+    <button
+      type="button"
+      class="carousel-button carousel-button-prev"
+      aria-label="Previous features"
+      (click)="previousFeature()"
+      [disabled]="carouselFeatures.length <= visibleCount"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+    </button>
+
+    <div class="features-viewport">
+      <div class="features-grid">
+        <div class="feature-card-large" *ngFor="let item of visibleFeatures">
+          <app-card
+            [data]="{id: item.index + 1, image: item.feature.imagePath, title: item.feature.title, description: item.feature.description}">
+          </app-card>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="carousel-button carousel-button-next"
+      aria-label="Next features"
+      (click)="nextFeature()"
+      [disabled]="carouselFeatures.length <= visibleCount"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+    </button>
+  </div>
+</div>

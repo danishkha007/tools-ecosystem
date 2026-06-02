@@ -1,4 +1,5 @@
 @if (toolData) {
+  <app-breadcrumbs></app-breadcrumbs>
 <div class="tool-page-template">
   @if (toolData.id !== 'pdf-merger') {
   <app-tool-header [tool]="toolData" [category]="categoryData" [headerOnly]="showHeader()"></app-tool-header>

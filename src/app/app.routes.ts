@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { buildCategoryRoutes, buildToolRoutes } from './core/services/registry.service';
-import { TOOL_DATA } from './core/services/data.service';
+import { buildCategoryRoutes, buildPostRoutes, buildToolRoutes } from './core/services/registry.service';
+import { POST_DATA, TOOL_DATA } from './core/services/data.service';
 
 export const routes: Routes = [
   {
@@ -24,5 +24,6 @@ export const routes: Routes = [
       import('./pages/tools/tools').then(m => m.ToolsPageComponent)
   },
   ...buildCategoryRoutes(TOOL_DATA.tools),
-  ...buildToolRoutes(TOOL_DATA.tools)
+  ...buildToolRoutes(TOOL_DATA.tools),
+  ...buildPostRoutes(POST_DATA.posts),
 ];

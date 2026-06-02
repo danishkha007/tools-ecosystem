@@ -4,6 +4,7 @@ export interface SeoData {
     app: Seo[];
     tools: Seo[];
     categories: Seo[];
+    posts: Seo[];
 }
 
 export interface Seo {

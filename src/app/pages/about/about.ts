@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FaqSectionComponent, FaqItem } from '../../components/faq-section/faq-section';
+import { FaqSectionComponent, FaqItem } from '../../sections/faq-section/faq-section';
 import { FAQSection } from '@core/models/tool-data.model';
 import { DataService } from '@core/services/data.service';
 import { SeoService } from '@core/services/seo.service';

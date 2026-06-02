@@ -21,8 +21,34 @@
 
     <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
       @for (tool of featuredTools; track tool.id) {
-        <a [routerLink]="tool.route" routerLinkActive="active" (click)="closeMenu()">{{ tool.name }}</a>
+        <a [routerLink]="tool.route" routerLinkActive="active" (click)="closeMenu()"><img src="{{tool.icon}}" alt="{{tool.name}}">{{ tool.name }}</a>
       }
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-haspopup="true">
+          Blog
+          <span class="arrow"></span>
+        </button>
+        <div class="dropdown-megamenu" role="menu" aria-label="All tools">
+          <div class="megamenu-header">
+            <div>
+              <h3>Blog Posts</h3>
+              <p>Learn How to Use MyToolTrove</p>
+            </div>
+          </div>
+
+          <div class="megamenu-grid">
+                <ul class="tool-list">
+                  @for (blog of blogsMenu; track blog.name) {
+                    <li>
+                      <a [routerLink]="blog.url" routerLinkActive="active" role="menuitem" title="{{blog.name}}" (click)="closeMenu()">
+                        <span>{{ blog.name }}</span>
+                      </a>
+                    </li>
+                  }
+                </ul>
+          </div>
+        </div>
+      </div>
       <div class="dropdown">
         <button class="dropdown-toggle" type="button" aria-haspopup="true">
           All Tools

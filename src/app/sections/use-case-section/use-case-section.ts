@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, input, output } from '@angular/core';
-import { UseCase, UseCasesSection } from '../../core/models/tool-data.model';
-import { UseCaseModalComponent } from "../use-case-modal/use-case-modal";
+import { UseCase, UseCasesSection } from '@core/models/tool-data.model';
+import { UseCaseModalComponent } from "../../components/use-case-modal/use-case-modal";
 
 @Component({
   selector: 'app-use-case-section',
@@ -12,13 +12,6 @@ import { UseCaseModalComponent } from "../use-case-modal/use-case-modal";
 export class UseCaseSectionComponent {
   constructor(private cdr: ChangeDetectorRef) { }
   @Input() useCasesSection: UseCasesSection = {} as UseCasesSection;
-
-
-  // label = input.required<string>();
-  // title = input.required<string>();
-  // description = input.required<string>();
-  // useCases = input.required<UseCase[]>();
-
   useCaseClick = output<{ useCase: UseCase; event: MouseEvent }>();
   showUseCaseModal: boolean = false;
   currentUseCase: UseCase | null = null;

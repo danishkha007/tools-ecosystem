@@ -103,7 +103,7 @@ export interface TheorySection {
 
 export interface Feature {
   icon?: string;
-  iconPath?: string;
+  imagePath?: string;
   title: string;
   description: string;
 }

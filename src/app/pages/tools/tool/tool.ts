@@ -6,23 +6,24 @@ import { Tool } from '../../../core/models/tool-data.model';
 import { loadToolComponentById } from '../../../core/services/registry.service';
 import { DataService } from '@core/services/data.service';
 import { AmazonAdComponent } from "@components/amazon-ad/amazon-ad";
-import { AboutSectionComponent } from "@components/about-section/about-section";
-import { FeaturesSectionComponent } from "@components/features-section/features-section";
-import { UseCaseSectionComponent } from "@components/use-case-section/use-case-section";
-import { TheorySectionComponent } from "@components/theory-section/theory-section";
-import { FaqSectionComponent } from "@components/faq-section/faq-section";
+import { AboutSectionComponent } from "@sections/about-section/about-section";
+import { FeaturesSectionComponent } from "@sections/features-section/features-section";
+import { UseCaseSectionComponent } from "@sections/use-case-section/use-case-section";
+import { TheorySectionComponent } from "../../../sections/theory-section/theory-section";
+import { FaqSectionComponent } from "@sections/faq-section/faq-section";
 import { Category } from '@core/models/category-data.model';
-import { InstructionalLayerComponent } from "@components/instructional-layer/instructional-layer";
+import { InstructionalLayerComponent } from "@sections/instructional-layer/instructional-layer";
 import { ToolHeaderComponent } from "@components/tool-header/tool-header";
 import { RelatedToolsComponent } from "@components/related-tools/related-tools";
-import { ComparisonLayerComponent } from "@components/comparison-layer/comparison-layer";
+import { ComparisonLayerComponent } from "@sections/comparison-layer/comparison-layer";
 import { TechnicalNoteLayerComponent } from "@components/technical-note-layer/technical-note-layer";
 import { SecureBannerComponent } from "@components/secure-banner/secure-banner";
+import { BreadcrumbsComponent } from "@components/breadcrumbs/breadcrumbs";
 
 @Component({
   selector: 'app-tool-page-template',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent, ToolHeaderComponent, RelatedToolsComponent, ComparisonLayerComponent, TechnicalNoteLayerComponent, SecureBannerComponent],
+  imports: [CommonModule, NgComponentOutlet, AmazonAdComponent, AboutSectionComponent, FeaturesSectionComponent, UseCaseSectionComponent, TheorySectionComponent, FaqSectionComponent, InstructionalLayerComponent, ToolHeaderComponent, RelatedToolsComponent, ComparisonLayerComponent, TechnicalNoteLayerComponent, SecureBannerComponent, BreadcrumbsComponent],
   templateUrl: './tool.html',
   styleUrl: './tool.scss',
 })
