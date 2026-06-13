@@ -1,14 +1,6 @@
 <app-breadcrumbs></app-breadcrumbs>
 <main class="category-page">
   <section class="category-header">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a routerLink="/">Home</a>
-      <span aria-hidden="true">/</span>
-      <a routerLink="/tools">Tools</a>
-      <span aria-hidden="true">/</span>
-      <strong>{{ category.name }}</strong>
-    </nav>
-
     <div class="category-heading">
       <div>
         <p class="eyebrow">Tool Category</p>
@@ -22,7 +14,7 @@
   @if (category.tools?.length) {
     <section class="tools-grid" [attr.aria-label]="category.name + ' tools'">
       @for (tool of category.tools; track tool.id) {
-        <app-tool-card [tool]="tool"></app-tool-card>
+        <app-tool-card [tool]="tool" [categoryName]="getCategoryName(tool)"></app-tool-card>
       }
     </section>
   } @else {

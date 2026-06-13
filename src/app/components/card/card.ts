@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 
 export interface CardData {
     id: number;
-    image?: string;
+    image: string | undefined;
     title: string;
     description: string;
 }
@@ -16,4 +16,5 @@ export interface CardData {
 })
 export class CardComponent {
   @Input() data?: CardData;
+  @Input() steps: boolean = false;
 }

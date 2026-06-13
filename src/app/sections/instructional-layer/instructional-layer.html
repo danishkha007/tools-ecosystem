@@ -12,7 +12,7 @@
     <ol class="steps-list">
       <ng-container *ngFor="let step of data.steps; let i = index">
         <li class="step-item">
-          <app-card [data]="{id: i + 1,image: step.image,title: step.title,description: step.description}"></app-card>
+          <app-card [steps]="true" [data]="{id: i + 1,image: step.image,title: step.title,description: step.description}"></app-card>
           <!-- <div class="step-number">{{ i + 1 }}</div>
           <div class="step-content">
             <img class="step-image" [src]="step.image" [alt]="step.imageAlt">

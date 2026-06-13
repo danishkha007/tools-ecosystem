@@ -7,6 +7,7 @@ import { Category } from '@core/models/category-data.model';
 import { Seo } from '@core/models/seo-data.model';
 import { SeoService } from '@core/services/seo.service';
 import { BreadcrumbsComponent } from "@components/breadcrumbs/breadcrumbs";
+import { Tool } from '@core/models/tool-data.model';
 
 @Component({
   selector: 'app-tool-category-page',
@@ -50,4 +51,8 @@ export class CategoryPageComponent implements OnInit {
       ]
     };
   }
+  getCategoryName(tool: Tool): string {
+          const category = this.dataService.getCategoryNameById(tool.category);
+          return category;
+        }
 }

@@ -12,6 +12,8 @@ export interface Tool {
   route: string;
   category: string;
   icon: string;
+  rating?: string;
+  reviewsCount?: string;
   iconAlt?: string;
   shortDescription: string;
   longDescription: string;

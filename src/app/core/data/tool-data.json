@@ -12,6 +12,8 @@
             "shortDescription": "Merge multiple PDF files",
             "longDescription": "Combine multiple PDF documents into one professional file in seconds.\nUnlike other tools, MyToolTrove processes your files locally in your browser,\nmeaning <strong style=\"color: #000;\">your sensitive data never touches a remote server.</strong>",
             "buttonText": "Merge PDFs",
+            "rating": "4.8",
+            "reviewsCount": "2",
             "tags": [
                 "Always Free",
                 "Browser-Based",

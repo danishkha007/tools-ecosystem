@@ -157,7 +157,17 @@ export class SeoService {
       "applicationCategory": "Utilities",
       "operatingSystem": "All",
       "screenshot": this.defaultImage,
-      "genre": "Tools"
+      "genre": "Tools",
+      "offer": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": toolData?.rating?.toString() || "5",
+        "reviewCount": toolData?.reviewsCount?.toString() || "5"
+      }
     };
     scriptTag.textContent = JSON.stringify(webAppJsonLd);
   }

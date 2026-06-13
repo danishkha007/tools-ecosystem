@@ -1,7 +1,10 @@
 <div class="card-ctn">
-    <div class="step-number">{{ data?.id }}</div>
+    <div *ngIf="steps" class="step-number">{{ data?.id }}</div>
     <div class="step-content">
-        <img class="step-image" [src]="data?.image" [alt]="data?.title">
+        @if (data?.image) {
+            <!-- <img class="step-image" [src]="data?.image" [alt]="data?.title"> -->
+            <img class="step-image" [src]="data?.image" [alt]="data?.title">
+        }
         <h3 class="step-title">{{ data?.title }}</h3>
         <p class="step-description">{{ data?.description }}</p>
     </div>
