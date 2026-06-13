@@ -2,10 +2,21 @@ import { Route, Routes } from '@angular/router';
 import { Type } from '@angular/core';
 import { Tool } from '../models/tool-data.model';
 import TOOL_CATEGORIES from '@core/data/category-data.json';
+import { Post } from '@core/models/post-data';
 
 type ToolComponentLoader = NonNullable<Route['loadComponent']>;
+type PostComponentLoader = NonNullable<Route['loadComponent']>;
 type MainToolComponentLoader = () => Promise<Type<unknown>>;
 
+export function buildPostRoutes(posts: Post[]): Routes {
+    return posts.map(post => {
+        return {
+            path: post.route,
+            data: { postId: post.id },
+            loadComponent: postPageTemplateLoader,
+        };
+    });
+}
 export function buildToolRoutes(tools: Tool[]): Routes {
     return tools.map(tool => {
         const loadComponent = toolComponentLoaders[tool.id];
@@ -35,6 +46,9 @@ export function buildCategoryRoutes(tools: Tool[]): Routes {
 
 const toolPageTemplateLoader: ToolComponentLoader = () =>
     import('../../pages/tools/tool/tool').then(m => m.ToolPageComponent);
+
+const postPageTemplateLoader: PostComponentLoader = () =>
+    import('../../pages/blog/post/post').then(m => m.PostPageTemplateComponent);
 
 export function loadToolComponentById(toolId: string): Promise<Type<unknown>> {
     const loadComponent = toolComponentLoaders[toolId];

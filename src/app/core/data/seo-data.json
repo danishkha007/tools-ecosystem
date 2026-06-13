@@ -33,13 +33,13 @@
         },
         {
             "id": "contact",
-            "title": "Contact Us",
+            "title": "Contact Us - Get in Touch with MyToolTrove",
             "metaDescription": "Contact MyToolTrove for questions, feedback, or support. We\\'re here to help with our free online tools.",
-            "h1": "About MyToolTrove",
-            "h2": "Your Go-To Destination for Free Online Tools",
-            "canonicalUrl": "https://mytooltrove.com/about",
+            "h1": "Contact MyToolTrove",
+            "h2": "Get in Touch with Our Team",
+            "canonicalUrl": "https://mytooltrove.com/contact",
             "keywords": [
-                "about MyToolTrove",
+                "contact MyToolTrove",
                 "free online tools",
                 "pdf tools",
                 "image tools",
@@ -207,6 +207,44 @@
                 "trading charting tools",
                 "free trading tools",
                 "online trading tools"
+            ]
+        }
+    ],
+    "posts": [
+        {
+            "id": "how-do-i-know-if-an-online-calculator-actually-works",
+            "title": "How Do I Know If an Online Calculator Actually Works?",
+            "metaDescription": "Discover how to check whether online calculators are accurate and trustworthy. Learn tips, testing methods, and what makes utility tools reliable.",
+            "h1": "How Do I Know If an Online Calculator Actually Works?",
+            "h2": "Discover How to Verify the Accuracy of Online Calculators",
+            "canonicalUrl": "https://mytooltrove.com/blog/how-do-i-know-if-an-online-calculator-actually-works",
+            "keywords": [
+                "how to verify online calculator",
+                "how to check online calculator accuracy"
+            ]
+        },
+        {
+            "id": "Are-free-online-calculators-safe-to-use",
+            "title": "Are free online calculators safe to use?",
+            "metaDescription": "Learn about the safety of using free online calculators and how to identify trustworthy tools.",
+            "h1": "Are Free Online Calculators Safe to Use?",
+            "h2": "Understanding the Risks and Benefits of Free Online Calculators",
+            "canonicalUrl": "https://mytooltrove.com/blog/are-free-online-calculators-safe-to-use",
+            "keywords": [
+                "how to verify if online calculator safe to use",
+                "how to check online calculator trustworthyness"
+            ]
+        },
+        {
+            "id": "how-to-merge-pdfs-without-uploading-to-the-cloud",
+            "title": "How to Merge PDFs Without Uploading to the Cloud?",
+            "metaDescription": "Learn how to combine PDF files securely using browser-based tools without sending your documents to external servers.",
+            "h1": "How to Merge PDFs Without Uploading to the Cloud",
+            "h2": "A Guide to Merging PDF Files Locally",
+            "canonicalUrl": "https://mytooltrove.com/blog/how-to-merge-pdfs-without-uploading-to-the-cloud",
+            "keywords": [
+                "how to verify online calculator",
+                "how to check online calculator accuracy"
             ]
         }
     ]

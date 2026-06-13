@@ -1,0 +1,54 @@
+@if (postData) {
+<main class="post-page-template">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="post-page-shell">
+        <div class="post-main">
+            <app-post-header [post]="postData"></app-post-header>
+            <app-post-content [post]="postData"></app-post-content>
+        </div>
+
+        <aside class="post-recommendations" aria-label="Recommended articles and tools">
+            @if (recommendedPosts.length) {
+            <section class="recommendation-section">
+                <div class="recommendation-heading">
+                    <span>Articles</span>
+                    <h2>Recommended reads</h2>
+                </div>
+
+                <div class="recommendation-list">
+                    @for (post of recommendedPosts;  track post.id) {
+                    <a class="recommendation-card" [routerLink]="getRoute(post.route)">
+                        <span class="recommendation-type">{{ post.type }}</span>
+                        <strong>{{ post.name }}</strong>
+                        <p>{{ post.shortDescription }}</p>
+                    </a>
+                    }
+                </div>
+            </section>
+            }
+
+            @if (recommendedTools.length) {
+            <section class="recommendation-section">
+                <div class="recommendation-heading">
+                    <span>Tools</span>
+                    <h2>Useful for this topic</h2>
+                </div>
+
+                <div class="recommendation-list">
+                    @for (tool of recommendedTools; track tool.id) {
+                    <a class="recommendation-card tool-recommendation" [routerLink]="getRoute(tool.route)">
+                        @if (tool.icon) {
+                        <img [src]="tool.icon" [alt]="tool.iconAlt || tool.name" />
+                        }
+                        <span class="recommendation-type">{{ getCategoryName(tool.category) }}</span>
+                        <strong>{{ tool.name }}</strong>
+                        <p>{{ tool.shortDescription }}</p>
+                    </a>
+                    }
+                </div>
+            </section>
+            }
+        </aside>
+    </div>
+</main>
+}

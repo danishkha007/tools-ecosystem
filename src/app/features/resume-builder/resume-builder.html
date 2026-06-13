@@ -8,8 +8,8 @@
         <p>Select a template to get started. You can switch anytime.</p>
 
         <div class="template-options">
-          <button class="template-option" [class.selected]="selectedTemplate === 'modern'"
-            (click)="selectTemplate('modern')">
+          <button class="template-option" [class.selected]="selectedTemplate === 'template-1'"
+            (click)="selectTemplate('template-1')">
             <div class="template-preview modern-preview">
               <div class="preview-header"></div>
               <div class="preview-content">
@@ -23,7 +23,7 @@
             <span class="template-desc">Creative design with visual elements</span>
           </button>
 
-          <button class="template-option" [class.selected]="selectedTemplate === 'ats'" (click)="selectTemplate('ats')">
+          <button class="template-option" [class.selected]="selectedTemplate === 'template-2'" (click)="selectTemplate('template-2')">
             <div class="template-preview ats-preview">
               <div class="preview-header"></div>
               <div class="preview-content">
@@ -39,7 +39,7 @@
         </div>
 
         <button class="continue-btn" (click)="closeTemplateModal()">
-          Continue with {{ selectedTemplate === 'modern' ? 'Modern' : 'ATS Optimized' }}
+          Continue with {{ selectedTemplate === 'template-1' ? 'template-1' : 'template-2' }}
         </button>
       </div>
     </div>
@@ -92,8 +92,8 @@
         <div class="template-selector">
           <label for="template-select">Template:</label>
           <select id="template-select" [value]="selectedTemplate" (change)="selectTemplate($any($event.target).value)">
-            <option value="modern">Modern Template</option>
-            <option value="ats">ATS Optimized</option>
+            <option value="template-1">template-1</option>
+            <option value="template-2">template-2</option>
           </select>
         </div>
         <button class="btn-download" (click)="downloadPdf()">
@@ -105,15 +105,13 @@
           Download PDF
         </button>
       </div>
+      @if(resumeTemplate) {
       <div class="preview-container">
         <div class="preview-pages" #resumePreview>
-          @if (selectedTemplate === 'modern') {
-          <app-resume-preview></app-resume-preview>
-          } @else {
-          <app-resume-preview-ats></app-resume-preview-ats>
-          }
+          <ng-container *ngComponentOutlet="resumeTemplate"></ng-container>
         </div>
       </div>
+    }
     </div>
   </div>
 </div>

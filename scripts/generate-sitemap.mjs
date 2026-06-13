@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
 const toolDataPath = join(rootDir, 'src/app/core/data/tool-data.json');
+const postDataPath = join(rootDir, 'src/app/core/data/post-data.json');
 const sitemapPath = join(rootDir, 'public/sitemap.xml');
 
 const siteUrl = normalizeSiteUrl(process.env.SITE_URL || 'https://mytooltrove.com');
@@ -49,10 +50,16 @@ const categoryPriority = new Map([
 ]);
 
 const toolData = JSON.parse(await readFile(toolDataPath, 'utf8'));
+const postData = JSON.parse(await readFile(postDataPath, 'utf8'));
 const activeCategories = [...new Set(toolData.tools.map(tool => tool.category))]
   .sort((a, b) => categorySortOrder(a) - categorySortOrder(b));
 const categoryPages = activeCategories.map(category => ({
   route: `/tools/${categorySlug(category)}`,
+  changefreq: 'weekly',
+  priority: '0.8',
+}));
+const blogPages = postData.posts.map(post => ({
+  route: `/blog/${post.id}`,
   changefreq: 'weekly',
   priority: '0.8',
 }));
@@ -63,7 +70,7 @@ const toolPages = toolData.tools.map(tool => ({
   priority: categoryPriority.get(tool.category) || '0.8',
 }));
 
-const entries = [...staticPages, ...categoryPages, ...toolPages].map(page => ({
+const entries = [...staticPages, ...categoryPages, ...toolPages, ...blogPages].map(page => ({
   loc: page.loc || toAbsoluteUrl(page.route),
   lastmod,
   changefreq: page.changefreq,

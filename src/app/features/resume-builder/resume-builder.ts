@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Type, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResumePreviewComponent } from "../../components/resume-templates/resume-preview/resume-preview";
-import { ResumePreviewAtsComponent } from "../../components/resume-templates/resume-preview-ats/resume-preview-ats";
 import { ResumeFormComponent } from "../../components/resume-form/resume-form";
 import { ResumeService } from '../../core/services/resume.service';
 import { ResumeData } from '../../core/models/resume-data.model';
@@ -12,7 +10,7 @@ import { DataService } from '@core/services/data.service';
 @Component({
   selector: 'app-resume-builder',
   standalone: true,
-  imports: [CommonModule, ResumePreviewComponent, ResumePreviewAtsComponent, ResumeFormComponent],
+  imports: [CommonModule, ResumeFormComponent],
   templateUrl: './resume-builder.html',
   styleUrl: './resume-builder.scss',
 })
@@ -23,9 +21,24 @@ export class ResumeBuilder implements OnInit {
   toolId = 'resume-builder';
   toolData: Tool | undefined;
 
+  resumeTemplateData = {
+    'template-1': {
+      name: 'Classic',
+      description: 'A clean and traditional resume layout that highlights your experience and skills in a straightforward manner.',
+      thumbnail: 'assets/resume-templates/template-1/thumbnail.png'
+    },
+    'template-2': {
+      name: 'Modern',
+      description: 'A contemporary design with bold headings and a two-column layout to make your resume stand out.',
+      thumbnail: 'assets/resume-templates/template-2/thumbnail.png'
+    }
+  };
+
+  resumeTemplate?: Type<unknown>;
+
   resumeProgress = 0;
-  selectedTemplate: 'modern' | 'ats' = 'modern';
-  showTemplateModal = true;
+  selectedTemplate: 'template-1' | 'template-2'= 'template-1';
+  showTemplateModal = false;
   currentStep = 0;
   formSteps = [
     'Personal Info',
@@ -38,12 +51,15 @@ export class ResumeBuilder implements OnInit {
 
   constructor(
     private resumeService: ResumeService,
-    private dataService: DataService
+    private dataService: DataService,
+    private cdr: ChangeDetectorRef
   ) {
     this.toolData = this.dataService.getToolDataById(this.toolId);
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.selectTemplate(this.selectedTemplate);
+    this.resumeTemplate = await loadResumeTemplateComponentById(this.selectedTemplate);
     this.resumeService.resume$.subscribe(resume => {
       this.calculateProgress(resume);
     });
@@ -53,10 +69,24 @@ export class ResumeBuilder implements OnInit {
     this.showTemplateModal = false;
   }
 
-  selectTemplate(template: 'modern' | 'ats') {
+  selectTemplate(template: 'template-1' | 'template-2') {
     this.selectedTemplate = template;
+    this.loadSelectedTemplate();
+    this.cdr.detectChanges();
   }
 
+  ngOnChanges() {
+    this.loadSelectedTemplate();
+  }
+
+  private async loadSelectedTemplate() {
+    try {
+      this.resumeTemplate = await loadResumeTemplateComponentById(this.selectedTemplate);
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Error loading template component:', error);
+    }
+  }
   goToStep(step: number) {
     if (step >= 0 && step < this.formSteps.length && step <= this.currentStep) {
       this.currentStep = step;
@@ -121,4 +151,21 @@ export class ResumeBuilder implements OnInit {
     this.resumeProgress = Math.round((filledFields / totalFields) * 100);
   }
 
+  
 }
+
+export function loadResumeTemplateComponentById(selectedTemplate: string): Promise<Type<unknown>> {
+    const loadComponent = resumeTemplateComponentLoaders[selectedTemplate];
+
+    if (!loadComponent) {
+        throw new Error(`No component registered for selected template "${selectedTemplate}"`);
+    }
+
+    return loadComponent();
+}
+
+type ResumeTemplateComponentLoader = () => Promise<Type<unknown>>;
+const resumeTemplateComponentLoaders: Record<string, ResumeTemplateComponentLoader> = {
+  'template-1': () => import('@components/resume-templates/template-1/template-1').then(m => m.ResumeTemplateOneComponent),
+  'template-2': () => import('@components/resume-templates/template-2/template-2').then(m => m.ResumeTemplateTwoComponent),
+};

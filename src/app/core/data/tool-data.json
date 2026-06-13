@@ -7,11 +7,13 @@
             "name": "PDF Merger",
             "route": "tools/pdf/pdf-merger",
             "category": "pdf-tools",
-            "icon": "merge-pdf.png",
+            "icon": "tools/pdf-merger/logo.png",
             "iconAlt": "PDF Merger",
             "shortDescription": "Merge multiple PDF files",
             "longDescription": "Combine multiple PDF documents into one professional file in seconds.\nUnlike other tools, MyToolTrove processes your files locally in your browser,\nmeaning <strong style=\"color: #000;\">your sensitive data never touches a remote server.</strong>",
             "buttonText": "Merge PDFs",
+            "rating": "4.8",
+            "reviewsCount": "2",
             "tags": [
                 "Always Free",
                 "Browser-Based",
@@ -20,7 +22,7 @@
             "aboutSection": {
                 "badgeText": "About PDF Merger",
                 "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
-                "title": "Merge PDF Files\nOnline, Fast & Secure",
+                "title": "Merge PDF Files\nOnline, <strong style=\"color: #3c8cff;\">Fast & </strong><strong style=\"color: #3fb676;\">Secure</strong>",
                 "description": "Combine multiple PDF files into one professional document instantly. By utilizing WebAssembly (WASM), our tool processes your files entirely within your browser, ensuring your sensitive data never touches a remote server.",
                 "ctaPrimaryText": "Start Merging Now",
                 "ctaNote": "No signup required \u2022 100% free forever",
@@ -44,7 +46,7 @@
                 ],
                 "visualContent": {
                     "type": "image",
-                    "src": "/tools/pdf-merger/pdf-merger-about-section.png",
+                    "src": "/tools/pdf-merger/about/merge-pdf.png",
                     "alt": "PDF Merger About Section Preview"
                 }
             },
@@ -54,32 +56,32 @@
                 "subtitle": "Powerful features to help you merge your PDF files easily and efficiently.\nBuilt for everyone, completely free to use.",
                 "features": [
                     {
-                        "iconPath": "M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 01-2-2V5a2 2 0 012-2h2",
+                        "imagePath": "/tools/pdf-merger/features/unlimited-files.png",
                         "title": "Unlimited Files",
                         "description": "Merge as many PDF files as you need in one go"
                     },
                     {
-                        "iconPath": "M4 6h16M4 12h16M4 18h16",
+                        "imagePath": "/tools/pdf-merger/features/drag-to-reorder.png",
                         "title": "Drag to Reorder",
                         "description": "Easily rearrange PDF order before merging"
                     },
                     {
-                        "iconPath": "M13 10V3L4 14h7v7l9-11h-7z",
+                        "imagePath": "/tools/pdf-merger/features/fast-processing.png",
                         "title": "Fast Processing",
                         "description": "Merge PDFs in seconds with efficient algorithms"
                     },
                     {
-                        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+                        "imagePath": "/tools/pdf-merger/features/100-secure.png",
                         "title": "100% Secure",
                         "description": "All processing happens locally in your browser"
                     },
                     {
-                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+                        "imagePath": "/tools/pdf-merger/features/simple-interface.png",
                         "title": "Simple Interface",
                         "description": "Intuitive drag-and-drop interface"
                     },
                     {
-                        "iconPath": "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+                        "imagePath": "/tools/pdf-merger/features/instant-download.png",
                         "title": "Instant Download",
                         "description": "Get your merged PDF immediately"
                     }
@@ -181,18 +183,26 @@
                 "description": "Combining your documents is simple and takes only a few clicks:",
                 "steps": [
                     {
+                        "image": "tools/pdf-merger/instructions/step-1.png",
+                        "imageAlt": "Upload PDF files",
                         "title": "Upload Your PDFs",
                         "description": "Drag and drop the PDF files you want to combine into the tool area, or click the upload button to select them from your device."
                     },
                     {
+                        "image": "tools/pdf-merger/instructions/step-2.png",
+                        "imageAlt": "Arrange PDF order",
                         "title": "Arrange Your Order",
                         "description": "Once uploaded, you can easily drag the files to rearrange them. Ensure the documents are in the exact sequence you want them to appear in the final merged file."
                     },
                     {
+                        "image": "tools/pdf-merger/instructions/step-3.png",
+                        "imageAlt": "Merge PDFs",
                         "title": "Merge Documents",
                         "description": "Click the \"Merge PDF\" button. Our engine will process your files in seconds, combining them into a single PDF document while maintaining the original quality."
                     },
                     {
+                        "image": "tools/pdf-merger/instructions/step-4.png",
+                        "imageAlt": "Download merged PDF",
                         "title": "Download Your Result",
                         "description": "Your final, combined PDF is ready for download immediately. Since there is no server upload, there is no waiting for \"processing\" or \"uploading\" bars."
                     }

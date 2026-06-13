@@ -1,0 +1,27 @@
+<div class="about-section">
+    <div class="about-left">
+        <span class="hero-badge" *ngIf="aboutSection.badgeText">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24px" height="24px" viewBox="-1 0 19 19"
+                class="cf-icon-svg">
+                <path
+                    d="M16.417 9.583A7.917 7.917 0 1 1 8.5 1.666a7.917 7.917 0 0 1 7.917 7.917zM5.85 3.309a6.833 6.833 0 1 0 2.65-.534 6.787 6.787 0 0 0-2.65.534zm2.654 1.336A1.136 1.136 0 1 1 7.37 5.78a1.136 1.136 0 0 1 1.135-1.136zm.792 9.223V8.665a.792.792 0 1 0-1.583 0v5.203a.792.792 0 0 0 1.583 0z" />
+            </svg>
+            {{ aboutSection.badgeText }}
+        </span>
+        <h2 *ngIf="aboutSection.title" [innerHTML]="getSaniizedSafeHTML(aboutSection.title)"></h2>
+        <p *ngIf="aboutSection.description">{{ aboutSection.description }}</p>
+        <div class="about-features" *ngIf="aboutSection.features">
+            <div *ngFor="let feature of aboutSection.features; let i = index" class="grid-item"
+                [class]="'item-' + (i + 1)">
+                <div class="item-header">
+                    <img src="verified.png" alt="Verified Icon">
+                    <h3>{{ feature.title }}</h3>
+                </div>
+                <p>{{ feature.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="about-right">
+        <img src="{{aboutSection.visualContent.src}}" alt="aboutSection.visualContent.alt">
+    </div>
+</div>

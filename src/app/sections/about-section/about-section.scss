@@ -1,0 +1,259 @@
+.about-section {
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+
+  .about-left {
+    width: 60%;
+
+    .hero-badge {
+          display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #3c8cff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* border: 1px solid #ccc; */
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 8px 20px;
+    line-height: 1.2;
+    border-radius: 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 3px #3c8cff52;
+        letter-spacing: 0.1rem;
+    font-weight: 600;
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #000000;
+      white-space: break-spaces;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      white-space: break-spaces;
+      line-height: 1.7;
+      margin: 0 0 24px 0;
+    }
+
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+
+      .grid-item {
+        .item-header {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 1.17em;
+            color: #1b80dd;
+          }
+        }
+
+        p {
+          font-size: 14px;
+          color: #5a5a5a;
+          margin: 0 0 0 34px;
+        }
+      }
+
+    }
+  }
+
+  .about-right {
+    width: 40%;
+    display: flex;
+    justify-content: end;
+
+    img {
+      width: 85%;
+    }
+  }
+}
+
+@media (max-width: 975px) {
+  .about-section {
+    .about-left {
+      .hero-badge {
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+        white-space: break-spaces;
+      }
+
+      p {
+        font-size: 0.9rem;
+        white-space: break-spaces;
+      }
+
+      .about-features {
+        margin-top: 22px;
+
+        .grid-item {
+          .item-header {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+
+            h3 {
+              font-size: 1.17em;
+            }
+          }
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .about-right {
+      img {
+        width: 85%;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center !important;
+    .about-left {
+      width: 100%;
+      .hero-badge {
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+        white-space: break-spaces;
+      }
+
+      p {
+        font-size: 0.9rem;
+        white-space: break-spaces;
+      }
+
+      .about-features {
+        margin-top: 22px;
+
+        .grid-item {
+          .item-header {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+
+            h3 {
+              font-size: 1.17em;
+            }
+          }
+          p {
+            text-align: left;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .about-right {
+      width: 100%;
+      justify-content: center;
+      img {
+        width: 75%;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center !important;
+    .about-left {
+      width: 100%;
+      .hero-badge {
+        font-size: 0.75rem;
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        white-space: break-spaces;
+      }
+
+      p {
+        font-size: 0.75rem;
+        white-space: break-spaces;
+      }
+
+      .about-features {
+        margin-top: 12px;
+
+        .grid-item {
+          .item-header {
+            justify-content: center;
+            img {
+              width: 16px;
+              height: 16px;
+            }
+
+            h3 {
+              font-size: 1em;
+            }
+          }
+          p {
+            text-align: center;
+            max-width: 300px;
+            font-size: 0.75rem;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    .about-right {
+      width: 100%;
+      justify-content: center;
+      img {
+        width: 55%;
+      }
+    }
+  }
+}
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}

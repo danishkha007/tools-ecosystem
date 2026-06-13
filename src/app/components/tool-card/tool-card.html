@@ -1,25 +1,29 @@
-<div class="card" (click)="navigate()">
-  
-  <div class="card-header">
-    <div class="icon" *ngIf="tool.icon">
+<article
+  class="card"
+  role="button"
+  tabindex="0"
+  (click)="navigate()"
+  (keydown.enter)="navigate()"
+  (keydown.space)="navigate(); $event.preventDefault()"
+>
+  <span class="badge back"></span>
+  <span class="badge">{{ categoryName || tool.category }}</span>
+  <div class="card-header" *ngIf="tool.icon">
+    <div class="icon">
       <img [src]="tool.icon" [alt]="tool.iconAlt || tool.name" />
     </div>
-
-    <span class="badge">{{ categoryName || tool.category }}</span>
   </div>
 
-  <div class="tool-name">
-    <h2>{{ tool.name }}</h2>
-  </div>
+  <h2 class="tool-name">{{ tool.name }}</h2>
 
   <p class="description">
-    {{ tool.longDescription }}
+    {{ tool.longDescription || tool.shortDescription }}
   </p>
 
   <div class="card-footer">
-    <button class="button" (click)="navigate(); $event.stopPropagation()">
-      {{ tool.buttonText }} →
-    </button>
+    <span class="button">
+      {{ tool.buttonText }}
+      <span aria-hidden="true">→</span>
+    </span>
   </div>
-
-</div>
+</article>

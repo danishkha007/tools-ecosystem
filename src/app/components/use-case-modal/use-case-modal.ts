@@ -16,6 +16,9 @@ export class UseCaseModalComponent {
   @Output() close = new EventEmitter<void>();
 
   onClose(): void {
+    this.close.emit();
+  }
+  tryNow(): void {
     this.scrollToTop();
     this.close.emit();
   }

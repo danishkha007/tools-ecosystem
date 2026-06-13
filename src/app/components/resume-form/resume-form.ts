@@ -76,8 +76,6 @@ export class ResumeFormComponent implements OnInit {
         projects: val.projects || [],
         languages: val.languages || [],
         style: {
-          fontFamily: 'Arial',
-          fontSize: 12,
           color: '#000000'
         }
       });
@@ -168,6 +166,11 @@ export class ResumeFormComponent implements OnInit {
         experience.controls.forEach(exp => {
           exp.get('role')?.markAsTouched();
           exp.get('company')?.markAsTouched();
+          exp.get('startDate')?.markAsTouched();
+          exp.get('endDate')?.markAsTouched();
+          exp.get('description')?.markAsTouched();
+          exp.get('isCurrentJob')?.markAsTouched();
+          exp.get('achievements')?.markAsTouched();
         });
         break;
       case 4: // Education - mark all education fields as touched
@@ -175,6 +178,11 @@ export class ResumeFormComponent implements OnInit {
         education.controls.forEach(edu => {
           edu.get('degree')?.markAsTouched();
           edu.get('institute')?.markAsTouched();
+          edu.get('field')?.markAsTouched();
+          edu.get('startDate')?.markAsTouched();
+          edu.get('endDate')?.markAsTouched();
+          edu.get('gpa')?.markAsTouched();
+          edu.get('achievements')?.markAsTouched();
         });
         break;
       case 5: // Additional - no validation needed
@@ -216,7 +224,9 @@ export class ResumeFormComponent implements OnInit {
       institute: ['', Validators.required],
       degree: ['', Validators.required],
       field: [''],
-      graduationDate: [''],
+      startDate: [''],
+      endDate: [''],
+      pursuing: [false],
       gpa: [''],
       achievements: ['']
     });

@@ -1,15 +1,19 @@
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <ol class="breadcrumb-list">
-    <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs; let last = last">
-      <ng-container *ngIf="!last">
-        <a [routerLink]="crumb.url" title="{{crumb.label}}">{{ crumb.label }}</a>
-        <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="24px" fill="#a0a0a0">
-          <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
-        </svg>
-      </ng-container>
-      <ng-container *ngIf="last">
-        <span aria-current="page" title="{{crumb.label}}">{{ crumb.label }}</span>
-      </ng-container>
-    </li>
-  </ol>
-</nav>
+<div class="breadcrumbs-container">
+  <div class="breadcrumbs-inner">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs; let last = last">
+          <ng-container *ngIf="!last">
+            <a [routerLink]="crumb.url" title="{{crumb.label}}">{{ crumb.label }}</a>
+            <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 -960 960 960" width="24px" fill="#a0a0a0">
+              <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+            </svg>
+          </ng-container>
+          <ng-container *ngIf="last">
+            <span aria-current="page" title="{{crumb.label}}">{{ crumb.label }}</span>
+          </ng-container>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>

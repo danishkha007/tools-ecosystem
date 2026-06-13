@@ -12,6 +12,8 @@ export interface Tool {
   route: string;
   category: string;
   icon: string;
+  rating?: string;
+  reviewsCount?: string;
   iconAlt?: string;
   shortDescription: string;
   longDescription: string;
@@ -36,6 +38,8 @@ export interface InstructionalSection {
 }
 
 export interface Step {
+  image: string;
+  imageAlt: string;
   title: string;
   description: string;
 }
@@ -101,7 +105,7 @@ export interface TheorySection {
 
 export interface Feature {
   icon?: string;
-  iconPath?: string;
+  imagePath?: string;
   title: string;
   description: string;
 }

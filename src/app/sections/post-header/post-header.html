@@ -1,0 +1,21 @@
+<header class="post-header" [attr.aria-label]="post.name">
+  <span class="post-header__category">{{ post.category }}</span>
+
+  <h1 class="post-header__title">{{ post.name }}</h1>
+
+  <p class="post-header__description" *ngIf="post.description">
+    {{ post.description }}
+  </p>
+
+  <div class="post-header__meta" aria-label="Post details">
+    <span>{{ post.date }}</span>
+    <span>•</span>
+    <span>{{ readTime }}</span>
+    <span>•</span>
+    <span>{{ post.author }}</span>
+  </div>
+
+  <div class="post-header__tags" *ngIf="post.tags.length" aria-label="Post tags">
+    <span *ngFor="let tag of post.tags">{{ tag }}</span>
+  </div>
+</header>

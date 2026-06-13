@@ -15,8 +15,8 @@ type SortOption = 'name-asc' | 'name-desc';
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
-  standalone: true,
-  imports: [CommonModule, FormsModule, ToolCardComponent]
+  imports: [CommonModule, FormsModule, ToolCardComponent],
+  standalone: true
 })
 export class HomeComponent implements OnInit {
 

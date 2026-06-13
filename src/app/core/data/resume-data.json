@@ -1,22 +1,14 @@
 {
     "personal": {
         "name": "John Doe",
-        "jobTitle": "Senior Software Engineer",
         "email": "john.doe@email.com",
         "phone": "+1 (555) 123-4567",
-        "location": "San Francisco, CA",
         "linkedin": "linkedin.com/in/johndoe",
-        "website": "https://johndoe.com"
+        "website": "https://johndoe.com",
+        "location": "San Francisco, CA",
+        "jobTitle": "Senior Software Engineer"
     },
     "summary": "Results-driven software engineer with 5+ years of experience in building scalable web applications. Proven track record of leading teams and delivering projects that increased revenue by 30%. Passionate about cloud architecture and mentoring junior developers.",
-    "coreCompetencies": [
-        "Cloud Architecture (AWS, Azure)",
-        "Agile Methodologies & Scrum",
-        "System Design & Scalability",
-        "Team Leadership & Mentorship",
-        "CI/CD Pipelines & DevOps",
-        "Microservices & API Design"
-    ],
     "skills": [
         "JavaScript",
         "TypeScript",
@@ -29,6 +21,14 @@
         "SQL",
         "MongoDB"
     ],
+    "coreCompetencies": [
+        "Cloud Architecture (AWS, Azure)",
+        "Agile Methodologies & Scrum",
+        "System Design & Scalability",
+        "Team Leadership & Mentorship",
+        "CI/CD Pipelines & DevOps",
+        "Microservices & API Design"
+    ],
     "experience": [
         {
             "company": "TechCorp Inc.",
@@ -37,12 +37,7 @@
             "endDate": "Present",
             "isCurrentJob": true,
             "description": "Leading a team of 5 engineers in developing cloud-native applications.",
-            "achievements": [
-                "Led development of microservices architecture reducing latency by 40%",
-                "Mentored 5 junior developers, promoting 2 to senior roles",
-                "Implemented CI/CD pipeline reducing deployment time by 60%",
-                "Increased system uptime from 99.5% to 99.99%"
-            ]
+            "achievements": "Led development of microservices architecture reducing latency by 40%\nMentored 5 junior developers, promoting 2 to senior roles\nImplemented CI/CD pipeline reducing deployment time by 60%\nIncreased system uptime from 99.5% to 99.99%"
         },
         {
             "company": "StartupXYZ",
@@ -51,11 +46,7 @@
             "endDate": "Dec 2021",
             "isCurrentJob": false,
             "description": "Full-stack development of e-commerce platform.",
-            "achievements": [
-                "Built customer-facing portal serving 50k+ monthly users",
-                "Reduced page load time by 50% through optimization",
-                "Integrated payment systems processing $1M+ annually"
-            ]
+            "achievements": "Built customer-facing portal serving 50k+ monthly users\nReduced page load time by 50% through optimization\nIntegrated payment systems processing $1M+ annually"
         }
     ],
     "education": [
@@ -63,7 +54,9 @@
             "institute": "Stanford University",
             "degree": "Bachelor of Science",
             "field": "Computer Science",
-            "graduationDate": "May 2019",
+            "startDate": "September 2015",
+            "endDate": "June 2019",
+            "pursuing": false,
             "gpa": "3.8/4.0",
             "achievements": "Magna Cum Laude, Dean's List"
         }
@@ -91,6 +84,9 @@
                 "MongoDB",
                 "Stripe"
             ],
+            "startDate": "June 2020",
+            "endDate": "December 2020",
+            "isWorkInProgress": false,
             "link": "https://github.com/johndoe/ecommerce"
         }
     ],
@@ -101,12 +97,10 @@
         },
         {
             "language": "Spanish",
-            "proficiency": "Conversational"
+            "proficiency": "Beginner"
         }
     ],
     "style": {
-        "fontFamily": "Arial",
-        "fontSize": 12,
         "color": "#000000"
     }
 }
