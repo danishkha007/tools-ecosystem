@@ -49,6 +49,25 @@
     ],
     "tools": [
         {
+            "id": "loan-calculator",
+            "title": "Free Loan Calculator | Monthly Payment & Amortization Schedule | MyToolTrove",
+            "metaDescription": "Calculate your monthly loan payment, total interest, payoff date, and amortization schedule for free. Plan fixed-rate loans and see how extra payments can save money.",
+            "h1": "Free Loan Calculator",
+            "h2": "Calculate Monthly Payments, Total Interest, and Your Loan Payoff Date",
+            "canonicalUrl": "https://mytooltrove.com/tools/finance/loan-calculator",
+            "keywords": [
+                "loan calculator",
+                "monthly payment calculator",
+                "loan payment calculator",
+                "amortization calculator",
+                "loan amortization schedule",
+                "interest calculator",
+                "extra payment calculator",
+                "fixed rate loan calculator",
+                "free loan calculator"
+            ]
+        },
+        {
             "id": "gann-hexagonal-sr-calculator",
             "title": "GANN Hexagonal Support & Resistance Calculator | MyToolTrove",
             "metaDescription": "Calculate dynamic support and resistance levels using GANN's mathematical ratios. Free online GANN hexagonal calculator for trading and technical analysis.",
