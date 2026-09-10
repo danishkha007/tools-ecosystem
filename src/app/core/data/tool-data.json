@@ -3,6 +3,62 @@
     "description": "Data for tools on MyToolTrove.",
     "tools": [
         {
+            "id": "loan-calculator",
+            "name": "Loan Calculator",
+            "route": "tools/finance/loan-calculator",
+            "category": "finance-tools",
+            "icon": "",
+            "iconAlt": "Loan Calculator",
+            "shortDescription": "Calculate monthly loan payments and total interest",
+            "longDescription": "Estimate your monthly loan payment, total interest, payoff date, and full amortization schedule.",
+            "buttonText": "Calculate Loan",
+            "tags": [
+                "Free",
+                "Financial Planning",
+                "Amortization Schedule",
+                "Browser-Based",
+                "No Registration"
+            ],
+            "featuresSection": {
+                "label": "Loan Calculator Features",
+                "title": "Plan Your Loan With Confidence",
+                "subtitle": "See the cost of borrowing before you commit, with clear monthly payment and payoff details.",
+                "features": [
+                    {
+                        "title": "Monthly Payment Estimate",
+                        "description": "Calculate the principal-and-interest payment for a fixed-rate loan."
+                    },
+                    {
+                        "title": "Extra Payment Planning",
+                        "description": "See how paying extra each month can reduce interest and shorten your payoff time."
+                    },
+                    {
+                        "title": "Amortization Schedule",
+                        "description": "Review the principal, interest, and remaining balance for every payment."
+                    }
+                ]
+            },
+            "faqSection": {
+                "title": "Loan Calculator FAQs",
+                "subtitle": "Answers to common questions about loan payments.",
+                "accentColor": "#2563eb",
+                "faqs": [
+                    {
+                        "question": "How is my monthly loan payment calculated?",
+                        "answer": "For fixed-rate loans, the calculator uses the loan amount, monthly interest rate, and total number of monthly payments to calculate a level principal-and-interest payment."
+                    },
+                    {
+                        "question": "Does this include taxes, insurance, or fees?",
+                        "answer": "No. The result estimates principal and interest only. Add any taxes, insurance, lender fees, or other costs separately when comparing loan offers."
+                    },
+                    {
+                        "question": "What happens when I make extra payments?",
+                        "answer": "Extra monthly payments are applied to the outstanding principal in this estimate. This can reduce both the total interest paid and the time needed to pay off the loan."
+                    }
+                ]
+            }
+        },
+        {
             "id": "pdf-merger",
             "name": "PDF Merger",
             "route": "tools/pdf/pdf-merger",

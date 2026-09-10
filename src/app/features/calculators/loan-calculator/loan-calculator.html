@@ -1,0 +1,79 @@
+<div class="loan-calculator container">
+  <section class="calculator-card" aria-labelledby="loan-calculator-title">
+    <div class="calculator-intro">
+      <span class="eyebrow">Loan planning made simple</span>
+      <h2 id="loan-calculator-title">Estimate your loan payment</h2>
+      <p>Adjust the details below to see your payment, interest cost, payoff date, and amortization schedule.</p>
+    </div>
+
+    <form class="loan-form" (ngSubmit)="calculate()">
+      <div class="field">
+        <label for="loanAmount">Loan amount</label>
+        <div class="input-with-prefix"><span>{{ currencyCode === 'INR' ? '₹' : currencyCode === 'EUR' ? '€' : currencyCode === 'GBP' ? '£' : '$' }}</span><input id="loanAmount" name="loanAmount" type="number" min="1" step="100" [(ngModel)]="loanAmount" required /></div>
+      </div>
+      <div class="field">
+        <label for="interestRate">Annual interest rate</label>
+        <div class="input-with-suffix"><input id="interestRate" name="interestRate" type="number" min="0" step="0.01" [(ngModel)]="annualInterestRate" required /><span>%</span></div>
+      </div>
+      <div class="field">
+        <label for="loanTerm">Loan term (years)</label>
+        <input id="loanTerm" name="loanTerm" type="number" min="0.1" step="0.5" [(ngModel)]="loanTermYears" required />
+      </div>
+      <div class="field">
+        <label for="extraPayment">Extra monthly payment <small>(optional)</small></label>
+        <div class="input-with-prefix"><span>{{ currencyCode === 'INR' ? '₹' : currencyCode === 'EUR' ? '€' : currencyCode === 'GBP' ? '£' : '$' }}</span><input id="extraPayment" name="extraPayment" type="number" min="0" step="10" [(ngModel)]="extraMonthlyPayment" /></div>
+      </div>
+      <div class="field">
+        <label for="startDate">First payment month <small>(optional)</small></label>
+        <input id="startDate" name="startDate" type="month" [(ngModel)]="startDate" />
+      </div>
+      <div class="field">
+        <label for="currency">Currency</label>
+        <select id="currency" name="currency" [(ngModel)]="currencyCode">
+          <option value="USD">USD — US Dollar</option>
+          <option value="INR">INR — Indian Rupee</option>
+          <option value="EUR">EUR — Euro</option>
+          <option value="GBP">GBP — British Pound</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button class="calculate-button" type="submit">Calculate loan</button>
+        <button class="reset-button" type="button" (click)="reset()">Reset</button>
+      </div>
+    </form>
+    @if (errorMessage) { <p class="error-message" role="alert">{{ errorMessage }}</p> }
+  </section>
+
+  @if (showResults) {
+    <section class="results" aria-live="polite">
+      <div class="primary-result">
+        <span>Monthly principal &amp; interest</span>
+        <strong>{{ monthlyPayment | currency:currencyCode:'symbol':'1.2-2' }}</strong>
+        @if (extraMonthlyPayment > 0) { <p>Plus {{ extraMonthlyPayment | currency:currencyCode:'symbol':'1.2-2' }} extra each month</p> }
+      </div>
+      <div class="result-grid">
+        <div class="result-card"><span>Total interest</span><strong>{{ totalInterest | currency:currencyCode:'symbol':'1.2-2' }}</strong></div>
+        <div class="result-card"><span>Total paid</span><strong>{{ totalPayment | currency:currencyCode:'symbol':'1.2-2' }}</strong></div>
+        <div class="result-card"><span>Payments to payoff</span><strong>{{ scheduledPayments | number }}</strong></div>
+        <div class="result-card"><span>Payoff date</span><strong>{{ payoffDate ? (payoffDate | date:'MMM y') : 'Add a start month' }}</strong></div>
+      </div>
+      @if (extraMonthlyPayment > 0) {
+        <div class="savings-note">Your extra payments save an estimated <strong>{{ interestSaved | currency:currencyCode:'symbol':'1.2-2' }}</strong> in interest and shorten the loan by <strong>{{ timeSavedMonths }} months</strong>.</div>
+      }
+      <details class="schedule">
+        <summary>View amortization schedule <span>{{ scheduledPayments }} payments</span></summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Date</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+            <tbody>
+              @for (row of amortizationSchedule; track row.paymentNumber) {
+                <tr><td>{{ row.paymentNumber }}</td><td>{{ row.paymentDate ? (row.paymentDate | date:'MMM y') : '—' }}</td><td>{{ row.payment | currency:currencyCode:'symbol':'1.2-2' }}</td><td>{{ row.principal | currency:currencyCode:'symbol':'1.2-2' }}</td><td>{{ row.interest | currency:currencyCode:'symbol':'1.2-2' }}</td><td>{{ row.balance | currency:currencyCode:'symbol':'1.2-2' }}</td></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </details>
+      <p class="disclaimer">This calculator provides an estimate for fixed-rate principal-and-interest loans. It does not include taxes, insurance, lender fees, or changing interest rates.</p>
+    </section>
+  }
+</div>

@@ -65,6 +65,8 @@ export function loadToolComponentById(toolId: string): Promise<Type<unknown>> {
 
 const categoryPageLoader = (() => import('../../pages/category/category').then(m => m.CategoryPageComponent));
 const toolComponentLoaders: Record<string, MainToolComponentLoader> = {
+    'loan-calculator': () =>
+        import('../../features/calculators/loan-calculator/loan-calculator').then(m => m.LoanCalculatorComponent),
     'gann-hexagonal-sr-calculator': () =>
         import('../../features/calculators/gann/hexagonal-support-resistance/hexagonal-sr-calculator').then(m => m.GannCalculator),
     'resume-builder': () =>

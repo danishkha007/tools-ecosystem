@@ -1,9 +1,13 @@
-import { Component, OnInit, HostListener, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import QRCode from 'qrcode';
 import { Tool } from '../../core/models/tool-data.model';
 import { DataService } from '@core/services/data.service';
 import { Category } from '@core/models/category-data.model';
+
+type QrType = 'text' | 'url' | 'wifi';
+type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
 
 @Component({
   selector: 'qr-code-generator',
@@ -11,215 +15,170 @@ import { Category } from '@core/models/category-data.model';
   styleUrls: ['./qr-code-generator.scss'],
   imports: [CommonModule, FormsModule]
 })
-export class QrCodeGeneratorComponent implements OnInit {
+export class QrCodeGeneratorComponent implements OnInit, OnDestroy {
   toolId = 'qr-code-generator';
-
   toolData: Tool | undefined;
   categoryData: Category | undefined;
 
-  // QR Code Content
+  qrType: QrType = 'text';
   qrContent = '';
-  qrType: 'text' | 'url' | 'wifi' = 'text';
-  
-  // WiFi Options
   wifiSsid = '';
   wifiPassword = '';
-  wifiEncryption: 'WPA' | 'WEP' | 'NOPASS' = 'WPA';
-  
-  // QR Code Image
-  qrImage: string | null = null;
-  
-  // UI State
-  loading = false;
-  showError = false;
-  isValidContent = true;
-  showDownloadOptions = true;
-  maxCharacters = 2048;
-  errorCorrectLevel: 'L' | 'M' | 'Q' | 'H' = 'M';
-  
-  // Download Options
-  downloadType: 'png' | 'svg' = 'png';
-  showLogo = false;
-  
-  // Internal flag to track if QR is being generated
-  isGenerating = false;
+  wifiEncryption: 'WPA' | 'WEP' | 'nopass' = 'WPA';
+  errorCorrectLevel: ErrorCorrectionLevel = 'M';
 
-  constructor(
-    private dataService: DataService,
-    private cdr: ChangeDetectorRef,
-    private zone: NgZone,
-  ) {
+  qrImage: string | null = null;
+  qrSvg: string | null = null;
+  loading = false;
+  errorMessage = '';
+  copied = false;
+  readonly maxCharacters = 2048;
+
+  private generateTimer?: ReturnType<typeof setTimeout>;
+  private generationId = 0;
+
+  constructor(private dataService: DataService) {
     this.toolData = this.dataService.getCompleteToolDataById(this.toolId);
     this.categoryData = this.dataService.getCategoryDataById(this.toolData.category);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    clearTimeout(this.generateTimer);
   }
 
-   showHeader(){
+  showHeader(): boolean {
     return true;
   }
 
-  @HostListener('window:resize')
-  onResize() {
-    // Handle window resize if needed
+  get isWifi(): boolean {
+    return this.qrType === 'wifi';
   }
 
-  // Validate content
-  validateContent(): boolean {
-    if (!this.qrContent || this.qrContent.trim().length === 0) {
-      this.isValidContent = false;
-      this.showError = true;
-      return false;
-    }
-    
-    if (this.qrContent.length > this.maxCharacters) {
-      this.isValidContent = false;
-      this.showError = true;
-      return false;
-    }
-    
-    this.isValidContent = true;
-    this.showError = false;
-    return true;
+  setType(type: QrType): void {
+    this.qrType = type;
+    this.errorMessage = '';
+    this.queueGeneration();
   }
 
-  // Handle content change
   onContentChange(): void {
-    this.validateContent();
-    this.cdr.detectChanges();
+    this.errorMessage = '';
+    this.queueGeneration();
   }
 
-  // Clear content
-  clearContent(): void {
-    this.qrContent = '';
-    this.qrImage = null;
-    this.isValidContent = true;
-    this.showError = false;
-  }
-
-  // Clear all
   clearAll(): void {
+    this.generationId += 1;
     this.qrContent = '';
-    this.qrImage = null;
-    this.isValidContent = false;
-    this.showError = false;
     this.wifiSsid = '';
     this.wifiPassword = '';
+    this.qrImage = null;
+    this.qrSvg = null;
+    this.errorMessage = '';
+    this.copied = false;
+    clearTimeout(this.generateTimer);
   }
 
-  // Toggle download type
-  toggleDownloadType(): void {
-    this.downloadType = this.downloadType === 'png' ? 'svg' : 'png';
-  }
+  queueGeneration(): void {
+    clearTimeout(this.generateTimer);
+    this.generationId += 1;
+    const content = this.getEncodedContent();
+    if (!content.trim()) {
+      this.qrImage = null;
+      this.qrSvg = null;
+      this.loading = false;
+      return;
+    }
 
-  // Generate QR Code - uses QR Server API
-  generateQRCode(): void {
-    // Prevent multiple simultaneous calls
-    if (this.isGenerating) {
-      return;
-    }
-    
-    // Clear any previous errors
-    this.showError = false;
-    
-    // Validate content first
-    if (!this.qrContent || this.qrContent.trim().length === 0) {
-      this.isValidContent = false;
-      this.showError = true;
-      return;
-    }
-    
-    if (this.qrContent.length > this.maxCharacters) {
-      this.isValidContent = false;
-      this.showError = true;
-      return;
-    }
-    
-    this.isValidContent = true;
     this.loading = true;
-    this.isGenerating = true;
-    
-    // Build content based on QR type
-    let content = this.qrContent;
-    
-    if (this.qrType === 'wifi' && this.wifiSsid) {
-      // Format WiFi credentials for QR code
-      const security = this.wifiEncryption === 'NOPASS' ? 'nopass' : this.wifiEncryption;
-      content = `WIFI:T:${security};S:${this.wifiSsid};P:${this.wifiPassword};;`;
-    }
-    
-    // Generate QR code using QR Server API with error correction
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(content)}&ecc=${this.errorCorrectLevel}`;
-    
-    // Set the image source directly
-    this.qrImage = qrUrl;
-    this.loading = false;
-    this.isGenerating = false;
-    this.showError = false;
-    
-    // Preload image to verify it loads correctly
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    
-    img.onload = () => {
-      this.zone.run(() => {
-        this.loading = false;
-        this.isGenerating = false;
-        this.cdr.detectChanges();
-      });
-    };
-    
-    img.onerror = () => {
-      this.zone.run(() => {
-        this.loading = false;
-        this.isGenerating = false;
-        this.showError = true;
-        this.cdr.detectChanges();
-      });
-    };
-    
-    img.src = qrUrl;
+    this.generateTimer = setTimeout(() => this.generateQRCode(), 120);
   }
 
-  // Download QR Code
-  downloadQR(format: 'png' | 'svg'): void {
-    if (!this.qrImage) {
+  async generateQRCode(): Promise<void> {
+    const content = this.getEncodedContent();
+    if (!this.isContentValid(content)) {
+      this.qrImage = null;
+      this.qrSvg = null;
+      this.loading = false;
       return;
     }
+
+    const requestId = ++this.generationId;
+    this.loading = true;
+    this.errorMessage = '';
+
+    try {
+      const options = {
+        errorCorrectionLevel: this.errorCorrectLevel,
+        margin: 2,
+        width: 640,
+        color: { dark: '#111827', light: '#ffffff' }
+      } as const;
+      const [image, svg] = await Promise.all([
+        QRCode.toDataURL(content, options),
+        QRCode.toString(content, { ...options, type: 'svg' })
+      ]);
+
+      if (requestId === this.generationId) {
+        this.qrImage = image;
+        this.qrSvg = svg;
+      }
+    } catch {
+      if (requestId === this.generationId) {
+        this.qrImage = null;
+        this.qrSvg = null;
+        this.errorMessage = 'This content is too long for the selected error-correction level. Try shorter content or choose a lower level.';
+      }
+    } finally {
+      if (requestId === this.generationId) this.loading = false;
+    }
+  }
+
+  downloadQR(format: 'png' | 'svg'): void {
+    const source = format === 'png' ? this.qrImage : this.qrSvg;
+    if (!source) return;
 
     const link = document.createElement('a');
-    link.href = this.qrImage;
-    link.download = `qr-code.${format === 'png' ? 'png' : 'svg'}`;
-    document.body.appendChild(link);
+    link.download = `qr-code.${format}`;
+    if (format === 'png') {
+      link.href = source;
+    } else {
+      link.href = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml' }));
+    }
     link.click();
-    document.body.removeChild(link);
+    if (format === 'svg') setTimeout(() => URL.revokeObjectURL(link.href), 0);
   }
 
-  // Copy to clipboard
-  copyToClipboard(): void {
-    if (!this.qrImage) {
-      return;
+  async copyToClipboard(): Promise<void> {
+    if (!this.qrImage || !navigator.clipboard) return;
+    try {
+      const response = await fetch(this.qrImage);
+      const blob = await response.blob();
+      if ('ClipboardItem' in window) {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+      } else {
+        await navigator.clipboard.writeText(this.getEncodedContent());
+      }
+      this.copied = true;
+      setTimeout(() => (this.copied = false), 1800);
+    } catch {
+      this.errorMessage = 'Could not copy the QR code. Please use the download button instead.';
     }
-
-    // Copy the image URL to clipboard
-    navigator.clipboard.writeText(this.qrImage).then(() => {
-      alert('QR Code URL copied to clipboard!');
-    }).catch(() => {
-      alert('Failed to copy QR Code URL.');
-    });
   }
 
-  // Truncate text for display
-  truncateText(text: string, maxLength: number): string {
-    if (text.length <= maxLength) {
-      return text;
+  private getEncodedContent(): string {
+    if (this.qrType !== 'wifi') return this.qrContent.trim();
+    if (!this.wifiSsid.trim()) return '';
+    const escape = (value: string) => value.replace(/([\\;,:"])/g, '\\$1');
+    return `WIFI:T:${this.wifiEncryption};S:${escape(this.wifiSsid)};P:${escape(this.wifiPassword)};;`;
+  }
+
+  private isContentValid(content: string): boolean {
+    if (!content.trim()) return false;
+    if (content.length > this.maxCharacters) {
+      this.errorMessage = `Keep the content under ${this.maxCharacters} characters.`;
+      return false;
     }
-    return text.substring(0, maxLength) + '...';
-  }
-
-  // Check valid content
-  isValidContentCheck(): boolean {
-    return this.qrContent.length > 0 && this.qrContent.length <= this.maxCharacters;
+    return true;
   }
 }

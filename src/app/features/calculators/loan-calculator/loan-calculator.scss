@@ -1,0 +1,26 @@
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px 32px; }
+.calculator-card, .results { background: #fff; border: 1px solid #dbe4f0; border-radius: 16px; box-shadow: 0 12px 28px rgba(30, 64, 110, .08); }
+.calculator-card { padding: 30px; }
+.calculator-intro { max-width: 660px; margin-bottom: 28px; }
+.eyebrow { color: #2563eb; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+h2 { margin: 7px 0 8px; color: #16233a; font-size: clamp(1.5rem, 3vw, 2rem); }
+p { color: #536178; line-height: 1.55; margin: 0; }
+.loan-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+label { color: #25344d; font-size: .9rem; font-weight: 650; } small { color: #718096; font-weight: 400; }
+input, select { width: 100%; box-sizing: border-box; min-height: 46px; border: 1px solid #cbd5e1; border-radius: 9px; background: #fff; color: #16233a; font: inherit; padding: 0 12px; }
+input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .14); outline: 0; }
+.input-with-prefix, .input-with-suffix { display: flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 9px; overflow: hidden; background: #fff; }
+.input-with-prefix:focus-within, .input-with-suffix:focus-within { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .14); }
+.input-with-prefix span, .input-with-suffix span { padding: 0 12px; color: #64748b; font-weight: 600; }
+.input-with-prefix input, .input-with-suffix input { border: 0; box-shadow: none; min-width: 0; }
+.form-actions { grid-column: 1 / -1; display: flex; gap: 12px; margin-top: 4px; }
+button { min-height: 46px; border-radius: 9px; padding: 0 20px; font: inherit; font-weight: 700; cursor: pointer; }
+.calculate-button { color: #fff; border: 1px solid #1d4ed8; background: #2563eb; }.calculate-button:hover { background: #1d4ed8; }
+.reset-button { color: #334155; border: 1px solid #cbd5e1; background: #fff; }.reset-button:hover { background: #f8fafc; }
+.error-message { margin-top: 18px; padding: 12px; color: #b42318; background: #fef3f2; border-radius: 8px; }
+.results { margin-top: 24px; overflow: hidden; }.primary-result { padding: 26px 30px; color: #e0eaff; background: linear-gradient(115deg, #1e3a8a, #2563eb); }.primary-result span { display:block; font-weight: 600; }.primary-result strong { display: block; margin: 3px 0; font-size: clamp(2rem, 5vw, 2.7rem); color: #fff; }.primary-result p { color: #dbeafe; }
+.result-grid { display: grid; grid-template-columns: repeat(4, 1fr); }.result-card { padding: 22px 20px; border-right: 1px solid #e2e8f0; }.result-card:last-child { border-right: 0; }.result-card span { display:block; color:#64748b; font-size:.86rem; }.result-card strong { display:block; margin-top:5px; color:#1e293b; font-size:1.14rem; }
+.savings-note { margin: 0 30px; padding: 15px 16px; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 9px; }.schedule { margin: 28px 30px 16px; }.schedule summary { color:#1e3a8a; font-weight:700; cursor:pointer; }.schedule summary span { color:#64748b; font-weight:400; margin-left:8px; }.table-wrap { max-height: 450px; margin-top: 15px; overflow: auto; border:1px solid #e2e8f0; border-radius:9px; } table { width:100%; border-collapse: collapse; font-size:.88rem; } th, td { padding:11px 13px; text-align:right; border-bottom:1px solid #edf2f7; white-space:nowrap; } th { position:sticky; top:0; color:#475569; background:#f8fafc; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; } th:first-child, th:nth-child(2), td:first-child, td:nth-child(2) { text-align:left; }.disclaimer { margin: 20px 30px 28px; font-size:.82rem; }
+@media (max-width: 780px) { .container { padding: 0 16px 24px; }.calculator-card { padding:22px 18px; }.loan-form { grid-template-columns:1fr; }.result-grid { grid-template-columns:1fr 1fr; }.result-card:nth-child(2) { border-right:0; }.result-card { border-bottom:1px solid #e2e8f0; }.schedule { margin:24px 18px 12px; }.savings-note { margin:0 18px; }.disclaimer { margin:18px; }.primary-result { padding:22px 18px; } }
+@media (max-width: 430px) { .result-grid { grid-template-columns:1fr; }.result-card { border-right:0; }.form-actions { flex-direction:column; } }
