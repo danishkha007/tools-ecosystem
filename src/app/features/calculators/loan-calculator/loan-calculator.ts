@@ -24,7 +24,7 @@ export class LoanCalculatorComponent {
   loanTermYears = 30;
   extraMonthlyPayment = 0;
   startDate = '';
-  currencyCode = 'USD';
+  currencyCode = 'INR';
   showResults = false;
   errorMessage = '';
 
@@ -73,7 +73,7 @@ export class LoanCalculatorComponent {
     this.loanTermYears = 30;
     this.extraMonthlyPayment = 0;
     this.startDate = '';
-    this.currencyCode = 'USD';
+    this.currencyCode = 'INR';
     this.showResults = false;
     this.errorMessage = '';
   }

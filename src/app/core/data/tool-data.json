@@ -2,62 +2,207 @@
     "name": "Tool Data",
     "description": "Data for tools on MyToolTrove.",
     "tools": [
-        {
-            "id": "loan-calculator",
-            "name": "Loan Calculator",
-            "route": "tools/finance/loan-calculator",
-            "category": "finance-tools",
-            "icon": "",
-            "iconAlt": "Loan Calculator",
-            "shortDescription": "Calculate monthly loan payments and total interest",
-            "longDescription": "Estimate your monthly loan payment, total interest, payoff date, and full amortization schedule.",
-            "buttonText": "Calculate Loan",
-            "tags": [
-                "Free",
-                "Financial Planning",
-                "Amortization Schedule",
-                "Browser-Based",
-                "No Registration"
-            ],
-            "featuresSection": {
-                "label": "Loan Calculator Features",
-                "title": "Plan Your Loan With Confidence",
-                "subtitle": "See the cost of borrowing before you commit, with clear monthly payment and payoff details.",
-                "features": [
-                    {
-                        "title": "Monthly Payment Estimate",
-                        "description": "Calculate the principal-and-interest payment for a fixed-rate loan."
-                    },
-                    {
-                        "title": "Extra Payment Planning",
-                        "description": "See how paying extra each month can reduce interest and shorten your payoff time."
-                    },
-                    {
-                        "title": "Amortization Schedule",
-                        "description": "Review the principal, interest, and remaining balance for every payment."
-                    }
-                ]
+{
+    "id": "loan-calculator",
+    "name": "Loan Calculator",
+    "route": "tools/finance/loan-calculator",
+    "category": "finance-tools",
+    "icon": "tools/loan-calculator/logo.png",
+    "iconAlt": "Loan Calculator",
+    "shortDescription": "Calculate loan EMI, interest & payoff instantly",
+    "longDescription": "Calculate your monthly loan payments, total interest, and full amortization schedule in seconds.\nUnlike other calculators, MyToolTrove runs entirely in your browser,\nmeaning <strong style=\"color: #000;\">your financial details never touch a remote server.</strong>",
+    "buttonText": "Calculate Loan",
+    "rating": "4.9",
+    "reviewsCount": "2",
+    "tags": [
+        "Always Free",
+        "Browser-Based",
+        "Data Secured"
+    ],
+    "aboutSection": {
+        "badgeText": "About Loan Calculator",
+        "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+        "title": "Free Loan & EMI Calculator\n<strong style=\"color: #3c8cff;\">Fast & </strong><strong style=\"color: #3fb676;\">Accurate</strong>",
+        "description": "Estimate your monthly EMI, total interest payable, and full repayment schedule for any personal, home, auto, or business loan. All calculations run instantly in your browser with bank-grade formula accuracy — no signup, no data collection.",
+        "ctaPrimaryText": "Calculate My EMI Now",
+        "ctaNote": "No signup required • 100% free forever",
+        "features": [
+            {
+                "title": "100% Local Calculation",
+                "description": "Your loan amount, income, and personal details never leave your device or touch a server."
             },
-            "faqSection": {
-                "title": "Loan Calculator FAQs",
-                "subtitle": "Answers to common questions about loan payments.",
-                "accentColor": "#2563eb",
-                "faqs": [
-                    {
-                        "question": "How is my monthly loan payment calculated?",
-                        "answer": "For fixed-rate loans, the calculator uses the loan amount, monthly interest rate, and total number of monthly payments to calculate a level principal-and-interest payment."
-                    },
-                    {
-                        "question": "Does this include taxes, insurance, or fees?",
-                        "answer": "No. The result estimates principal and interest only. Add any taxes, insurance, lender fees, or other costs separately when comparing loan offers."
-                    },
-                    {
-                        "question": "What happens when I make extra payments?",
-                        "answer": "Extra monthly payments are applied to the outstanding principal in this estimate. This can reduce both the total interest paid and the time needed to pay off the loan."
-                    }
-                ]
+            {
+                "title": "Instant Results",
+                "description": "See your EMI, total interest, and total payment update in real time as you adjust inputs."
+            },
+            {
+                "title": "No Daily Limits",
+                "description": "Run unlimited calculations for as many loan scenarios as you need."
+            },
+            {
+                "title": "Cross-Platform Compatibility",
+                "description": "Works perfectly on Windows, macOS, Linux, iOS, and Android."
             }
-        },
+        ],
+        "visualContent": {
+            "type": "image",
+            "src": "/tools/loan-calculator/about/loan-calculator.png",
+            "alt": "Loan Calculator About Section Preview"
+        }
+    },
+    "featuresSection": {
+        "label": "Loan Calculator Features",
+        "title": "Everything You Need to Plan Your Loan",
+        "subtitle": "Powerful features to help you understand your loan repayment easily and efficiently.\nBuilt for everyone, completely free to use.",
+        "features": [
+            {
+                "imagePath": "/tools/loan-calculator/features/emi-breakdown.png",
+                "title": "EMI Breakdown",
+                "description": "See exactly how much of each payment goes to principal vs. interest"
+            },
+            {
+                "imagePath": "/tools/loan-calculator/features/amortization-schedule.png",
+                "title": "Amortization Schedule",
+                "description": "View a full month-by-month or year-by-year repayment table"
+            },
+            {
+                "imagePath": "/tools/loan-calculator/features/interest-comparison.png",
+                "title": "Interest Rate Comparison",
+                "description": "Compare total interest across different rates and tenures"
+            },
+            {
+                "imagePath": "/tools/loan-calculator/features/100-secure.png",
+                "title": "100% Secure",
+                "description": "All calculations happen locally in your browser"
+            },
+            {
+                "imagePath": "/tools/loan-calculator/features/simple-interface.png",
+                "title": "Simple Interface",
+                "description": "Just enter loan amount, rate, and tenure to get results"
+            },
+            {
+                "imagePath": "/tools/loan-calculator/features/prepayment-option.png",
+                "title": "Prepayment Impact",
+                "description": "Check how extra payments reduce your tenure and interest"
+            }
+        ]
+    },
+    "useCasesSection": {
+        "title": "Who Can Use the Loan Calculator?",
+        "description": "From homebuyers to small business owners, loan planning helps everyone borrow smarter.",
+        "label": "Perfect for Financial Planning",
+        "useCases": [
+            {
+                "icon": "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+                "title": "Homebuyers",
+                "description": "Estimate monthly mortgage payments before applying for a home loan.",
+                "link": "#homebuyers",
+                "benefits": [
+                    "Plan your home-buying budget accurately",
+                    "Compare different down payment scenarios",
+                    "Understand total interest over the loan term",
+                    "Avoid surprises before signing paperwork"
+                ],
+                "color": "#dbeafe",
+                "iconColor": "#3b82f6"
+            },
+            {
+                "icon": "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1",
+                "title": "Loan Applicants",
+                "description": "Compare personal, auto, or business loan offers before committing.",
+                "link": "#applicants",
+                "benefits": [
+                    "Compare EMIs across multiple lenders",
+                    "Understand true cost of borrowing",
+                    "Test different tenure and rate combinations",
+                    "Make informed borrowing decisions"
+                ],
+                "color": "#d1fae5",
+                "iconColor": "#10b981"
+            },
+            {
+                "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                "title": "Small Businesses",
+                "description": "Model repayment schedules for equipment or working capital loans.",
+                "link": "#businesses",
+                "benefits": [
+                    "Forecast monthly cash flow impact",
+                    "Compare financing options side by side",
+                    "Plan prepayment strategies",
+                    "Support budgeting and reporting"
+                ],
+                "color": "#fef3c7",
+                "iconColor": "#f59e0b"
+            },
+            {
+                "icon": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+                "title": "Financial Advisors",
+                "description": "Quickly model client loan scenarios during consultations.",
+                "link": "#advisors",
+                "benefits": [
+                    "Run live what-if scenarios with clients",
+                    "Illustrate prepayment savings clearly",
+                    "No client data stored or transmitted",
+                    "Fast, reliable, professional-grade output"
+                ],
+                "color": "#fce7f3",
+                "iconColor": "#ec4899"
+            }
+        ]
+    },
+    "faqSection": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers.",
+        "accentColor": "#2f84ff",
+        "faqs": [
+            {
+                "question": "How do I calculate my loan EMI online for free?",
+                "answer": "Enter your loan amount, annual interest rate, and tenure into the calculator. It instantly computes your monthly EMI, total interest payable, and total repayment amount using the standard reducing-balance formula."
+            },
+            {
+                "question": "Is it safe to use an online loan calculator?",
+                "answer": "Yes. Our loan calculator processes everything in your browser. Your loan amount and personal financial details never leave your device or get uploaded to any server."
+            },
+            {
+                "question": "What formula does the loan calculator use?",
+                "answer": "It uses the standard EMI formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r is the monthly interest rate, and n is the number of monthly installments."
+            },
+            {
+                "question": "Can I see a month-by-month amortization schedule?",
+                "answer": "Yes! The calculator generates a full amortization table showing the principal and interest split for every payment throughout the loan term."
+            },
+            {
+                "question": "Does the calculator account for prepayments?",
+                "answer": "Yes, you can add extra one-time or recurring payments to instantly see how much interest you save and how much your loan tenure is shortened."
+            }
+        ]
+    },
+    "instructionsSection": {
+        "title": "How to Calculate Your Loan EMI Online for Free",
+        "badgeText": "Easy 3-Step Process",
+        "description": "Estimating your loan repayment is simple and takes only a few seconds:",
+        "steps": [
+            {
+                "image": "tools/loan-calculator/instructions/step-1.png",
+                "imageAlt": "Enter loan details",
+                "title": "Enter Loan Details",
+                "description": "Type in your loan amount, annual interest rate, and repayment tenure in months or years."
+            },
+            {
+                "image": "tools/loan-calculator/instructions/step-2.png",
+                "imageAlt": "View EMI results",
+                "title": "View Your Results",
+                "description": "Instantly see your monthly EMI, total interest payable, and total repayment amount calculated in real time."
+            },
+            {
+                "image": "tools/loan-calculator/instructions/step-3.png",
+                "imageAlt": "Review amortization schedule",
+                "title": "Review the Schedule",
+                "description": "Scroll through the full amortization table to see exactly how each payment reduces your outstanding balance."
+            }
+        ]
+    }
+},
         {
             "id": "pdf-merger",
             "name": "PDF Merger",

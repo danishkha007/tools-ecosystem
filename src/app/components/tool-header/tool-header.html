@@ -3,7 +3,7 @@
   <div class="tool-header__content">
     <a href="{{ category?.route }}" class="eyebrow">{{ category?.name }}</a>
     <h1>{{ tool?.name }}</h1>
-    <p class="subtitle">{{ tool?.longDescription}}</p>
+    <p class="subtitle" [innerHTML]="getSaniizedSafeHTML(tool?.longDescription)"></p>
   </div>
   }
 </header>
