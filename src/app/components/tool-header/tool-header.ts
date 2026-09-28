@@ -3,6 +3,7 @@ import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Tool } from '@core/models/tool-data.model';
 import { Category } from '@core/models/category-data.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tool-header',
@@ -19,6 +20,7 @@ export class ToolHeaderComponent {
   constructor(
     private location: Location,
     private router: Router,
+    private sanitizer: DomSanitizer
   ) { }
 
   goBack(): void {
@@ -27,5 +29,8 @@ export class ToolHeaderComponent {
       return;
     }
     this.router.navigate(['/']);
+  }
+  getSaniizedSafeHTML(html: string | undefined) {
+    return this.sanitizer.bypassSecurityTrustHtml(html as string);
   }
 }
