@@ -209,6 +209,26 @@
                 "url qr code",
                 "wifi qr code"
             ]
+        },
+        {
+            "id": "command-designer",
+            "title": "Free Command Designer | CLI Command Builder for kubectl, Docker, Git | MyToolTrove",
+            "metaDescription": "Build CLI commands visually for kubectl, Docker, Git, npm, yarn & Python. Select options from dropdowns to generate ready-to-execute commands — free & browser-based.",
+            "h1": "Command Designer",
+            "h2": "Build CLI Commands Visually Without Memorizing Syntax",
+            "canonicalUrl": "https://mytooltrove.com/tools/developer/command-designer",
+            "keywords": [
+                "command builder",
+                "cli command generator",
+                "kubectl command builder",
+                "docker command builder",
+                "git command generator",
+                "npm command builder",
+                "command line tool",
+                "free command designer",
+                "cli command designer",
+                "visual command builder"
+            ]
         }
     ],
     "categories": [
