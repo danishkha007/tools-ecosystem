@@ -81,4 +81,6 @@ const toolComponentLoaders: Record<string, MainToolComponentLoader> = {
         import('../../features/json-formatter/json-formatter').then(m => m.JsonFormatterComponent),
     'qr-code-generator': () =>
         import('../../features/qr-code-generator/qr-code-generator').then(m => m.QrCodeGeneratorComponent),
+    'command-designer': () =>
+        import('../../features/command-designer/command-designer').then(m => m.CommandDesignerComponent),
 };

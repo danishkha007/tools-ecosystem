@@ -1575,6 +1575,201 @@
                     }
                 ]
             }
+        },
+        {
+            "id": "command-designer",
+            "name": "Command Designer",
+            "route": "tools/developer/command-designer",
+            "category": "developer-tools",
+            "icon": "tools/command-designer/logo.png",
+            "iconAlt": "Command Designer Tool",
+            "shortDescription": "Build CLI commands visually with dropdowns & options",
+            "longDescription": "Build complex CLI commands for kubectl, Docker, Git, npm, yarn and Python <strong>without memorizing syntax</strong>. Select your tool, pick a subcommand, toggle flags, and get a ready-to-paste command instantly. <strong style=\"color: #000;\">100% browser-based — nothing is sent to any server.</strong>",
+            "buttonText": "Build Command",
+            "rating": "4.8",
+            "reviewsCount": "1",
+            "tags": [
+                "Always Free",
+                "Browser-Based",
+                "Data Secured"
+            ],
+            "aboutSection": {
+                "badgeText": "About Command Designer",
+                "badgeIcon": "M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+                "title": "Visual CLI Command Builder\n<strong style=\"color: #3c8cff;\">Fast & </strong><strong style=\"color: #3fb676;\">Intuitive</strong>",
+                "description": "Stop Googling CLI syntax. Select your tool, pick a subcommand, configure flags through an intuitive visual interface, and get a ready-to-execute command instantly. Supports kubectl, Docker, Git, npm, yarn, and Python — all running 100% in your browser.",
+                "ctaPrimaryText": "Start Building Commands",
+                "ctaNote": "No signup required • 100% free forever",
+                "features": [
+                    {
+                        "title": "6 CLI Tools Supported",
+                        "description": "Build commands for kubectl, Docker, Git, npm, yarn, and Python with comprehensive flag coverage."
+                    },
+                    {
+                        "title": "Visual Flag Selection",
+                        "description": "Toggle flags, select from dropdowns, and fill in values — no need to memorize cryptic command-line options."
+                    },
+                    {
+                        "title": "Instant Command Preview",
+                        "description": "See your command build in real-time with syntax highlighting as you select options."
+                    },
+                    {
+                        "title": "One-Click Copy",
+                        "description": "Copy the generated command to your clipboard instantly and paste it into your terminal."
+                    }
+                ],
+                "visualContent": {
+                    "type": "image",
+                    "src": "/tools/command-designer/about/command-designer.png",
+                    "alt": "Command Designer About Section Preview"
+                }
+            },
+            "featuresSection": {
+                "label": "Command Designer Features",
+                "title": "Build Commands the Smart Way",
+                "subtitle": "A visual interface that makes building complex CLI commands fast, accurate, and hassle-free.\nDesigned for developers of all experience levels.",
+                "features": [
+                    {
+                        "title": "Multi-Tool Support",
+                        "description": "Switch between kubectl, Docker, Git, npm, yarn, and Python with one click"
+                    },
+                    {
+                        "title": "Smart Subcommands",
+                        "description": "Context-aware subcommand selection with descriptions for each option"
+                    },
+                    {
+                        "title": "Flag Discovery",
+                        "description": "Browse all available flags visually instead of reading man pages"
+                    },
+                    {
+                        "title": "Syntax Highlighting",
+                        "description": "Color-coded command output makes it easy to verify your command"
+                    },
+                    {
+                        "title": "100% Offline",
+                        "description": "Everything runs locally in your browser — works without internet"
+                    },
+                    {
+                        "title": "Copy & Execute",
+                        "description": "One-click copy to clipboard, ready to paste into your terminal"
+                    }
+                ]
+            },
+            "useCasesSection": {
+                "title": "Who Can Use the Command Designer?",
+                "description": "From DevOps engineers to students learning CLI tools, Command Designer makes everyone more productive.",
+                "label": "Perfect for Developers",
+                "useCases": [
+                    {
+                        "icon": "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+                        "title": "DevOps Engineers",
+                        "description": "Quickly build kubectl and Docker commands for deployments and debugging.",
+                        "link": "#devops",
+                        "benefits": [
+                            "Build complex kubectl commands without syntax errors",
+                            "Configure Docker run commands with multiple flags",
+                            "Save time on repetitive command construction",
+                            "Discover flags you didn't know existed"
+                        ],
+                        "color": "#dbeafe",
+                        "iconColor": "#3b82f6"
+                    },
+                    {
+                        "icon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+                        "title": "Full-Stack Developers",
+                        "description": "Generate Git, npm, and yarn commands with the right flags every time.",
+                        "link": "#fullstack",
+                        "benefits": [
+                            "Never forget a Git flag again",
+                            "Configure npm install with all dependency options",
+                            "Build yarn commands with correct syntax",
+                            "Speed up daily development workflows"
+                        ],
+                        "color": "#d1fae5",
+                        "iconColor": "#10b981"
+                    },
+                    {
+                        "icon": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+                        "title": "Students & Learners",
+                        "description": "Explore CLI tools visually and learn what each flag does.",
+                        "link": "#students",
+                        "benefits": [
+                            "Learn CLI syntax through interactive exploration",
+                            "Understand what each flag does via descriptions",
+                            "Build confidence with command-line tools",
+                            "Practice without fear of making mistakes"
+                        ],
+                        "color": "#fef3c7",
+                        "iconColor": "#f59e0b"
+                    },
+                    {
+                        "icon": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                        "title": "Technical Writers",
+                        "description": "Generate accurate CLI examples for documentation and tutorials.",
+                        "link": "#writers",
+                        "benefits": [
+                            "Create accurate command examples quickly",
+                            "Explore all available flags for documentation",
+                            "Ensure command syntax is correct",
+                            "Speed up documentation workflows"
+                        ],
+                        "color": "#fce7f3",
+                        "iconColor": "#ec4899"
+                    }
+                ]
+            },
+            "faqSection": {
+                "title": "Frequently Asked Questions",
+                "subtitle": "Got questions? We've got answers.",
+                "accentColor": "#2f84ff",
+                "faqs": [
+                    {
+                        "question": "What CLI tools does Command Designer support?",
+                        "answer": "Command Designer currently supports 6 popular CLI tools: kubectl (Kubernetes), Docker, Git, npm, yarn, and Python. Each tool includes comprehensive subcommands and flag options."
+                    },
+                    {
+                        "question": "Do I need to install anything to use Command Designer?",
+                        "answer": "No installation required! Command Designer runs entirely in your browser. It generates the command text for you to copy and paste into your own terminal where the actual CLI tools are installed."
+                    },
+                    {
+                        "question": "Is the generated command always correct?",
+                        "answer": "Yes, Command Designer uses accurate flag syntax and option formats for each CLI tool. The commands are built from verified documentation. However, always review the generated command before executing it in production environments."
+                    },
+                    {
+                        "question": "Can I use this tool offline?",
+                        "answer": "Yes! Once the page loads, Command Designer works completely offline since all command definitions are built into the application. No server calls are made."
+                    },
+                    {
+                        "question": "Will you add more CLI tools in the future?",
+                        "answer": "Yes! We plan to add support for more tools like AWS CLI, gcloud, Terraform, curl, and ssh. If you have a specific tool request, feel free to contact us."
+                    }
+                ]
+            },
+            "instructionsSection": {
+                "title": "How to Build CLI Commands Visually",
+                "badgeText": "Easy 3-Step Process",
+                "description": "Building the perfect CLI command takes just a few clicks:",
+                "steps": [
+                    {
+                        "image": "tools/command-designer/instructions/step-1.png",
+                        "imageAlt": "Select CLI tool",
+                        "title": "Select Your CLI Tool",
+                        "description": "Choose from kubectl, Docker, Git, npm, yarn, or Python to start building your command."
+                    },
+                    {
+                        "image": "tools/command-designer/instructions/step-2.png",
+                        "imageAlt": "Configure options",
+                        "title": "Configure Options & Flags",
+                        "description": "Select a subcommand, toggle flags, choose from dropdowns, and fill in values through the visual interface."
+                    },
+                    {
+                        "image": "tools/command-designer/instructions/step-3.png",
+                        "imageAlt": "Copy command",
+                        "title": "Copy & Execute",
+                        "description": "Your complete command appears in real-time. Copy it to your clipboard and paste it into your terminal."
+                    }
+                ]
+            }
         }
     ]
 }

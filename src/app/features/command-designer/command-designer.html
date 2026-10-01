@@ -1,0 +1,315 @@
+<div class="container">
+    <div class="command-designer-card">
+
+        <!-- Step Progress Indicator -->
+        <div class="step-progress">
+            <div class="step-item" [class.active]="currentStep >= 1" [class.completed]="currentStep > 1" (click)="resetFromStep(1)">
+                <div class="step-number">
+                    @if (currentStep > 1) {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20,6 9,17 4,12"/>
+                        </svg>
+                    } @else {
+                        1
+                    }
+                </div>
+                <span class="step-label">Select Tool</span>
+            </div>
+            <div class="step-line" [class.active]="currentStep > 1"></div>
+            <div class="step-item" [class.active]="currentStep >= 2" [class.completed]="currentStep > 2" (click)="resetFromStep(2)">
+                <div class="step-number">
+                    @if (currentStep > 2) {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20,6 9,17 4,12"/>
+                        </svg>
+                    } @else {
+                        2
+                    }
+                </div>
+                <span class="step-label">Subcommand</span>
+            </div>
+            <div class="step-line" [class.active]="currentStep > 2"></div>
+            <div class="step-item" [class.active]="currentStep >= 3">
+                <div class="step-number">3</div>
+                <span class="step-label">Configure</span>
+            </div>
+        </div>
+
+        <!-- STEP 1: Select CLI Tool -->
+        <section class="step-section" [class.collapsed]="selectedTool !== null">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-badge">1</span>
+                    Choose Your CLI Tool
+                </h2>
+                @if (selectedTool) {
+                    <button class="change-btn" (click)="resetAll()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                        Change
+                    </button>
+                }
+            </div>
+
+            @if (!selectedTool) {
+                <div class="tool-grid">
+                    @for (tool of cliTools; track tool.id) {
+                        <button
+                            class="tool-card"
+                            [style.--tool-color]="tool.accentColor"
+                            (click)="selectTool(tool)"
+                            [attr.id]="'tool-' + tool.id">
+                            <div class="tool-icon-wrapper">
+                                <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path [attr.d]="tool.icon"/>
+                                </svg>
+                            </div>
+                            <span class="tool-name">{{ tool.name }}</span>
+                            <span class="tool-desc">{{ tool.description }}</span>
+                        </button>
+                    }
+                </div>
+            } @else {
+                <!-- Selected tool summary -->
+                <div class="selected-summary" [style.--tool-color]="selectedTool.accentColor">
+                    <div class="selected-icon-wrapper">
+                        <svg class="selected-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path [attr.d]="selectedTool.icon"/>
+                        </svg>
+                    </div>
+                    <div class="selected-info">
+                        <span class="selected-name">{{ selectedTool.name }}</span>
+                        <span class="selected-desc">{{ selectedTool.description }}</span>
+                    </div>
+                </div>
+            }
+        </section>
+
+        <!-- STEP 2: Select Subcommand -->
+        @if (selectedTool) {
+            <section class="step-section" [class.collapsed]="selectedSubcommand !== null">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-badge">2</span>
+                        Select Subcommand
+                    </h2>
+                    @if (selectedSubcommand) {
+                        <button class="change-btn" (click)="resetFromStep(2)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                            Change
+                        </button>
+                    }
+                </div>
+
+                @if (!selectedSubcommand) {
+                    <div class="subcommand-grid">
+                        @for (sub of selectedTool.subcommands; track sub.name) {
+                            <button
+                                class="subcommand-card"
+                                [style.--tool-color]="selectedTool.accentColor"
+                                (click)="selectSubcommand(sub)"
+                                [attr.id]="'sub-' + sub.name.replace(' ', '-')">
+                                <span class="subcommand-name">{{ sub.name }}</span>
+                                <span class="subcommand-desc">{{ sub.description }}</span>
+                            </button>
+                        }
+                    </div>
+                } @else {
+                    <div class="selected-summary subcommand-summary" [style.--tool-color]="selectedTool.accentColor">
+                        <div class="selected-sub-badge" [style.background]="selectedTool.accentColor">
+                            {{ selectedSubcommand.name }}
+                        </div>
+                        <span class="selected-desc">{{ selectedSubcommand.description }}</span>
+                    </div>
+                }
+            </section>
+        }
+
+        <!-- STEP 3: Configure Options & Flags -->
+        @if (selectedSubcommand) {
+            <section class="step-section options-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-badge">3</span>
+                        Configure Options & Flags
+                    </h2>
+                    @if (activeOptionsCount > 0) {
+                        <span class="options-count">{{ activeOptionsCount }} active</span>
+                    }
+                </div>
+
+                <div class="options-container">
+                    @for (group of getOptionGroups(selectedSubcommand.options); track group.group) {
+                        <div class="option-group">
+                            <h3 class="group-title">{{ group.group }}</h3>
+                            <div class="group-options">
+                                @for (option of group.options; track option.flag) {
+                                    <div class="option-item" [class.active]="getOptionValue(option.flag).enabled"
+                                         [style.--tool-color]="selectedTool!.accentColor">
+
+                                        @switch (option.type) {
+                                            @case ('toggle') {
+                                                <label class="toggle-option" [attr.id]="'opt-' + option.flag.replace('--', '')">
+                                                    <div class="toggle-switch"
+                                                         [class.on]="getOptionValue(option.flag).enabled"
+                                                         (click)="toggleOption(option)">
+                                                        <div class="toggle-thumb"></div>
+                                                    </div>
+                                                    <div class="option-info">
+                                                        <span class="option-flag">{{ option.flag }}</span>
+                                                        <span class="option-label">{{ option.label }}</span>
+                                                    </div>
+                                                </label>
+                                            }
+                                            @case ('text') {
+                                                <div class="text-option" [attr.id]="'opt-' + option.flag.replace('--', '')">
+                                                    <div class="option-info">
+                                                        <span class="option-flag">{{ option.flag }}</span>
+                                                        <span class="option-label">{{ option.label }}
+                                                            @if (option.required) {
+                                                                <span class="required-badge">required</span>
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        class="option-input"
+                                                        [placeholder]="option.placeholder || 'Enter value...'"
+                                                        [value]="getOptionValue(option.flag).value"
+                                                        (input)="updateOptionValue(option, $any($event.target).value)"
+                                                    />
+                                                </div>
+                                            }
+                                            @case ('select') {
+                                                <div class="select-option" [attr.id]="'opt-' + option.flag.replace('--', '')">
+                                                    <div class="option-info">
+                                                        <span class="option-flag">{{ option.flag }}</span>
+                                                        <span class="option-label">{{ option.label }}</span>
+                                                    </div>
+                                                    <select
+                                                        class="option-select"
+                                                        [value]="getOptionValue(option.flag).value"
+                                                        (change)="updateOptionValue(option, $any($event.target).value)">
+                                                        <option value="">Select...</option>
+                                                        @for (choice of option.choices; track choice) {
+                                                            <option [value]="choice">{{ choice }}</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            }
+                                            @case ('repeatable') {
+                                                <div class="repeatable-option" [attr.id]="'opt-' + option.flag.replace('--', '')">
+                                                    <div class="option-info">
+                                                        <span class="option-flag">{{ option.flag }}</span>
+                                                        <span class="option-label">{{ option.label }}</span>
+                                                    </div>
+                                                    <div class="repeatable-values">
+                                                        @for (val of getOptionValue(option.flag).repeatableValues; track $index) {
+                                                            <div class="repeatable-row">
+                                                                <input
+                                                                    type="text"
+                                                                    class="option-input repeatable-input"
+                                                                    [placeholder]="option.placeholder || 'Enter value...'"
+                                                                    [value]="val"
+                                                                    (input)="updateRepeatableValue(option, $index, $any($event.target).value)"
+                                                                />
+                                                                <button class="remove-btn" (click)="removeRepeatableValue(option, $index)" title="Remove">
+                                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        }
+                                                        <button class="add-btn" (click)="addRepeatableValue(option)">
+                                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                                            </svg>
+                                                            Add {{ option.label }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        }
+
+        <!-- Generated Command Output -->
+        @if (selectedSubcommand) {
+            <section class="command-output-section" [style.--tool-color]="selectedTool!.accentColor">
+                <div class="section-header">
+                    <h2 class="section-title output-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="4,17 10,11 4,5"/>
+                            <line x1="12" y1="19" x2="20" y2="19"/>
+                        </svg>
+                        Generated Command
+                    </h2>
+                    <div class="output-actions">
+                        <button class="action-btn copy-btn"
+                                [class.copied]="copied"
+                                (click)="copyToClipboard()"
+                                [disabled]="!generatedCommand"
+                                id="copy-command-btn">
+                            @if (copied) {
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                                Copied!
+                            } @else {
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                </svg>
+                                Copy
+                            }
+                        </button>
+                        <button class="action-btn reset-btn" (click)="resetAll()" id="reset-command-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 4v6h6"/>
+                                <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <div class="terminal-body">
+                        @if (generatedCommand) {
+                            <span class="prompt-symbol">$</span>
+                            @for (segment of getCommandSegments(); track $index) {
+                                <span [class]="'cmd-' + segment.type">{{ segment.text }}</span>
+                            }
+                        } @else {
+                            <span class="terminal-placeholder">
+                                <span class="prompt-symbol">$</span>
+                                Configure options above to generate your command...
+                            </span>
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+</div>
