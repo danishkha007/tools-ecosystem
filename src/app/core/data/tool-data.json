@@ -56,32 +56,32 @@
         "subtitle": "Powerful features to help you understand your loan repayment easily and efficiently.\nBuilt for everyone, completely free to use.",
         "features": [
             {
-                "imagePath": "/tools/loan-calculator/features/emi-breakdown.png",
+                "iconPath": "/tools/loan-calculator/features/emi-breakdown.png",
                 "title": "EMI Breakdown",
                 "description": "See exactly how much of each payment goes to principal vs. interest"
             },
             {
-                "imagePath": "/tools/loan-calculator/features/amortization-schedule.png",
+                "iconPath": "/tools/loan-calculator/features/amortization-schedule.png",
                 "title": "Amortization Schedule",
                 "description": "View a full month-by-month or year-by-year repayment table"
             },
             {
-                "imagePath": "/tools/loan-calculator/features/interest-comparison.png",
+                "iconPath": "/tools/loan-calculator/features/interest-comparison.png",
                 "title": "Interest Rate Comparison",
                 "description": "Compare total interest across different rates and tenures"
             },
             {
-                "imagePath": "/tools/loan-calculator/features/100-secure.png",
+                "iconPath": "/tools/loan-calculator/features/100-secure.png",
                 "title": "100% Secure",
                 "description": "All calculations happen locally in your browser"
             },
             {
-                "imagePath": "/tools/loan-calculator/features/simple-interface.png",
+                "iconPath": "/tools/loan-calculator/features/simple-interface.png",
                 "title": "Simple Interface",
                 "description": "Just enter loan amount, rate, and tenure to get results"
             },
             {
-                "imagePath": "/tools/loan-calculator/features/prepayment-option.png",
+                "iconPath": "/tools/loan-calculator/features/prepayment-option.png",
                 "title": "Prepayment Impact",
                 "description": "Check how extra payments reduce your tenure and interest"
             }
@@ -257,32 +257,32 @@
                 "subtitle": "Powerful features to help you merge your PDF files easily and efficiently.\nBuilt for everyone, completely free to use.",
                 "features": [
                     {
-                        "imagePath": "/tools/pdf-merger/features/unlimited-files.png",
+                        "iconPath": "/tools/pdf-merger/features/unlimited-files.png",
                         "title": "Unlimited Files",
                         "description": "Merge as many PDF files as you need in one go"
                     },
                     {
-                        "imagePath": "/tools/pdf-merger/features/drag-to-reorder.png",
+                        "iconPath": "/tools/pdf-merger/features/drag-to-reorder.png",
                         "title": "Drag to Reorder",
                         "description": "Easily rearrange PDF order before merging"
                     },
                     {
-                        "imagePath": "/tools/pdf-merger/features/fast-processing.png",
+                        "iconPath": "/tools/pdf-merger/features/fast-processing.png",
                         "title": "Fast Processing",
                         "description": "Merge PDFs in seconds with efficient algorithms"
                     },
                     {
-                        "imagePath": "/tools/pdf-merger/features/100-secure.png",
+                        "iconPath": "/tools/pdf-merger/features/100-secure.png",
                         "title": "100% Secure",
                         "description": "All processing happens locally in your browser"
                     },
                     {
-                        "imagePath": "/tools/pdf-merger/features/simple-interface.png",
+                        "iconPath": "/tools/pdf-merger/features/simple-interface.png",
                         "title": "Simple Interface",
                         "description": "Intuitive drag-and-drop interface"
                     },
                     {
-                        "imagePath": "/tools/pdf-merger/features/instant-download.png",
+                        "iconPath": "/tools/pdf-merger/features/instant-download.png",
                         "title": "Instant Download",
                         "description": "Get your merged PDF immediately"
                     }
