@@ -47,7 +47,7 @@
     // transform: translateY(-5px);
 
     &::before {
-      opacity: 1;
+      // opacity: 1;
     }
 
     &::after {
@@ -55,8 +55,8 @@
     }
 
     .icon {
-      background: #eff6ff;
-      border-color: #bfdbfe;
+      // background: #eff6ff;
+      // border-color: #bfdbfe;
           transform: translate(2px, 2px) scale(1.1);
     }
 
@@ -89,7 +89,7 @@
   flex: 0 0 46px;
   display: grid;
   place-items: center;
-  background: #f8fafc;
+  // background: #f8fafc;
   justify-content: start;
   // border: 1px solid #e5e7eb;
   border-radius: 8px;
